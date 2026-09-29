@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import icon %}
+{% block title %}{{ site.name }} · Nairobi city guide{% endblock %}
+{% block main %}
+{% set tournament = site.mode == 'tournament' %}
+
+<section class="hero" aria-label="Welcome">
+  <img class="hero-img" src="{{ root }}img/hero-day-skyline.webp" alt="Nairobi skyline by day above a green park and the elevated expressway" style="object-position:50% 30%" fetchpriority="high">
+  <span class="credit">Artist's impression</span>
+  <div class="wrap hero-body">
+    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>{{ 'Nairobi · 2027 football season' if tournament else 'Nairobi · every day, every weekend' }}</div>
+    <div class="script">Karibu Nairobi.</div>
+    <h1>{{ 'From the city to the whistle.' if tournament else 'Eat, stay, ride and celebrate in one city guide.' }}</h1>
+    <p class="lede">{{ 'Stays, food, rides, matchday and nightlife in one plan. Book directly with local vendors.' if tournament else 'Find local food spots, stays, nightlife, watch parties and rides. You book directly with the business.' }}</p>
+    <form class="planner" action="#" onsubmit="return false" aria-label="Plan">
+      {% if tournament %}
+      <label for="pArrive">Arriving<input id="pArrive" type="date"></label>
+      <label for="pLeave">Leaving<input id="pLeave" type="date"></label>
+      <label for="pMatch">Match<select id="pMatch"><option>Choose a match [once fixtures are published]</option></select></label>
+      <label for="pPeople">Travellers<select id="pPeople"><option>1</option><option selected>2</option><option>3–5</option><option>6+</option></select></label>
+      {% else %}
+      <label for="pWhat">I'm looking for<select id="pWhat">{% for m in modules if m.slug != 'tickets' %}<option value="{{ m.slug }}">{{ m.label }}</option>{% endfor %}</select></label>
+      <label for="pArea">Area<input id="pArea" type="text" placeholder="Any area"></label>
+      <label for="pWhen">When<input id="pWhen" type="date"></label>
+      <label for="pPeople">People<select id="pPeople"><option>1</option><option selected>2</option><option>3–5</option><option>6+</option></select></label>
+      {% endif %}
+      <button type="submit" class="btn btn-amber" id="plannerGo">{{ 'Plan my trip' if tournament else 'Show me' }}</button>
+    </form>
+  </div>
+</section>
+
+<section class="band-night" aria-labelledby="stripH">
+  <div class="wrap band" style="padding-block:40px">
+    <div class="sec-head" style="margin-bottom:20px">
+      <h2 id="stripH" style="font-size:clamp(24px,3vw,34px)">{{ 'Next at ' ~ site.tournament.stadium if tournament else 'This weekend in Nairobi' }}</h2>
+      <a href="{{ root }}matchday/" style="color:var(--amber);font-weight:700;text-decoration:none">{{ 'Matchday guide →' if tournament else 'All watch parties →' }}</a>
+    </div>
+    <div class="grid-cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+      {% for i in range(3) %}
+      <div class="card" style="padding:18px;gap:6px">
+        <span class="card-meta">{{ 'Group [X] · Match [#]' if tournament else '[Day] · [Time] · SAMPLE' }}</span>
+        <strong style="font-family:var(--display);font-size:22px">{{ '[Team A] vs [Team B]' if tournament else '[Watch party or event]' }}</strong>
+        <span style="color:var(--amber);font-weight:700;font-size:14px">{{ '[Date] · [Kick-off]' if tournament else '[Venue] · [Area]' }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="route" aria-labelledby="routeH">
+  <img src="{{ root }}img/dusk-expressway.webp" alt="" loading="lazy">
+  <div class="wrap band">
+    <div class="sec-head">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="eyebrow">The Route</div>
+        <h2 id="routeH">One road, seven stops.</h2>
+      </div>
+      <p style="color:#D9DDEA">Follow the light from where you sleep to where you celebrate.</p>
+    </div>
+    <ol class="stops">
+      {% for m in modules %}
+      <li class="stop{{ ' hl' if m.slug == 'matchday' }}">
+        <a href="{{ root }}{{ m.slug }}/">
+          {{ icon(m.icon) }}
+          <span class="n">Stop {{ m.stop }}</span>
+          <h3>{{ m.label }}</h3>
+          <p>{{ m.card_home }}</p>
+          <span class="go">{{ m.cta }} →</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="plan" aria-labelledby="planH">
+  <div class="wrap two-col">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="eyebrow on-light" style="color:var(--canopy)">Plan your day</div>
+      <h2 id="planH" style="font-weight:800;font-size:clamp(32px,4vw,56px);line-height:1">{{ 'Your matchday, sorted around kick-off.' if tournament else 'Your Saturday, sorted.' }}</h2>
+      <p style="font-size:18px;color:#33403A;max-width:520px">{{ 'Pick your match and we build the day backwards from the whistle.' if tournament else 'Pick what you feel like and we line up the day: where to eat, where to watch the game and how to get home.' }}</p>
+      <a class="btn btn-green" href="#" style="align-self:flex-start">Start my plan</a>
+    </div>
+    <div class="plan-card" aria-label="Example plan">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid #E6E8E2">
+        <strong style="font-family:var(--display);font-size:20px">Example plan</strong>
+        <span class="badge" style="position:static;background:var(--shuka)">Sample</span>
+      </div>
+      {% set rows = [('KO −6h','Brunch near your stay','Food','#E3A23B'),('KO −4h','Fan zone or watch party','Matchday','#4F8A3C'),('KO −2h','Ride to the stadium','Rides','#2458A6'),('KO','Kick-off','Matchday','#B8262B'),('FT +1h','Celebrate or regroup','Nightlife','#141414')] if tournament else [('11:00','Brunch in [Area]','Food','#E3A23B'),('15:00','Watch party for the big match','Matchday','#4F8A3C'),('19:00','Nyama choma dinner','Food','#B8262B'),('22:00','Live music or a rooftop','Nightlife','#2458A6'),('01:00','Ride home','Rides','#141414')] %}
+      {% for t,title,mod,c in rows %}
+      <div class="plan-row"><time>{{ t }}</time><span class="pd" style="background:{{ c }}"></span><div><strong>{{ title }}</strong><small>{{ mod }} · [Suggested place]</small></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="band band-sand" id="how" aria-labelledby="howH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="howH">How it works</h2><p>{{ site.name }} connects you to the business. You pay them directly, not us.</p></div>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><h3>Choose</h3><p>Browse local stays, food spots, nightlife and rides in one place.</p></div>
+      <div class="step"><span class="num">2</span><h3>Book directly</h3><p>Message the business on WhatsApp or call them, and pay them by M-Pesa.</p></div>
+      <div class="step"><span class="num">3</span><h3>Enjoy</h3><p>Keep your plan on your phone. Rides open straight in the Uber or Bolt app.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band-green" id="vendors" aria-labelledby="vendH">
+  <div class="bead-rule" aria-hidden="true"></div>
+  <div class="wrap band">
+    <div class="cta-row">
+      <div>
+        <div class="eyebrow" style="color:var(--gold)">For Nairobi businesses</div>
+        <h2 id="vendH" style="margin-top:12px">Put your business in front of new customers.</h2>
+        <p>No listing fee. You pay a commission only on customers we send you.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a class="btn" style="background:var(--gold);color:var(--ink);min-height:52px;padding:0 28px" href="{{ root }}list-your-business/">List your business</a>
+        <a href="#how" style="text-align:center;font-weight:700;color:var(--ivory)">How commission works</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

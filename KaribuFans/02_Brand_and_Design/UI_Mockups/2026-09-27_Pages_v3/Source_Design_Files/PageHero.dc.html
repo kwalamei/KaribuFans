@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Page hero with route bar</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Caveat:wght@700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<section style="position: relative; width: 1440px; height: 640px; overflow: hidden; background: #0B1128; font-family: 'DM Sans', system-ui, sans-serif; color: #F3F5FA">
+<sc-if value="{{hasImg}}" hint-placeholder-val="{{true}}">
+<img src="{{img}}" alt="{{alt}}" style="position: absolute; left: 0; top: 0; width: 1440px; height: 640px; object-fit: cover; object-position: {{pos}}; display: block">
+</sc-if>
+<sc-if value="{{noImg}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; top: 0; width: 1440px; height: 640px; background: radial-gradient(circle at 78% 38%, rgba(245,166,35,0.55) 0%, rgba(216,65,47,0.28) 22%, rgba(27,38,86,0.9) 48%, #0B1128 78%)"></div>
+<div style="position: absolute; right: 120px; top: 180px; display: flex; flex-direction: column; align-items: center; gap: 6px; color: #F3F5FA; opacity: 0.85">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#F3F5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"></path></svg>
+<strong style="font-size: 13px; letter-spacing: 0.12em">PHOTO SLOT · {{slot}}</strong>
+<span style="font-size: 13px">Arriving with the Gemini set</span>
+</div>
+</sc-if>
+<div style="position: absolute; left: 0; top: 0; width: 1440px; height: 640px; background: linear-gradient(0deg, rgba(11,17,40,0.95) 0%, rgba(11,17,40,0.7) 26%, rgba(11,17,40,0.1) 64%, rgba(11,17,40,0) 100%)"></div>
+<div style="position: absolute; left: 0; top: 0; width: 900px; height: 640px; background: linear-gradient(90deg, rgba(11,17,40,0.5) 0%, rgba(11,17,40,0) 100%)"></div>
+
+<div style="position: absolute; left: 72px; bottom: 150px; width: 860px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 14px"><svg width="72" height="6" viewBox="0 0 72 6" aria-hidden="true"><rect x="0" width="13" height="6" fill="#B8262B"></rect><rect x="14.75" width="13" height="6" fill="#F7F2E8"></rect><rect x="29.5" width="13" height="6" fill="#2458A6"></rect><rect x="44.25" width="13" height="6" fill="#F5A623"></rect><rect x="59" width="13" height="6" fill="#4F8A3C"></rect></svg><span style="font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #F5A623">{{eyebrow}}</span></div>
+<div style="font-family: Caveat, cursive; font-weight: 700; font-size: 64px; line-height: 0.9; color: #F5A623">{{script}}</div>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 66px; line-height: 1; letter-spacing: -0.02em; color: #FFFFFF">{{heading}}</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.5; max-width: 640px; color: #E9ECF4">{{sub}}</p>
+</div>
+<div style="position: absolute; right: 24px; top: 20px; font-size: 12px; color: #F3F5FA; background: rgba(11,17,40,0.6); padding: 4px 10px; border-radius: 999px">{{credit}}</div>
+
+<nav aria-label="Route" style="position: absolute; left: 0; bottom: 0; width: 1440px; height: 104px; box-sizing: border-box; padding: 0 72px; background: rgba(11,17,40,0.78); border-top: 1px solid rgba(243,245,250,0.12)">
+<svg style="position: absolute; left: 72px; top: 33px" width="1296" height="12" viewBox="0 0 1296 12" aria-hidden="true">
+<line x1="92" y1="6" x2="1204" y2="6" stroke="#8A93B2" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="2 8" stroke-linecap="round"></line>
+<line x1="92" y1="6" x2="{{trailEnd}}" y2="6" stroke="#F5A623" stroke-opacity="0.25" stroke-width="12" stroke-linecap="round"></line>
+<line x1="92" y1="6" x2="{{trailEnd}}" y2="6" stroke="#F5A623" stroke-width="3" stroke-linecap="round"></line>
+</svg>
+<div style="position: relative; height: 104px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr))">
+<sc-for list="{{stops}}" as="s" hint-placeholder-count="7">
+<a href="{{s.href}}" style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding-top: 28px; text-decoration: none; color: {{s.fg}}">
+<span style="width: 22px; height: 22px; display: flex; align-items: center; justify-content: center"><span style="width: {{s.size}}; height: {{s.size}}; border-radius: 50%; background: {{s.dot}}; border: 3px solid {{s.ring}}; box-shadow: {{s.glow}}; box-sizing: border-box"></span></span>
+<span style="font-size: 13px; font-weight: {{s.weight}}; letter-spacing: 0.02em">{{s.label}}</span>
+</a>
+</sc-for>
+</div>
+</nav>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"eyebrow":{"editor":"text","default":"Stop 1 · Stays"},"script":{"editor":"text","default":"Lala salama."},"heading":{"editor":"text","default":"Stay close to the action."},"sub":{"editor":"text","default":"Hotels, B&amp;Bs and apartments sorted by distance to the stadium."},"img":{"editor":"text","default":""},"alt":{"editor":"text","default":""},"pos":{"editor":"text","default":"50% 50%"},"slot":{"editor":"text","default":"STAY-01"},"credit":{"editor":"text","default":"Artist&#39;s impression"},"stop":{"editor":"int","min":1,"max":7,"default":1},"$preview":{"width":1440,"height":640}}'>
+class Component extends DCLogic {
+renderVals() {
+const p = this.props;
+const stop = Number(p.stop ?? 1);
+const names = [['Stays', 'Stays.dc.html'], ['Food', 'Food.dc.html'], ['Rides', 'Rides.dc.html'], ['Matchday', 'Matchday.dc.html'], ['Nightlife', 'Nightlife.dc.html'], ['Movies & Games', 'Movies_Games.dc.html'], ['Tickets', 'Tickets.dc.html']];
+const col = 1296 / 7;
+const img = p.img ?? '';
+return {
+eyebrow: p.eyebrow ?? 'Stop 1 · Stays',
+script: p.script ?? 'Lala salama.',
+heading: p.heading ?? 'Stay close to the action.',
+sub: p.sub ?? '',
+img, alt: p.alt ?? '', pos: p.pos ?? '50% 50%', slot: p.slot ?? '',
+hasImg: img !== '', noImg: img === '',
+credit: p.credit ?? "Artist's impression",
+trailEnd: Math.round(col * (stop - 0.5)),
+stops: names.map(([label, href], i) => {
+const n = i + 1, cur = n === stop, done = n < stop;
+return {
+label: n + ' ' + label, href,
+fg: cur ? '#F5A623' : (done ? '#F3F5FA' : '#B9C0D6'),
+weight: cur ? '700' : '500',
+size: cur ? '22px' : '14px',
+dot: cur ? '#F5A623' : (done ? '#F5A623' : '#0B1128'),
+ring: cur ? '#FFFFFF' : (done ? '#F5A623' : '#8A93B2'),
+glow: cur ? '0 0 0 6px rgba(245,166,35,0.25), 0 0 24px rgba(245,166,35,0.7)' : 'none'
+};
+})
+};
+}
+}
+</script>
+</body>
+</html>

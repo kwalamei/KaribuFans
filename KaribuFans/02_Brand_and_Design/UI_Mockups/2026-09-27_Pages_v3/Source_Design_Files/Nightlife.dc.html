@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>KaribuFans Nightlife</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Caveat:wght@700&amp;display=swap">
+<style>body{margin:0;background:#0B1128;font-family:'DM Sans',system-ui,sans-serif;color:#F3F5FA}a{color:#F5A623}a:hover{color:#F3F5FA}</style>
+</helmet>
+<div style="width: 1440px; height: 3300px; box-sizing: border-box; background: #0B1128; display: flex; flex-direction: column; font-family: 'DM Sans', system-ui, sans-serif; color: #F3F5FA">
+<dc-import name="Nav" active="nightlife" mode="night" hint-size="1440px,84px"></dc-import>
+
+<dc-import name="PageHero" stop="5" eyebrow="Stop 5 · Nightlife · 18+" script="Sherehe!" heading="The night after the whistle." sub="Clubs, bars, rooftop lounges and live music. Entry fees, dress codes and closing times before you go." img="" alt="" pos="50% 50%" slot="NIGHT-01" hint-size="1440px,640px"></dc-import>
+
+<div style="height: 88px; flex-shrink: 0; box-sizing: border-box; padding: 0 72px; display: flex; align-items: center; gap: 10px; border-top: 1px solid rgba(243,245,250,0.12); border-bottom: 1px solid rgba(243,245,250,0.12)">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="8">
+<button type="button" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: {{c.line}}; background: {{c.bg}}; color: {{c.fg}}; font: 700 14px 'DM Sans', sans-serif">{{c.label}}</button>
+</sc-for>
+</div>
+
+<section style="flex-shrink: 0; padding: 48px 72px 0; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; align-items: baseline; gap: 16px"><span style="font-family: Caveat, cursive; font-weight: 700; font-size: 44px; color: #F5A623">Leo usiku</span><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px">Tonight's highlights</h2></div>
+<div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 20px">
+<sc-for list="{{highlights}}" as="h" hint-placeholder-count="3">
+<a href="#tonight" style="position: relative; height: 300px; border-radius: 20px; overflow: hidden; text-decoration: none; color: #FFFFFF; background: {{h.bg}}; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; box-sizing: border-box; border: 1px solid rgba(243,245,250,0.14)">
+<span style="position: absolute; left: 20px; top: 20px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; padding: 5px 10px; border-radius: 999px; background: rgba(11,17,40,0.65)">PHOTO · {{h.slot}}</span>
+<span style="position: absolute; right: 20px; top: 20px; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: #F5A623; color: #0B1128">{{h.tag}}</span>
+<span style="font-size: 14px; font-weight: 700; color: #F5A623">{{h.when}}</span>
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px; line-height: 1.05">{{h.title}}</span>
+<span style="font-size: 15px; color: #E9ECF4">{{h.meta}}</span>
+</a>
+</sc-for>
+</div>
+</section>
+<section id="tonight" style="flex-shrink: 0; padding: 48px 72px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 30px">[N] places open tonight</h2><a href="#map" style="font-weight: 700">Show map</a></div>
+<div style="display: grid; grid-template-columns: repeat(4, 300px); gap: 32px">
+<sc-for list="{{cards}}" as="it" hint-placeholder-count="8">
+<dc-import name="VendorCard" item="{{it}}" mode="night" hint-size="300px,420px"></dc-import>
+</sc-for>
+</div>
+</section>
+
+<section id="map" style="flex-shrink: 0; margin: 0 72px; height: 340px; border-radius: 20px; background: #131C40; border: 1px solid rgba(243,245,250,0.12); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; color: #B9C0D6">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"></path></svg>
+<strong style="font-size: 16px; color: #F3F5FA">Night map: venues open now</strong>
+<span style="font-size: 14px">[Map provider to decide at build stage]</span>
+</section>
+
+<section style="flex-shrink: 0; margin: 56px 72px; border-radius: 20px; border: 2px solid #F5A623; padding: 36px 44px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 38px; line-height: 1.02">Get home safe.</div>
+<div style="font-size: 16px; line-height: 1.6; color: #D9DDEA">Book your ride home from inside the venue. Check the plate and driver match the app, share your trip with a friend, and keep your drink with you.</div>
+</div>
+<div style="display: flex; gap: 12px">
+<a href="Rides.dc.html" style="flex-grow: 1; min-height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #F3F5FA; color: #0B1128; font-weight: 700; text-decoration: none">Ride home with Uber</a>
+<a href="Rides.dc.html" style="flex-grow: 1; min-height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #F3F5FA; color: #0B1128; font-weight: 700; text-decoration: none">Ride home with Bolt</a>
+</div>
+</section>
+
+<div style="flex-grow: 1; background: #0B1128; display: flex; flex-direction: column; justify-content: flex-end">
+<dc-import name="Footer" hint-size="1440px,360px"></dc-import>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+renderVals() {
+const chip = (label, on) => ({ label, bg: on ? '#F5A623' : 'transparent', fg: on ? '#0B1128' : '#F3F5FA', line: on ? '1px solid #F5A623' : '1px solid rgba(243,245,250,0.3)' });
+const card = (slot, badge, name, meta, tags, note, primary) => ({ slot, badge, name, meta, tags, note, primary: primary || 'Reserve on WhatsApp', secondary: 'Call' });
+return {
+highlights: [
+{ slot: 'NIGHT-02', tag: 'After the match', when: '[Date] · from [time]', title: '[Fan after-party name]', meta: '[Venue] · [Area] · Entry KES [X]', bg: 'radial-gradient(circle at 70% 30%, rgba(245,166,35,0.75) 0%, rgba(216,65,47,0.55) 30%, #1B2656 70%)' },
+{ slot: 'NIGHT-03', tag: 'Live music', when: 'Tonight · [time]', title: '[Act] live', meta: '[Venue] · [Area]', bg: 'radial-gradient(circle at 30% 30%, rgba(36,88,166,0.9) 0%, rgba(184,38,43,0.55) 45%, #0B1128 80%)' },
+{ slot: 'NIGHT-01', tag: 'Rooftop', when: 'Every night', title: '[Rooftop name]', meta: 'Skyline views · [Area]', bg: 'radial-gradient(circle at 60% 20%, rgba(245,166,35,0.6) 0%, rgba(27,38,86,0.95) 55%, #0B1128 90%)' }
+],
+chips: [chip('All', true), chip('Clubs'), chip('Bars'), chip('Rooftops & lounges'), chip('Live music'), chip('Match screenings'), chip('No entry fee'), chip('Open after 2am')],
+cards: [
+card('NIGHT-02', 'Club', '[Club name]', '[Area] · Entry KES [X]', ['DJ', 'Dress code'], 'Open till [time]'),
+card('NIGHT-03', 'Rooftop', '[Lounge name]', '[Area] · Cocktails from KES [X]', ['Skyline view', 'Smart casual'], 'Open till [time]'),
+card('NIGHT-03', 'Bar', '[Bar name]', '[Area] · Beers from KES [X]', ['Big screens', 'Groups'], 'Shows every match'),
+card('NIGHT-02', 'Live music', '[Venue name]', '[Area] · Entry KES [X]', ['Band', 'Benga · Afrobeats'], '[Act] tonight · [time]', 'Book a table'),
+card('NIGHT-02', 'Club', '[Club name]', '[Area] · Entry KES [X]', ['Amapiano', 'VIP tables'], 'Open till [time]'),
+card('NIGHT-03', 'Bar', '[Bar name]', '[Area] · Beers from KES [X]', ['Pool table', 'Outdoor'], 'Open till [time]'),
+card('NIGHT-03', 'Lounge', '[Lounge name]', '[Area] · Drinks from KES [X]', ['Chill', 'Late kitchen'], 'Open till [time]'),
+card('NIGHT-02', 'After-party', '[Event name]', '[Venue] · Tickets KES [X]', ['Fan party', '[Date]'], 'After [Team A] vs [Team B]', 'Get details')
+]
+};
+}
+}
+</script>
+</body>
+</html>

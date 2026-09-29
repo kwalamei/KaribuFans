@@ -1,0 +1,58 @@
+[
+  {
+    "type": "Clubs",
+    "name": "[Club name]",
+    "area": "[Area]",
+    "price": "Entry KES [X]",
+    "tags": [
+      "DJ",
+      "Dress code"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Rooftops & lounges",
+    "name": "[Lounge name]",
+    "area": "[Area]",
+    "price": "Cocktails from KES [X]",
+    "tags": [
+      "Skyline view",
+      "Smart casual"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Bars",
+    "name": "[Bar name]",
+    "area": "[Area]",
+    "price": "Beers from KES [X]",
+    "tags": [
+      "Match screenings",
+      "Groups"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Live music",
+    "name": "[Venue name]",
+    "area": "[Area]",
+    "price": "Entry KES [X]",
+    "tags": [
+      "Band",
+      "Benga · Afrobeats"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  }
+]

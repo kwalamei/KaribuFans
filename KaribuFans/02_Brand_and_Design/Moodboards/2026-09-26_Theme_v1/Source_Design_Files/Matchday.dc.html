@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Matchday module, French welcome</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&amp;family=Instrument+Sans:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F3F1EC}
+a{color:#2F5D3A}a:hover{color:#1E3F27}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F3F1EC; color: #1E2A47; font-family: 'Instrument Sans', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+<div style="height: 180px; background-color: #B3261E; background-image: repeating-linear-gradient(90deg, transparent 0 34px, rgba(30,42,71,.85) 34px 40px, transparent 40px 52px, rgba(30,42,71,.85) 52px 56px, transparent 56px 96px), repeating-linear-gradient(0deg, transparent 0 34px, rgba(30,42,71,.7) 34px 40px, transparent 40px 52px, rgba(30,42,71,.7) 52px 56px, transparent 56px 96px), repeating-linear-gradient(90deg, transparent 0 74px, rgba(217,164,65,.9) 74px 76px, transparent 76px 96px); display: flex; align-items: flex-end; padding: 18px 20px">
+<div style="background: #F3F1EC; border-radius: 14px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 13px; color: #4A5470">Karibu · Bienvenue</div>
+<div style="font-family: 'Bricolage Grotesque', Georgia, serif; font-weight: 800; font-size: 24px; letter-spacing: -0.02em">Bienvenue à Nairobi</div>
+</div>
+</div>
+<div style="padding: 20px 20px 0; display: flex; flex-direction: column; gap: 14px">
+<div style="background: #1E2A47; color: #F3F1EC; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 13px; color: #C9CEDC">Prochain match · Talanta Stadium</div>
+<div style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="width: 48px; height: 48px; border-radius: 24px; background: #3A4668"></span><span style="font-weight: 700; font-size: 15px">[Équipe A]</span></div>
+<div style="font-family: 'Bricolage Grotesque', Georgia, serif; font-weight: 800; font-size: 28px; color: #D9A441">vs</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="width: 48px; height: 48px; border-radius: 24px; background: #3A4668"></span><span style="font-weight: 700; font-size: 15px">[Équipe B]</span></div>
+</div>
+<div style="font-size: 14px; color: #C9CEDC; text-align: center">[date] · ouverture des portes [heure]</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<button style="min-height: 64px; border-radius: 16px; border: 1px solid #E3DFD5; background: #FFFFFF; color: #1E2A47; font-family: inherit; font-size: 15px; font-weight: 600; text-align: left; padding: 12px 14px">Itinéraire vers le stade</button>
+<button style="min-height: 64px; border-radius: 16px; border: 1px solid #E3DFD5; background: #FFFFFF; color: #1E2A47; font-family: inherit; font-size: 15px; font-weight: 600; text-align: left; padding: 12px 14px">Carte SIM et M-Pesa</button>
+<button style="min-height: 64px; border-radius: 16px; border: 1px solid #E3DFD5; background: #FFFFFF; color: #1E2A47; font-family: inherit; font-size: 15px; font-weight: 600; text-align: left; padding: 12px 14px">Où regarder sans billet</button>
+<button style="min-height: 64px; border-radius: 16px; border: 1px solid #E3DFD5; background: #FFFFFF; color: #1E2A47; font-family: inherit; font-size: 15px; font-weight: 600; text-align: left; padding: 12px 14px">Sécurité · 999 / 112</button>
+</div>
+<button style="height: 52px; border: none; border-radius: 14px; background: #2F5D3A; color: #FFFFFF; font-family: inherit; font-size: 16px; font-weight: 700">Twende · planifier ma journée</button>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

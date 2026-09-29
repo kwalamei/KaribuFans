@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>KaribuFans Movies and Games</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;display=swap">
+<style>body{margin:0;background:#0B1128;font-family:'DM Sans',system-ui,sans-serif;color:#F3F5FA}a{color:#F5A623}a:hover{color:#F3F5FA}</style>
+</helmet>
+<div style="width: 1440px; height: 3300px; box-sizing: border-box; background: #0B1128; display: flex; flex-direction: column; font-family: 'DM Sans', system-ui, sans-serif; color: #F3F5FA">
+<dc-import name="Nav" active="movies" mode="night" hint-size="1440px,84px"></dc-import>
+
+<dc-import name="PageHero" stop="6" eyebrow="Stop 6 · Movies &amp; Games" script="Pumzika." heading="Screens, games and rest days." sub="Cinemas, gaming lounges, bowling and arcades for the days between matches. Showtimes and bookings come from each venue." img="" alt="" pos="50% 50%" slot="MOVIES-01" hint-size="1440px,640px"></dc-import>
+
+<div style="height: 88px; flex-shrink: 0; box-sizing: border-box; padding: 0 72px; display: flex; align-items: center; gap: 10px; border-top: 1px solid rgba(243,245,250,0.12); border-bottom: 1px solid rgba(243,245,250,0.12)">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="7">
+<button type="button" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: {{c.line}}; background: {{c.bg}}; color: {{c.fg}}; font: 700 14px 'DM Sans', sans-serif">{{c.label}}</button>
+</sc-for>
+</div>
+
+<section id="showing" style="flex-shrink: 0; padding: 48px 72px 0; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 30px">Now showing in Nairobi</h2><span style="font-size: 14px; color: #B9C0D6">Updated from cinema listings [source TBC]</span></div>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px">
+<sc-for list="{{films}}" as="f" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="height: 250px; border-radius: 12px; background: #1B2656; border: 1px solid rgba(243,245,250,0.12); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: #B9C0D6">POSTER</div>
+<strong style="font-size: 15px">[Film title]</strong>
+<span style="font-size: 13px; color: #B9C0D6">{{f.times}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section id="cinemas" style="flex-shrink: 0; padding: 48px 72px; display: flex; flex-direction: column; gap: 24px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 30px">Cinemas and game spots</h2>
+<div style="display: grid; grid-template-columns: repeat(4, 300px); gap: 32px">
+<sc-for list="{{cards}}" as="it" hint-placeholder-count="8">
+<dc-import name="VendorCard" item="{{it}}" mode="night" hint-size="300px,420px"></dc-import>
+</sc-for>
+</div>
+</section>
+
+<div style="flex-grow: 1; background: #0B1128; display: flex; flex-direction: column; justify-content: flex-end">
+<dc-import name="Footer" hint-size="1440px,360px"></dc-import>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+renderVals() {
+const chip = (label, on) => ({ label, bg: on ? '#F5A623' : 'transparent', fg: on ? '#0B1128' : '#F3F5FA', line: on ? '1px solid #F5A623' : '1px solid rgba(243,245,250,0.3)' });
+const card = (slot, badge, name, meta, tags, note, primary) => ({ slot, badge, name, meta, tags, note, primary, secondary: 'Call' });
+const t = { times: '[Cinema] · [Times]' };
+return {
+chips: [chip('All', true), chip('Cinemas'), chip('Gaming lounges'), chip('Bowling & arcades'), chip('Family'), chip('Open late'), chip('Near my stay')],
+films: [t, t, t, t, t, t],
+cards: [
+card('MOVIES-01', 'Cinema', '[Cinema name]', '[Mall / area] · Tickets KES [X]', ['[Screen formats]', 'Snacks'], 'Showtimes on the cinema site', 'See showtimes'),
+card('MOVIES-02', 'Gaming', '[Gaming lounge name]', '[Area] · KES [X] per hour', ['Football games', 'Tournaments'], 'Open till [time]', 'Book a console'),
+card('MOVIES-01', 'Cinema', '[Cinema name]', '[Mall / area] · Tickets KES [X]', ['[Screen formats]', 'Parking'], 'Showtimes on the cinema site', 'See showtimes'),
+card('MOVIES-02', 'Arcade', '[Arcade / bowling name]', '[Mall / area] · KES [X] per game', ['Bowling', 'Family'], 'Open till [time]', 'WhatsApp'),
+card('MOVIES-02', 'Gaming', '[Gaming lounge name]', '[Area] · KES [X] per hour', ['VR', 'Groups'], 'Open till [time]', 'Book a console'),
+card('MOVIES-01', 'Cinema', '[Cinema name]', '[Mall / area] · Tickets KES [X]', ['[Screen formats]', 'Food court'], 'Showtimes on the cinema site', 'See showtimes'),
+card('MOVIES-02', 'Arcade', '[Venue name]', '[Area] · KES [X] entry', ['Go-karts [if any]', 'Family'], 'Open till [time]', 'WhatsApp'),
+card('MOVIES-02', 'Gaming', '[Gaming lounge name]', '[Area] · KES [X] per hour', ['Watch-party screen', 'Snacks'], 'Open till [time]', 'Book a console')
+]
+};
+}
+}
+</script>
+</body>
+</html>

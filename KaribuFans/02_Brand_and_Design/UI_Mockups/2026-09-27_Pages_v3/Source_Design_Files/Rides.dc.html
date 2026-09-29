@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>KaribuFans Rides</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;display=swap">
+<style>body{margin:0;background:#0B1128;font-family:'DM Sans',system-ui,sans-serif;color:#F3F5FA}a{color:#F5A623}a:hover{color:#F3F5FA}</style>
+</helmet>
+<div style="width: 1440px; height: 3300px; box-sizing: border-box; background: #0B1128; display: flex; flex-direction: column; font-family: 'DM Sans', system-ui, sans-serif; color: #F3F5FA">
+<dc-import name="Nav" active="rides" mode="night" hint-size="1440px,84px"></dc-import>
+
+<dc-import name="PageHero" stop="3" eyebrow="Stop 3 · Rides" script="Twende!" heading="Get there. Get back." sub="Choose where you are going and we open Uber or Bolt with the trip filled in. You see the fare and pay inside their app." img="/_blob/e606c3e7c396bd4b4d8b6f7a5e4394f7" alt="Golden hour over the elevated expressway curving toward the stadium" pos="60% 55%" slot="RIDES-01" hint-size="1440px,640px"></dc-import>
+<div style="flex-shrink: 0; padding: 32px 72px 0; position: relative"><form style="display: flex; flex-direction: column; gap: 12px; background: #131C40; border: 1px solid rgba(245,166,35,0.45); border-radius: 18px; padding: 20px; box-shadow: 0 18px 40px rgba(0,0,0,0.35)">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 700; color: #B9C0D6">From<input type="text" placeholder="My location" style="min-height: 46px; border: 1px solid rgba(243,245,250,0.25); background: #0B1128; color: #F3F5FA; border-radius: 10px; padding: 0 12px; font: 500 15px 'DM Sans', sans-serif"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 700; color: #B9C0D6">To<input type="text" value="Talanta Stadium" style="min-height: 46px; border: 1px solid rgba(243,245,250,0.25); background: #0B1128; color: #F3F5FA; border-radius: 10px; padding: 0 12px; font: 500 15px 'DM Sans', sans-serif"></label>
+</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<sc-for list="{{places}}" as="p" hint-placeholder-count="5">
+<button type="button" style="min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(243,245,250,0.3); background: transparent; color: #F3F5FA; font: 700 13px 'DM Sans', sans-serif">{{p}}</button>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<a href="#uber" style="min-height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #F3F5FA; color: #0B1128; font-weight: 700; font-size: 16px; text-decoration: none">Open in Uber ↗</a>
+<a href="#bolt" style="min-height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #F5A623; color: #0B1128; font-weight: 700; font-size: 16px; text-decoration: none">Open in Bolt ↗</a>
+</div>
+</form></div>
+
+<section style="flex-shrink: 0; padding: 32px 72px 48px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 30px">Popular trips</h2>
+<div style="display: flex; flex-direction: column; border: 1px solid rgba(243,245,250,0.14); border-radius: 16px; overflow: hidden">
+<sc-for list="{{trips}}" as="t" hint-placeholder-count="5">
+<div style="display: grid; grid-template-columns: 1.6fr 1fr 1fr auto; gap: 20px; align-items: center; padding: 18px 24px; border-bottom: 1px solid rgba(243,245,250,0.1)">
+<div style="display: flex; flex-direction: column; gap: 2px"><strong style="font-size: 17px">{{t.route}}</strong><span style="font-size: 14px; color: #B9C0D6">{{t.when}}</span></div>
+<span style="font-size: 15px; color: #D9DDEA">About [X] min · [X] km</span>
+<span style="font-size: 15px; color: #D9DDEA">Fare shown in the app</span>
+<div style="display: flex; gap: 8px">
+<a href="#uber" style="min-height: 44px; padding: 0 16px; display: flex; align-items: center; border-radius: 10px; background: #F3F5FA; color: #0B1128; font-weight: 700; font-size: 14px; text-decoration: none">Uber</a>
+<a href="#bolt" style="min-height: 44px; padding: 0 16px; display: flex; align-items: center; border-radius: 10px; background: #F5A623; color: #0B1128; font-weight: 700; font-size: 14px; text-decoration: none">Bolt</a>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="flex-shrink: 0; margin: 0 72px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px">
+<div style="background: #131C40; border: 2px solid #F5A623; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #F5A623">Matchday</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 34px; line-height: 1.05">Pickup and drop-off zones</div>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #D9DDEA">Roads near the stadium may close on matchdays. We will show the official pickup zones once the traffic plan is published.</p>
+<span style="font-size: 15px; font-weight: 700">Zone [A]: [Location TBC] · Zone [B]: [Location TBC]</span>
+<a href="Matchday.dc.html" style="font-weight: 700">Matchday guide →</a>
+</div>
+<div style="border-radius: 20px; background: #1B2656; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; color: #B9C0D6; min-height: 320px">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"></path></svg>
+<strong style="font-size: 16px; color: #F3F5FA">Map: stadium, pickup zones, closed roads</strong>
+<span style="font-size: 14px">[From the official matchday traffic plan]</span>
+</div>
+</section>
+
+<section style="flex-shrink: 0; padding: 56px 72px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px">
+<div style="grid-column: 1 / 5; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 30px">Ride safe</div>
+<sc-for list="{{tips}}" as="s" hint-placeholder-count="4">
+<div style="background: #131C40; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><strong style="font-size: 17px">{{s.t}}</strong><span style="font-size: 15px; line-height: 1.5; color: #D9DDEA">{{s.d}}</span></div>
+</sc-for>
+</section>
+
+<div style="flex-grow: 1; background: #0B1128; display: flex; flex-direction: column; justify-content: flex-end">
+<dc-import name="Footer" hint-size="1440px,360px"></dc-import>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+places: ['Talanta Stadium', 'JKIA airport', 'City centre', 'My stay', 'Fan zone [TBC]'],
+trips: [
+{ route: 'JKIA airport → your stay', when: 'Arrival day' },
+{ route: 'Your stay → Talanta Stadium', when: 'Matchday · leave about [X] h before kick-off' },
+{ route: 'Talanta Stadium → city centre', when: 'After the match · expect high demand' },
+{ route: 'City centre → [Nightlife area]', when: 'Evening' },
+{ route: 'Your stay → JKIA airport', when: 'Departure day · allow extra time for traffic' }
+],
+tips: [
+{ t: 'Match the car', d: 'Check the plate, car model and driver photo before you get in.' },
+{ t: 'Share your trip', d: 'Use the app’s share-trip feature so a friend can follow your ride.' },
+{ t: 'Pay in the app', d: 'Pay through the app or as it shows. Do not agree a separate cash price.' },
+{ t: 'Expect surge pricing', d: 'Fares rise after matches. Waiting a little or walking to a quieter street can help.' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

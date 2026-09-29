@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>KaribuFans theme v2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;display=swap">
+<style>
+body{margin:0;background:#F7F2E8;font-family:'DM Sans',system-ui,sans-serif;color:#16201A}
+a{color:#1F4D2B}a:hover{color:#16201A}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1480px; box-sizing: border-box; background: #F7F2E8; display: flex; flex-direction: column; font-family: 'DM Sans', system-ui, sans-serif; color: #16201A">
+
+<div style="padding: 56px 72px 32px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #3C5A44; font-weight: 700">Theme v2 · 26 September 2026</div>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 76px; line-height: 0.95; letter-spacing: -0.02em; color: #16201A">Day to Floodlight</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.5; max-width: 720px; color: #33403A">A visitor's day in Nairobi: plan it in the green city by day, and follow the road of light to the stadium by night.</p>
+</div>
+<svg width="220" height="28" viewBox="0 0 220 28" aria-hidden="true">
+<defs><pattern id="bead" width="44" height="28" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="8" height="28" fill="#B8262B"></rect><rect x="9" y="0" width="8" height="28" fill="#F7F2E8" stroke="#16201A" stroke-width="0.5"></rect><rect x="18" y="0" width="8" height="28" fill="#2458A6"></rect><rect x="27" y="0" width="8" height="28" fill="#E3A23B"></rect><rect x="36" y="0" width="8" height="28" fill="#141414"></rect></pattern></defs>
+<rect width="220" height="28" rx="4" fill="url(#bead)"></rect>
+</svg>
+</div>
+
+<div style="padding: 0 72px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<img src="/_blob/aedbe3d6ed3ddaa46a6fb563b69c3fe3" alt="Golden hour view over Nairobi's tree canopy toward a stadium" style="width: 100%; height: 340px; object-fit: cover; border-radius: 14px; display: block">
+<div style="display: flex; justify-content: space-between; font-size: 15px"><strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px">Day</strong><span style="color: #4A5750">Stays · Food · Trip planner · light mode</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<img src="/_blob/e9487762242e37a555c2bcac3a57229c" alt="Dusk view of a curving expressway with light trails leading to a floodlit stadium" style="width: 100%; height: 340px; object-fit: cover; border-radius: 14px; display: block">
+<div style="display: flex; justify-content: space-between; font-size: 15px"><strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px">Floodlight</strong><span style="color: #4A5750">Matchday · Nightlife · Rides · dark mode</span></div>
+</div>
+</div>
+
+<div style="padding: 40px 72px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 20px">{{g.name}}</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{g.swatches}}" as="s" hint-placeholder-count="6">
+<div style="height: 96px; border-radius: 10px; padding: 10px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; background: {{s.hex}}; color: {{s.fg}}; border: 1px solid rgba(22,32,26,0.12)">
+<div style="font-size: 13px; font-weight: 700">{{s.name}}</div>
+<div style="font-size: 12px; opacity: 0.85">{{s.hex}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="padding: 40px 72px 0; display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px">
+<div style="background: #FFFFFF; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 14px; border: 1px solid rgba(22,32,26,0.1)">
+<div style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #3C5A44; font-weight: 700">Type</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 60px; line-height: 1; letter-spacing: -0.02em">Karibu Nairobi.</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 30px">One road, five stops</div>
+<div style="font-size: 18px; line-height: 1.55; color: #33403A; max-width: 560px">Find a place to stay near the stadium, eat well, get a ride and plan your matchday, all in one place. You book directly with the vendor.</div>
+<div style="font-size: 14px; color: #4A5750">Display: Bricolage Grotesque 800 / 600 · Body: DM Sans 400 / 500 / 700</div>
+</div>
+<div style="background: #0B1128; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 22px; color: #F3F5FA">
+<div style="font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #F5A623; font-weight: 700">Components</div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<button type="button" style="min-height: 48px; padding: 0 22px; border-radius: 999px; border: none; background: #1F4D2B; color: #F7F2E8; font: 700 16px 'DM Sans', sans-serif">Plan my trip</button>
+<button type="button" style="min-height: 48px; padding: 0 22px; border-radius: 999px; border: none; background: #F5A623; color: #0B1128; font: 700 16px 'DM Sans', sans-serif">See matchday</button>
+<button type="button" style="min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1.5px solid #F3F5FA; background: transparent; color: #F3F5FA; font: 700 16px 'DM Sans', sans-serif">List your business</button>
+</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center">
+<span style="padding: 6px 12px; border-radius: 999px; background: #B8262B; color: #FFFFFF; font-size: 13px; font-weight: 700">Near the stadium</span>
+<span style="padding: 6px 12px; border-radius: 999px; background: #1B2656; color: #F3F5FA; font-size: 13px; font-weight: 700">Open after the match</span>
+<span style="padding: 6px 12px; border-radius: 999px; background: #F3F5FA; color: #0B1128; font-size: 13px; font-weight: 700">Pay by M-Pesa</span>
+</div>
+<div style="display: flex; gap: 18px; color: #F3F5FA">
+<sc-for list="{{icons}}" as="ic" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px; width: 72px">
+<div style="width: 52px; height: 52px; border-radius: 14px; background: #1B2656; display: flex; align-items: center; justify-content: center">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ic.d}}"></path></svg>
+</div>
+<span style="font-size: 13px">{{ic.label}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="margin: 40px 72px 0; background: #0B1128; border-radius: 16px; padding: 32px 40px 24px; color: #F3F5FA; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 24px">Signature: the light trail</div>
+<div style="font-size: 14px; color: #B9C0D6">Navigation and progress line. It joins the five stops and never appears as decoration alone.</div>
+</div>
+<svg width="1296" height="230" viewBox="0 0 1300 230" aria-label="Light trail connecting Stay, Eat, Ride, Matchday and Night">
+<path d="M0,200 C260,200 360,50 640,60 S1040,190 1300,40" fill="none" stroke="#F5A623" stroke-opacity="0.22" stroke-width="18" stroke-linecap="round"></path>
+<path d="M0,200 C260,200 360,50 640,60 S1040,190 1300,40" fill="none" stroke="#F5A623" stroke-width="4" stroke-linecap="round"></path>
+<path d="M0,210 C260,210 360,60 640,70 S1040,200 1300,50" fill="none" stroke="#D8412F" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"></path>
+<g fill="#F3F5FA" font-family="DM Sans, sans-serif" font-size="15" font-weight="700" text-anchor="middle">
+<circle cx="120" cy="189" r="9" fill="#0B1128" stroke="#F3F5FA" stroke-width="3"></circle><text x="120" y="160">Stay</text>
+<circle cx="380" cy="101" r="9" fill="#0B1128" stroke="#F3F5FA" stroke-width="3"></circle><text x="380" y="72">Eat</text>
+<circle cx="640" cy="60" r="9" fill="#0B1128" stroke="#F3F5FA" stroke-width="3"></circle><text x="640" y="31">Ride</text>
+<circle cx="900" cy="97" r="12" fill="#F5A623" stroke="#F3F5FA" stroke-width="3"></circle><text x="900" y="136">Matchday</text>
+<circle cx="1180" cy="94" r="9" fill="#0B1128" stroke="#F3F5FA" stroke-width="3"></circle><text x="1180" y="133">Night</text>
+</g>
+</svg>
+</div>
+
+<div style="flex-grow: 1; padding: 32px 72px 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; font-size: 15px; line-height: 1.5; color: #33403A">
+<div><strong style="display: block; color: #16201A; margin-bottom: 4px">Day look</strong>Planning pages: Stays, Food, Plan My Trip, For Vendors. Ivory ground, canopy green actions.</div>
+<div><strong style="display: block; color: #16201A; margin-bottom: 4px">Floodlight look</strong>Matchday, Nightlife, Rides and the site's dark mode. Night ground, amber actions.</div>
+<div><strong style="display: block; color: #16201A; margin-bottom: 4px">Shuka beads</strong>Small accents only: dividers, badges, active tabs. Never a full background.</div>
+<div><strong style="display: block; color: #16201A; margin-bottom: 4px">Photography</strong>Current images are AI mood shots. Label as artist's impression until real Talanta imagery is licensed.</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1480}}'>
+class Component extends DCLogic {
+renderVals() {
+const light = '#16201A', dark = '#F7F2E8';
+return {
+groups: [
+{ name: 'Day', swatches: [
+{ name: 'Canopy', hex: '#1F4D2B', fg: dark }, { name: 'Leaf', hex: '#4F8A3C', fg: dark }, { name: 'Sun Gold', hex: '#E3A23B', fg: light },
+{ name: 'Sky', hex: '#BFD9E8', fg: light }, { name: 'Ivory', hex: '#F7F2E8', fg: light }, { name: 'Ink', hex: '#16201A', fg: dark } ] },
+{ name: 'Floodlight', swatches: [
+{ name: 'Night', hex: '#0B1128', fg: dark }, { name: 'Dusk', hex: '#1B2656', fg: dark }, { name: 'Steel', hex: '#8A93B2', fg: light },
+{ name: 'Floodlight', hex: '#F3F5FA', fg: light }, { name: 'Trail Amber', hex: '#F5A623', fg: light }, { name: 'Tail Light', hex: '#D8412F', fg: '#FFFFFF' } ] },
+{ name: 'Shuka accents', swatches: [
+{ name: 'Shuka Red', hex: '#B8262B', fg: '#FFFFFF' }, { name: 'Bead Blue', hex: '#2458A6', fg: '#FFFFFF' }, { name: 'Bead Amber', hex: '#E3A23B', fg: light },
+{ name: 'Bead White', hex: '#F7F2E8', fg: light }, { name: 'Bead Black', hex: '#141414', fg: dark }, { name: 'Leaf', hex: '#4F8A3C', fg: dark } ] }
+],
+icons: [
+{ label: 'Stay', d: 'M3 18V7M3 13h18v5M21 18v-5a3 3 0 0 0-3-3h-7v3M7 9.5a1.5 1.5 0 1 0 0 .01' },
+{ label: 'Eat', d: 'M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 1-3 3-3 6v3h3M17 3v18' },
+{ label: 'Night', d: 'M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0a3 3 0 1 1 6 0M20 16a3 3 0 1 1-6 0a3 3 0 1 1 6 0' },
+{ label: 'Ride', d: 'M3 13l2-5h14l2 5v5h-3v-2H6v2H3zM7 13.5h.01M17 13.5h.01' },
+{ label: 'Matchday', d: 'M21 12a9 9 0 1 1-18 0a9 9 0 1 1 18 0M12 7l4 3-1.5 4.5h-5L8 10z' },
+{ label: 'Plan', d: 'M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

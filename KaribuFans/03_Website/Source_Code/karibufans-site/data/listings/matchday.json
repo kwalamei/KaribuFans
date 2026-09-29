@@ -1,0 +1,58 @@
+[
+  {
+    "type": "Watch parties",
+    "name": "[Venue name]",
+    "area": "[Area]",
+    "price": "Entry KES [X]",
+    "tags": [
+      "Big screens",
+      "Groups"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Fan zones",
+    "name": "[Fan zone name]",
+    "area": "[Area]",
+    "price": "Free entry [TBC]",
+    "tags": [
+      "Food stalls",
+      "Family friendly"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Watch parties",
+    "name": "[Bar name]",
+    "area": "[Area]",
+    "price": "No entry fee",
+    "tags": [
+      "Big screens",
+      "Food"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Family friendly",
+    "name": "[Venue name]",
+    "area": "[Area]",
+    "price": "Entry KES [X]",
+    "tags": [
+      "Kids area",
+      "Screens"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  }
+]

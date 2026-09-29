@@ -1,0 +1,58 @@
+[
+  {
+    "type": "Cinemas",
+    "name": "[Cinema name]",
+    "area": "[Area]",
+    "price": "Tickets KES [X]",
+    "tags": [
+      "Snacks",
+      "Parking"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Gaming lounges",
+    "name": "[Gaming lounge name]",
+    "area": "[Area]",
+    "price": "KES [X] per hour",
+    "tags": [
+      "Football games",
+      "Tournaments"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Bowling & arcades",
+    "name": "[Arcade name]",
+    "area": "[Area]",
+    "price": "KES [X] per game",
+    "tags": [
+      "Bowling",
+      "Family"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Gaming lounges",
+    "name": "[Gaming lounge name]",
+    "area": "[Area]",
+    "price": "KES [X] per hour",
+    "tags": [
+      "VR",
+      "Groups"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  }
+]

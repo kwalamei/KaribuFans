@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KaribuFans · Stay, move and watch football in Nairobi</title>
+<meta name="description" content="Verified stays, matchday routes and watch-party tables for fans visiting Nairobi in June and July 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#FBFAF7; --paper-2:#F1EFE9; --ink:#14213D; --ink-soft:#4A5470;
+  --red:#B3261E; --red-deep:#8E1C16; --sun:#F2B33D; --grass:#2E6B3F;
+  --line:#DAD6CC; --card:#FFFFFF; --on-red:#FFFFFF;
+  --display:"Bricolage Grotesque","Noto Kufi Arabic",Georgia,serif;
+  --body:"Instrument Sans","Noto Kufi Arabic",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1626; --paper-2:#172036; --ink:#EEF0F5; --ink-soft:#AEB6CB;
+    --red:#D9473D; --red-deep:#B3261E; --sun:#F2B33D; --grass:#5DAA73;
+    --line:#2A3550; --card:#18223A;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1626; --paper-2:#172036; --ink:#EEF0F5; --ink-soft:#AEB6CB;
+  --red:#D9473D; --red-deep:#B3261E; --sun:#F2B33D; --grass:#5DAA73;
+  --line:#2A3550; --card:#18223A;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* Shuka check — the one bold element */
+.shuka{
+  background-color:var(--red);
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 34px, rgba(20,33,61,.85) 34px 40px, transparent 40px 52px, rgba(20,33,61,.85) 52px 56px, transparent 56px 96px),
+    repeating-linear-gradient(0deg, transparent 0 34px, rgba(20,33,61,.7) 34px 40px, transparent 40px 52px, rgba(20,33,61,.7) 52px 56px, transparent 56px 96px),
+    repeating-linear-gradient(90deg, transparent 0 74px, rgba(242,179,61,.9) 74px 76px, transparent 76px 96px);
+}
+
+/* Header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:68px}
+.logo{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{display:inline-block;width:26px;height:26px;border-radius:7px}
+nav.links{display:flex;gap:4px;margin-inline-start:auto}
+nav.links a{text-decoration:none;font-weight:500;font-size:15px;padding:10px 12px;border-radius:10px;color:var(--ink-soft)}
+nav.links a:hover{color:var(--ink);background:var(--paper-2)}
+.lang{display:flex;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.lang button{border:0;background:transparent;color:var(--ink);font:600 13px var(--body);padding:0 11px;height:40px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+@media (max-width:860px){nav.links{display:none}.lang{margin-inline-start:auto}}
+
+/* Hero */
+.hero{padding:64px 0 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:end}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(60px,11vw,148px);line-height:.88;letter-spacing:-.045em;margin:0 0 20px}
+.hero h1 span{display:block}
+.hero .tag{font-family:var(--display);font-weight:500;font-size:clamp(22px,2.6vw,30px);line-height:1.2;margin:0 0 14px;letter-spacing:-.01em}
+.hero p.sub{max-width:34em;color:var(--ink-soft);margin:0 0 28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:14px;font:600 16px var(--body);text-decoration:none;cursor:pointer;border:2px solid transparent}
+.btn.primary{background:var(--red);color:var(--on-red)}
+.btn.primary:hover{background:var(--red-deep)}
+.btn.ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+
+.clock{background:var(--ink);color:var(--paper);border-radius:22px;padding:26px 26px 22px}
+:root[data-theme="dark"] .clock{background:var(--card);color:var(--ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .clock{background:var(--card);color:var(--ink)}}
+.clock .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.clock .n{font-family:var(--display);font-weight:800;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.clock .u{font-size:14px;opacity:.8;margin-top:6px}
+.clock .cap{margin:18px 0 0;font-size:15px;opacity:.9}
+.venues{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.venue{border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:12px 14px}
+:root[data-theme="dark"] .venue{border-color:var(--line)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .venue{border-color:var(--line)}}
+.venue b{display:block;font-size:15px}
+.venue small{font-size:13px;opacity:.8}
+.band{height:56px;margin-top:64px}
+@media (max-width:860px){.hero{padding-top:40px}.hero-grid{grid-template-columns:minmax(0,1fr);gap:32px}.band{height:40px;margin-top:48px}}
+
+/* Sections */
+section.block{padding:88px 0}
+section.alt{background:var(--paper-2)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.head h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,58px);line-height:1;letter-spacing:-.03em;margin:0;max-width:14em}
+.head p{margin:0;max-width:30em;color:var(--ink-soft)}
+
+/* Areas */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tabs button{min-height:46px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 15px var(--body);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.area{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;align-items:start}
+.area-note h3{font-family:var(--display);font-size:30px;line-height:1.05;letter-spacing:-.02em;margin:0 0 10px}
+.area-note p{margin:0 0 12px;color:var(--ink-soft)}
+.area-note .for{display:inline-block;font-weight:600;font-size:14px;color:var(--grass)}
+.listings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.listing{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.listing .ph{aspect-ratio:4/3;display:flex;align-items:flex-end;padding:12px}
+.listing .ph span{background:var(--paper);color:var(--ink);font-size:12px;font-weight:600;padding:5px 9px;border-radius:8px}
+.listing .bd{padding:14px 16px 16px}
+.listing h4{margin:0 0 4px;font-size:17px}
+.listing .meta{font-size:14px;color:var(--ink-soft);margin:0 0 10px}
+.listing .row{display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.listing .price{font-weight:700;font-size:16px}
+.verified{color:var(--grass);font-weight:600;display:inline-flex;align-items:center;gap:5px}
+.ph.p1{background:linear-gradient(160deg,#C9B79A,#8F7A5B)} .ph.p2{background:linear-gradient(160deg,#9FB3A2,#4F6E5A)}
+@media (max-width:860px){.area{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.listings{grid-template-columns:minmax(0,1fr)}}
+
+/* Matchday steps — a real sequence */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--ink)}
+.steps li{padding:22px 22px 0 0;border-inline-end:1px solid var(--line);padding-inline-start:0}
+.steps li+li{padding-inline-start:22px}
+.steps li:last-child{border-inline-end:0}
+.steps .k{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;color:var(--red)}
+.steps h3{margin:12px 0 6px;font-size:19px}
+.steps p{margin:0;color:var(--ink-soft);font-size:15px}
+@media (max-width:860px){.steps{grid-template-columns:minmax(0,1fr)}.steps li,.steps li+li{border-inline-end:0;border-bottom:1px solid var(--line);padding:20px 0}}
+
+/* Watch */
+.watch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.spot{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.spot .where{font-size:14px;color:var(--ink-soft)}
+.spot h3{margin:0;font-size:21px;font-family:var(--display);letter-spacing:-.01em}
+.spot p{margin:0;font-size:15px;color:var(--ink-soft);flex-grow:1}
+.spot .tables{font-weight:600;font-size:14px}
+@media (max-width:860px){.watch{grid-template-columns:minmax(0,1fr)}}
+
+/* Hosts */
+.hosts{background:var(--ink);color:var(--paper)}
+:root[data-theme="dark"] .hosts{background:#0A1020;color:var(--ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hosts{background:#0A1020;color:var(--ink)}}
+.hosts .head p{color:inherit;opacity:.85}
+.host-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.perks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+.perks li{padding-inline-start:20px;border-inline-start:4px solid var(--sun)}
+.perks b{display:block;font-size:19px;margin-bottom:4px}
+.perks span{opacity:.85;font-size:15px}
+form.join{background:var(--card);color:var(--ink);border-radius:22px;padding:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+form.join .full{grid-column:1/-1}
+form.join label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+form.join input,form.join select{height:50px;border:1px solid var(--line);border-radius:12px;padding:0 14px;font:400 16px var(--body);background:var(--paper);color:var(--ink);width:100%}
+form.join .err{color:var(--red);font-size:14px;min-height:1.2em;margin:0}
+.done{background:var(--card);color:var(--ink);border-radius:22px;padding:26px}
+.done h3{font-family:var(--display);font-size:28px;margin:0 0 8px}
+.done pre{white-space:pre-wrap;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;font:14px/1.5 var(--body);margin:14px 0}
+@media (max-width:860px){.host-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){form.join{grid-template-columns:minmax(0,1fr)}}
+
+/* FAQ */
+.faq{max-width:820px}
+.faq details{border-bottom:1px solid var(--line);padding:6px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:19px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);font-size:26px;line-height:1;color:var(--red)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 18px;color:var(--ink-soft);max-width:40em}
+
+footer{padding:40px 0 48px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+[dir="rtl"] .hero h1,[dir="rtl"] .head h2{letter-spacing:0}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top"><i class="shuka" aria-hidden="true"></i>KaribuFans</a>
+    <nav class="links" aria-label="Main">
+      <a href="#stays" data-i18n="nav_stays">Stays</a>
+      <a href="#matchday" data-i18n="nav_matchday">Matchday</a>
+      <a href="#watch" data-i18n="nav_watch">Watch parties</a>
+      <a href="#hosts" data-i18n="nav_hosts">For hosts</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+      <button type="button" data-lang="ar" aria-pressed="false">عربي</button>
+      <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1><span>Karibu</span><span>Nairobi.</span></h1>
+        <p class="tag" data-i18n="tag">Your matchday home in Nairobi.</p>
+        <p class="sub" data-i18n="sub">Find a verified place to stay, get to the stadium and find a screen for every match of the Africa Cup of Nations 2027 in Nairobi.</p>
+        <div class="ctas">
+          <a class="btn primary" href="#stays" data-i18n="cta_fan">Find a stay</a>
+          <a class="btn ghost" href="#hosts" data-i18n="cta_host">List your space</a>
+        </div>
+      </div>
+      <aside class="clock" aria-label="Countdown to the tournament">
+        <div class="nums">
+          <div><div class="n" id="cd-d">—</div><div class="u" data-i18n="u_d">days</div></div>
+          <div><div class="n" id="cd-h">—</div><div class="u" data-i18n="u_h">hours</div></div>
+          <div><div class="n" id="cd-m">—</div><div class="u" data-i18n="u_m">minutes</div></div>
+        </div>
+        <p class="cap" data-i18n="cd_cap">until the tournament opens on 19 June 2027</p>
+        <div class="venues">
+          <div class="venue"><b>Talanta Stadium</b><small>Ngong Road · 60,000 seats</small></div>
+          <div class="venue"><b>MISC Kasarani</b><small>Thika Road · 48,000 seats</small></div>
+        </div>
+      </aside>
+    </div>
+    <div class="band shuka" aria-hidden="true"></div>
+  </section>
+
+  <section class="block" id="stays">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="stays_h">Stay close to the game</h2>
+        <p>Pick the part of Nairobi that suits your matches. Every host is ID-checked before their listing goes live.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Areas" id="tabs"></div>
+      <div class="area" id="area" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="matchday">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="matchday_h">How a matchday works</h2>
+        <p>From your bed to your seat and back, with everything on your phone.</p>
+      </div>
+      <ol class="steps">
+        <li><div class="k">1</div><h3>Book your stay</h3><p>Choose a verified room or flat and pay by M-Pesa or card.</p></li>
+        <li><div class="k">2</div><h3>Get your route</h3><p>Shuttle pickup points, walking routes and road closures, sent before kick-off.</p></li>
+        <li><div class="k">3</div><h3>Watch the match</h3><p>At the stadium with your ticket, or at a fan venue with a table booked.</p></li>
+        <li><div class="k">4</div><h3>Get home</h3><p>Ride back on a pre-booked shuttle instead of hunting for a taxi.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="watch">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="watch_h">No ticket? Watch with the city</h2>
+        <p>Bars, restaurants and fan zones with big screens. Reserve a table so you're not standing at the back.</p>
+      </div>
+      <div class="watch">
+        <article class="spot"><div class="where">Westlands</div><h3>Rooftop screenings</h3><p>Evening matches with the city lights behind the screen.</p><div class="tables">Sample venue · [n] tables</div><a class="btn ghost" href="#top">Reserve a table</a></article>
+        <article class="spot"><div class="where">Kasarani</div><h3>Fan zones near the stadium</h3><p>Big outdoor screens and grills for fans who couldn't get in.</p><div class="tables">Sample venue · [n] tables</div><a class="btn ghost" href="#top">Reserve a table</a></article>
+        <article class="spot"><div class="where">CBD</div><h3>Restaurants and sports bars</h3><p>Central, easy to reach and open late on matchdays.</p><div class="tables">Sample venue · [n] tables</div><a class="btn ghost" href="#top">Reserve a table</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block hosts" id="hosts">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="hosts_h">Have a room, a flat or a big screen?</h2>
+        <p>Thousands of visiting fans will need somewhere to sleep and somewhere to watch. Get listed before they start booking.</p>
+      </div>
+      <div class="host-grid">
+        <ul class="perks">
+          <li><b>Guests in their own language</b><span>Your listing is translated into French, Arabic and Portuguese for you.</span></li>
+          <li><b>Paid through M-Pesa</b><span>Guests pay upfront. Your payout goes to your M-Pesa or bank account.</span></li>
+          <li><b>Your prices, your dates</b><span>Set matchday rates and block the nights you're not available.</span></li>
+          <li><b>Verified, so guests trust you</b><span>We check your ID and your space once, then show a verified badge.</span></li>
+        </ul>
+        <div id="join-slot">
+          <form class="join" id="join" novalidate>
+            <label>Your name<input name="name" autocomplete="name" required></label>
+            <label>Phone (M-Pesa)<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07XX XXX XXX" required></label>
+            <label>What are you listing?
+              <select name="kind">
+                <option>A room in my home</option>
+                <option>A whole flat or house</option>
+                <option>A guesthouse or hotel</option>
+                <option>A venue with a big screen</option>
+              </select>
+            </label>
+            <label>Area
+              <select name="area">
+                <option>Ngong Road / Jamhuri</option>
+                <option>Kilimani / Kileleshwa</option>
+                <option>Kasarani / Roysambu</option>
+                <option>CBD / Upper Hill</option>
+                <option>Other part of Nairobi</option>
+              </select>
+            </label>
+            <label class="full">Rooms, beds or tables<input name="size" inputmode="numeric" placeholder="e.g. 2 rooms"></label>
+            <p class="err full" id="err" role="alert"></p>
+            <button class="btn primary full" type="submit">Register my space</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="head"><h2 data-i18n="faq_h">Questions</h2></div>
+      <div class="faq">
+        <details><summary>Is KaribuFans the official tournament website?</summary><p>No. KaribuFans is an independent Kenyan service. It is not affiliated with CAF, the organising committee or the stadiums. Match tickets are only sold through official channels.</p></details>
+        <details><summary>How do payments work?</summary><p>Guests will pay by M-Pesa or card when they book. Hosts receive their payout after the guest checks in. Online payments are being set up and will open before bookings go live.</p></details>
+        <details><summary>How are hosts verified?</summary><p>Each host shares an ID and photos of the space, and we confirm the location before the listing is published.</p></details>
+        <details><summary>Which venues host matches in Nairobi?</summary><p>Talanta Stadium on Ngong Road and Moi International Sports Centre, Kasarani. The final match schedule will be confirmed by the organisers.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 KaribuFans · Nairobi, Kenya</span>
+    <span>Independent service, not affiliated with CAF or the tournament organisers.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---- Settings: add your WhatsApp number (e.g. "2547XXXXXXXX") to activate host sign-ups
+  var WHATSAPP = "";
+
+  // ---- Countdown to 19 June 2027, East Africa Time
+  var target = new Date("2027-06-19T00:00:00+03:00").getTime();
+  function tick(){
+    var ms = Math.max(0, target - Date.now());
+    var d = Math.floor(ms/864e5), h = Math.floor(ms%864e5/36e5), m = Math.floor(ms%36e5/6e4);
+    document.getElementById("cd-d").textContent = d;
+    document.getElementById("cd-h").textContent = h;
+    document.getElementById("cd-m").textContent = m;
+  }
+  tick(); setInterval(tick, 30000);
+
+  // ---- Areas
+  var areas = [
+    {id:"ngong", name:"Ngong Road", title:"Ngong Road & Jamhuri", for:"Closest to Talanta Stadium",
+     text:"Talanta Stadium stands on the old Jamhuri Grounds off Ngong Road. Staying here puts you nearest the gates for Talanta matches.",
+     list:[["Guesthouse, 2 rooms","Sleeps 4","p1"],["Room in a family home","Sleeps 2","p2"]]},
+    {id:"kilimani", name:"Kilimani", title:"Kilimani & Kileleshwa", for:"A short ride to Talanta",
+     text:"Apartments, cafés and restaurants, with a short ride to Talanta and easy links across the city.",
+     list:[["Serviced apartment","Sleeps 4","p2"],["Studio flat","Sleeps 2","p1"]]},
+    {id:"kasarani", name:"Kasarani", title:"Kasarani & Roysambu", for:"Closest to MISC Kasarani",
+     text:"Off Thika Road, near Moi International Sports Centre. The natural base for Kasarani matches.",
+     list:[["Homestay room","Sleeps 2","p1"],["Townhouse","Sleeps 6","p2"]]},
+    {id:"cbd", name:"CBD", title:"CBD & Upper Hill", for:"Between both venues",
+     text:"Central hotels and guesthouses with transport links to both venues and the most watch-party options.",
+     list:[["City guesthouse","Sleeps 2","p2"],["Hotel twin room","Sleeps 2","p1"]]}
+  ];
+  var tabs = document.getElementById("tabs"), panel = document.getElementById("area");
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function show(i){
+    Array.prototype.forEach.call(tabs.children,function(b,j){b.setAttribute("aria-selected", j===i ? "true":"false"); b.tabIndex = j===i?0:-1;});
+    var a = areas[i];
+    panel.innerHTML =
+      '<div class="area-note"><h3>'+esc(a.title)+'</h3><p>'+esc(a.text)+'</p><span class="for">'+esc(a.for)+'</span></div>'+
+      '<div class="listings">'+a.list.map(function(l){
+        return '<article class="listing"><div class="ph '+l[2]+'"><span>Sample listing</span></div><div class="bd">'+
+               '<h4>'+esc(l[0])+'</h4><p class="meta">'+esc(a.name)+' · '+esc(l[1])+'</p>'+
+               '<div class="row"><span class="verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Verified host</span>'+
+               '<span class="price">KSh [price] / night</span></div></div></article>';
+      }).join("")+'</div>';
+  }
+  areas.forEach(function(a,i){
+    var b = document.createElement("button");
+    b.type="button"; b.role="tab"; b.textContent=a.name;
+    b.addEventListener("click",function(){show(i);});
+    b.addEventListener("keydown",function(e){
+      var n = e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;
+      if(document.documentElement.dir==="rtl") n=-n;
+      if(n){var k=(i+n+areas.length)%areas.length; show(k); tabs.children[k].focus();}
+    });
+    tabs.appendChild(b);
+  });
+  show(0);
+
+  // ---- Host sign-up
+  var form = document.getElementById("join"), err = document.getElementById("err");
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var f = new FormData(form), name=(f.get("name")||"").trim(), phone=(f.get("phone")||"").replace(/\s+/g,"");
+    if(!name){err.textContent="Add your name so we know who to call."; form.name.focus(); return;}
+    if(!/^(\+?254|0)[17]\d{8}$/.test(phone)){err.textContent="Enter a Kenyan mobile number, like 0712 345 678."; form.phone.focus(); return;}
+    err.textContent="";
+    var summary = "New KaribuFans host\nName: "+name+"\nPhone: "+phone+"\nListing: "+f.get("kind")+"\nArea: "+f.get("area")+"\nSize: "+(f.get("size")||"not given");
+    var slot = document.getElementById("join-slot");
+    var action = WHATSAPP
+      ? '<a class="btn primary" target="_blank" rel="noopener" href="https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(summary)+'">Send on WhatsApp</a>'
+      : '<p style="margin:0;color:var(--ink-soft)">Preview mode: host sign-ups open once a WhatsApp number is connected. Your details have not been sent.</p>';
+    slot.innerHTML = '<div class="done" tabindex="-1" id="done"><h3>Almost done, '+esc(name)+'</h3><p style="margin:0">Here is what will be sent to the KaribuFans team:</p><pre>'+esc(summary)+'</pre>'+action+'</div>';
+    document.getElementById("done").focus();
+  });
+
+  // ---- Languages (headlines and actions; full-page translation comes next)
+  var T = {
+    en:{nav_stays:"Stays",nav_matchday:"Matchday",nav_watch:"Watch parties",nav_hosts:"For hosts",tag:"Your matchday home in Nairobi.",
+        sub:"Find a verified place to stay, get to the stadium and find a screen for every match of the Africa Cup of Nations 2027 in Nairobi.",
+        cta_fan:"Find a stay",cta_host:"List your space",u_d:"days",u_h:"hours",u_m:"minutes",cd_cap:"until the tournament opens on 19 June 2027",
+        stays_h:"Stay close to the game",matchday_h:"How a matchday works",watch_h:"No ticket? Watch with the city",hosts_h:"Have a room, a flat or a big screen?",faq_h:"Questions"},
+    fr:{nav_stays:"Logements",nav_matchday:"Jour de match",nav_watch:"Où regarder",nav_hosts:"Hôtes",tag:"Votre base à Nairobi les jours de match.",
+        sub:"Trouvez un logement vérifié, rejoignez le stade et trouvez un écran pour chaque match de la Coupe d'Afrique des Nations 2027 à Nairobi.",
+        cta_fan:"Trouver un logement",cta_host:"Proposer votre logement",u_d:"jours",u_h:"heures",u_m:"minutes",cd_cap:"avant l'ouverture du tournoi le 19 juin 2027",
+        stays_h:"Logez près du match",matchday_h:"Comment se passe un jour de match",watch_h:"Pas de billet ? Regardez avec la ville",hosts_h:"Vous avez une chambre, un appartement ou un grand écran ?",faq_h:"Questions"},
+    ar:{nav_stays:"الإقامة",nav_matchday:"يوم المباراة",nav_watch:"أماكن المشاهدة",nav_hosts:"للمضيفين",tag:"مقرّك في نيروبي في أيام المباريات.",
+        sub:"اعثر على مكان إقامة موثوق، وصِل إلى الملعب، وجد شاشة لكل مباراة في كأس الأمم الأفريقية 2027 في نيروبي.",
+        cta_fan:"ابحث عن إقامة",cta_host:"أضف مكانك",u_d:"أيام",u_h:"ساعات",u_m:"دقائق",cd_cap:"حتى افتتاح البطولة في 19 يونيو 2027",
+        stays_h:"أقم بالقرب من المباراة",matchday_h:"كيف يسير يوم المباراة",watch_h:"لا تملك تذكرة؟ شاهد مع المدينة",hosts_h:"لديك غرفة أو شقة أو شاشة كبيرة؟",faq_h:"أسئلة"},
+    pt:{nav_stays:"Alojamento",nav_matchday:"Dia de jogo",nav_watch:"Onde ver",nav_hosts:"Anfitriões",tag:"A sua casa em Nairobi em dias de jogo.",
+        sub:"Encontre um alojamento verificado, chegue ao estádio e encontre um ecrã para cada jogo da Taça das Nações Africanas 2027 em Nairobi.",
+        cta_fan:"Encontrar alojamento",cta_host:"Anunciar o seu espaço",u_d:"dias",u_h:"horas",u_m:"minutos",cd_cap:"até à abertura do torneio a 19 de junho de 2027",
+        stays_h:"Fique perto do jogo",matchday_h:"Como funciona um dia de jogo",watch_h:"Sem bilhete? Veja com a cidade",hosts_h:"Tem um quarto, um apartamento ou um ecrã grande?",faq_h:"Perguntas"}
+  };
+  function setLang(l){
+    var d = T[l]||T.en;
+    document.documentElement.lang = l;
+    document.documentElement.dir = l==="ar" ? "rtl" : "ltr";
+    document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n"); if(d[k]) el.textContent=d[k];});
+    document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed", b.dataset.lang===l?"true":"false");});
+    try{localStorage.setItem("kf-lang",l);}catch(e){}
+  }
+  document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.dataset.lang);});});
+  var saved=null; try{saved=localStorage.getItem("kf-lang");}catch(e){}
+  if(saved && T[saved]) setLang(saved);
+})();
+</script>
+</body>
+</html>

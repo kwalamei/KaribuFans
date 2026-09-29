@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>KaribuFans Food</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;display=swap">
+<style>body{margin:0;background:#F7F2E8;font-family:'DM Sans',system-ui,sans-serif;color:#16201A}a{color:#1F4D2B}a:hover{color:#16201A}</style>
+</helmet>
+<div style="width: 1440px; height: 3300px; box-sizing: border-box; background: #F7F2E8; display: flex; flex-direction: column; font-family: 'DM Sans', system-ui, sans-serif; color: #16201A">
+<dc-import name="Nav" active="food" mode="day" hint-size="1440px,84px"></dc-import>
+
+<dc-import name="PageHero" stop="2" eyebrow="Stop 2 · Food" script="Karibu mezani." heading="Eat like Nairobi." sub="Nyama choma joints, Swahili kitchens, cafés and late-night bites. Reserve or order straight from the restaurant." img="" alt="" pos="50% 50%" slot="FOOD-01" hint-size="1440px,640px"></dc-import>
+<div style="flex-shrink: 0; padding: 0 72px; margin-top: -1px; background: linear-gradient(180deg, #0B1128 0 44px, #F7F2E8 44px)"><form style="display: grid; grid-template-columns: 1.4fr 1fr auto; gap: 10px; background: #FFFFFF; padding: 18px; border-radius: 18px; border: 1px solid rgba(22,32,26,0.08); box-shadow: 0 18px 40px rgba(11,17,40,0.18)">
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 700; color: #33403A">Craving<input type="text" placeholder="Dish, cuisine or place" style="min-height: 44px; border: 1px solid #D5D9D2; border-radius: 10px; padding: 0 12px; font: 500 15px 'DM Sans', sans-serif"></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 700; color: #33403A">Near<select style="min-height: 44px; border: 1px solid #D5D9D2; border-radius: 10px; padding: 0 10px; font: 500 15px 'DM Sans', sans-serif; background: #FFFFFF"><option>My stay</option></select></label>
+<button type="button" style="align-self: end; min-height: 44px; padding: 0 20px; border-radius: 10px; border: none; background: #F5A623; color: #0B1128; font: 700 15px 'DM Sans', sans-serif">Find food</button>
+</form></div>
+<div style="height: 24px; flex-shrink: 0"></div>
+
+<div style="height: 88px; flex-shrink: 0; box-sizing: border-box; padding: 0 72px; display: flex; align-items: center; gap: 10px; border-top: 1px solid rgba(22,32,26,0.1); border-bottom: 1px solid rgba(22,32,26,0.1)">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="9">
+<button type="button" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: {{c.line}}; background: {{c.bg}}; color: {{c.fg}}; font: 700 14px 'DM Sans', sans-serif">{{c.label}}</button>
+</sc-for>
+</div>
+
+<section style="flex-shrink: 0; padding: 48px 72px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 30px">[N] places to eat</h2><a href="#map" style="font-weight: 700">Show map</a></div>
+<div style="display: grid; grid-template-columns: repeat(4, 300px); gap: 32px">
+<sc-for list="{{cards}}" as="it" hint-placeholder-count="8">
+<dc-import name="VendorCard" item="{{it}}" mode="day" hint-size="300px,420px"></dc-import>
+</sc-for>
+</div>
+</section>
+
+<section id="map" style="flex-shrink: 0; margin: 0 72px; height: 340px; border-radius: 20px; background: #DCE7DD; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; color: #1F4D2B">
+<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1F4D2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14"></path></svg>
+<strong style="font-size: 16px">Map view: restaurants near your stay and the stadium</strong>
+<span style="font-size: 14px; color: #33403A">[Map provider to decide at build stage]</span>
+</section>
+
+<section style="flex-shrink: 0; margin: 56px 72px; border-radius: 20px; background: #1F4D2B; color: #F7F2E8; padding: 40px 48px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #E3A23B">Travelling as a group?</div>
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; line-height: 1.02">Tables for your whole fan group.</div>
+<div style="font-size: 17px; line-height: 1.5; color: #DCE7DD">Filter for places that take group bookings, then message the restaurant with your numbers and kick-off time.</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<a href="#groups" style="min-height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: #E3A23B; color: #16201A; font-weight: 700; font-size: 16px; text-decoration: none">Show group-friendly places</a>
+<span style="font-size: 14px; color: #DCE7DD; text-align: center">Menus and prices come from the restaurant. Allergies: ask them directly.</span>
+</div>
+</section>
+
+<div style="flex-grow: 1; background: #0B1128; display: flex; flex-direction: column; justify-content: flex-end">
+<dc-import name="Footer" hint-size="1440px,360px"></dc-import>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+renderVals() {
+const chip = (label, on) => ({ label, bg: on ? '#1F4D2B' : 'transparent', fg: on ? '#F7F2E8' : '#16201A', line: on ? '1px solid #1F4D2B' : '1px solid rgba(22,32,26,0.25)' });
+const card = (slot, badge, name, meta, tags, note) => ({ slot, badge, name, meta, tags, note, primary: 'WhatsApp', secondary: 'Call' });
+return {
+chips: [chip('All', true), chip('Nyama choma'), chip('Swahili'), chip('Ethiopian'), chip('Indian'), chip('Cafés'), chip('Vegetarian'), chip('Halal'), chip('Open late')],
+cards: [
+card('FOOD-02', 'Nyama choma', '[Restaurant name]', '[Area] · KES [X]–[X] per person', ['Outdoor', 'Groups'], 'Open till [time] on matchdays'),
+card('FOOD-03', 'Swahili', '[Restaurant name]', '[Area] · KES [X]–[X] per person', ['Halal', 'Takeaway'], 'Open till [time]'),
+card('FOOD-02', 'Café', '[Café name]', '[Area] · KES [X]–[X] per person', ['Breakfast', 'Wi-Fi'], 'Opens [time]'),
+card('FOOD-03', 'Ethiopian', '[Restaurant name]', '[Area] · KES [X]–[X] per person', ['Vegetarian', 'Groups'], 'Open till [time]'),
+card('FOOD-02', 'Open late', '[Restaurant name]', '[Area] · KES [X]–[X] per person', ['Screens', 'Groups'], 'Shows matches on screen'),
+card('FOOD-03', 'Indian', '[Restaurant name]', '[Area] · KES [X]–[X] per person', ['Vegetarian', 'Delivery'], 'Open till [time]'),
+card('FOOD-02', 'Fast food', '[Outlet name]', '[Area] · KES [X]–[X] per person', ['Quick', 'Takeaway'], 'Near the stadium'),
+card('FOOD-03', 'Local', '[Kibanda name]', '[Area] · KES [X]–[X] per person', ['Budget', 'Local favourite'], 'Open till [time]')
+]
+};
+}
+}
+</script>
+</body>
+</html>

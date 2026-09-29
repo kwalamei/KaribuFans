@@ -1,0 +1,49 @@
+{% macro brand(site, root) -%}
+<a class="brand" href="{{ root }}" aria-label="{{ site.name }} home">
+  <b>{{ site.brand.first }}<span>{{ site.brand.second }}</span></b>
+  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+</a>
+{%- endmacro %}
+
+{% macro icon(d, cls="icon") -%}
+<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ d }}"/></svg>
+{%- endmacro %}
+
+{% macro routebar(modules, current, root) -%}
+<nav class="routebar" aria-label="The route: seven stops">
+  <div class="wrap"><div style="position:relative">
+    <ol>
+      {% for m in modules %}
+      <li class="{{ 'current' if m.stop == current else ('done' if m.stop < current else '') }}">
+        <a href="{{ root }}{{ m.slug }}/" {% if m.stop == current %}aria-current="page"{% endif %}><span class="dot"><i></i></span><span class="label">{{ m.stop }} {{ m.label }}</span></a>
+      </li>
+      {% endfor %}
+    </ol>
+    <span class="trail" aria-hidden="true" style="width:calc({{ current - 1 }} * 100% / 7)"></span>
+  </div></div>
+</nav>
+{%- endmacro %}
+
+{% macro card(v, look) -%}
+<article class="card" data-type="{{ v.type }}">
+  <div class="card-photo">
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
+    <span class="badge">{{ v.type }}</span>
+    {% if v.sample %}<span class="sample">SAMPLE LISTING</span>{% endif %}
+  </div>
+  <div class="card-body">
+    <h3>{{ v.name }}</h3>
+    <div class="card-meta">{{ v.area }} · {{ v.price }}</div>
+    <div class="tags">{% for t in v.tags %}<span>{{ t }}</span>{% endfor %}</div>
+    <div class="card-note">{{ v.note }}</div>
+    <div class="card-actions">
+      {% if v.whatsapp %}
+      <a class="btn {{ 'btn-amber' if look == 'night' else 'btn-green' }}" href="https://wa.me/{{ v.whatsapp }}?text={{ ('Hi ' ~ v.name ~ ', I found you on KaribuFans.') | urlencode }}" target="_blank" rel="noopener">WhatsApp</a>
+      {% else %}
+      <span class="btn {{ 'btn-amber' if look == 'night' else 'btn-green' }}" aria-disabled="true">WhatsApp soon</span>
+      {% endif %}
+      {% if v.phone %}<a class="btn btn-ghost" href="tel:{{ v.phone }}">Call</a>{% endif %}
+    </div>
+  </div>
+</article>
+{%- endmacro %}

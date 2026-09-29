@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stays module</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&amp;family=Instrument+Sans:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F3F1EC}
+a{color:#2F5D3A}a:hover{color:#1E3F27}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F3F1EC; color: #1E2A47; font-family: 'Instrument Sans', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+<div style="background: #1E2A47; color: #F3F1EC; padding: 22px 20px 0; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden">
+<div style="font-size: 14px; color: #D9DDE8">Stays</div>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', Georgia, serif; font-weight: 800; font-size: 40px; line-height: 0.95; letter-spacing: -0.03em; max-width: 280px">Rest close to the game.</h1>
+<svg viewBox="0 0 390 110" width="390" height="110" aria-hidden="true" style="display: block; margin: 8px -20px 0">
+<circle cx="300" cy="62" r="40" fill="#D9A441"></circle>
+<g fill="#141C33"><rect x="0" y="60" width="30" height="50"></rect><rect x="34" y="40" width="22" height="70"></rect><rect x="60" y="24" width="18" height="86"></rect><rect x="82" y="50" width="34" height="60"></rect><rect x="120" y="30" width="20" height="80"></rect><rect x="144" y="56" width="30" height="54"></rect></g>
+<path d="M0 96 C120 86 250 92 390 80 L390 110 L0 110 Z" fill="#0E1426"></path>
+<rect x="336" y="64" width="4" height="30" fill="#0E1426"></rect><path d="M310 66 C324 54 356 54 370 64 C356 70 324 70 310 66 Z" fill="#0E1426"></path>
+</svg>
+</div>
+<div style="padding: 16px 20px 0; display: flex; gap: 8px">
+<button style="height: 40px; padding: 0 14px; border-radius: 20px; border: none; background: #7B5EA7; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600">Near Talanta</button>
+<button style="height: 40px; padding: 0 14px; border-radius: 20px; border: 1px solid #D8D4CA; background: #FFFFFF; color: #1E2A47; font-family: inherit; font-size: 14px">Kasarani</button>
+<button style="height: 40px; padding: 0 14px; border-radius: 20px; border: 1px solid #D8D4CA; background: #FFFFFF; color: #1E2A47; font-family: inherit; font-size: 14px">Kilimani</button>
+</div>
+<div style="padding: 16px 20px 0; display: flex; flex-direction: column; gap: 14px">
+<div style="background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1px solid #E3DFD5">
+<div style="height: 150px; background: #CDBB98; display: flex; align-items: flex-end; justify-content: space-between; padding: 12px">
+<span style="background: #F3F1EC; font-size: 12px; font-weight: 600; padding: 5px 9px; border-radius: 8px">Photo</span>
+<svg width="44" height="44" viewBox="0 0 100 100" aria-label="Verified host"><circle cx="50" cy="50" r="42" fill="#FFFFFF"></circle><circle cx="50" cy="50" r="38" fill="none" stroke="#B3261E" stroke-width="10" stroke-dasharray="9 5"></circle><circle cx="50" cy="50" r="38" fill="none" stroke="#1E2A47" stroke-width="10" stroke-dasharray="5 9" stroke-dashoffset="-9"></circle><path d="M34 51 L45 62 L67 39" fill="none" stroke="#2F5D3A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<div style="padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 4px">
+<div style="font-weight: 700; font-size: 17px">Guesthouse, 2 rooms</div>
+<div style="font-size: 14px; color: #4A5470">Ngong Road · closest to Talanta</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px">
+<div style="font-weight: 700; font-size: 17px">KSh [price]<span style="font-weight: 400; font-size: 13px; color: #4A5470"> / night</span></div>
+<button style="height: 44px; padding: 0 18px; border: none; border-radius: 12px; background: #2F5D3A; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 700">Twende</button>
+</div>
+</div>
+</div>
+<div style="background: #FFFFFF; border-radius: 20px; border: 1px solid #E3DFD5; padding: 12px; display: flex; gap: 12px; align-items: center">
+<div style="width: 76px; height: 76px; border-radius: 14px; background: #B9C7B3; flex-shrink: 0"></div>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<div style="font-weight: 700; font-size: 16px">Homestay room</div>
+<div style="font-size: 14px; color: #4A5470">Kilimani · short ride</div>
+<div style="font-weight: 700; font-size: 15px">KSh [price] / night</div>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

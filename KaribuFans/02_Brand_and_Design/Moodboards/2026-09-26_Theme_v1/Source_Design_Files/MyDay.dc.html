@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rides and day planner</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&amp;family=Instrument+Sans:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F3F1EC}
+a{color:#2F5D3A}a:hover{color:#1E3F27}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F3F1EC; color: #1E2A47; font-family: 'Instrument Sans', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+<div style="padding: 24px 20px 16px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 14px; color: #4A5470">My day · Pamoja</div>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', Georgia, serif; font-weight: 800; font-size: 38px; line-height: 0.95; letter-spacing: -0.03em">Matchday plan</h1>
+</div>
+<svg width="72" height="72" viewBox="0 0 100 100" aria-label="3 of 4 stops planned">
+<circle cx="50" cy="50" r="40" fill="none" stroke="#E3DFD5" stroke-width="12"></circle>
+<circle cx="50" cy="50" r="40" fill="none" stroke="#B3261E" stroke-width="12" stroke-dasharray="9 4 9 4 9 4 9 4 9 4 9 4 9 4 9 4 9 4 9 4 9 4 9 4 9 4 9 4 0 400" transform="rotate(-90 50 50)"></circle>
+<text x="50" y="57" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="22" font-weight="700" fill="#1E2A47">3/4</text>
+</svg>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0 20px; display: flex; flex-direction: column; gap: 0">
+<li style="display: grid; grid-template-columns: 36px 1fr; gap: 12px; padding-bottom: 18px">
+<div style="display: flex; flex-direction: column; align-items: center"><span style="width: 32px; height: 32px; border-radius: 16px; background: #7B5EA7; color: #FFFFFF; font-weight: 700; display: flex; align-items: center; justify-content: center">1</span><span style="flex-grow: 1; width: 2px; background: #D8D4CA; margin-top: 4px"></span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3DFD5; border-radius: 16px; padding: 12px 14px"><div style="font-size: 13px; color: #4A5470">[time] · Stay</div><div style="font-weight: 700; font-size: 16px">Leave the guesthouse, Ngong Road</div></div>
+</li>
+<li style="display: grid; grid-template-columns: 36px 1fr; gap: 12px; padding-bottom: 18px">
+<div style="display: flex; flex-direction: column; align-items: center"><span style="width: 32px; height: 32px; border-radius: 16px; background: #C8551E; color: #FFFFFF; font-weight: 700; display: flex; align-items: center; justify-content: center">2</span><span style="flex-grow: 1; width: 2px; background: #D8D4CA; margin-top: 4px"></span></div>
+<div style="background: #FFFFFF; border: 1px solid #E3DFD5; border-radius: 16px; padding: 12px 14px"><div style="font-size: 13px; color: #4A5470">[time] · Food</div><div style="font-weight: 700; font-size: 16px">Lunch at [nyama choma joint]</div></div>
+</li>
+<li style="display: grid; grid-template-columns: 36px 1fr; gap: 12px; padding-bottom: 18px">
+<div style="display: flex; flex-direction: column; align-items: center"><span style="width: 32px; height: 32px; border-radius: 16px; background: #1E2A47; color: #FFFFFF; font-weight: 700; display: flex; align-items: center; justify-content: center">3</span><span style="flex-grow: 1; width: 2px; background: #D8D4CA; margin-top: 4px"></span></div>
+<div style="background: #1E2A47; color: #F3F1EC; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div><div style="font-size: 13px; color: #C9CEDC">[time] · Ride</div><div style="font-weight: 700; font-size: 16px">To Talanta Stadium</div></div>
+<a href="#" style="display: flex; align-items: center; justify-content: center; height: 46px; border-radius: 12px; background: #D9A441; color: #1E2A47; font-weight: 700; font-size: 15px; text-decoration: none">Open in Uber, destination filled</a>
+</div>
+</li>
+<li style="display: grid; grid-template-columns: 36px 1fr; gap: 12px">
+<div style="display: flex; flex-direction: column; align-items: center"><span style="width: 32px; height: 32px; border-radius: 16px; border: 2px dashed #B3261E; color: #B3261E; font-weight: 700; display: flex; align-items: center; justify-content: center; box-sizing: border-box">4</span></div>
+<button style="height: 56px; border-radius: 16px; border: 2px dashed #D8D4CA; background: transparent; color: #1E2A47; font-family: inherit; font-size: 15px; font-weight: 600; text-align: left; padding: 0 14px">Add after the match: nightlife or ride home</button>
+</li>
+</ol>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

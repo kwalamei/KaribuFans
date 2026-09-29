@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vendor card</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<article style="width: 300px; height: 420px; box-sizing: border-box; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; background: {{cardBg}}; border: {{cardLine}}; color: {{fg}}; font-family: 'DM Sans', system-ui, sans-serif">
+<div style="height: 168px; flex-shrink: 0; position: relative; background: {{photoBg}}; display: flex; align-items: center; justify-content: center">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="{{muted}}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"></path></svg>
+<span style="position: absolute; left: 10px; bottom: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; padding: 4px 8px; border-radius: 6px; background: {{slotBg}}; color: {{fg}}">PHOTO · {{item.slot}}</span>
+<span style="position: absolute; right: 10px; top: 10px; font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 999px; background: {{badgeBg}}; color: {{badgeFg}}">{{item.badge}}</span>
+</div>
+<div style="flex-grow: 1; padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 20px; line-height: 1.15">{{item.name}}</div>
+<div style="font-size: 14px; color: {{muted}}">{{item.meta}}</div>
+<div style="display: flex; gap: 6px; flex-wrap: wrap">
+<sc-for list="{{item.tags}}" as="t" hint-placeholder-count="2">
+<span style="font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 999px; background: {{chipBg}}; color: {{fg}}">{{t}}</span>
+</sc-for>
+</div>
+<div style="font-size: 14px; font-weight: 700; color: {{accentText}}; flex-grow: 1">{{item.note}}</div>
+<div style="display: flex; gap: 8px">
+<a href="#book" style="flex-grow: 1; min-height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: {{ctaBg}}; color: {{ctaFg}}; font-weight: 700; font-size: 14px; text-decoration: none">{{item.primary}}</a>
+<a href="#call" style="min-height: 44px; padding: 0 14px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: {{outline}}; color: {{fg}}; font-weight: 700; font-size: 14px; text-decoration: none">{{item.secondary}}</a>
+</div>
+</div>
+</article>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"item":{"editor":null},"mode":{"editor":"enum","options":["day","night"],"default":"day"},"$preview":{"width":300,"height":420}}'>
+class Component extends DCLogic {
+renderVals() {
+const night = (this.props.mode ?? 'day') === 'night';
+const item = this.props.item ?? { slot: 'FOOD-02', badge: 'Near stadium', name: '[Vendor name]', meta: '[Area] · [Price range]', tags: ['[Tag]', '[Tag]'], note: '[X] km to stadium', primary: 'WhatsApp', secondary: 'Call' };
+return {
+item,
+cardBg: night ? '#131C40' : '#FFFFFF',
+cardLine: night ? '1px solid rgba(243,245,250,0.12)' : '1px solid rgba(22,32,26,0.1)',
+fg: night ? '#F3F5FA' : '#16201A',
+muted: night ? '#B9C0D6' : '#4A5750',
+photoBg: night ? '#1B2656' : '#E4DCCB',
+slotBg: night ? 'rgba(11,17,40,0.75)' : 'rgba(247,242,232,0.9)',
+badgeBg: night ? '#F5A623' : '#1F4D2B',
+badgeFg: night ? '#0B1128' : '#F7F2E8',
+chipBg: night ? '#1B2656' : '#EFE8DA',
+accentText: night ? '#F5A623' : '#1F4D2B',
+ctaBg: night ? '#F5A623' : '#1F4D2B',
+ctaFg: night ? '#0B1128' : '#F7F2E8',
+outline: night ? '1px solid rgba(243,245,250,0.35)' : '1px solid rgba(22,32,26,0.25)'
+};
+}
+}
+</script>
+</body>
+</html>

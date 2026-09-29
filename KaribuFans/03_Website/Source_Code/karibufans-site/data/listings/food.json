@@ -1,0 +1,58 @@
+[
+  {
+    "type": "Nyama choma",
+    "name": "[Restaurant name]",
+    "area": "[Area]",
+    "price": "KES [X]–[X] per person",
+    "tags": [
+      "Outdoor",
+      "Groups"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Swahili",
+    "name": "[Restaurant name]",
+    "area": "[Area]",
+    "price": "KES [X]–[X] per person",
+    "tags": [
+      "Halal",
+      "Takeaway"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Cafés",
+    "name": "[Café name]",
+    "area": "[Area]",
+    "price": "KES [X]–[X] per person",
+    "tags": [
+      "Breakfast",
+      "Wi-Fi"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  },
+  {
+    "type": "Open late",
+    "name": "[Restaurant name]",
+    "area": "[Area]",
+    "price": "KES [X]–[X] per person",
+    "tags": [
+      "Screens",
+      "Groups"
+    ],
+    "note": "Open till [time]",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true
+  }
+]

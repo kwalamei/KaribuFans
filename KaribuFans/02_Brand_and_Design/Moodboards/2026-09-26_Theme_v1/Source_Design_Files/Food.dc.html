@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Food module</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&amp;family=Instrument+Sans:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#FBF3EA}
+a{color:#9E3F12}a:hover{color:#7A300D}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #FBF3EA; color: #2A1A12; font-family: 'Instrument Sans', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+<div style="padding: 24px 20px 18px; display: flex; flex-direction: column; gap: 10px; background: #C8551E; color: #FFFFFF">
+<div style="font-size: 14px; color: #FCE3D3">Food</div>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', Georgia, serif; font-weight: 800; font-size: 40px; line-height: 0.95; letter-spacing: -0.03em">Eat like a Nairobian.</h1>
+<p style="margin: 0; font-size: 15px; color: #FCE3D3">Nyama choma, pilau, chapati and tea, near your stay and the stadium.</p>
+</div>
+<div style="height: 14px; background-color: #B3261E; background-image: repeating-linear-gradient(90deg, transparent 0 20px, rgba(30,42,71,.85) 20px 25px, transparent 25px 32px, rgba(30,42,71,.85) 32px 35px, transparent 35px 56px)"></div>
+<div style="padding: 18px 20px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<button style="height: 44px; border-radius: 12px; border: none; background: #2A1A12; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 600">Grill</button>
+<button style="height: 44px; border-radius: 12px; border: 1px solid #E6CDB8; background: #FFFFFF; color: #2A1A12; font-family: inherit; font-size: 14px">Swahili</button>
+<button style="height: 44px; border-radius: 12px; border: 1px solid #E6CDB8; background: #FFFFFF; color: #2A1A12; font-family: inherit; font-size: 14px">Cafés</button>
+</div>
+<div style="padding: 16px 20px 0; display: flex; flex-direction: column; gap: 14px">
+<div style="background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1px solid #EAD6C4">
+<div style="height: 160px; background: #8A4A2A; display: flex; align-items: flex-end; padding: 12px"><span style="background: #FBF3EA; font-size: 12px; font-weight: 600; padding: 5px 9px; border-radius: 8px">Photo of the grill</span></div>
+<div style="padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 4px">
+<div style="font-weight: 700; font-size: 17px">[Nyama choma joint]</div>
+<div style="font-size: 14px; color: #6B4E3D">Ngong Road · open late on matchdays</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px">
+<div style="font-size: 14px; font-weight: 600; color: #9E3F12">KaribuFans perk: [offer]</div>
+<button style="height: 44px; padding: 0 16px; border: none; border-radius: 12px; background: #2F5D3A; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 700">Order on WhatsApp</button>
+</div>
+</div>
+</div>
+<div style="background: #FFFFFF; border-radius: 20px; border: 1px solid #EAD6C4; padding: 12px; display: flex; gap: 12px; align-items: center">
+<div style="width: 76px; height: 76px; border-radius: 14px; background: #D9A441; flex-shrink: 0"></div>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<div style="font-weight: 700; font-size: 16px">[Swahili kitchen]</div>
+<div style="font-size: 14px; color: #6B4E3D">CBD · pilau and biryani</div>
+<div style="font-size: 14px; font-weight: 600; color: #2F5D3A">Add to my day</div>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>KaribuFans — Listing and booking</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0;background:#F6F1E7}
+a{color:#1F4D36}a:hover{color:#143424}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F6F1E7; font-family: 'DM Sans', system-ui, sans-serif; color: #1B1A17; display: flex; flex-direction: column">
+<div style="height: 220px; background: #D9CDB4; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #5B5549">Listing photos (swipe)</div>
+<div style="padding: 18px 20px 0; display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-size: 24px; font-weight: 700">Guesthouse, 2 rooms</h1>
+<p style="margin: 0; font-size: 14px; color: #5B5549">Ngong Road · Host: [Host name] · ✓ ID verified</p>
+</div>
+<div style="padding: 14px 20px 0; display: flex; gap: 8px; flex-wrap: wrap; font-size: 13px">
+<span style="padding: 6px 10px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E4DCCB">Wi-Fi</span>
+<span style="padding: 6px 10px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E4DCCB">Hot shower</span>
+<span style="padding: 6px 10px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E4DCCB">Backup power</span>
+<span style="padding: 6px 10px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E4DCCB">Secure parking</span>
+</div>
+<div style="margin: 14px 20px 0; padding: 14px; border-radius: 14px; background: #FFFFFF; border: 1px solid #E4DCCB; display: flex; flex-direction: column; gap: 4px">
+<div style="font-weight: 700; font-size: 14px">Getting to the stadium</div>
+<div style="font-size: 13px; color: #5B5549">[x] min walk to Talanta · matchday shuttle pickup at the gate</div>
+</div>
+<div style="flex-grow: 1"></div>
+<div style="margin: 0 12px 16px; padding: 16px; border-radius: 18px; background: #1F4D36; color: #FFFFFF; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; font-size: 14px">
+<span>[n] nights × [KSh PRICE]</span><span style="font-weight: 700">[KSh TOTAL]</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 13px; color: #D6E3DA">
+<span>Service fee</span><span>[KSh FEE]</span>
+</div>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 700; color: #D6E3DA">M-Pesa phone number
+<input value="07XX XXX XXX" style="height: 44px; border: none; border-radius: 10px; padding: 0 12px; font-family: inherit; font-size: 15px; color: #1B1A17">
+</label>
+<button style="height: 48px; border: none; border-radius: 12px; background: #F0C98A; color: #1B1A17; font-family: inherit; font-size: 16px; font-weight: 700">Pay with M-Pesa</button>
+<a href="Main.dc.html" style="text-align: center; font-size: 13px; color: #FFFFFF; padding: 6px">Pay by card instead</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
