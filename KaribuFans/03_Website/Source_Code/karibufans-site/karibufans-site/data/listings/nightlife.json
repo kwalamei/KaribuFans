@@ -1,0 +1,94 @@
+[
+  {
+    "type": "Clubs",
+    "name": "[Club name]",
+    "area": "[Area]",
+    "price": "Entry KES [X]",
+    "tags": [
+      "DJ",
+      "Dress code"
+    ],
+    "note": "",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "hours": {
+      "open": "18:00",
+      "close": "04:00"
+    },
+    "entry": "Entry KES [X]",
+    "dress": "Smart casual",
+    "peak": "23:00–02:00"
+  },
+  {
+    "type": "Rooftops & lounges",
+    "name": "[Lounge name]",
+    "area": "[Area]",
+    "price": "Cocktails from KES [X]",
+    "tags": [
+      "Skyline view",
+      "Smart casual"
+    ],
+    "note": "",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "hours": {
+      "open": "17:00",
+      "close": "01:00"
+    },
+    "entry": "Cocktails from KES [X]",
+    "dress": "Smart casual",
+    "peak": "20:00–23:00"
+  },
+  {
+    "type": "Bars",
+    "name": "[Bar name]",
+    "area": "[Area]",
+    "price": "Beers from KES [X]",
+    "tags": [
+      "Match screenings",
+      "Groups"
+    ],
+    "note": "",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "hours": {
+      "open": "16:00",
+      "close": "00:00"
+    },
+    "entry": "Beers from KES [X]",
+    "dress": "Casual",
+    "peak": "After matches"
+  },
+  {
+    "type": "Live music",
+    "name": "[Venue name]",
+    "area": "[Area]",
+    "price": "Entry KES [X]",
+    "tags": [
+      "Band",
+      "Benga · Afrobeats"
+    ],
+    "note": "",
+    "whatsapp": "",
+    "phone": "",
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "hours": {
+      "open": "19:00",
+      "close": "02:00"
+    },
+    "entry": "Entry KES [X]",
+    "dress": "Casual",
+    "peak": "21:00–00:00"
+  }
+]

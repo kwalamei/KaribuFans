@@ -1,0 +1,32 @@
+{
+  "name": "KaribuFans",
+  "name_note": "Working name. Change it here and rebuild; every page picks it up.",
+  "mode": "everyday",
+  "mode_note": "everyday = Nairobi residents (default). tournament = visiting fans, switch on nearer June 2027.",
+  "launch_date": "2026-10-15",
+  "tournament": {
+    "stadium": "Talanta Stadium",
+    "dates_note": "Reported as 19 June – 17 July 2027; confirm with CAF before showing on the site"
+  },
+  "disclaimer": "KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist's impressions.",
+  "copyright": "[Registered business name]",
+  "languages": [
+    "EN",
+    "SW",
+    "FR",
+    "AR",
+    "PT"
+  ],
+  "brand": {
+    "first": "Karibu",
+    "second": "Fans"
+  },
+  "contact_whatsapp": "",
+  "contact_whatsapp_note": "KaribuFans business WhatsApp number, international format without + (e.g. 2547XXXXXXXX). Used by the vendor sign-up and ticket alert forms.",
+  "uber_client_id": "",
+  "uber_client_id_note": "Uber's developer docs list client_id as required for ride links. Register free at developer.uber.com and paste it here.",
+  "stadiums": [
+    "Talanta Stadium"
+  ],
+  "stadiums_note": "Only list stadiums officially confirmed as Nairobi venues."
+}

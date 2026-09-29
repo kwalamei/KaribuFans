@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Search · {{ site.name }}{% endblock %}
+{% block main %}
+<section class="band">
+  <div class="wrap" style="display:flex;flex-direction:column;gap:24px">
+    <div class="eyebrow on-light" style="color:var(--canopy)">Search</div>
+    <h1 style="font-weight:800;font-size:clamp(34px,5vw,56px);line-height:1">Find a place, area or venue</h1>
+    <label class="find find-big"><span class="sr-only">Search everything</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="globalSearch" placeholder="Try: nyama choma, rooftop, Westlands, watch party" autocomplete="off"></label>
+    <p class="hint" id="searchCount" aria-live="polite">Type to search stays, food, matchday, nightlife and movies &amp; games.</p>
+    <ul class="results" id="results"></ul>
+  </div>
+</section>
+<script>window.KF_ROOT = "{{ root }}";</script>
+{% endblock %}

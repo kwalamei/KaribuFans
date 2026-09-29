@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KaribuFans · Nairobi city guide</title>
+<meta name="description" content="KaribuFans: stays, food, rides, nightlife and matchday in Nairobi, in one city guide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
+<link rel="stylesheet" href="./css/site.css">
+</head>
+<body class="day">
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="KaribuFans home">
+  <b>Karibu<span>Fans</span></b>
+  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+</a>
+    <nav aria-label="Main" class="nav-links" id="navLinks">
+      <a href="./stays/" >Stays</a><a href="./food/" >Food</a><a href="./rides/" >Rides</a><a href="./matchday/" >Matchday</a><a href="./nightlife/" >Nightlife</a><a href="./movies-games/" >Movies &amp; Games</a><a href="./tickets/" >Tickets</a>
+    </nav>
+    <div class="nav-tools">
+      <a class="icon-btn" href="./search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
+      <button type="button" class="lang" id="langBtn" aria-label="Change language">EN</button>
+      <a class="btn btn-green" href="./list-your-business/">List your business</a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+
+
+<section class="hero" aria-label="Welcome">
+  <img class="hero-img" src="./img/hero-day-skyline.webp" alt="Nairobi skyline by day above a green park and the elevated expressway" style="object-position:50% 30%" fetchpriority="high">
+  <span class="credit">Artist's impression</span>
+  <div class="wrap hero-body">
+    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Nairobi · every day, every weekend</div>
+    <div class="script">Karibu Nairobi.</div>
+    <h1>Eat, stay, ride and celebrate in one city guide.</h1>
+    <p class="lede">Find local food spots, stays, nightlife, watch parties and rides. You book directly with the business.</p>
+    <form class="planner" action="#" onsubmit="return false" aria-label="Plan">
+      
+      <label for="pWhat">I'm looking for<select id="pWhat"><option value="stays">Stays</option><option value="food">Food</option><option value="rides">Rides</option><option value="matchday">Matchday</option><option value="nightlife">Nightlife</option><option value="movies-games">Movies &amp; Games</option></select></label>
+      <label for="pArea">Area<input id="pArea" type="text" placeholder="Any area"></label>
+      <label for="pWhen">When<input id="pWhen" type="date"></label>
+      <label for="pPeople">People<select id="pPeople"><option>1</option><option selected>2</option><option>3–5</option><option>6+</option></select></label>
+      
+      <button type="submit" class="btn btn-amber" id="plannerGo">Show me</button>
+    </form>
+  </div>
+</section>
+
+<section class="band-night" aria-labelledby="stripH">
+  <div class="wrap band" style="padding-block:40px">
+    <div class="sec-head" style="margin-bottom:20px">
+      <h2 id="stripH" style="font-size:clamp(24px,3vw,34px)">This weekend in Nairobi</h2>
+      <a href="./matchday/" style="color:var(--amber);font-weight:700;text-decoration:none">All watch parties →</a>
+    </div>
+    <div class="grid-cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+      
+      <div class="card" style="padding:18px;gap:6px">
+        <span class="card-meta">[Day] · [Time] · SAMPLE</span>
+        <strong style="font-family:var(--display);font-size:22px">[Watch party or event]</strong>
+        <span style="color:var(--amber);font-weight:700;font-size:14px">[Venue] · [Area]</span>
+      </div>
+      
+      <div class="card" style="padding:18px;gap:6px">
+        <span class="card-meta">[Day] · [Time] · SAMPLE</span>
+        <strong style="font-family:var(--display);font-size:22px">[Watch party or event]</strong>
+        <span style="color:var(--amber);font-weight:700;font-size:14px">[Venue] · [Area]</span>
+      </div>
+      
+      <div class="card" style="padding:18px;gap:6px">
+        <span class="card-meta">[Day] · [Time] · SAMPLE</span>
+        <strong style="font-family:var(--display);font-size:22px">[Watch party or event]</strong>
+        <span style="color:var(--amber);font-weight:700;font-size:14px">[Venue] · [Area]</span>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="route" aria-labelledby="routeH">
+  <img src="./img/dusk-expressway.webp" alt="" loading="lazy">
+  <div class="wrap band">
+    <div class="sec-head">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="eyebrow">The Route</div>
+        <h2 id="routeH">One road, seven stops.</h2>
+      </div>
+      <p style="color:#D9DDEA">Follow the light from where you sleep to where you celebrate.</p>
+    </div>
+    <ol class="stops">
+      
+      <li class="stop">
+        <a href="./stays/">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 13h18v5M21 18v-5a3 3 0 0 0-3-3h-7v3M7 9.5a1.5 1.5 0 1 0 0 .01"/></svg>
+          <span class="n">Stop 1</span>
+          <h3>Stays</h3>
+          <p>Hotels, B&amp;Bs and apartments across the city.</p>
+          <span class="go">Find a stay →</span>
+        </a>
+      </li>
+      
+      <li class="stop">
+        <a href="./food/">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 1-3 3-3 6v3h3M17 3v18"/></svg>
+          <span class="n">Stop 2</span>
+          <h3>Food</h3>
+          <p>Nyama choma, local kitchens and late-night bites.</p>
+          <span class="go">Find food →</span>
+        </a>
+      </li>
+      
+      <li class="stop">
+        <a href="./rides/">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l2-5h14l2 5v5h-3v-2H6v2H3zM7 13.5h.01M17 13.5h.01"/></svg>
+          <span class="n">Stop 3</span>
+          <h3>Rides</h3>
+          <p>Open Uber or Bolt with your destination set.</p>
+          <span class="go">Get a ride →</span>
+        </a>
+      </li>
+      
+      <li class="stop hl">
+        <a href="./matchday/">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-18 0a9 9 0 1 1 18 0M12 7l4 3-1.5 4.5h-5L8 10z"/></svg>
+          <span class="n">Stop 4</span>
+          <h3>Matchday</h3>
+          <p>Watch parties, fan zones and the stadium guide.</p>
+          <span class="go">Matchday guide →</span>
+        </a>
+      </li>
+      
+      <li class="stop">
+        <a href="./nightlife/">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0a3 3 0 1 1 6 0M20 16a3 3 0 1 1-6 0a3 3 0 1 1 6 0"/></svg>
+          <span class="n">Stop 5</span>
+          <h3>Nightlife</h3>
+          <p>Clubs, bars and live music, 18+.</p>
+          <span class="go">Nightlife →</span>
+        </a>
+      </li>
+      
+      <li class="stop">
+        <a href="./movies-games/">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zM3 9h18M7 5v4M12 5v4M17 5v4M10 12.5v4l4-2z"/></svg>
+          <span class="n">Stop 6</span>
+          <h3>Movies &amp; Games</h3>
+          <p>Cinemas, gaming lounges and arcades.</p>
+          <span class="go">See what&#39;s on →</span>
+        </a>
+      </li>
+      
+      <li class="stop">
+        <a href="./tickets/">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8a2 2 0 0 0 0 4v4h18v-4a2 2 0 0 1 0-4V4H3zM14 4v12"/></svg>
+          <span class="n">Stop 7</span>
+          <h3>Tickets</h3>
+          <p>Official ticket links and sale alerts.</p>
+          <span class="go">Ticket guide →</span>
+        </a>
+      </li>
+      
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="plan" aria-labelledby="planH">
+  <div class="wrap two-col">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="eyebrow on-light" style="color:var(--canopy)">Plan your day</div>
+      <h2 id="planH" style="font-weight:800;font-size:clamp(32px,4vw,56px);line-height:1">Your Saturday, sorted.</h2>
+      <p style="font-size:18px;color:#33403A;max-width:520px">Pick what you feel like and we line up the day: where to eat, where to watch the game and how to get home.</p>
+      <a class="btn btn-green" href="#" style="align-self:flex-start">Start my plan</a>
+    </div>
+    <div class="plan-card" aria-label="Example plan">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid #E6E8E2">
+        <strong style="font-family:var(--display);font-size:20px">Example plan</strong>
+        <span class="badge" style="position:static;background:var(--shuka)">Sample</span>
+      </div>
+      
+      
+      <div class="plan-row"><time>11:00</time><span class="pd" style="background:#E3A23B"></span><div><strong>Brunch in [Area]</strong><small>Food · [Suggested place]</small></div></div>
+      
+      <div class="plan-row"><time>15:00</time><span class="pd" style="background:#4F8A3C"></span><div><strong>Watch party for the big match</strong><small>Matchday · [Suggested place]</small></div></div>
+      
+      <div class="plan-row"><time>19:00</time><span class="pd" style="background:#B8262B"></span><div><strong>Nyama choma dinner</strong><small>Food · [Suggested place]</small></div></div>
+      
+      <div class="plan-row"><time>22:00</time><span class="pd" style="background:#2458A6"></span><div><strong>Live music or a rooftop</strong><small>Nightlife · [Suggested place]</small></div></div>
+      
+      <div class="plan-row"><time>01:00</time><span class="pd" style="background:#141414"></span><div><strong>Ride home</strong><small>Rides · [Suggested place]</small></div></div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="band band-sand" id="how" aria-labelledby="howH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="howH">How it works</h2><p>KaribuFans connects you to the business. You pay them directly, not us.</p></div>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><h3>Choose</h3><p>Browse local stays, food spots, nightlife and rides in one place.</p></div>
+      <div class="step"><span class="num">2</span><h3>Book directly</h3><p>Message the business on WhatsApp or call them, and pay them by M-Pesa.</p></div>
+      <div class="step"><span class="num">3</span><h3>Enjoy</h3><p>Keep your plan on your phone. Rides open straight in the Uber or Bolt app.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band-green" id="vendors" aria-labelledby="vendH">
+  <div class="bead-rule" aria-hidden="true"></div>
+  <div class="wrap band">
+    <div class="cta-row">
+      <div>
+        <div class="eyebrow" style="color:var(--gold)">For Nairobi businesses</div>
+        <h2 id="vendH" style="margin-top:12px">Put your business in front of new customers.</h2>
+        <p>No listing fee. You pay a commission only on customers we send you.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a class="btn" style="background:var(--gold);color:var(--ink);min-height:52px;padding:0 28px" href="./list-your-business/">List your business</a>
+        <a href="#how" style="text-align:center;font-weight:700;color:var(--ivory)">How commission works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <a class="brand" href="./" aria-label="KaribuFans home">
+  <b>Karibu<span>Fans</span></b>
+  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+</a>
+        <p>Your Nairobi city guide, from your stay to the final whistle.</p>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="./stays/">Stays</a></li><li><a href="./food/">Food</a></li><li><a href="./rides/">Rides</a></li><li><a href="./matchday/">Matchday</a></li><li><a href="./nightlife/">Nightlife</a></li><li><a href="./movies-games/">Movies &amp; Games</a></li><li><a href="./tickets/">Tickets</a></li></ul></div>
+      <div><h4>KaribuFans</h4><ul><li><a href="./#how">How it works</a></li><li><a href="./list-your-business/">List your business</a></li><li><a href="./search/">Search</a></li><li><a href="./privacy/">Privacy [draft]</a></li></ul></div>
+      <div><h4>Language</h4><div class="langs"><button type="button" data-lang="EN" aria-pressed="true">EN</button><button type="button" data-lang="SW" aria-pressed="false">SW</button><button type="button" data-lang="FR" aria-pressed="false">FR</button><button type="button" data-lang="AR" aria-pressed="false">AR</button><button type="button" data-lang="PT" aria-pressed="false">PT</button></div><p id="langNote" style="font-size:13px;margin-top:10px;color:var(--muted-night)">Kiswahili, French, Arabic and Portuguese coming after launch.</p></div>
+    </div>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 [Registered business name].</p>
+  </div>
+</footer>
+<script src="./js/site.js" defer></script>
+</body>
+</html>

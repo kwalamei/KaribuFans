@@ -1,0 +1,61 @@
+{% macro brand(site, root) -%}
+<a class="brand" href="{{ root }}" aria-label="{{ site.name }} home">
+  <b>{{ site.brand.first }}<span>{{ site.brand.second }}</span></b>
+  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+</a>
+{%- endmacro %}
+
+{% macro icon(d, cls="icon") -%}
+<svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ d }}"/></svg>
+{%- endmacro %}
+
+{% macro routebar(modules, current, root) -%}
+<nav class="routebar" aria-label="The route: seven stops">
+  <div class="wrap"><div style="position:relative">
+    <ol>
+      {% for m in modules %}
+      <li class="{{ 'current' if m.stop == current else ('done' if m.stop < current else '') }}">
+        <a href="{{ root }}{{ m.slug }}/" {% if m.stop == current %}aria-current="page"{% endif %}><span class="dot"><i></i></span><span class="label">{{ m.stop }} {{ m.label }}</span></a>
+      </li>
+      {% endfor %}
+    </ol>
+    <span class="trail" aria-hidden="true" style="width:calc({{ current - 1 }} * 100% / 7)"></span>
+  </div></div>
+</nav>
+{%- endmacro %}
+
+{% macro card(v, look) -%}
+{% set cta = 'btn-amber' if look == 'night' else 'btn-green' %}
+{% set q = v.map_query or (v.name ~ ' ' ~ v.area ~ ' Nairobi') %}
+<article class="card" data-type="{{ v.type }}" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ (v.tags|join(' '))) | lower }}"{% if v.hours %} data-open="{{ v.hours.open }}" data-close="{{ v.hours.close }}"{% endif %}>
+  <div class="card-photo">
+    {% if v.photo %}<img src="{{ v.photo }}" alt="{{ v.name }}" loading="lazy">{% else %}
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>{% endif %}
+    <span class="badge">{{ v.type }}</span>
+    {% if v.sample %}<span class="sample">SAMPLE LISTING</span>{% endif %}
+  </div>
+  <div class="card-body">
+    <div class="card-top"><h3>{{ v.name }}</h3>{% if v.hours %}<span class="open-state" aria-live="polite"></span>{% endif %}</div>
+    <div class="card-meta">{{ v.area }} · {{ v.price }}</div>
+    {% if v.dist %}<div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>{{ v.dist }}</div>{% endif %}
+    <div class="tags">{% for t in v.tags %}<span>{{ t }}</span>{% endfor %}</div>
+    {% if v.hours or v.dress or v.peak %}
+    <dl class="facts">
+      {% if v.hours %}<div><dt>Hours</dt><dd>{{ v.hours.open }}–{{ v.hours.close }}</dd></div>{% endif %}
+      {% if v.dress %}<div><dt>Dress</dt><dd>{{ v.dress }}</dd></div>{% endif %}
+      {% if v.peak %}<div><dt>Busiest</dt><dd>{{ v.peak }}</dd></div>{% endif %}
+    </dl>
+    {% endif %}
+    {% if v.note %}<div class="card-note">{{ v.note }}</div>{% endif %}
+    <div class="card-actions">
+      {% if v.whatsapp %}
+      <a class="btn {{ cta }}" href="https://wa.me/{{ v.whatsapp }}?text={{ ('Hi ' ~ v.name ~ ', I found you on KaribuFans.') | urlencode }}" target="_blank" rel="noopener">WhatsApp</a>
+      {% else %}
+      <span class="btn {{ cta }}" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
+      {% endif %}
+      {% if v.phone %}<a class="btn btn-ghost" href="tel:{{ v.phone }}">Call</a>{% endif %}
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query={{ q | urlencode }}" target="_blank" rel="noopener" aria-label="Directions to {{ v.name }}">Directions</a>
+    </div>
+  </div>
+</article>
+{%- endmacro %}
