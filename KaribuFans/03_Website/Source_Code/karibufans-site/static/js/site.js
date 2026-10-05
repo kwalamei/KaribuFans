@@ -5,6 +5,8 @@
     set: function (k, v) { try { localStorage.setItem('kf_' + k, JSON.stringify(v)); } catch (e) {} }
   };
   function $(id) { return document.getElementById(id); }
+  function each(list, fn) { Array.prototype.forEach.call(list, fn); }
+  var params = new URLSearchParams(location.search);
 
   // Mobile menu
   var nav = $('nav'), menuBtn = $('menuBtn');
@@ -16,114 +18,87 @@
     });
   }
 
-  // Language (remembered; only English content exists so far)
-  var langBtns = document.querySelectorAll('.langs [data-lang]');
-  var langs = Array.prototype.map.call(langBtns, function (b) { return b.getAttribute('data-lang'); });
-  function setLang(l) {
-    if (langs.indexOf(l) === -1) l = 'EN';
-    store.set('lang', l);
-    if ($('langBtn')) $('langBtn').textContent = l;
-    langBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === l)); });
-    var note = $('langNote');
-    if (note) note.textContent = l === 'EN' ? 'Kiswahili, French, Arabic and Portuguese coming after launch.' : 'This language is coming soon. The site is shown in English for now.';
-  }
-  langBtns.forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); }); });
-  if ($('langBtn')) $('langBtn').addEventListener('click', function () {
-    var cur = store.get('lang') || 'EN';
-    setLang(langs[(langs.indexOf(cur) + 1) % langs.length]);
+  // Languages. Only languages marked live in data/site.json switch; the rest say when they arrive.
+  var langNote = $('langNote'), langDefault = langNote ? langNote.textContent : '';
+  each(document.querySelectorAll('.langs [data-lang]'), function (b) {
+    b.addEventListener('click', function () {
+      if (!langNote) return;
+      langNote.textContent = b.getAttribute('data-live') ? langDefault : b.getAttribute('data-name') + ' is coming after launch. The site is in English for now.';
+    });
   });
-  setLang(store.get('lang') || 'EN');
+
+  // The chosen area travels with the visitor from stop to stop.
+  // It lives in the address (?area=) and in the browser, so it survives a click on any menu link.
+  var area = params.has('area') ? params.get('area') : (store.get('area') || '');
+  function carryArea() {
+    each(document.querySelectorAll('.nav-links a, .routebar a, .next-stop a, .stop a'), function (a) {
+      var u = new URL(a.href, location.href);
+      if (u.origin !== location.origin || /\/(rides|tickets)\/?$/.test(u.pathname) || u.pathname === new URL(document.querySelector('.brand').href).pathname) return;
+      if (area) u.searchParams.set('area', area); else u.searchParams.delete('area');
+      a.href = u.pathname + u.search + u.hash;
+    });
+  }
 
   // Nairobi time (EAT, UTC+3, no daylight saving)
-  function nairobiMinutes() {
-    var d = new Date();
-    return ((d.getUTCHours() + 3) % 24) * 60 + d.getUTCMinutes();
-  }
+  function nairobiMinutes() { var d = new Date(); return ((d.getUTCHours() + 3) % 24) * 60 + d.getUTCMinutes(); }
   function toMin(s) { var p = String(s).split(':'); return (+p[0]) * 60 + (+p[1] || 0); }
-  function isOpen(open, close) {
-    var n = nairobiMinutes(), o = toMin(open), c = toMin(close);
-    return c > o ? (n >= o && n < c) : (n >= o || n < c);
-  }
+  function isOpen(open, close) { var n = nairobiMinutes(), o = toMin(open), c = toMin(close); return c > o ? (n >= o && n < c) : (n >= o || n < c); }
 
-  // Listings: open-now badges, filters and search, remembered per page
-  var grid = $('cards');
-  if (grid && grid.getAttribute('data-page') !== 'stays') {
-    var page = grid.getAttribute('data-page');
-    var cards = grid.querySelectorAll('.card');
-    var chips = document.querySelectorAll('.chip[data-filter]');
-    var box = $('pageSearch'), none = $('noMatch');
-    cards.forEach(function (c) {
-      var o = c.getAttribute('data-open'), cl = c.getAttribute('data-close'), el = c.querySelector('.open-state');
-      if (o && cl && el) {
-        var open = isOpen(o, cl);
-        c.setAttribute('data-now', open ? 'open' : 'closed');
-        el.textContent = open ? 'Open now' : 'Closed';
-        el.className = 'open-state ' + (open ? 'is-open' : 'is-closed');
-      }
-    });
-    var state = store.get('filter_' + page) || { chip: 'all', q: '' };
-    function apply() {
-      var q = (state.q || '').trim().toLowerCase(), shown = 0;
-      cards.forEach(function (c) {
-        var tags = Array.prototype.map.call(c.querySelectorAll('.tags span'), function (s) { return s.textContent; });
-        var f = state.chip;
-        var okChip = f === 'all' || (f === 'open-now' ? c.getAttribute('data-now') === 'open' : (c.getAttribute('data-type') === f || tags.indexOf(f) !== -1));
-        var okText = !q || (c.getAttribute('data-search') || '').indexOf(q) !== -1;
-        c.hidden = !(okChip && okText);
-        if (!c.hidden) shown++;
-      });
-      chips.forEach(function (ch) { ch.setAttribute('aria-pressed', String(ch.getAttribute('data-filter') === state.chip)); });
-      if (none) none.hidden = shown !== 0;
-      store.set('filter_' + page, state);
-    }
-    chips.forEach(function (ch) { ch.addEventListener('click', function () { state.chip = ch.getAttribute('data-filter'); apply(); }); });
-    if (box) { box.value = state.q || ''; box.addEventListener('input', function () { state.q = box.value; apply(); }); }
-    if (!document.querySelector('.chip[data-filter="' + state.chip + '"]')) state.chip = 'all';
-    apply();
-  }
-
-  // Stays: area / vibe / type filters, details drawer, WhatsApp enquiry
-  var sd = $('staysData');
-  if (sd && grid) {
-    var S = JSON.parse(sd.textContent), byId = {};
+  // Listing pages: filters, count, details drawer
+  var grid = $('cards'), pd = $('placeData');
+  if (grid && pd) {
+    var S = JSON.parse(pd.textContent), byId = {};
     S.listings.forEach(function (v) { byId[v.id] = v; });
-    var sCards = grid.querySelectorAll('.card');
-    var fA = $('fArea'), fV = $('fVibe'), fT = $('fType'), sBox = $('pageSearch');
-    var st = store.get('filter_stays2') || { a: '', v: '', t: '', q: '' };
-    var bar = $('stayFilters'), navEl = $('nav');
-    function setTop() { if (bar && navEl) bar.style.top = navEl.offsetHeight + 'px'; }
+    var page = S.page, noun = grid.getAttribute('data-noun') || 'places';
+    var cards = grid.querySelectorAll('.card[data-id]');
+    var fA = $('fArea'), fT = $('fType'), fV = $('fVibe'), box = $('pageSearch');
+    var st = store.get('f_' + page) || { t: '', v: '', q: '', near: false };
+    var bar = $('filters');
+    function setTop() { if (bar && nav) bar.style.top = (getComputedStyle(nav).position === 'sticky' ? nav.offsetHeight : 0) + 'px'; }
     setTop(); window.addEventListener('resize', setTop);
-    function has(sel, val) { return Array.prototype.some.call(sel.options, function (o) { return o.value === val; }); }
-    if (!has(fA, st.a)) st.a = ''; if (!has(fV, st.v)) st.v = ''; if (!has(fT, st.t)) st.t = '';
-    function applyStays() {
+    function has(sel, val) { return !!sel && Array.prototype.some.call(sel.options, function (o) { return o.value === val; }); }
+    if (!has(fT, st.t)) st.t = ''; if (!has(fV, st.v)) st.v = '';
+
+    each(cards, function (c) {
+      var o = c.getAttribute('data-open'), cl = c.getAttribute('data-close'), el = c.querySelector('.open-state');
+      if (o && cl && el) { var open = isOpen(o, cl); el.textContent = open ? 'Open now' : 'Closed'; el.className = 'open-state ' + (open ? 'is-open' : 'is-closed'); }
+    });
+
+    function apply() {
+      var here = st.near && has(fA, '__near') ? '__near' : (has(fA, area) ? area : '');   // the area, if this page has listings there
       var q = (st.q || '').trim().toLowerCase(), shown = 0;
-      sCards.forEach(function (c) {
-        var ok = (!st.a || (st.a === '__near' ? c.getAttribute('data-near') === '1' : c.getAttribute('data-area') === st.a)) &&
-          (!st.v || c.getAttribute('data-vibe') === st.v) &&
+      each(cards, function (c) {
+        var ok = (!here || (here === '__near' ? c.getAttribute('data-near') === '1' : c.getAttribute('data-area') === here)) &&
           (!st.t || c.getAttribute('data-type') === st.t) &&
+          (!st.v || c.getAttribute('data-vibe') === st.v) &&
           (!q || (c.getAttribute('data-search') || '').indexOf(q) !== -1);
         c.hidden = !ok; if (ok) shown++;
       });
-      fA.value = st.a; fV.value = st.v; fT.value = st.t;
-      [fA, fV, fT].forEach(function (s) { s.parentNode.classList.toggle('on', !!s.value); });
-      var any = !!(st.a || st.v || st.t || q);
-      $('fClear').hidden = !any;
-      $('stayCount').textContent = shown + (shown === 1 ? ' stay' : ' stays');
+      if (fA) fA.value = here; if (fT) fT.value = st.t; if (fV) fV.value = st.v;
+      [fA, fT, fV].forEach(function (s) { if (s) s.parentNode.classList.toggle('on', !!s.value); });
+      var label = here === '__near' ? S.nearLabel : here;
+      $('fClear').hidden = !(here || st.t || st.v || q);
+      $('listCount').textContent = shown + ' ' + (shown === 1 ? noun.replace(/s$/, '').replace('places to', 'place to') : noun) + (label ? (here === '__near' ? ' ' + label.charAt(0).toLowerCase() + label.slice(1) : ' in ' + label) : '');
       $('noMatch').hidden = shown !== 0;
-      var help = $('vibeHelp'), vb = S.vibes.filter(function (x) { return x.name === st.v; })[0];
-      help.hidden = !vb; if (vb) help.textContent = vb.icon + ' ' + vb.name + ': ' + vb.desc + ' Vibe labels appear once a business has joined and confirmed its details.';
-      store.set('filter_stays2', st);
+      var crumb = $('crumbArea'); if (crumb) { crumb.hidden = !label; crumb.textContent = label || ''; }
+      var note = $('areaNote');
+      if (note) { var miss = area && !here; note.hidden = !miss; if (miss) note.textContent = 'Nothing is listed in ' + area + ' on this page yet, so you are seeing every area. Your area is kept for the other stops.'; }
+      store.set('f_' + page, st); store.set('area', area);
+      var u = new URL(location.href);
+      if (area) u.searchParams.set('area', area); else u.searchParams.delete('area');
+      history.replaceState(history.state, '', u.pathname + u.search + u.hash);
+      carryArea();
     }
-    function clearStays() { st = { a: '', v: '', t: '', q: '' }; sBox.value = ''; applyStays(); }
-    fA.addEventListener('change', function () { st.a = fA.value; applyStays(); });
-    fV.addEventListener('change', function () { st.v = fV.value; applyStays(); });
-    fT.addEventListener('change', function () { st.t = fT.value; applyStays(); });
-    sBox.value = st.q || ''; sBox.addEventListener('input', function () { st.q = sBox.value; applyStays(); });
-    $('fClear').addEventListener('click', clearStays); $('noMatchClear').addEventListener('click', clearStays);
-    applyStays();
+    function clearAll() { area = ''; st = { t: '', v: '', q: '', near: false }; if (box) box.value = ''; apply(); }
+    if (fA) fA.addEventListener('change', function () { st.near = fA.value === '__near'; if (!st.near) area = fA.value; apply(); });
+    if (fT) fT.addEventListener('change', function () { st.t = fT.value; apply(); });
+    if (fV) fV.addEventListener('change', function () { st.v = fV.value; apply(); });
+    if (box) { box.value = st.q || ''; box.addEventListener('input', function () { st.q = box.value; apply(); }); }
+    $('fClear').addEventListener('click', clearAll); $('noMatchClear').addEventListener('click', clearAll);
+    apply();
 
     // Drawer
-    var dr = $('stayDrawer'), veil = $('stayVeil'), cur = null, lastFocus = null;
+    var dr = $('placeDrawer'), veil = $('placeVeil'), cur = null, lastFocus = null;
     var dIn = $('dIn'), dOut = $('dOut'), dGuests = $('dGuests'), dWho = $('dWho'), dWa = $('dWa');
     function iso(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
     var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -133,44 +108,78 @@
     if (saved.i && saved.i >= dIn.min) dIn.value = saved.i;
     if (saved.o && saved.o > (dIn.value || dIn.min)) dOut.value = saved.o;
     if (saved.g) dGuests.value = saved.g;
+    function withDates() { return page === 'stays'; }
     function message() {
-      var err = $('dErr'), bad = dIn.value && dOut.value && dOut.value <= dIn.value;
-      err.hidden = !bad; if (bad) err.textContent = 'Check-out needs to be after check-in.';
-      var t = 'Hi ' + cur.name + '! I found your stay on ' + S.site + ' and would love to check availability';
-      if (dIn.value && dOut.value && !bad) t += ' for ' + nice(dIn.value) + ' to ' + nice(dOut.value);
-      else if (dIn.value) t += ' from ' + nice(dIn.value);
-      if (dGuests.value) t += ', ' + dGuests.value + (dGuests.value === '1' ? ' guest' : ' guests');
-      t += '. My name is ' + (dWho.value.trim() ? dWho.value.trim() + '.' : '');
-      $('dPreview').textContent = t;
+      var t = 'Hi ' + cur.name + '! I found you on ' + S.site, bad = false;
+      if (withDates()) {
+        var err = $('dErr'); bad = !!(dIn.value && dOut.value && dOut.value <= dIn.value);
+        err.hidden = !bad; if (bad) err.textContent = 'Check-out needs to be after check-in.';
+        t += ' and would love to check availability';
+        if (dIn.value && dOut.value && !bad) t += ' for ' + nice(dIn.value) + ' to ' + nice(dOut.value);
+        else if (dIn.value) t += ' from ' + nice(dIn.value);
+        if (dGuests.value) t += ', ' + dGuests.value + (dGuests.value === '1' ? ' guest' : ' guests');
+        t += '.' + (dWho.value.trim() ? ' My name is ' + dWho.value.trim() + '.' : '');
+        $('dPreview').textContent = t;
+        dOut.min = dIn.value || dIn.min;
+        store.set('stay_dates', { i: dIn.value, o: dOut.value, g: dGuests.value });
+      } else { t += '.'; }
       if (cur.whatsapp && !bad) { dWa.href = 'https://wa.me/' + cur.whatsapp + '?text=' + encodeURIComponent(t); dWa.removeAttribute('aria-disabled'); }
       else { dWa.removeAttribute('href'); dWa.setAttribute('aria-disabled', 'true'); }
-      dOut.min = dIn.value || dIn.min;
-      store.set('stay_dates', { i: dIn.value, o: dOut.value, g: dGuests.value });
     }
     [dIn, dOut, dGuests, dWho].forEach(function (el) { el.addEventListener('input', function () { if (cur) message(); }); });
+
+    function routeLinks(v) {
+      var ul = $('dRouteList'); ul.textContent = '';
+      S.stops.forEach(function (s) {
+        var n = (S.route[s.slug] || {})[v.zone] || 0;
+        if (s.slug === page || !n) return;
+        add(s.label + ' in ' + v.zone, n + (n === 1 ? ' place' : ' places') + ' →', S.root + s.slug + '/?area=' + encodeURIComponent(v.zone));
+      });
+      add('Get a ride here', 'Uber or Bolt →', S.root + 'rides/');
+      function add(title, meta, href) {
+        var li = document.createElement('li'), a = document.createElement('a'), sp = document.createElement('span');
+        a.href = href; a.textContent = title; sp.textContent = meta; a.appendChild(sp); li.appendChild(a); ul.appendChild(li);
+      }
+      $('dRoute').hidden = false;
+    }
     function fill(v) {
       cur = v;
+      var un = v.status === 'unclaimed';
       var ph = $('dPhotos'); ph.textContent = '';
-      for (var i = 0; i < 3; i++) {
-        var box = document.createElement('div'); box.className = 'd-photo';
-        if (v.photos && v.photos[i]) { var im = document.createElement('img'); im.src = v.photos[i]; im.alt = v.name + ', photo ' + (i + 1); im.loading = 'lazy'; box.appendChild(im); }
-        else { box.textContent = 'Photo ' + (i + 1); }
-        ph.appendChild(box);
+      var photos = (v.photos || []).filter(Boolean);
+      ph.classList.toggle('has-photos', photos.length > 0);
+      if (photos.length) {
+        photos.slice(0, 3).forEach(function (src, i) {
+          var b = document.createElement('div'); b.className = 'd-photo';
+          var im = document.createElement('img'); im.src = src; im.alt = v.name + ', photo ' + (i + 1); im.loading = 'lazy'; b.appendChild(im); ph.appendChild(b);
+        });
+      } else {
+        var art = document.querySelector('#card-' + CSS.escape(v.id) + ' .un-art-svg');
+        if (art) ph.appendChild(art.cloneNode(true));
       }
-      $('dSample').hidden = !v.sample;
+      var badge = $('dBadge'); badge.className = 'badge ' + (un ? 'badge-directory' : 'badge-verified'); badge.textContent = un ? 'Directory listing' : 'Verified by the business';
       $('dName').textContent = v.name;
       var vb = S.vibes.filter(function (x) { return x.name === v.vibe; })[0];
       $('dMeta').textContent = v.type + ' · ' + v.area + (vb ? ' · ' + vb.icon + ' ' + vb.name : '');
-      $('dPrice').textContent = v.price;
-      $('dChecked').hidden = !v.price_checked; $('dChecked').textContent = v.price_checked ? 'Price last confirmed ' + v.price_checked + '. Ask the host for your dates.' : '';
+      var street = $('dStreet'); street.hidden = !v.street;
+      if (v.street) { street.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>'; street.appendChild(document.createTextNode(v.street)); }
+      $('dPrice').hidden = !v.price; $('dPrice').textContent = v.price || '';
+      $('dChecked').hidden = !v.price_checked; $('dChecked').textContent = v.price_checked ? 'Price last confirmed ' + v.price_checked + '. Ask the business for your dates.' : '';
       $('dAbout').textContent = v.about || ''; $('dAbout').hidden = !v.about;
       var ul = $('dAmen'); ul.textContent = '';
-      (v.amenities || []).forEach(function (a) { var li = document.createElement('li'); li.textContent = (S.icons[a] ? S.icons[a] + ' ' : '') + a; ul.appendChild(li); });
-      $('dDist').hidden = !v.dist; $('dDist').textContent = v.dist || '';
-      $('dWaNote').hidden = !!v.whatsapp;
+      (v.amenities || v.tags || []).forEach(function (a) { var li = document.createElement('li'); li.textContent = (S.icons[a] ? S.icons[a] + ' ' : '') + a; ul.appendChild(li); });
+      var dist = v.near_stadium ? S.nearLabel : (v.dist || '');
+      $('dDist').hidden = !dist; $('dDist').textContent = dist;
+      $('dUnclaimed').hidden = !un;
+      if (un) $('dSource').textContent = 'Name and location from the business’s own website, checked ' + v.checked + '.';
+      $('dForm').hidden = un || !withDates();
+      dWa.hidden = un; $('dPay').hidden = un;
+      var site = $('dSite'); site.hidden = !v.website; if (v.website) site.href = v.website;
       var call = $('dCall'); call.hidden = !v.phone; if (v.phone) call.href = 'tel:' + v.phone;
       $('dMap').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(v.map_query || (v.name + ' ' + v.area + ' Nairobi'));
-      message();
+      var claim = $('dClaim'); claim.hidden = !un; claim.href = S.root + 'list-your-business/?claim=' + encodeURIComponent(v.name);
+      routeLinks(v);
+      if (!un) message();
     }
     function show(id, push) {
       var v = byId[id]; if (!v) return;
@@ -179,7 +188,7 @@
       dr.hidden = false; veil.hidden = false; document.body.classList.add('drawer-open');
       requestAnimationFrame(function () { dr.classList.add('in'); veil.classList.add('in'); });
       dr.querySelector('.drawer-scroll').scrollTop = 0; dr.focus();
-      if (push) history.pushState({ stay: id }, '', '#stay-' + id);
+      if (push) history.pushState({ place: id }, '', location.pathname + location.search + '#place-' + id);
     }
     function hide() {
       if (dr.hidden) return;
@@ -187,48 +196,50 @@
       dr.hidden = true; veil.hidden = true; cur = null;
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
-    function close() { if (history.state && history.state.stay) history.back(); else { history.replaceState(null, '', location.pathname + location.search); hide(); } }
-    function fromHash() { var m = /^#stay-(.+)$/.exec(location.hash); if (m && byId[m[1]]) show(m[1], false); else hide(); }
-    grid.addEventListener('click', function (e) { var b = e.target.closest('.stay-open'); if (b) show(b.getAttribute('data-id'), true); });
+    function close() { if (history.state && history.state.place) history.back(); else { history.replaceState(null, '', location.pathname + location.search); hide(); } }
+    function fromHash() { var m = /^#(?:place|stay)-(.+)$/.exec(location.hash); if (m && byId[decodeURIComponent(m[1])]) show(decodeURIComponent(m[1]), false); else hide(); }
+    grid.addEventListener('click', function (e) { var b = e.target.closest('.place-open'); if (b) show(b.getAttribute('data-id'), true); });
     $('dClose').addEventListener('click', close); veil.addEventListener('click', close);
     window.addEventListener('popstate', fromHash);
     document.addEventListener('keydown', function (e) {
       if (dr.hidden) return;
       if (e.key === 'Escape') { close(); return; }
       if (e.key !== 'Tab') return;
-      var f = dr.querySelectorAll('button:not([hidden]),a[href]:not([hidden]),input,select'), first = f[0], last = f[f.length - 1];
+      var f = Array.prototype.filter.call(dr.querySelectorAll('button,a[href],input,select'), function (el) { return el.offsetParent !== null; });
+      var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && (document.activeElement === first || document.activeElement === dr)) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
     dWa.addEventListener('click', function (e) { if (dWa.getAttribute('aria-disabled') === 'true') e.preventDefault(); });
     $('dShare').addEventListener('click', function () {
-      var btn = $('dShare'), url = location.href.split('#')[0] + '#stay-' + cur.id;
-      function done(t) { btn.textContent = t; setTimeout(function () { btn.textContent = 'Share this stay'; }, 2000); }
+      var btn = $('dShare'), url = location.origin + location.pathname + '#place-' + cur.id;
+      function done(t) { btn.textContent = t; setTimeout(function () { btn.textContent = 'Share'; }, 2000); }
       if (navigator.share) navigator.share({ title: cur.name + ' · ' + S.site, url: url }).catch(function () {});
       else if (navigator.clipboard) navigator.clipboard.writeText(url).then(function () { done('Link copied'); }, function () { done('Copy the address bar link'); });
       else done('Copy the address bar link');
     });
     fromHash();
+  } else {
+    carryArea();
   }
 
-  // Site-wide search page
+  // Site-wide search page: each result opens that place's details
   var gs = $('globalSearch');
   if (gs) {
     var root = window.KF_ROOT || '../', index = [], out = $('results'), count = $('searchCount');
     fetch(root + 'search-index.json').then(function (r) { return r.json(); }).then(function (d) { index = d; run(); }).catch(function () { count.textContent = 'Search could not load. Please refresh the page.'; });
-    var q0 = new URLSearchParams(location.search).get('q');
-    if (q0) gs.value = q0;
+    if (params.get('q')) gs.value = params.get('q');
     function run() {
       var q = gs.value.trim().toLowerCase();
       out.textContent = '';
       if (!q) { count.textContent = 'Type to search stays, food, matchday, nightlife and movies & games.'; return; }
-      var hits = index.filter(function (v) { return (v.name + ' ' + v.type + ' ' + v.area + ' ' + v.page_label + ' ' + v.tags.join(' ')).toLowerCase().indexOf(q) !== -1; });
+      var hits = index.filter(function (v) { return (v.name + ' ' + v.type + ' ' + v.area + ' ' + v.street + ' ' + v.page_label + ' ' + v.tags.join(' ')).toLowerCase().indexOf(q) !== -1; });
       count.textContent = hits.length ? hits.length + (hits.length === 1 ? ' result' : ' results') : 'No results yet. Try another word, or browse a section from the menu.';
       hits.forEach(function (v) {
         var li = document.createElement('li'), a = document.createElement('a');
-        a.href = root + v.page + '/';
+        a.href = root + v.page + '/' + (v.id ? '#place-' + v.id : '');
         var t = document.createElement('strong'); t.textContent = v.name;
-        var s = document.createElement('span'); s.textContent = v.page_label + ' · ' + v.type + ' · ' + v.area + (v.sample ? ' · sample' : '');
+        var s = document.createElement('span'); s.textContent = v.page_label + ' · ' + v.type + ' · ' + v.area;
         a.appendChild(t); a.appendChild(s); li.appendChild(a); out.appendChild(li);
       });
     }
@@ -238,19 +249,19 @@
   // Rides: Uber link with destination
   var rideTo = $('rideTo'), uber = $('uberLink');
   if (rideTo && uber) {
-    function uberHref() {
+    var uberHref = function () {
       var opt = rideTo.options[rideTo.selectedIndex];
       var url = 'https://m.uber.com/ul/?action=setPickup&pickup=my_location';
       var cid = uber.getAttribute('data-client');
       if (cid) url += '&client_id=' + encodeURIComponent(cid);
       if (opt.value) url += '&dropoff[nickname]=' + encodeURIComponent(opt.getAttribute('data-name')) + '&dropoff[formatted_address]=' + encodeURIComponent(opt.value);
       uber.href = url;
-    }
+    };
     rideTo.addEventListener('change', uberHref); uberHref();
   }
 
   // Matchday: add a fixture to the calendar (.ics)
-  document.querySelectorAll('.add-cal').forEach(function (btn) {
+  each(document.querySelectorAll('.add-cal'), function (btn) {
     btn.addEventListener('click', function () {
       var fx = btn.closest('.fx'), d = fx.getAttribute('data-date').replace(/-/g, ''), t = (fx.getAttribute('data-time') || '00:00').replace(':', '');
       var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//KaribuFans//EN', 'BEGIN:VEVENT', 'UID:' + d + t + '@karibufans', 'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z', 'DTSTART;TZID=Africa/Nairobi:' + d + 'T' + t + '00', 'DURATION:PT2H', 'SUMMARY:' + fx.getAttribute('data-title'), 'LOCATION:Talanta Stadium, Nairobi', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
@@ -272,7 +283,7 @@
       msg.textContent = 'WhatsApp opened with your message. Press send to finish.';
     });
   }
-  var claim = new URLSearchParams(location.search).get('claim');
+  var claim = params.get('claim');
   if (claim && $('jName')) { $('jName').value = claim.slice(0, 120); if ($('jNote') && !$('jNote').value) $('jNote').value = 'I want to claim (or remove) the existing listing for this business.'; }
   waForm('joinGo', 'jOk', 'joinMsg', function () {
     var name = $('jName').value.trim();
@@ -281,7 +292,14 @@
   });
   waForm('alertGo', 'alertOk', 'alertMsg', function () { return 'Ticket alert please: ' + $('alertMatch').value; });
 
-  // Homepage planner: jump to the chosen section
-  var go = $('plannerGo'), what = $('pWhat');
-  if (go && what) go.addEventListener('click', function () { window.location.href = what.value + '/'; });
+  // Homepage: jump to the chosen section, carrying the chosen area
+  var go = $('plannerGo'), what = $('pWhat'), pArea = $('pArea');
+  if (go && what) {
+    if (pArea && area && Array.prototype.some.call(pArea.options, function (o) { return o.value === area; })) pArea.value = area;
+    go.addEventListener('click', function () {
+      var a = pArea ? pArea.value : '';
+      store.set('area', a);
+      window.location.href = what.value + '/' + (a && what.value !== 'rides' ? '?area=' + encodeURIComponent(a) : '');
+    });
+  }
 })();
