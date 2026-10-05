@@ -9,13 +9,18 @@
 <svg class="{{ cls }}" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ d }}"/></svg>
 {%- endmacro %}
 
+{% macro pin() -%}
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>
+{%- endmacro %}
+
+{# The route bar. Every stop is a link; the current stop is marked for screen readers and sighted users. #}
 {% macro routebar(modules, current, root) -%}
 <nav class="routebar" aria-label="The route: seven stops">
-  <div class="wrap"><div style="position:relative">
+  <div class="wrap"><div class="routebar-in">
     <ol>
       {% for m in modules %}
       <li class="{{ 'current' if m.stop == current else ('done' if m.stop < current else '') }}">
-        <a href="{{ root }}{{ m.slug }}/" {% if m.stop == current %}aria-current="page"{% endif %}><span class="dot"><i></i></span><span class="label">{{ m.stop }} {{ m.label }}</span></a>
+        <a href="{{ root }}{{ m.slug }}/" {% if m.stop == current %}aria-current="step"{% endif %}><span class="dot"><i></i></span><span class="label"><span class="n">{{ m.stop }}</span> {{ m.label }}</span></a>
       </li>
       {% endfor %}
     </ol>
@@ -24,38 +29,48 @@
 </nav>
 {%- endmacro %}
 
-{% macro card(v, look) -%}
-{% set cta = 'btn-amber' if look == 'night' else 'btn-green' %}
+{% macro crumbs(site, root, trail) -%}
+<nav class="crumbs" aria-label="Breadcrumb"><ol>
+  <li><a href="{{ root }}">{{ site.name }}</a></li>
+  {% for label, href in trail %}<li>{% if href %}<a href="{{ href }}">{{ label }}</a>{% else %}<span aria-current="page">{{ label }}</span>{% endif %}</li>{% endfor %}
+  <li id="crumbArea" hidden></li>
+</ol></nav>
+{%- endmacro %}
+
+{# One card for every listing on every page. #}
+{% macro listing_card(v, m, root, near_label) -%}
+{% from "partials/area_art.html" import area_art %}
+{% set unclaimed = v.status == 'unclaimed' %}
 {% set q = v.map_query or (v.name ~ ' ' ~ v.area ~ ' Nairobi') %}
-<article class="card" data-type="{{ v.type }}" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ (v.tags|join(' '))) | lower }}"{% if v.hours %} data-open="{{ v.hours.open }}" data-close="{{ v.hours.close }}"{% endif %}>
-  <div class="card-photo">
-    {% if v.photo %}<img src="{{ v.photo }}" alt="{{ v.name }}" loading="lazy">{% else %}
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>{% endif %}
-    <span class="badge">{{ v.type }}</span>
-    {% if v.sample %}<span class="sample">SAMPLE LISTING</span>{% endif %}
-  </div>
+<article class="card{{ ' is-directory' if unclaimed }}" id="card-{{ v.id }}" data-id="{{ v.id }}" data-type="{{ v.type }}" data-area="{{ v.zone }}" data-near="{{ '1' if v.near_stadium else '' }}" data-vibe="{{ v.vibe or '' }}" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ v.zone ~ ' ' ~ (v.street or '') ~ ' ' ~ ((v.tags or [])|join(' ')) ~ ' ' ~ ((v.amenities or [])|join(' '))) | lower }}"{% if v.hours %} data-open="{{ v.hours.open }}" data-close="{{ v.hours.close }}"{% endif %}>
+  <button type="button" class="card-photo place-open" data-id="{{ v.id }}" aria-label="View details for {{ v.name }}">
+    {% if v.photos and v.photos[0] %}<img src="{{ v.photos[0] }}" alt="" loading="lazy">{% else %}{{ area_art(v.zone) }}{% endif %}
+    <span class="tag-area">{{ v.area }}</span>
+  </button>
   <div class="card-body">
-    <div class="card-top"><h3>{{ v.name }}</h3>{% if v.hours %}<span class="open-state" aria-live="polite"></span>{% endif %}</div>
-    <div class="card-meta">{{ v.area }} · {{ v.price }}</div>
-    {% if v.dist %}<div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>{{ v.dist }}</div>{% endif %}
-    <div class="tags">{% for t in v.tags %}<span>{{ t }}</span>{% endfor %}</div>
-    {% if v.hours or v.dress or v.peak %}
-    <dl class="facts">
-      {% if v.hours %}<div><dt>Hours</dt><dd>{{ v.hours.open }}–{{ v.hours.close }}</dd></div>{% endif %}
-      {% if v.dress %}<div><dt>Dress</dt><dd>{{ v.dress }}</dd></div>{% endif %}
-      {% if v.peak %}<div><dt>Busiest</dt><dd>{{ v.peak }}</dd></div>{% endif %}
-    </dl>
-    {% endif %}
-    {% if v.note %}<div class="card-note">{{ v.note }}</div>{% endif %}
+    <div class="card-top">
+      {% if unclaimed %}<span class="badge badge-directory">Directory listing</span>{% else %}<span class="badge badge-verified">Verified by the business</span>{% endif %}
+      {% if v.hours %}<span class="open-state" aria-live="polite"></span>{% endif %}
+    </div>
+    <h3>{{ v.name }}</h3>
+    <div class="card-meta">{{ v.type }}{% if v.street %} · {{ v.street }}{% endif %}</div>
+    {% if v.price %}<div class="card-price">{{ v.price }}</div>{% endif %}
+    {% if v.near_stadium %}<div class="dist">{{ pin() }}{{ near_label }}</div>{% elif v.dist %}<div class="dist">{{ pin() }}{{ v.dist }}</div>{% endif %}
+    {% set chips = (v.tags or []) if unclaimed else ((v.amenities or v.tags or [])[:3]) %}
+    {% if chips %}<div class="tags">{% for t in chips %}<span>{{ t }}</span>{% endfor %}</div>{% endif %}
     <div class="card-actions">
-      {% if v.whatsapp %}
-      <a class="btn {{ cta }}" href="https://wa.me/{{ v.whatsapp }}?text={{ ('Hi ' ~ v.name ~ ', I found you on KaribuFans.') | urlencode }}" target="_blank" rel="noopener">WhatsApp</a>
-      {% else %}
-      <span class="btn {{ cta }}" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
-      {% endif %}
-      {% if v.phone %}<a class="btn btn-ghost" href="tel:{{ v.phone }}">Call</a>{% endif %}
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query={{ q | urlencode }}" target="_blank" rel="noopener" aria-label="Directions to {{ v.name }}">Directions</a>
+      <button type="button" class="btn btn-primary place-open" data-id="{{ v.id }}">{{ 'View details' if unclaimed else 'View and book' }}</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query={{ q | urlencode }}" target="_blank" rel="noopener" aria-label="Directions to {{ v.name }} (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
 </article>
+{%- endmacro %}
+
+{% macro vendor_card(m, root) -%}
+<aside class="card vendor-card" aria-label="For Nairobi businesses">
+  <span class="eyebrow">For Nairobi businesses</span>
+  <h3>Own {{ m.own or 'a business' }} in Nairobi?</h3>
+  <p>Get listed before visiting fans arrive for the 2027 tournament. No listing fee: you pay a commission only on customers we send you.</p>
+  <a class="btn btn-navy" href="{{ root }}list-your-business/">List your business</a>
+</aside>
 {%- endmacro %}

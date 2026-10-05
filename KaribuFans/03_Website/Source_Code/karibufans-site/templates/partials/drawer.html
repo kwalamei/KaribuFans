@@ -1,0 +1,59 @@
+{# Details drawer, shared by every listing page. Filled in by js/site.js from the JSON below. #}
+<div class="drawer-veil" id="placeVeil" hidden></div>
+<aside class="drawer" id="placeDrawer" role="dialog" aria-modal="true" aria-labelledby="dName" hidden tabindex="-1">
+  <div class="drawer-head">
+    <button type="button" class="icon-btn" id="dClose" aria-label="Close details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="drawer-crumb">{{ m.label }}</span>
+    <button type="button" class="chip" id="dShare">Share</button>
+  </div>
+  <div class="drawer-scroll">
+    <div class="d-photos" id="dPhotos"></div>
+    <div class="d-body">
+      <span class="badge" id="dBadge"></span>
+      <h2 id="dName"></h2>
+      <p class="card-meta" id="dMeta"></p>
+      <p class="d-street" id="dStreet" hidden></p>
+      <p class="d-price" id="dPrice" hidden></p>
+      <p class="hint" id="dChecked" hidden></p>
+      <p id="dAbout" hidden></p>
+      <ul class="d-amen" id="dAmen" aria-label="What you get"></ul>
+      <p class="dist" id="dDist" hidden></p>
+
+      <div class="d-unclaimed" id="dUnclaimed" hidden>
+        <p class="d-pay">Prices and WhatsApp booking switch on when this business joins {{ site.name }}. Until then, book with the business directly on its own website.</p>
+        <p class="hint" id="dSource"></p>
+      </div>
+
+      <fieldset class="d-form" id="dForm" hidden>
+        <legend>Ask about your dates</legend>
+        <div class="d-row">
+          <label>Check-in<input type="date" id="dIn"></label>
+          <label>Check-out<input type="date" id="dOut"></label>
+        </div>
+        <div class="d-row">
+          <label>Guests<select id="dGuests"><option value="">Not sure yet</option>{% for n in range(1,9) %}<option>{{ n }}</option>{% endfor %}<option value="9 or more">9+</option></select></label>
+          <label>Your name<input type="text" id="dWho" autocomplete="given-name" placeholder="Optional"></label>
+        </div>
+        <p class="hint" id="dErr" role="alert" hidden></p>
+        <p class="hint">Your message will read:</p>
+        <blockquote class="d-preview" id="dPreview"></blockquote>
+      </fieldset>
+
+      <a class="btn btn-primary d-cta" id="dWa" target="_blank" rel="noopener" hidden>Book via WhatsApp</a>
+      <div class="card-actions d-actions">
+        <a class="btn btn-primary" id="dSite" target="_blank" rel="noopener nofollow" hidden>Visit website ↗</a>
+        <a class="btn btn-ghost" id="dCall" hidden>Call</a>
+        <a class="btn btn-ghost" id="dMap" target="_blank" rel="noopener">Directions ↗</a>
+      </div>
+      <p class="d-pay" id="dPay" hidden>{{ (m.filters or {}).pay_note or 'You pay the business directly. ' ~ site.name ~ ' never handles your payment.' }}</p>
+
+      <section class="d-route" id="dRoute" aria-labelledby="dRouteH" hidden>
+        <h3 id="dRouteH">Continue your route</h3>
+        <ul id="dRouteList"></ul>
+      </section>
+      <a class="d-claim" id="dClaim" hidden>Is this your business? Claim or remove this listing</a>
+    </div>
+  </div>
+</aside>
+{% set stops = [] %}{% for x in modules %}{% set _ = stops.append({'slug': x.slug, 'label': x.label, 'stop': x.stop}) %}{% endfor %}
+<script type="application/json" id="placeData">{{ {'site': site.name, 'page': m.slug, 'label': m.label, 'root': root, 'listings': listings, 'vibes': (m.filters or {}).vibes or [], 'icons': (m.filters or {}).amenity_icons or {}, 'route': route, 'stops': stops, 'nearLabel': (m.filters or {}).near_label or ''} | tojson }}</script>

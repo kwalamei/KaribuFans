@@ -1,6 +1,6 @@
 <section class="band" aria-labelledby="tripH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="tripH" style="font-size:clamp(26px,3vw,36px)">Plan a ride</h2><p>Pick where you are going. Uber opens with the destination filled in; for Bolt and Little, type it in their app.</p></div>
+    <div class="sec-head"><h2 id="tripH">Plan a ride</h2><p>Pick where you are going. Uber opens with the destination filled in; for Bolt and Little, type it in their app.</p></div>
     <div class="ride-grid">
       <form class="ride-card" id="rideForm" onsubmit="return false" aria-label="Ride planner">
         <label for="rideTo">Where to?</label>
@@ -10,8 +10,8 @@
         </select>
         <p class="hint">Pickup is your current location. Fares are shown and paid inside each app.</p>
         <div class="ride-btns">
-          <a class="btn btn-light" id="uberLink" href="https://m.uber.com/ul/?action=setPickup&amp;pickup=my_location" target="_blank" rel="noopener" data-client="{{ site.uber_client_id }}">Open Uber ↗</a>
-          <a class="btn btn-amber" href="https://bolt.eu/" target="_blank" rel="noopener">Open Bolt ↗</a>
+          <a class="btn btn-primary" id="uberLink" href="https://m.uber.com/ul/?action=setPickup&amp;pickup=my_location" target="_blank" rel="noopener" data-client="{{ site.uber_client_id }}">Open Uber ↗</a>
+          <a class="btn btn-ghost" href="https://bolt.eu/" target="_blank" rel="noopener">Open Bolt ↗</a>
         </div>
         <p class="hint">Little: open the Little Ride app on your phone and type the destination.</p>
       </form>
@@ -26,22 +26,22 @@
   </div>
 </section>
 
-<section class="band band-panel" aria-labelledby="zoneH">
+<section class="band band-navy" aria-labelledby="zoneH">
   <div class="wrap two-col">
-    <div style="display:flex;flex-direction:column;gap:12px">
+    <div class="stack">
       <div class="eyebrow">Matchday</div>
-      <h2 id="zoneH" style="font-weight:800;font-size:clamp(28px,3.4vw,40px)">Pickup and drop-off zones</h2>
-      <p style="color:var(--muted-night)">Roads near the stadium may close on matchdays. We will show the official pickup zones here once the traffic plan is published.</p>
+      <h2 id="zoneH">Pickup and drop-off zones</h2>
+      <p>Roads near the stadium may close on matchdays. We will show the official pickup zones here once the traffic plan is published.</p>
     </div>
-    <div class="coming">Official matchday traffic plan: [not yet published]</div>
+    <div class="coming">The official matchday traffic plan has not been published yet.</div>
   </div>
 </section>
 
 <section class="band" aria-labelledby="safeH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="safeH" style="font-size:clamp(26px,3vw,36px)">Ride safe</h2></div>
+    <div class="sec-head"><h2 id="safeH">Ride safe</h2></div>
     <div class="tips">{% for t in rides.safety %}<div class="tip"><strong>{{ t[0] }}</strong><p>{{ t[1] }}</p></div>{% endfor %}</div>
-    <div class="sec-head" style="margin-top:48px"><h2 style="font-size:clamp(22px,2.6vw,30px)">Taking a matatu</h2><p>Matatus are Nairobi's shared minibuses: cheap and everywhere, but busy.</p></div>
+    <div class="sec-head" style="margin-top:48px"><h2>Taking a matatu</h2><p>Matatus are Nairobi's shared minibuses: cheap and everywhere, but busy.</p></div>
     <div class="tips">{% for t in rides.matatu %}<div class="tip"><strong>{{ t[0] }}</strong><p>{{ t[1] }}</p></div>{% endfor %}</div>
   </div>
 </section>

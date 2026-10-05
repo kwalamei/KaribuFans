@@ -8,7 +8,7 @@
     <span class="fx-meta">Kick-off {{ f.time }}{% if f.gates %} · Gates {{ f.gates }}{% endif %}</span>
     {% if mode == 'tickets' %}
     <span class="status status-{{ f.status or 'opens_soon' }}">{{ {'on_sale':'On sale','opens_soon':'Opens soon','sold_out':'Sold out','official_resale':'Official resale'}[f.status or 'opens_soon'] }}</span>
-    {% if fixtures.official_ticket_url %}<a class="btn btn-light" href="{{ fixtures.official_ticket_url }}" target="_blank" rel="noopener">Official site ↗</a>{% endif %}
+    {% if fixtures.official_ticket_url %}<a class="btn btn-primary" href="{{ fixtures.official_ticket_url }}" target="_blank" rel="noopener">Official site ↗</a>{% endif %}
     {% else %}
     <button type="button" class="btn btn-ghost add-cal">Add to calendar</button>
     {% endif %}
