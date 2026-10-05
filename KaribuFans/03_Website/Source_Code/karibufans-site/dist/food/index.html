@@ -4,14 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Food · KaribuFans</title>
-<meta name="description" content="Nyama choma joints, Swahili kitchens, cafés and late-night bites. Reserve or order straight from the restaurant.">
+<meta name="description" content="Restaurants and food spots across Nairobi. Find one near you, get directions and book with the restaurant directly.">
+<meta name="theme-color" content="#0A1128">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
 </head>
-<body class="day">
+<body>
 
+<a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="../" aria-label="KaribuFans home">
@@ -23,8 +25,8 @@
     </nav>
     <div class="nav-tools">
       <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
-      <button type="button" class="lang" id="langBtn" aria-label="Change language">EN</button>
-      <a class="btn btn-green" href="../list-your-business/">List your business</a>
+      <a class="lang" href="#languages" aria-label="Language: English. See other languages">EN</a>
+      <a class="btn btn-primary nav-cta" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -32,52 +34,57 @@
   </div>
 </header>
 
-<main>
+<main id="main">
+
+
+
+
 
 <section class="hero page-hero" aria-labelledby="pageH">
   
   <div class="hero-glow" aria-hidden="true"></div>
-  <div class="slot" aria-hidden="true">
-    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <strong>PHOTO · FOOD-01</strong><span>Arriving with the photo set</span>
-  </div>
   
   <div class="wrap hero-body">
-    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 2 · Food</div>
+    <nav class="crumbs" aria-label="Breadcrumb"><ol>
+  <li><a href="../">KaribuFans</a></li>
+  <li><span aria-current="page">Food</span></li>
+  <li id="crumbArea" hidden></li>
+</ol></nav>
+    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 2 of 7 · Food</div>
     <div class="script">Karibu mezani.</div>
     <h1 id="pageH">Eat like Nairobi.</h1>
-    <p class="lede">Nyama choma joints, Swahili kitchens, cafés and late-night bites. Reserve or order straight from the restaurant.</p>
+    <p class="lede">Restaurants and food spots across Nairobi. Find one near you, get directions and book with the restaurant directly.</p>
   </div>
   <nav class="routebar" aria-label="The route: seven stops">
-  <div class="wrap"><div style="position:relative">
+  <div class="wrap"><div class="routebar-in">
     <ol>
       
       <li class="done">
-        <a href="../stays/" ><span class="dot"><i></i></span><span class="label">1 Stays</span></a>
+        <a href="../stays/" ><span class="dot"><i></i></span><span class="label"><span class="n">1</span> Stays</span></a>
       </li>
       
       <li class="current">
-        <a href="../food/" aria-current="page"><span class="dot"><i></i></span><span class="label">2 Food</span></a>
+        <a href="../food/" aria-current="step"><span class="dot"><i></i></span><span class="label"><span class="n">2</span> Food</span></a>
       </li>
       
       <li class="">
-        <a href="../rides/" ><span class="dot"><i></i></span><span class="label">3 Rides</span></a>
+        <a href="../rides/" ><span class="dot"><i></i></span><span class="label"><span class="n">3</span> Rides</span></a>
       </li>
       
       <li class="">
-        <a href="../matchday/" ><span class="dot"><i></i></span><span class="label">4 Matchday</span></a>
+        <a href="../matchday/" ><span class="dot"><i></i></span><span class="label"><span class="n">4</span> Matchday</span></a>
       </li>
       
       <li class="">
-        <a href="../nightlife/" ><span class="dot"><i></i></span><span class="label">5 Nightlife</span></a>
+        <a href="../nightlife/" ><span class="dot"><i></i></span><span class="label"><span class="n">5</span> Nightlife</span></a>
       </li>
       
       <li class="">
-        <a href="../movies-games/" ><span class="dot"><i></i></span><span class="label">6 Movies &amp; Games</span></a>
+        <a href="../movies-games/" ><span class="dot"><i></i></span><span class="label"><span class="n">6</span> Movies &amp; Games</span></a>
       </li>
       
       <li class="">
-        <a href="../tickets/" ><span class="dot"><i></i></span><span class="label">7 Tickets</span></a>
+        <a href="../tickets/" ><span class="dot"><i></i></span><span class="label"><span class="n">7</span> Tickets</span></a>
       </li>
       
     </ol>
@@ -87,171 +94,347 @@
 </section>
 
 
-<div class="filters" role="group" aria-label="Search and filter Food">
+<div class="filters" id="filters" role="group" aria-label="Filter Food">
   <div class="wrap">
-    <label class="find"><span class="sr-only">Search Food</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search food by name, area or tag" autocomplete="off"></label>
-    <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
-    <button type="button" class="chip" data-filter="open-now" aria-pressed="false">Open now</button>
-    <button type="button" class="chip" data-filter="Nyama choma" aria-pressed="false">Nyama choma</button><button type="button" class="chip" data-filter="Swahili" aria-pressed="false">Swahili</button><button type="button" class="chip" data-filter="Ethiopian" aria-pressed="false">Ethiopian</button><button type="button" class="chip" data-filter="Indian" aria-pressed="false">Indian</button><button type="button" class="chip" data-filter="Cafés" aria-pressed="false">Cafés</button><button type="button" class="chip" data-filter="Vegetarian" aria-pressed="false">Vegetarian</button><button type="button" class="chip" data-filter="Halal" aria-pressed="false">Halal</button><button type="button" class="chip" data-filter="Open late" aria-pressed="false">Open late</button>
+    <label class="sel"><span>Area</span>
+      <select id="fArea">
+        <option value="">Any area</option>
+        <option value="Kilimani">Kilimani</option><option value="Westlands">Westlands</option><option value="CBD">CBD</option><option value="Karen">Karen</option><option value="Lang&#39;ata">Lang&#39;ata</option>
+        
+      </select></label>
+    
+    <label class="sel"><span>Type</span>
+      <select id="fType">
+        <option value="">Any type</option>
+        <option value="Brazilian steakhouse">Brazilian steakhouse</option><option value="Charcoal grill">Charcoal grill</option><option value="Ethiopian">Ethiopian</option><option value="Restaurant">Restaurant</option>
+      </select></label>
+    
+    
+    <label class="find"><span class="sr-only">Search Food</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search by name or street" autocomplete="off"></label>
+    <button type="button" class="chip" id="fClear" hidden>Clear filters</button>
+    <span class="count" id="listCount" aria-live="polite"></span>
   </div>
 </div>
 
-
-
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">Food in Nairobi</h2><p>Sample listings are shown until real businesses sign up.</p></div>
-    <div class="grid-cards" id="cards" data-page="food">
+    <div class="sec-head"><h2 id="listH">Food in Nairobi</h2><p>Exploring Nairobi for the tournament, or just hungry this weekend? We are curating restaurants and food spots across Ngong Road, Kilimani, Westlands, Karen and near Talanta Stadium.</p></div>
+    <p class="notice-soft" id="areaNote" hidden></p>
+    <p class="notice-soft"><span class="badge badge-directory">Directory listing</span> means we show only the name and location published on the business's own website. Prices and WhatsApp booking switch on when the business joins.</p>
+    <div class="grid-cards" id="cards" data-page="food" data-noun="places to eat">
+      
       
 
-<article class="card" data-type="Nyama choma" data-search="[restaurant name] nyama choma [area] outdoor groups" data-open="11:00" data-close="23:00">
-  <div class="card-photo">
-    
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Nyama choma</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
+
+<article class="card is-directory" id="card-the-talisman-restaurant" data-id="the-talisman-restaurant" data-type="Restaurant" data-area="Karen" data-near="" data-vibe="" data-search="the talisman restaurant restaurant karen karen ngong road, karen  ">
+  <button type="button" class="card-photo place-open" data-id="the-talisman-restaurant" aria-label="View details for The Talisman Restaurant">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#D4AF37"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#9DBFA0"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4F8A3C"/>
+  <g fill="#1B4D3E"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+
+</svg>
+    <span class="tag-area">Karen</span>
+  </button>
   <div class="card-body">
-    <div class="card-top"><h3>[Restaurant name]</h3><span class="open-state" aria-live="polite"></span></div>
-    <div class="card-meta">[Area] · KES [X]–[X] per person</div>
-    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
-    <div class="tags"><span>Outdoor</span><span>Groups</span></div>
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>The Talisman Restaurant</h3>
+    <div class="card-meta">Restaurant · Ngong Road, Karen</div>
     
-    <dl class="facts">
-      <div><dt>Hours</dt><dd>11:00–23:00</dd></div>
-      
-      
-    </dl>
+    
     
     
     <div class="card-actions">
-      
-      <span class="btn btn-green" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
-      
-      
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BRestaurant%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Restaurant name]">Directions</a>
+      <button type="button" class="btn btn-primary place-open" data-id="the-talisman-restaurant">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Talisman%20Restaurant%2C%20Ngong%20Road%2C%20Karen%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Talisman Restaurant (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
 </article>
+      
+      
+      
 
-<article class="card" data-type="Swahili" data-search="[restaurant name] swahili [area] halal takeaway" data-open="08:00" data-close="22:00">
-  <div class="card-photo">
-    
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Swahili</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
+
+<article class="card is-directory" id="card-fogo-gaucho-kilimani" data-id="fogo-gaucho-kilimani" data-type="Brazilian steakhouse" data-area="Kilimani" data-near="" data-vibe="" data-search="fogo gaucho, kilimani brazilian steakhouse kilimani kilimani galana plaza, galana road  ">
+  <button type="button" class="card-photo place-open" data-id="fogo-gaucho-kilimani" aria-label="View details for Fogo Gaucho, Kilimani">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
+  <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+
+</svg>
+    <span class="tag-area">Kilimani</span>
+  </button>
   <div class="card-body">
-    <div class="card-top"><h3>[Restaurant name]</h3><span class="open-state" aria-live="polite"></span></div>
-    <div class="card-meta">[Area] · KES [X]–[X] per person</div>
-    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
-    <div class="tags"><span>Halal</span><span>Takeaway</span></div>
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Fogo Gaucho, Kilimani</h3>
+    <div class="card-meta">Brazilian steakhouse · Galana Plaza, Galana Road</div>
     
-    <dl class="facts">
-      <div><dt>Hours</dt><dd>08:00–22:00</dd></div>
-      
-      
-    </dl>
+    
     
     
     <div class="card-actions">
-      
-      <span class="btn btn-green" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
-      
-      
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BRestaurant%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Restaurant name]">Directions</a>
+      <button type="button" class="btn btn-primary place-open" data-id="fogo-gaucho-kilimani">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Fogo%20Gaucho%2C%20Kilimani%2C%20Galana%20Plaza%2C%20Galana%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Fogo Gaucho, Kilimani (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
 </article>
+      
+      
+      
 
-<article class="card" data-type="Cafés" data-search="[café name] cafés [area] breakfast wi-fi" data-open="07:00" data-close="18:00">
-  <div class="card-photo">
-    
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Cafés</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
+
+<article class="card is-directory" id="card-abyssinia-restaurant" data-id="abyssinia-restaurant" data-type="Ethiopian" data-area="Westlands" data-near="" data-vibe="" data-search="abyssinia restaurant ethiopian westlands westlands muguga green, off brookside grove, waiyaki way  ">
+  <button type="button" class="card-photo place-open" data-id="abyssinia-restaurant" aria-label="View details for Abyssinia Restaurant">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gW)"/>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+
+</svg>
+    <span class="tag-area">Westlands</span>
+  </button>
   <div class="card-body">
-    <div class="card-top"><h3>[Café name]</h3><span class="open-state" aria-live="polite"></span></div>
-    <div class="card-meta">[Area] · KES [X]–[X] per person</div>
-    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
-    <div class="tags"><span>Breakfast</span><span>Wi-Fi</span></div>
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Abyssinia Restaurant</h3>
+    <div class="card-meta">Ethiopian · Muguga Green, off Brookside Grove, Waiyaki Way</div>
     
-    <dl class="facts">
-      <div><dt>Hours</dt><dd>07:00–18:00</dd></div>
-      
-      
-    </dl>
+    
     
     
     <div class="card-actions">
-      
-      <span class="btn btn-green" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
-      
-      
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BCaf%C3%A9%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Café name]">Directions</a>
+      <button type="button" class="btn btn-primary place-open" data-id="abyssinia-restaurant">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Abyssinia%20Restaurant%2C%20Muguga%20Green%2C%20off%20Brookside%20Grove%2C%20Waiyaki%20Way%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Abyssinia Restaurant (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
 </article>
+      
+      
+      
 
-<article class="card" data-type="Open late" data-search="[restaurant name] open late [area] screens groups" data-open="12:00" data-close="02:00">
-  <div class="card-photo">
-    
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Open late</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
+
+<article class="card is-directory" id="card-cjs-koinange-street" data-id="cjs-koinange-street" data-type="Restaurant" data-area="CBD" data-near="" data-vibe="" data-search="cj&#39;s, koinange street restaurant cbd cbd koinange street  ">
+  <button type="button" class="card-photo place-open" data-id="cjs-koinange-street" aria-label="View details for CJ&#39;s, Koinange Street">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#E9EFE6"/>
+  <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#1B4D3E"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F4EF" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+
+</svg>
+    <span class="tag-area">CBD</span>
+  </button>
   <div class="card-body">
-    <div class="card-top"><h3>[Restaurant name]</h3><span class="open-state" aria-live="polite"></span></div>
-    <div class="card-meta">[Area] · KES [X]–[X] per person</div>
-    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
-    <div class="tags"><span>Screens</span><span>Groups</span></div>
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>CJ&#39;s, Koinange Street</h3>
+    <div class="card-meta">Restaurant · Koinange Street</div>
     
-    <dl class="facts">
-      <div><dt>Hours</dt><dd>12:00–02:00</dd></div>
-      
-      
-    </dl>
+    
     
     
     <div class="card-actions">
-      
-      <span class="btn btn-green" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
-      
-      
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BRestaurant%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Restaurant name]">Directions</a>
+      <button type="button" class="btn btn-primary place-open" data-id="cjs-koinange-street">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=CJ%27s%2C%20Koinange%20Street%2C%20Koinange%20Street%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to CJ&#39;s, Koinange Street (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
 </article>
+      <aside class="card vendor-card" aria-label="For Nairobi businesses">
+  <span class="eyebrow">For Nairobi businesses</span>
+  <h3>Own a restaurant, café or food joint in Nairobi?</h3>
+  <p>Get listed before visiting fans arrive for the 2027 tournament. No listing fee: you pay a commission only on customers we send you.</p>
+  <a class="btn btn-navy" href="../list-your-business/">List your business</a>
+</aside>
+      
+      
+
+
+<article class="card is-directory" id="card-cjs-kilimani" data-id="cjs-kilimani" data-type="Restaurant" data-area="Kilimani" data-near="" data-vibe="" data-search="cj&#39;s, kilimani restaurant kilimani kilimani   ">
+  <button type="button" class="card-photo place-open" data-id="cjs-kilimani" aria-label="View details for CJ&#39;s, Kilimani">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
+  <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+
+</svg>
+    <span class="tag-area">Kilimani</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
     </div>
-    <p class="coming" id="noMatch" hidden style="margin-top:24px">Nothing matches yet. Try another filter or search.</p>
+    <h3>CJ&#39;s, Kilimani</h3>
+    <div class="card-meta">Restaurant</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="cjs-kilimani">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=CJ%27s%20Kilimani%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to CJ&#39;s, Kilimani (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
+      
+      
+      
+
+
+<article class="card is-directory" id="card-the-carnivore-restaurant" data-id="the-carnivore-restaurant" data-type="Charcoal grill" data-area="Lang&#39;ata" data-near="" data-vibe="" data-search="the carnivore restaurant charcoal grill lang&#39;ata lang&#39;ata   ">
+  <button type="button" class="card-photo place-open" data-id="the-carnivore-restaurant" aria-label="View details for The Carnivore Restaurant">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gG)"/><circle cx="250" cy="44" r="18" fill="#E67E22" opacity=".85"/>
+  <g fill="#C9B79A"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
+  <g fill="#0A1128" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
+  <g fill="#F7F4EF" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
+
+</svg>
+    <span class="tag-area">Lang&#39;ata</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>The Carnivore Restaurant</h3>
+    <div class="card-meta">Charcoal grill</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="the-carnivore-restaurant">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Carnivore%20Restaurant%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Carnivore Restaurant (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
+      
+      
+    </div>
+    <p class="coming" id="noMatch" hidden>Nothing matches those filters yet. <button type="button" class="linklike" id="noMatchClear">Clear the filters</button></p>
   </div>
 </section>
 
+<div class="drawer-veil" id="placeVeil" hidden></div>
+<aside class="drawer" id="placeDrawer" role="dialog" aria-modal="true" aria-labelledby="dName" hidden tabindex="-1">
+  <div class="drawer-head">
+    <button type="button" class="icon-btn" id="dClose" aria-label="Close details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="drawer-crumb">Food</span>
+    <button type="button" class="chip" id="dShare">Share</button>
+  </div>
+  <div class="drawer-scroll">
+    <div class="d-photos" id="dPhotos"></div>
+    <div class="d-body">
+      <span class="badge" id="dBadge"></span>
+      <h2 id="dName"></h2>
+      <p class="card-meta" id="dMeta"></p>
+      <p class="d-street" id="dStreet" hidden></p>
+      <p class="d-price" id="dPrice" hidden></p>
+      <p class="hint" id="dChecked" hidden></p>
+      <p id="dAbout" hidden></p>
+      <ul class="d-amen" id="dAmen" aria-label="What you get"></ul>
+      <p class="dist" id="dDist" hidden></p>
+
+      <div class="d-unclaimed" id="dUnclaimed" hidden>
+        <p class="d-pay">Prices and WhatsApp booking switch on when this business joins KaribuFans. Until then, book with the business directly on its own website.</p>
+        <p class="hint" id="dSource"></p>
+      </div>
+
+      <fieldset class="d-form" id="dForm" hidden>
+        <legend>Ask about your dates</legend>
+        <div class="d-row">
+          <label>Check-in<input type="date" id="dIn"></label>
+          <label>Check-out<input type="date" id="dOut"></label>
+        </div>
+        <div class="d-row">
+          <label>Guests<select id="dGuests"><option value="">Not sure yet</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option value="9 or more">9+</option></select></label>
+          <label>Your name<input type="text" id="dWho" autocomplete="given-name" placeholder="Optional"></label>
+        </div>
+        <p class="hint" id="dErr" role="alert" hidden></p>
+        <p class="hint">Your message will read:</p>
+        <blockquote class="d-preview" id="dPreview"></blockquote>
+      </fieldset>
+
+      <a class="btn btn-primary d-cta" id="dWa" target="_blank" rel="noopener" hidden>Book via WhatsApp</a>
+      <div class="card-actions d-actions">
+        <a class="btn btn-primary" id="dSite" target="_blank" rel="noopener nofollow" hidden>Visit website ↗</a>
+        <a class="btn btn-ghost" id="dCall" hidden>Call</a>
+        <a class="btn btn-ghost" id="dMap" target="_blank" rel="noopener">Directions ↗</a>
+      </div>
+      <p class="d-pay" id="dPay" hidden>You pay the business directly. KaribuFans never handles your payment.</p>
+
+      <section class="d-route" id="dRoute" aria-labelledby="dRouteH" hidden>
+        <h3 id="dRouteH">Continue your route</h3>
+        <ul id="dRouteList"></ul>
+      </section>
+      <a class="d-claim" id="dClaim" hidden>Is this your business? Claim or remove this listing</a>
+    </div>
+  </div>
+</aside>
+
+<script type="application/json" id="placeData">{"icons": {}, "label": "Food", "listings": [{"area": "Karen", "checked": "5 Oct 2026", "id": "the-talisman-restaurant", "map_query": "The Talisman Restaurant, Ngong Road, Karen, Nairobi", "name": "The Talisman Restaurant", "phone": "", "photos": [], "sample": false, "source_url": "https://www.thetalismanrestaurant.com/", "status": "unclaimed", "street": "Ngong Road, Karen", "tags": [], "type": "Restaurant", "website": "https://www.thetalismanrestaurant.com/", "whatsapp": "", "zone": "Karen"}, {"area": "Kilimani", "checked": "5 Oct 2026", "id": "fogo-gaucho-kilimani", "map_query": "Fogo Gaucho, Kilimani, Galana Plaza, Galana Road, Nairobi", "name": "Fogo Gaucho, Kilimani", "phone": "", "photos": [], "sample": false, "source_url": "https://fogogaucho.co.ke/contact/", "status": "unclaimed", "street": "Galana Plaza, Galana Road", "tags": [], "type": "Brazilian steakhouse", "website": "https://fogogaucho.co.ke/", "whatsapp": "", "zone": "Kilimani"}, {"area": "Westlands", "checked": "5 Oct 2026", "id": "abyssinia-restaurant", "map_query": "Abyssinia Restaurant, Muguga Green, off Brookside Grove, Waiyaki Way, Nairobi", "name": "Abyssinia Restaurant", "phone": "", "photos": [], "sample": false, "source_url": "https://www.abyssiniarestaurantnairobi.com/", "status": "unclaimed", "street": "Muguga Green, off Brookside Grove, Waiyaki Way", "tags": [], "type": "Ethiopian", "website": "https://www.abyssiniarestaurantnairobi.com/", "whatsapp": "", "zone": "Westlands"}, {"area": "CBD", "checked": "5 Oct 2026", "id": "cjs-koinange-street", "map_query": "CJ\u0027s, Koinange Street, Koinange Street, Nairobi", "name": "CJ\u0027s, Koinange Street", "phone": "", "photos": [], "sample": false, "source_url": "https://cjs.co.ke/", "status": "unclaimed", "street": "Koinange Street", "tags": [], "type": "Restaurant", "website": "https://cjs.co.ke/", "whatsapp": "", "zone": "CBD"}, {"area": "Kilimani", "checked": "5 Oct 2026", "id": "cjs-kilimani", "map_query": "CJ\u0027s Kilimani, Nairobi", "name": "CJ\u0027s, Kilimani", "phone": "", "photos": [], "sample": false, "source_url": "https://cjs.co.ke/", "status": "unclaimed", "street": "", "tags": [], "type": "Restaurant", "website": "https://cjs.co.ke/", "whatsapp": "", "zone": "Kilimani"}, {"area": "Lang\u0027ata", "checked": "5 Oct 2026", "id": "the-carnivore-restaurant", "map_query": "Carnivore Restaurant, Nairobi", "name": "The Carnivore Restaurant", "phone": "", "photos": [], "sample": false, "source_url": "https://tamarind.co.ke/carnivore/", "status": "unclaimed", "street": "", "tags": [], "type": "Charcoal grill", "website": "https://tamarind.co.ke/carnivore/", "whatsapp": "", "zone": "Lang\u0027ata"}], "nearLabel": "", "page": "food", "root": "../", "route": {"food": {"CBD": 1, "Karen": 1, "Kilimani": 2, "Lang\u0027ata": 1, "Westlands": 1}, "matchday": {"Karen": 1}, "movies-games": {"Airport \u0026 Mombasa Road": 1, "Gigiri \u0026 Limuru Road": 2, "Ngong Road": 1, "Thika Road": 1, "Westlands": 3}, "nightlife": {"Kilimani": 1, "Westlands": 2}, "rides": {}, "stays": {"Airport \u0026 Mombasa Road": 6, "CBD": 6, "Karen": 6, "Kilimani": 7, "Ngong Road": 3, "Westlands": 6}, "tickets": {}}, "site": "KaribuFans", "stops": [{"label": "Stays", "slug": "stays", "stop": 1}, {"label": "Food", "slug": "food", "stop": 2}, {"label": "Rides", "slug": "rides", "stop": 3}, {"label": "Matchday", "slug": "matchday", "stop": 4}, {"label": "Nightlife", "slug": "nightlife", "stop": 5}, {"label": "Movies \u0026 Games", "slug": "movies-games", "stop": 6}, {"label": "Tickets", "slug": "tickets", "stop": 7}], "vibes": []}</script>
 
 
 
 
 
 
+
+
+
+<nav class="next-stop" aria-label="Continue the route">
+  <div class="wrap">
+    <a class="ns ns-prev" href="../stays/"><span>← Stop 1</span><strong>Stays</strong></a>
+    <a class="ns ns-next" href="../rides/"><span>Next stop 3 →</span><strong>Rides</strong><em>Open Uber or Bolt with your destination set.</em></a>
+  </div>
+</nav>
 
 </main>
 
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="footer-brand">
         <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
   <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
-      <div><h4>Explore</h4><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
-      <div><h4>Language</h4><div class="langs"><button type="button" data-lang="EN" aria-pressed="true">EN</button><button type="button" data-lang="SW" aria-pressed="false">SW</button><button type="button" data-lang="FR" aria-pressed="false">FR</button><button type="button" data-lang="AR" aria-pressed="false">AR</button><button type="button" data-lang="PT" aria-pressed="false">PT</button></div><p id="langNote" style="font-size:13px;margin-top:10px;color:var(--muted-night)">Kiswahili, French, Arabic and Portuguese coming after launch.</p></div>
+      <div><h2>Explore</h2><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
+      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li><a href="../privacy/">Privacy</a></li></ul></div>
+      <div id="languages"><h2>Language</h2>
+        <div class="langs"><button type="button" data-lang="EN" data-name="English" data-live="1" aria-pressed="true">EN</button><button type="button" data-lang="SW" data-name="Kiswahili" data-live="" aria-pressed="false" class="soon">SW<small>soon</small></button><button type="button" data-lang="FR" data-name="French" data-live="" aria-pressed="false" class="soon">FR<small>soon</small></button><button type="button" data-lang="AR" data-name="Arabic" data-live="" aria-pressed="false" class="soon">AR<small>soon</small></button><button type="button" data-lang="PT" data-name="Portuguese" data-live="" aria-pressed="false" class="soon">PT<small>soon</small></button></div>
+        <p class="lang-note" id="langNote" aria-live="polite">The site is in English. Kiswahili, French, Arabic and Portuguese follow after launch.</p>
+      </div>
     </div>
-    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 [Registered business name].</p>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 KaribuFans.</p>
   </div>
 </footer>
 <script src="../js/site.js" defer></script>
