@@ -5,13 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KaribuFans · Nairobi city guide</title>
 <meta name="description" content="KaribuFans: stays, food, rides, nightlife and matchday in Nairobi, in one city guide.">
+<meta name="theme-color" content="#0A1128">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
 <link rel="stylesheet" href="./css/site.css">
 </head>
-<body class="day">
+<body>
 
+<a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="./" aria-label="KaribuFans home">
@@ -23,8 +25,8 @@
     </nav>
     <div class="nav-tools">
       <a class="icon-btn" href="./search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
-      <button type="button" class="lang" id="langBtn" aria-label="Change language">EN</button>
-      <a class="btn btn-green" href="./list-your-business/">List your business</a>
+      <a class="lang" href="#languages" aria-label="Language: English. See other languages">EN</a>
+      <a class="btn btn-primary nav-cta" href="./list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -32,7 +34,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
 
 
@@ -43,46 +45,149 @@
     <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Nairobi · every day, every weekend</div>
     <div class="script">Karibu Nairobi.</div>
     <h1>Eat, stay, ride and celebrate in one city guide.</h1>
-    <p class="lede">Find local food spots, stays, nightlife, watch parties and rides. You book directly with the business.</p>
-    <form class="planner" action="#" onsubmit="return false" aria-label="Plan">
-      
+    <p class="lede">Find stays, food spots, nightlife, places to watch the game and rides. You book directly with the business.</p>
+    <form class="planner" action="#" onsubmit="return false" aria-label="Start here">
       <label for="pWhat">I'm looking for<select id="pWhat"><option value="stays">Stays</option><option value="food">Food</option><option value="rides">Rides</option><option value="matchday">Matchday</option><option value="nightlife">Nightlife</option><option value="movies-games">Movies &amp; Games</option></select></label>
-      <label for="pArea">Area<input id="pArea" type="text" placeholder="Any area"></label>
-      <label for="pWhen">When<input id="pWhen" type="date"></label>
-      <label for="pPeople">People<select id="pPeople"><option>1</option><option selected>2</option><option>3–5</option><option>6+</option></select></label>
-      
-      <button type="submit" class="btn btn-amber" id="plannerGo">Show me</button>
+      <label for="pArea">Area<select id="pArea"><option value="">Any area</option><option value="Kilimani">Kilimani</option><option value="Westlands">Westlands</option><option value="CBD">CBD</option><option value="Karen">Karen</option><option value="Ngong Road">Ngong Road</option><option value="Lang&#39;ata">Lang&#39;ata</option><option value="Airport &amp; Mombasa Road">Airport &amp; Mombasa Road</option><option value="Gigiri &amp; Limuru Road">Gigiri &amp; Limuru Road</option><option value="Thika Road">Thika Road</option></select></label>
+      <button type="submit" class="btn btn-primary" id="plannerGo">Show me</button>
     </form>
   </div>
 </section>
 
-<section class="band-night" aria-labelledby="stripH">
-  <div class="wrap band" style="padding-block:40px">
-    <div class="sec-head" style="margin-bottom:20px">
-      <h2 id="stripH" style="font-size:clamp(24px,3vw,34px)">This weekend in Nairobi</h2>
-      <a href="./matchday/" style="color:var(--amber);font-weight:700;text-decoration:none">All watch parties →</a>
-    </div>
-    <div class="grid-cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+
+<section class="band" aria-labelledby="areaH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="areaH">Browse by area</h2><p>Pick an area once and it follows you along the route, from stays to food to a night out.</p></div>
+    <ul class="zone-grid">
       
-      <div class="card" style="padding:18px;gap:6px">
-        <span class="card-meta">[Day] · [Time] · SAMPLE</span>
-        <strong style="font-family:var(--display);font-size:22px">[Watch party or event]</strong>
-        <span style="color:var(--amber);font-weight:700;font-size:14px">[Venue] · [Area]</span>
-      </div>
+      <li><a class="zone" href="./stays/?area=Kilimani" data-area="Kilimani">
+        <span class="zone-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
+  <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+
+</svg></span>
+        <strong>Kilimani</strong>
+        <span class="zone-counts">7 stays · 2 food · 1 nightlife</span>
+      </a></li>
       
-      <div class="card" style="padding:18px;gap:6px">
-        <span class="card-meta">[Day] · [Time] · SAMPLE</span>
-        <strong style="font-family:var(--display);font-size:22px">[Watch party or event]</strong>
-        <span style="color:var(--amber);font-weight:700;font-size:14px">[Venue] · [Area]</span>
-      </div>
+      <li><a class="zone" href="./stays/?area=Westlands" data-area="Westlands">
+        <span class="zone-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gW)"/>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+
+</svg></span>
+        <strong>Westlands</strong>
+        <span class="zone-counts">6 stays · 1 food · 2 nightlife · 3 movies &amp; games</span>
+      </a></li>
       
-      <div class="card" style="padding:18px;gap:6px">
-        <span class="card-meta">[Day] · [Time] · SAMPLE</span>
-        <strong style="font-family:var(--display);font-size:22px">[Watch party or event]</strong>
-        <span style="color:var(--amber);font-weight:700;font-size:14px">[Venue] · [Area]</span>
-      </div>
+      <li><a class="zone" href="./stays/?area=CBD" data-area="CBD">
+        <span class="zone-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#E9EFE6"/>
+  <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#1B4D3E"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F4EF" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+
+</svg></span>
+        <strong>CBD</strong>
+        <span class="zone-counts">6 stays · 1 food</span>
+      </a></li>
       
-    </div>
+      <li><a class="zone" href="./stays/?area=Karen" data-area="Karen">
+        <span class="zone-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#D4AF37"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#9DBFA0"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4F8A3C"/>
+  <g fill="#1B4D3E"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+
+</svg></span>
+        <strong>Karen</strong>
+        <span class="zone-counts">6 stays · 1 food · 1 matchday</span>
+      </a></li>
+      
+      <li><a class="zone" href="./stays/?area=Ngong%20Road" data-area="Ngong Road">
+        <span class="zone-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#0A1128"/>
+  <g fill="#F3F5FA" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
+  <g fill="#8A93B2"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
+  <g fill="#E67E22"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
+  <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#1B2656"/>
+  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#E67E22" stroke-width="3"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="#4F8A3C"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#F3F5FA" stroke-width="1.5" opacity=".6"/>
+
+</svg></span>
+        <strong>Ngong Road</strong>
+        <span class="zone-counts">3 stays · 1 movies &amp; games</span>
+      </a></li>
+      
+      <li><a class="zone" href="./food/?area=Lang%27ata" data-area="Lang&#39;ata">
+        <span class="zone-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gG)"/><circle cx="250" cy="44" r="18" fill="#E67E22" opacity=".85"/>
+  <g fill="#C9B79A"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
+  <g fill="#0A1128" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
+  <g fill="#F7F4EF" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
+
+</svg></span>
+        <strong>Lang&#39;ata</strong>
+        <span class="zone-counts">1 food</span>
+      </a></li>
+      
+      <li><a class="zone" href="./stays/?area=Airport%20%26%20Mombasa%20Road" data-area="Airport &amp; Mombasa Road">
+        <span class="zone-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#BFD9E8"/>
+  <g fill="#F7F4EF" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1B4D3E"/>
+  <rect y="112" width="320" height="28" fill="#4A5750"/>
+  <g fill="#F7F4EF"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
+
+</svg></span>
+        <strong>Airport &amp; Mombasa Road</strong>
+        <span class="zone-counts">6 stays · 1 movies &amp; games</span>
+      </a></li>
+      
+      <li><a class="zone" href="./movies-games/?area=Gigiri%20%26%20Limuru%20Road" data-area="Gigiri &amp; Limuru Road">
+        <span class="zone-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gG)"/><circle cx="250" cy="44" r="18" fill="#E67E22" opacity=".85"/>
+  <g fill="#C9B79A"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
+  <g fill="#0A1128" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
+  <g fill="#F7F4EF" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
+
+</svg></span>
+        <strong>Gigiri &amp; Limuru Road</strong>
+        <span class="zone-counts">2 movies &amp; games</span>
+      </a></li>
+      
+      <li><a class="zone" href="./movies-games/?area=Thika%20Road" data-area="Thika Road">
+        <span class="zone-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gG)"/><circle cx="250" cy="44" r="18" fill="#E67E22" opacity=".85"/>
+  <g fill="#C9B79A"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
+  <g fill="#0A1128" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
+  <g fill="#F7F4EF" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
+
+</svg></span>
+        <strong>Thika Road</strong>
+        <span class="zone-counts">1 movies &amp; games</span>
+      </a></li>
+      
+    </ul>
   </div>
 </section>
 
@@ -94,7 +199,7 @@
         <div class="eyebrow">The Route</div>
         <h2 id="routeH">One road, seven stops.</h2>
       </div>
-      <p style="color:#D9DDEA">Follow the light from where you sleep to where you celebrate.</p>
+      <p>Follow the light from where you sleep to where you celebrate.</p>
     </div>
     <ol class="stops">
       
@@ -113,7 +218,7 @@
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 1-3 3-3 6v3h3M17 3v18"/></svg>
           <span class="n">Stop 2</span>
           <h3>Food</h3>
-          <p>Nyama choma, local kitchens and late-night bites.</p>
+          <p>Restaurants and food spots across the city.</p>
           <span class="go">Find food →</span>
         </a>
       </li>
@@ -133,7 +238,7 @@
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-18 0a9 9 0 1 1 18 0M12 7l4 3-1.5 4.5h-5L8 10z"/></svg>
           <span class="n">Stop 4</span>
           <h3>Matchday</h3>
-          <p>Watch parties, fan zones and the stadium guide.</p>
+          <p>Places to watch and the stadium guide.</p>
           <span class="go">Matchday guide →</span>
         </a>
       </li>
@@ -143,7 +248,7 @@
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0a3 3 0 1 1 6 0M20 16a3 3 0 1 1-6 0a3 3 0 1 1 6 0"/></svg>
           <span class="n">Stop 5</span>
           <h3>Nightlife</h3>
-          <p>Clubs, bars and live music, 18+.</p>
+          <p>Bars, lounges and live music, 18+.</p>
           <span class="go">Nightlife →</span>
         </a>
       </li>
@@ -153,7 +258,7 @@
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zM3 9h18M7 5v4M12 5v4M17 5v4M10 12.5v4l4-2z"/></svg>
           <span class="n">Stop 6</span>
           <h3>Movies &amp; Games</h3>
-          <p>Cinemas, gaming lounges and arcades.</p>
+          <p>Cinemas, bowling and arcades.</p>
           <span class="go">See what&#39;s on →</span>
         </a>
       </li>
@@ -172,36 +277,33 @@
   </div>
 </section>
 
-<section class="band" id="plan" aria-labelledby="planH">
+<section class="band band-sand" id="plan" aria-labelledby="planH">
   <div class="wrap two-col">
-    <div style="display:flex;flex-direction:column;gap:18px">
-      <div class="eyebrow on-light" style="color:var(--canopy)">Plan your day</div>
-      <h2 id="planH" style="font-weight:800;font-size:clamp(32px,4vw,56px);line-height:1">Your Saturday, sorted.</h2>
-      <p style="font-size:18px;color:#33403A;max-width:520px">Pick what you feel like and we line up the day: where to eat, where to watch the game and how to get home.</p>
-      <a class="btn btn-green" href="#" style="align-self:flex-start">Start my plan</a>
+    <div class="stack">
+      <div class="eyebrow on-light">Plan your day</div>
+      <h2 id="planH" class="h-big">Your Saturday, sorted.</h2>
+      <p class="lede-dark">Follow the route in order, or jump to the stop you need. Each stop keeps the area you chose.</p>
+      <a class="btn btn-primary" href="./stays/" style="align-self:flex-start">Start at stop 1: Stays</a>
     </div>
-    <div class="plan-card" aria-label="Example plan">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid #E6E8E2">
-        <strong style="font-family:var(--display);font-size:20px">Example plan</strong>
-        <span class="badge" style="position:static;background:var(--shuka)">Sample</span>
-      </div>
+    <div class="plan-card" aria-label="An example day">
+      <div class="plan-head"><strong>An example day</strong><span class="badge badge-directory">Example</span></div>
       
       
-      <div class="plan-row"><time>11:00</time><span class="pd" style="background:#E3A23B"></span><div><strong>Brunch in [Area]</strong><small>Food · [Suggested place]</small></div></div>
+      <a class="plan-row" href="./food/"><time>11:00</time><span class="pd"></span><span><strong>Brunch near your stay</strong><small>Food →</small></span></a>
       
-      <div class="plan-row"><time>15:00</time><span class="pd" style="background:#4F8A3C"></span><div><strong>Watch party for the big match</strong><small>Matchday · [Suggested place]</small></div></div>
+      <a class="plan-row" href="./matchday/"><time>15:00</time><span class="pd"></span><span><strong>Watch the big match</strong><small>Matchday →</small></span></a>
       
-      <div class="plan-row"><time>19:00</time><span class="pd" style="background:#B8262B"></span><div><strong>Nyama choma dinner</strong><small>Food · [Suggested place]</small></div></div>
+      <a class="plan-row" href="./food/"><time>19:00</time><span class="pd"></span><span><strong>Dinner</strong><small>Food →</small></span></a>
       
-      <div class="plan-row"><time>22:00</time><span class="pd" style="background:#2458A6"></span><div><strong>Live music or a rooftop</strong><small>Nightlife · [Suggested place]</small></div></div>
+      <a class="plan-row" href="./nightlife/"><time>22:00</time><span class="pd"></span><span><strong>Live music or a rooftop</strong><small>Nightlife →</small></span></a>
       
-      <div class="plan-row"><time>01:00</time><span class="pd" style="background:#141414"></span><div><strong>Ride home</strong><small>Rides · [Suggested place]</small></div></div>
+      <a class="plan-row" href="./rides/"><time>01:00</time><span class="pd"></span><span><strong>Ride home</strong><small>Rides →</small></span></a>
       
     </div>
   </div>
 </section>
 
-<section class="band band-sand" id="how" aria-labelledby="howH">
+<section class="band" id="how" aria-labelledby="howH">
   <div class="wrap">
     <div class="sec-head"><h2 id="howH">How it works</h2><p>KaribuFans connects you to the business. You pay them directly, not us.</p></div>
     <div class="steps">
@@ -212,18 +314,17 @@
   </div>
 </section>
 
-<section class="band-green" id="vendors" aria-labelledby="vendH">
+<section class="band-navy" id="vendors" aria-labelledby="vendH">
   <div class="bead-rule" aria-hidden="true"></div>
   <div class="wrap band">
     <div class="cta-row">
       <div>
-        <div class="eyebrow" style="color:var(--gold)">For Nairobi businesses</div>
+        <div class="eyebrow">For Nairobi businesses</div>
         <h2 id="vendH" style="margin-top:12px">Put your business in front of new customers.</h2>
         <p>No listing fee. You pay a commission only on customers we send you.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px">
-        <a class="btn" style="background:var(--gold);color:var(--ink);min-height:52px;padding:0 28px" href="./list-your-business/">List your business</a>
-        <a href="#how" style="text-align:center;font-weight:700;color:var(--ivory)">How commission works</a>
+        <a class="btn btn-primary btn-lg" href="./list-your-business/">List your business</a>
       </div>
     </div>
   </div>
@@ -234,18 +335,21 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="footer-brand">
         <a class="brand" href="./" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
   <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
-      <div><h4>Explore</h4><ul><li><a href="./stays/">Stays</a></li><li><a href="./food/">Food</a></li><li><a href="./rides/">Rides</a></li><li><a href="./matchday/">Matchday</a></li><li><a href="./nightlife/">Nightlife</a></li><li><a href="./movies-games/">Movies &amp; Games</a></li><li><a href="./tickets/">Tickets</a></li></ul></div>
-      <div><h4>KaribuFans</h4><ul><li><a href="./#how">How it works</a></li><li><a href="./list-your-business/">List your business</a></li><li><a href="./search/">Search</a></li><li><a href="./privacy/">Privacy [draft]</a></li></ul></div>
-      <div><h4>Language</h4><div class="langs"><button type="button" data-lang="EN" aria-pressed="true">EN</button><button type="button" data-lang="SW" aria-pressed="false">SW</button><button type="button" data-lang="FR" aria-pressed="false">FR</button><button type="button" data-lang="AR" aria-pressed="false">AR</button><button type="button" data-lang="PT" aria-pressed="false">PT</button></div><p id="langNote" style="font-size:13px;margin-top:10px;color:var(--muted-night)">Kiswahili, French, Arabic and Portuguese coming after launch.</p></div>
+      <div><h2>Explore</h2><ul><li><a href="./stays/">Stays</a></li><li><a href="./food/">Food</a></li><li><a href="./rides/">Rides</a></li><li><a href="./matchday/">Matchday</a></li><li><a href="./nightlife/">Nightlife</a></li><li><a href="./movies-games/">Movies &amp; Games</a></li><li><a href="./tickets/">Tickets</a></li></ul></div>
+      <div><h2>KaribuFans</h2><ul><li><a href="./#how">How it works</a></li><li><a href="./list-your-business/">List your business</a></li><li><a href="./search/">Search</a></li><li><a href="./privacy/">Privacy</a></li></ul></div>
+      <div id="languages"><h2>Language</h2>
+        <div class="langs"><button type="button" data-lang="EN" data-name="English" data-live="1" aria-pressed="true">EN</button><button type="button" data-lang="SW" data-name="Kiswahili" data-live="" aria-pressed="false" class="soon">SW<small>soon</small></button><button type="button" data-lang="FR" data-name="French" data-live="" aria-pressed="false" class="soon">FR<small>soon</small></button><button type="button" data-lang="AR" data-name="Arabic" data-live="" aria-pressed="false" class="soon">AR<small>soon</small></button><button type="button" data-lang="PT" data-name="Portuguese" data-live="" aria-pressed="false" class="soon">PT<small>soon</small></button></div>
+        <p class="lang-note" id="langNote" aria-live="polite">The site is in English. Kiswahili, French, Arabic and Portuguese follow after launch.</p>
+      </div>
     </div>
-    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 [Registered business name].</p>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 KaribuFans.</p>
   </div>
 </footer>
 <script src="./js/site.js" defer></script>
