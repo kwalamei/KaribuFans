@@ -1,21 +1,22 @@
 {% extends "base.html" %}
-{% from "partials/macros.html" import routebar, card %}
+{% from "partials/macros.html" import routebar, crumbs, listing_card, vendor_card %}
 {% block title %}{{ m.label }} · {{ site.name }}{% endblock %}
 {% block description %}{{ m.sub }}{% endblock %}
 {% block main %}
+{% set f = m.filters or {} %}
+{% set near_label = f.near_label or ('Near ' ~ site.tournament.stadium) %}
+{% set has_near = listings | selectattr('near_stadium') | list | length > 0 %}
+{% set vibes_used = listings | map(attribute='vibe') | select | list %}
 <section class="hero page-hero" aria-labelledby="pageH">
   {% if m.image %}
   <img class="hero-img" src="{{ root }}img/{{ m.image }}" alt="{{ m.image_alt }}" style="object-position:{{ m.image_pos }}" fetchpriority="high">
   <span class="credit">Artist's impression</span>
   {% else %}
   <div class="hero-glow" aria-hidden="true"></div>
-  <div class="slot" aria-hidden="true">
-    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <strong>PHOTO · {{ m.slot }}</strong><span>Arriving with the photo set</span>
-  </div>
   {% endif %}
   <div class="wrap hero-body">
-    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop {{ m.stop }} · {{ m.label }}</div>
+    {{ crumbs(site, root, [(m.label, '')]) }}
+    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop {{ m.stop }} of {{ modules | length }} · {{ m.label }}</div>
     <div class="script">{{ m.script }}</div>
     <h1 id="pageH">{{ m.title }}</h1>
     <p class="lede">{{ m.sub }}</p>
@@ -23,32 +24,59 @@
   {{ routebar(modules, m.stop, root) }}
 </section>
 
-{% if listings and m.slug != 'stays' %}
-<div class="filters" role="group" aria-label="Search and filter {{ m.label }}">
+{% if listings %}
+<div class="filters" id="filters" role="group" aria-label="Filter {{ m.label }}">
   <div class="wrap">
-    <label class="find"><span class="sr-only">Search {{ m.label }}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search {{ m.label | lower }} by name, area or tag" autocomplete="off"></label>
-    <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
-    {% if m.slug in ['food','nightlife'] %}<button type="button" class="chip" data-filter="open-now" aria-pressed="false">Open now</button>{% endif %}
-    {% for c in m.chips %}<button type="button" class="chip" data-filter="{{ c }}" aria-pressed="false">{{ c }}</button>{% endfor %}
+    <label class="sel"><span>Area</span>
+      <select id="fArea">
+        <option value="">Any area</option>
+        {% for a in m.zones %}<option value="{{ a }}">{{ a }}</option>{% endfor %}
+        {% if has_near %}<option value="__near">{{ near_label }}</option>{% endif %}
+      </select></label>
+    {% if m.types | length > 1 %}
+    <label class="sel"><span>Type</span>
+      <select id="fType">
+        <option value="">Any type</option>
+        {% for t in m.types %}<option value="{{ t }}">{{ t }}</option>{% endfor %}
+      </select></label>
+    {% endif %}
+    {% if f.vibes and vibes_used %}
+    <label class="sel"><span>Vibe</span>
+      <select id="fVibe">
+        <option value="">Any vibe</option>
+        {% for v in f.vibes %}<option value="{{ v.name }}">{{ v.icon }} {{ v.name }}</option>{% endfor %}
+      </select></label>
+    {% endif %}
+    <label class="find"><span class="sr-only">Search {{ m.label }}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search by name or street" autocomplete="off"></label>
+    <button type="button" class="chip" id="fClear" hidden>Clear filters</button>
+    <span class="count" id="listCount" aria-live="polite"></span>
   </div>
 </div>
-{% endif %}
 
-{% if m.slug == 'stays' %}
-{% include "partials/stays.html" %}
-{% elif m.slug == 'rides' %}
-{% include "partials/rides.html" %}
-{% elif listings %}
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">{{ 'Fan zones and watch parties' if m.slug == 'matchday' else m.label ~ ' in Nairobi' }}</h2><p>Sample listings are shown until real businesses sign up.</p></div>
-    <div class="grid-cards" id="cards" data-page="{{ m.slug }}">
-      {% for v in listings %}{{ card(v, m.look) }}{% endfor %}
+    <div class="sec-head"><h2 id="listH">{{ m.list_title or (m.label ~ ' in Nairobi') }}</h2><p>{{ m.intro }}</p></div>
+    <p class="notice-soft" id="areaNote" hidden></p>
+    <p class="notice-soft"><span class="badge badge-directory">Directory listing</span> means we show only the name and location published on the business's own website. Prices and WhatsApp booking switch on when the business joins.</p>
+    <div class="grid-cards" id="cards" data-page="{{ m.slug }}" data-noun="{{ m.noun or 'places' }}">
+      {% for v in listings %}
+      {{ listing_card(v, m, root, near_label) }}
+      {% if loop.index == 4 or (loop.last and loop.length < 4) %}{{ vendor_card(m, root) }}{% endif %}
+      {% endfor %}
     </div>
-    <p class="coming" id="noMatch" hidden style="margin-top:24px">Nothing matches yet. Try another filter or search.</p>
+    <p class="coming" id="noMatch" hidden>Nothing matches those filters yet. <button type="button" class="linklike" id="noMatchClear">Clear the filters</button></p>
   </div>
 </section>
+{% include "partials/drawer.html" %}
 {% endif %}
 
+{% if m.slug == 'rides' %}{% include "partials/rides.html" %}{% endif %}
 {% include "partials/extras.html" %}
+
+<nav class="next-stop" aria-label="Continue the route">
+  <div class="wrap">
+    {% if prev_m %}<a class="ns ns-prev" href="{{ root }}{{ prev_m.slug }}/"><span>← Stop {{ prev_m.stop }}</span><strong>{{ prev_m.label }}</strong></a>{% else %}<a class="ns ns-prev" href="{{ root }}"><span>← Start</span><strong>Home</strong></a>{% endif %}
+    {% if next_m %}<a class="ns ns-next" href="{{ root }}{{ next_m.slug }}/"><span>Next stop {{ next_m.stop }} →</span><strong>{{ next_m.label }}</strong><em>{{ next_m.card_home }}</em></a>{% else %}<a class="ns ns-next" href="{{ root }}"><span>End of the route →</span><strong>Back to the start</strong></a>{% endif %}
+  </div>
+</nav>
 {% endblock %}

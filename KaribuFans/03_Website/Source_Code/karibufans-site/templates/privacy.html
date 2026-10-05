@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import crumbs %}
+{% block title %}Privacy notice · {{ site.name }}{% endblock %}
+{% block description %}What {{ site.name }} collects, what stays on your device, and your rights under Kenya's Data Protection Act, 2019.{% endblock %}
+{% block main %}
+<section class="band page-plain">
+  <div class="wrap prose">
+    {{ crumbs(site, root, [('Privacy notice', '')]) }}
+    <h1 class="h-page">Privacy notice</h1>
+    <p class="hint">Last updated {{ site.privacy_updated }}</p>
+    <p class="lede-dark">{{ site.name }} is a city guide for Nairobi. You do not need an account to use it, and we do not run a database of visitors. This notice explains the little information that is involved and who handles it.</p>
+
+    <h2>Who we are</h2>
+    <p>{{ site.name }} is run from Nairobi, Kenya. For any question about this notice or your information, email <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>.</p>
+
+    <h2>What stays on your own device</h2>
+    <p>To save you repeating yourself, your browser remembers a few choices on your own phone or computer: the area and filters you picked, your search words on each page, and the dates and number of guests you entered for a stay. This is kept in your browser's local storage. It is not sent to us, and you can remove it at any time by clearing this site's data in your browser settings.</p>
+
+    <h2>What we receive from you</h2>
+    <p>We receive information only when you choose to message us on WhatsApp, for example to list a business, claim or remove a listing, or ask for a ticket sale alert. The form on this site prepares the message, and you send it yourself from WhatsApp. We then see your WhatsApp number and what you wrote, and we use them only to reply and to do what you asked.</p>
+    <p>When you message a business from a listing, that message goes straight from you to the business. We do not see it, and we never handle your payment.</p>
+
+    <h2>Other services this site relies on</h2>
+    <ul>
+      <li><strong>Hosting.</strong> The site is hosted by Vercel. Like any web host, it processes technical details such as your IP address in order to deliver the pages.</li>
+      <li><strong>Fonts.</strong> The typefaces are loaded from Google Fonts, so your browser contacts Google to fetch them.</li>
+      <li><strong>Links out.</strong> Directions open Google Maps, ride buttons open Uber or Bolt, booking buttons open WhatsApp, and listings link to each business's own website. Once you leave this site, that service's own privacy policy applies.</li>
+    </ul>
+    <p>We do not use advertising cookies or analytics trackers on this site.</p>
+
+    <h2>Business listings</h2>
+    <p>A card marked “Directory listing” shows only a business's name and location as published on its own website. If it is your business, you can claim the listing to add your details, or ask us to remove it, from the link on the listing or by email. We act on removal requests promptly.</p>
+
+    <h2>Your rights</h2>
+    <p>Under Kenya's Data Protection Act, 2019 you have the right to be told how your personal data is used, to access it, to have it corrected or deleted, and to object to its use. To exercise any of these, email <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>. If you are not satisfied with our answer, you can complain to the Office of the Data Protection Commissioner.</p>
+
+    <h2>Changes</h2>
+    <p>If the site starts to collect anything more, for example when accounts or online booking are added, we will update this notice first and change the date at the top.</p>
+    <p><a class="btn btn-ghost" href="{{ root }}">Back to the homepage</a></p>
+  </div>
+</section>
+{% endblock %}

@@ -1,16 +1,18 @@
 {% extends "base.html" %}
+{% from "partials/macros.html" import crumbs %}
 {% block title %}List your business · {{ site.name }}{% endblock %}
 {% block main %}
-<section class="band">
+<section class="band page-plain">
   <div class="wrap two-col" style="align-items:start">
-    <div style="display:flex;flex-direction:column;gap:18px">
-      <div class="eyebrow on-light" style="color:var(--canopy)">For Nairobi businesses</div>
-      <h1 style="font-weight:800;font-size:clamp(34px,5vw,56px);line-height:1">List your business</h1>
-      <p style="font-size:18px;color:#33403A">No listing fee. You pay a commission only on customers we send you. Customers contact you directly on WhatsApp or by phone and pay you directly.</p>
+    <div class="stack">
+      {{ crumbs(site, root, [('List your business', '')]) }}
+      <div class="eyebrow on-light">For Nairobi businesses</div>
+      <h1 class="h-page">List your business</h1>
+      <p class="lede-dark">No listing fee. You pay a commission only on customers we send you. Customers contact you directly on WhatsApp or by phone and pay you directly.</p>
       <div class="tips" style="grid-template-columns:1fr">
-        <div class="tip tip-day"><strong>1. Send your details</strong><p>Fill in the form. It opens WhatsApp with your details ready to send to us.</p></div>
-        <div class="tip tip-day"><strong>2. We check and set up</strong><p>We confirm your details and ask for 3–5 photos.</p></div>
-        <div class="tip tip-day"><strong>3. You go live</strong><p>Your listing appears with WhatsApp, Call and Directions buttons.</p></div>
+        <div class="tip"><strong>1. Send your details</strong><p>Fill in the form. It opens WhatsApp with your details ready to send to us.</p></div>
+        <div class="tip"><strong>2. We check and set up</strong><p>We confirm your details and ask for 3–5 photos.</p></div>
+        <div class="tip"><strong>3. You go live</strong><p>Your listing appears with WhatsApp, Call and Directions buttons.</p></div>
       </div>
     </div>
     <form class="join-form" id="joinForm" onsubmit="return false" aria-label="Business sign-up">
@@ -20,8 +22,8 @@
       <label for="jContact">Your name<input id="jContact"></label>
       <label for="jPhone">WhatsApp number<input id="jPhone" inputmode="tel" placeholder="07XX XXX XXX"></label>
       <label for="jNote">Anything else?<textarea id="jNote" rows="3" placeholder="Opening hours, prices, what makes you special"></textarea></label>
-      <label class="check"><input type="checkbox" id="jOk"> <span>I agree that {{ site.name }} may store these details to set up my listing. [Link to privacy notice]</span></label>
-      <button type="button" class="btn btn-green" id="joinGo" data-wa="{{ site.contact_whatsapp }}">Send on WhatsApp</button>
+      <label class="check"><input type="checkbox" id="jOk"> <span>I agree that {{ site.name }} may use these details to set up my listing, as explained in the <a href="{{ root }}privacy/">privacy notice</a>.</span></label>
+      <button type="button" class="btn btn-primary" id="joinGo" data-wa="{{ site.contact_whatsapp }}">Send on WhatsApp</button>
       <p class="hint" id="joinMsg" aria-live="polite"></p>
     </form>
   </div>
