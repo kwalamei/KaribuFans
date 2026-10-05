@@ -9,13 +9,33 @@
     "dates_note": "Reported as 19 June – 17 July 2027; confirm with CAF before showing on the site"
   },
   "disclaimer": "KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist's impressions.",
-  "copyright": "[Registered business name]",
+  "copyright": "KaribuFans",
   "languages": [
-    "EN",
-    "SW",
-    "FR",
-    "AR",
-    "PT"
+    {
+      "code": "EN",
+      "name": "English",
+      "live": true
+    },
+    {
+      "code": "SW",
+      "name": "Kiswahili",
+      "live": false
+    },
+    {
+      "code": "FR",
+      "name": "French",
+      "live": false
+    },
+    {
+      "code": "AR",
+      "name": "Arabic",
+      "live": false
+    },
+    {
+      "code": "PT",
+      "name": "Portuguese",
+      "live": false
+    }
   ],
   "brand": {
     "first": "Karibu",
@@ -28,5 +48,10 @@
   "stadiums": [
     "Talanta Stadium"
   ],
-  "stadiums_note": "Only list stadiums officially confirmed as Nairobi venues."
+  "stadiums_note": "Only list stadiums officially confirmed as Nairobi venues.",
+  "copyright_note": "Shown in the footer. Replace with the registered business name once the registrar issues it.",
+  "contact_email": "maxkobaai@gmail.com",
+  "contact_email_note": "Shown on the privacy page as the contact for data questions and listing removals.",
+  "languages_note": "Set live to true for a language only when its translation is published.",
+  "privacy_updated": "5 October 2026"
 }
