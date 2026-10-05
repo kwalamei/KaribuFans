@@ -111,7 +111,7 @@
       $('stayCount').textContent = shown + (shown === 1 ? ' stay' : ' stays');
       $('noMatch').hidden = shown !== 0;
       var help = $('vibeHelp'), vb = S.vibes.filter(function (x) { return x.name === st.v; })[0];
-      help.hidden = !vb; if (vb) help.textContent = vb.icon + ' ' + vb.name + ': ' + vb.desc;
+      help.hidden = !vb; if (vb) help.textContent = vb.icon + ' ' + vb.name + ': ' + vb.desc + ' Vibe labels appear once a business has joined and confirmed its details.';
       store.set('filter_stays2', st);
     }
     function clearStays() { st = { a: '', v: '', t: '', q: '' }; sBox.value = ''; applyStays(); }
@@ -272,6 +272,8 @@
       msg.textContent = 'WhatsApp opened with your message. Press send to finish.';
     });
   }
+  var claim = new URLSearchParams(location.search).get('claim');
+  if (claim && $('jName')) { $('jName').value = claim.slice(0, 120); if ($('jNote') && !$('jNote').value) $('jNote').value = 'I want to claim (or remove) the existing listing for this business.'; }
   waForm('joinGo', 'jOk', 'joinMsg', function () {
     var name = $('jName').value.trim();
     if (!name) { $('joinMsg').textContent = 'Please add your business name.'; return ''; }

@@ -25,18 +25,34 @@
 
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">Stays in Nairobi</h2><p>Sample listings are shown until real businesses sign up.</p></div>
+    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">Stays in Nairobi</h2><p>Listings marked “Not yet verified” use only the name and location from each business's own website. Booking switches on when the business joins.</p></div>
     <p class="hint vibe-help" id="vibeHelp" hidden></p>
     <label class="find" style="margin-bottom:20px"><span class="sr-only">Search stays</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search stays by name, area or feature" autocomplete="off"></label>
     <div class="grid-cards" id="cards" data-page="stays">
       {% for v in listings %}
+      {% if v.status == 'unclaimed' %}
+      <article class="card stay-card unclaimed" id="card-{{ v.id }}" data-id="{{ v.id }}" data-type="{{ v.type }}" data-area="{{ v.zone }}" data-near="{{ '1' if v.near_stadium else '' }}" data-vibe="" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ v.zone ~ ' ' ~ v.street) | lower }}">
+        <div class="card-body">
+          <div class="un-top"><span class="un-area">{{ v.area }}</span><span class="un-flag">Not yet verified by this business</span></div>
+          <h3>{{ v.name }}</h3>
+          <div class="card-meta">{{ v.type }}{% if v.street %} · {{ v.street }}{% endif %}</div>
+          {% if v.near_stadium %}<div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>{{ f.near_label }}</div>{% endif %}
+          <p class="hint un-src">Name and location from the business's own website, checked {{ v.checked }}.</p>
+          <div class="card-actions" style="margin-top:auto">
+            <a class="btn btn-ghost" href="{{ v.website }}" target="_blank" rel="noopener nofollow">Visit website ↗</a>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query={{ v.map_query | urlencode }}" target="_blank" rel="noopener" aria-label="Directions to {{ v.name }}">Directions</a>
+          </div>
+          <a class="un-claim" href="{{ root }}list-your-business/?claim={{ v.name | urlencode }}">Is this your business? Claim or remove this listing</a>
+        </div>
+      </article>
+      {% else %}
       {% set q = v.map_query or (v.name ~ ' ' ~ v.area ~ ' Nairobi') %}
-      <article class="card stay-card" id="card-{{ v.id }}" data-id="{{ v.id }}" data-type="{{ v.type }}" data-area="{{ v.area }}" data-near="{{ '1' if v.near_stadium else '' }}" data-vibe="{{ v.vibe }}" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ v.vibe ~ ' ' ~ v.badge ~ ' ' ~ (v.amenities|join(' '))) | lower }}">
+      <article class="card stay-card" id="card-{{ v.id }}" data-id="{{ v.id }}" data-type="{{ v.type }}" data-area="{{ v.zone or v.area }}" data-near="{{ '1' if v.near_stadium else '' }}" data-vibe="{{ v.vibe }}" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ v.vibe ~ ' ' ~ v.badge ~ ' ' ~ (v.amenities|join(' '))) | lower }}">
         <button type="button" class="card-photo stay-open" data-id="{{ v.id }}" aria-label="View details for {{ v.name }}">
           {% if v.photos and v.photos[0] %}<img src="{{ v.photos[0] }}" alt="" loading="lazy">{% else %}
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>{% endif %}
           <span class="badge badge-vibe"><span aria-hidden="true">{{ vicons[v.vibe] }}</span> {{ v.area }} · {{ v.badge }}</span>
-          {% if v.sample %}<span class="sample">SAMPLE LISTING</span>{% endif %}
+          {% if v.sample %}<span class="sample">EXAMPLE LISTING</span>{% endif %}
         </button>
         <div class="card-body">
           <div class="card-top"><h3>{{ v.name }}</h3></div>
@@ -50,6 +66,7 @@
           </div>
         </div>
       </article>
+      {% endif %}
       {% endfor %}
     </div>
     <p class="coming" id="noMatch" hidden style="margin-top:24px">No stays match those filters yet. <button type="button" class="linklike" id="noMatchClear">Clear the filters</button></p>
@@ -65,7 +82,7 @@
   <div class="drawer-scroll">
     <div class="d-photos" id="dPhotos"></div>
     <div class="d-body">
-      <span class="sample d-sample" id="dSample" hidden>SAMPLE LISTING</span>
+      <span class="sample d-sample" id="dSample" hidden>EXAMPLE LISTING</span>
       <h2 id="dName"></h2>
       <p class="card-meta" id="dMeta"></p>
       <p class="d-price" id="dPrice"></p>
@@ -99,4 +116,4 @@
     </div>
   </div>
 </aside>
-<script type="application/json" id="staysData">{{ {'site': site.name, 'listings': listings, 'vibes': f.vibes, 'icons': f.amenity_icons} | tojson }}</script>
+<script type="application/json" id="staysData">{{ {'site': site.name, 'listings': listings | rejectattr('status', 'equalto', 'unclaimed') | list, 'vibes': f.vibes, 'icons': f.amenity_icons} | tojson }}</script>

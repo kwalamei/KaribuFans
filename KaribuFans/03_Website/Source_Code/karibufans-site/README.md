@@ -22,6 +22,9 @@ In `data/listings/<page>.json` add an entry with `"sample": false`, the WhatsApp
 ## Add a real stay
 In `data/listings/stays.json` each stay has: `id` (short, unique, no spaces, e.g. `kilimani-green-apts`; it becomes the share link), `type` (Hotel, B&B, Apartment, Guesthouse), `area`, `near_stadium` (true/false), `vibe` (Party Base, Chill & Green, Transit Fast), `badge` (two or three words shown on the photo), `price` (e.g. `from KES 4,500 / night`), `price_checked` (date the host confirmed it), `amenities` (list), `about`, `photos` (up to three paths, first one is the card photo), `whatsapp`, `phone`. Set `"sample": false`. The filter choices, vibe descriptions and the payment note are in `data/modules.json` under Stays, `filters`.
 
+## Unclaimed stays
+A stay with `"status": "unclaimed"` is a real business that has not joined yet. It shows only the name, type, area, street, a link to the business's own website, Directions and a claim/remove link. It has no photos, price, phone or WhatsApp button. Keep `source_url` and `checked` so every entry can be traced. When the business joins, change `status` to `"joined"` and fill in the fields listed above. Remove an entry straight away if the business asks.
+
 ## Deploy on Vercel (first time)
 1. Push this folder to a new GitHub repository.
 2. In Vercel: Add New → Project → import the repository.
@@ -38,4 +41,5 @@ In `data/listings/stays.json` each stay has: `id` (short, unique, no spaces, e.g
 - 29 Sep (Day 1): homepage, shared header and footer, page hero with route bar, seven module pages with sample listings and filters, mobile layout.
 - 29 Sep (Days 2–4 batch): search page and in-page search; filters and language remembered; WhatsApp, Call and Directions buttons; distance-to-stadium tag; opening hours with Open now/Closed (Nairobi time); nightlife dress code and busiest times; Rides planner (Uber link with destination, Bolt, Little, popular trips, safety, matatu tips); Matchday fixtures with Add to calendar, stadium essentials; Tickets notice, fixtures with status labels, alert request, fake-ticket tips; vendor sign-up form (sends via WhatsApp); Kiswahili added to languages.
 - 5 Oct: Stays page: Area / Vibe / Stay type filters in a sticky bar, vibe badge on cards, details drawer with three photos, dates and guests, pre-filled WhatsApp enquiry, payment note, shareable link per stay.
+- 5 Oct: 34 real Nairobi stays loaded as unclaimed listings (names and locations from each business's own website); claim/remove link pre-fills the sign-up form.
 - Next: real photos, privacy notice text, first real vendors.
