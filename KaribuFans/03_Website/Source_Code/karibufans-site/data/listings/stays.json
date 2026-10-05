@@ -746,35 +746,5 @@
     "whatsapp": "",
     "phone": "",
     "sample": false
-  },
-  {
-    "id": "example",
-    "type": "Apartment",
-    "name": "[Example: a business that has joined]",
-    "area": "Kilimani",
-    "near_stadium": false,
-    "vibe": "Chill & Green",
-    "badge": "Quiet",
-    "price": "from KES [X] / night",
-    "price_checked": "",
-    "amenities": [
-      "High-speed fibre Wi-Fi",
-      "Self check-in",
-      "Kitchen",
-      "Balcony"
-    ],
-    "tags": [
-      "High-speed fibre Wi-Fi",
-      "Self check-in"
-    ],
-    "about": "[Two lines from the host about the place.]",
-    "photos": [],
-    "whatsapp": "",
-    "phone": "",
-    "map_query": "",
-    "dist": "",
-    "sample": true,
-    "zone": "Kilimani",
-    "status": "joined"
   }
 ]

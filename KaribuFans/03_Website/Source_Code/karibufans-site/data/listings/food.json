@@ -1,82 +1,110 @@
 [
   {
-    "type": "Nyama choma",
-    "name": "[Restaurant name]",
-    "area": "[Area]",
-    "price": "KES [X]–[X] per person",
-    "tags": [
-      "Outdoor",
-      "Groups"
-    ],
-    "note": "",
+    "id": "the-talisman-restaurant",
+    "status": "unclaimed",
+    "type": "Restaurant",
+    "name": "The Talisman Restaurant",
+    "area": "Karen",
+    "zone": "Karen",
+    "street": "Ngong Road, Karen",
+    "website": "https://www.thetalismanrestaurant.com/",
+    "source_url": "https://www.thetalismanrestaurant.com/",
+    "checked": "5 Oct 2026",
+    "map_query": "The Talisman Restaurant, Ngong Road, Karen, Nairobi",
+    "tags": [],
+    "photos": [],
     "whatsapp": "",
     "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium",
-    "hours": {
-      "open": "11:00",
-      "close": "23:00"
-    }
+    "sample": false
   },
   {
-    "type": "Swahili",
-    "name": "[Restaurant name]",
-    "area": "[Area]",
-    "price": "KES [X]–[X] per person",
-    "tags": [
-      "Halal",
-      "Takeaway"
-    ],
-    "note": "",
+    "id": "fogo-gaucho-kilimani",
+    "status": "unclaimed",
+    "type": "Brazilian steakhouse",
+    "name": "Fogo Gaucho, Kilimani",
+    "area": "Kilimani",
+    "zone": "Kilimani",
+    "street": "Galana Plaza, Galana Road",
+    "website": "https://fogogaucho.co.ke/",
+    "source_url": "https://fogogaucho.co.ke/contact/",
+    "checked": "5 Oct 2026",
+    "map_query": "Fogo Gaucho, Kilimani, Galana Plaza, Galana Road, Nairobi",
+    "tags": [],
+    "photos": [],
     "whatsapp": "",
     "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium",
-    "hours": {
-      "open": "08:00",
-      "close": "22:00"
-    }
+    "sample": false
   },
   {
-    "type": "Cafés",
-    "name": "[Café name]",
-    "area": "[Area]",
-    "price": "KES [X]–[X] per person",
-    "tags": [
-      "Breakfast",
-      "Wi-Fi"
-    ],
-    "note": "",
+    "id": "abyssinia-restaurant",
+    "status": "unclaimed",
+    "type": "Ethiopian",
+    "name": "Abyssinia Restaurant",
+    "area": "Westlands",
+    "zone": "Westlands",
+    "street": "Muguga Green, off Brookside Grove, Waiyaki Way",
+    "website": "https://www.abyssiniarestaurantnairobi.com/",
+    "source_url": "https://www.abyssiniarestaurantnairobi.com/",
+    "checked": "5 Oct 2026",
+    "map_query": "Abyssinia Restaurant, Muguga Green, off Brookside Grove, Waiyaki Way, Nairobi",
+    "tags": [],
+    "photos": [],
     "whatsapp": "",
     "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium",
-    "hours": {
-      "open": "07:00",
-      "close": "18:00"
-    }
+    "sample": false
   },
   {
-    "type": "Open late",
-    "name": "[Restaurant name]",
-    "area": "[Area]",
-    "price": "KES [X]–[X] per person",
-    "tags": [
-      "Screens",
-      "Groups"
-    ],
-    "note": "",
+    "id": "cjs-koinange-street",
+    "status": "unclaimed",
+    "type": "Restaurant",
+    "name": "CJ's, Koinange Street",
+    "area": "CBD",
+    "zone": "CBD",
+    "street": "Koinange Street",
+    "website": "https://cjs.co.ke/",
+    "source_url": "https://cjs.co.ke/",
+    "checked": "5 Oct 2026",
+    "map_query": "CJ's, Koinange Street, Koinange Street, Nairobi",
+    "tags": [],
+    "photos": [],
     "whatsapp": "",
     "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium",
-    "hours": {
-      "open": "12:00",
-      "close": "02:00"
-    }
+    "sample": false
+  },
+  {
+    "id": "cjs-kilimani",
+    "status": "unclaimed",
+    "type": "Restaurant",
+    "name": "CJ's, Kilimani",
+    "area": "Kilimani",
+    "zone": "Kilimani",
+    "street": "",
+    "website": "https://cjs.co.ke/",
+    "source_url": "https://cjs.co.ke/",
+    "checked": "5 Oct 2026",
+    "map_query": "CJ's Kilimani, Nairobi",
+    "tags": [],
+    "photos": [],
+    "whatsapp": "",
+    "phone": "",
+    "sample": false
+  },
+  {
+    "id": "the-carnivore-restaurant",
+    "status": "unclaimed",
+    "type": "Charcoal grill",
+    "name": "The Carnivore Restaurant",
+    "area": "Lang'ata",
+    "zone": "Lang'ata",
+    "street": "",
+    "website": "https://tamarind.co.ke/carnivore/",
+    "source_url": "https://tamarind.co.ke/carnivore/",
+    "checked": "5 Oct 2026",
+    "map_query": "Carnivore Restaurant, Nairobi",
+    "tags": [],
+    "photos": [],
+    "whatsapp": "",
+    "phone": "",
+    "sample": false
   }
 ]

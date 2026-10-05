@@ -1,66 +1,22 @@
 [
   {
-    "type": "Watch parties",
-    "name": "[Venue name]",
-    "area": "[Area]",
-    "price": "Entry KES [X]",
+    "id": "axa-sports-bar-and-grill",
+    "status": "unclaimed",
+    "type": "Sports bar",
+    "name": "AXA Sports Bar & Grill",
+    "area": "Karen",
+    "zone": "Karen",
+    "street": "Bogani East Road, Karen",
+    "website": "https://axa.co.ke/",
+    "source_url": "https://axa.co.ke/",
+    "checked": "5 Oct 2026",
+    "map_query": "AXA Sports Bar & Grill, Bogani East Road, Karen, Nairobi",
     "tags": [
-      "Big screens",
-      "Groups"
+      "Live sport on screen"
     ],
-    "note": "Open till [time]",
+    "photos": [],
     "whatsapp": "",
     "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium"
-  },
-  {
-    "type": "Fan zones",
-    "name": "[Fan zone name]",
-    "area": "[Area]",
-    "price": "Free entry [TBC]",
-    "tags": [
-      "Food stalls",
-      "Family friendly"
-    ],
-    "note": "Open till [time]",
-    "whatsapp": "",
-    "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium"
-  },
-  {
-    "type": "Watch parties",
-    "name": "[Bar name]",
-    "area": "[Area]",
-    "price": "No entry fee",
-    "tags": [
-      "Big screens",
-      "Food"
-    ],
-    "note": "Open till [time]",
-    "whatsapp": "",
-    "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium"
-  },
-  {
-    "type": "Family friendly",
-    "name": "[Venue name]",
-    "area": "[Area]",
-    "price": "Entry KES [X]",
-    "tags": [
-      "Kids area",
-      "Screens"
-    ],
-    "note": "Open till [time]",
-    "whatsapp": "",
-    "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium"
+    "sample": false
   }
 ]

@@ -1,94 +1,61 @@
 [
   {
-    "type": "Clubs",
-    "name": "[Club name]",
-    "area": "[Area]",
-    "price": "Entry KES [X]",
+    "id": "k1-klub-house",
+    "status": "unclaimed",
+    "type": "Bar & live music",
+    "name": "K1 Klub House",
+    "area": "Westlands",
+    "zone": "Westlands",
+    "street": "Ojijo Road",
+    "website": "https://www.kahamagroup.com/k1klubhouse",
+    "source_url": "https://www.kahamagroup.com/k1klubhouse",
+    "checked": "5 Oct 2026",
+    "map_query": "K1 Klub House, Ojijo Road, Nairobi",
     "tags": [
-      "DJ",
-      "Dress code"
+      "Live music"
     ],
-    "note": "",
+    "photos": [],
     "whatsapp": "",
     "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium",
-    "hours": {
-      "open": "18:00",
-      "close": "04:00"
-    },
-    "entry": "Entry KES [X]",
-    "dress": "Smart casual",
-    "peak": "23:00–02:00"
+    "sample": false
   },
   {
-    "type": "Rooftops & lounges",
-    "name": "[Lounge name]",
-    "area": "[Area]",
-    "price": "Cocktails from KES [X]",
+    "id": "nairobi-street-kitchen",
+    "status": "unclaimed",
+    "type": "Bars & entertainment",
+    "name": "Nairobi Street Kitchen",
+    "area": "Westlands",
+    "zone": "Westlands",
+    "street": "Mpaka Road",
+    "website": "https://nairobistreetkitchen.com/",
+    "source_url": "https://nairobistreetkitchen.com/",
+    "checked": "5 Oct 2026",
+    "map_query": "Nairobi Street Kitchen, Mpaka Road, Nairobi",
     "tags": [
-      "Skyline view",
-      "Smart casual"
+      "Rooftop bars",
+      "Live music"
     ],
-    "note": "",
+    "photos": [],
     "whatsapp": "",
     "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium",
-    "hours": {
-      "open": "17:00",
-      "close": "01:00"
-    },
-    "entry": "Cocktails from KES [X]",
-    "dress": "Smart casual",
-    "peak": "20:00–23:00"
+    "sample": false
   },
   {
-    "type": "Bars",
-    "name": "[Bar name]",
-    "area": "[Area]",
-    "price": "Beers from KES [X]",
-    "tags": [
-      "Match screenings",
-      "Groups"
-    ],
-    "note": "",
+    "id": "quiver-kilimani",
+    "status": "unclaimed",
+    "type": "Restaurant & nightclub",
+    "name": "Quiver Kilimani",
+    "area": "Kilimani",
+    "zone": "Kilimani",
+    "street": "",
+    "website": "https://quiver.co.ke/",
+    "source_url": "https://quiver.co.ke/",
+    "checked": "5 Oct 2026",
+    "map_query": "Quiver Kilimani, Nairobi",
+    "tags": [],
+    "photos": [],
     "whatsapp": "",
     "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium",
-    "hours": {
-      "open": "16:00",
-      "close": "00:00"
-    },
-    "entry": "Beers from KES [X]",
-    "dress": "Casual",
-    "peak": "After matches"
-  },
-  {
-    "type": "Live music",
-    "name": "[Venue name]",
-    "area": "[Area]",
-    "price": "Entry KES [X]",
-    "tags": [
-      "Band",
-      "Benga · Afrobeats"
-    ],
-    "note": "",
-    "whatsapp": "",
-    "phone": "",
-    "sample": true,
-    "map_query": "",
-    "dist": "[X] min to Talanta Stadium",
-    "hours": {
-      "open": "19:00",
-      "close": "02:00"
-    },
-    "entry": "Entry KES [X]",
-    "dress": "Casual",
-    "peak": "21:00–00:00"
+    "sample": false
   }
 ]
