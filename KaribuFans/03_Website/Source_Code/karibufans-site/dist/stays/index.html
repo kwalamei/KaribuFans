@@ -4,14 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Stays · KaribuFans</title>
-<meta name="description" content="Hotels, B&amp;Bs and apartments across Nairobi. Message the host on WhatsApp and pay them directly.">
+<meta name="description" content="Hotels, B&amp;Bs and apartments across Nairobi. See where each one is, then book with the business directly.">
+<meta name="theme-color" content="#0A1128">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
 </head>
-<body class="day">
+<body>
 
+<a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="../" aria-label="KaribuFans home">
@@ -23,8 +25,8 @@
     </nav>
     <div class="nav-tools">
       <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
-      <button type="button" class="lang" id="langBtn" aria-label="Change language">EN</button>
-      <a class="btn btn-green" href="../list-your-business/">List your business</a>
+      <a class="lang" href="#languages" aria-label="Language: English. See other languages">EN</a>
+      <a class="btn btn-primary nav-cta" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -32,7 +34,11 @@
   </div>
 </header>
 
-<main>
+<main id="main">
+
+
+
+
 
 <section class="hero page-hero" aria-labelledby="pageH">
   
@@ -40,41 +46,46 @@
   <span class="credit">Artist's impression</span>
   
   <div class="wrap hero-body">
-    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 1 · Stays</div>
+    <nav class="crumbs" aria-label="Breadcrumb"><ol>
+  <li><a href="../">KaribuFans</a></li>
+  <li><span aria-current="page">Stays</span></li>
+  <li id="crumbArea" hidden></li>
+</ol></nav>
+    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 1 of 7 · Stays</div>
     <div class="script">Lala salama.</div>
     <h1 id="pageH">Wake up to the best views of Nairobi.</h1>
-    <p class="lede">Hotels, B&amp;Bs and apartments across Nairobi. Message the host on WhatsApp and pay them directly.</p>
+    <p class="lede">Hotels, B&amp;Bs and apartments across Nairobi. See where each one is, then book with the business directly.</p>
   </div>
   <nav class="routebar" aria-label="The route: seven stops">
-  <div class="wrap"><div style="position:relative">
+  <div class="wrap"><div class="routebar-in">
     <ol>
       
       <li class="current">
-        <a href="../stays/" aria-current="page"><span class="dot"><i></i></span><span class="label">1 Stays</span></a>
+        <a href="../stays/" aria-current="step"><span class="dot"><i></i></span><span class="label"><span class="n">1</span> Stays</span></a>
       </li>
       
       <li class="">
-        <a href="../food/" ><span class="dot"><i></i></span><span class="label">2 Food</span></a>
+        <a href="../food/" ><span class="dot"><i></i></span><span class="label"><span class="n">2</span> Food</span></a>
       </li>
       
       <li class="">
-        <a href="../rides/" ><span class="dot"><i></i></span><span class="label">3 Rides</span></a>
+        <a href="../rides/" ><span class="dot"><i></i></span><span class="label"><span class="n">3</span> Rides</span></a>
       </li>
       
       <li class="">
-        <a href="../matchday/" ><span class="dot"><i></i></span><span class="label">4 Matchday</span></a>
+        <a href="../matchday/" ><span class="dot"><i></i></span><span class="label"><span class="n">4</span> Matchday</span></a>
       </li>
       
       <li class="">
-        <a href="../nightlife/" ><span class="dot"><i></i></span><span class="label">5 Nightlife</span></a>
+        <a href="../nightlife/" ><span class="dot"><i></i></span><span class="label"><span class="n">5</span> Nightlife</span></a>
       </li>
       
       <li class="">
-        <a href="../movies-games/" ><span class="dot"><i></i></span><span class="label">6 Movies &amp; Games</span></a>
+        <a href="../movies-games/" ><span class="dot"><i></i></span><span class="label"><span class="n">6</span> Movies &amp; Games</span></a>
       </li>
       
       <li class="">
-        <a href="../tickets/" ><span class="dot"><i></i></span><span class="label">7 Tickets</span></a>
+        <a href="../tickets/" ><span class="dot"><i></i></span><span class="label"><span class="n">7</span> Tickets</span></a>
       </li>
       
     </ol>
@@ -84,12 +95,7 @@
 </section>
 
 
-
-
-
-
-
-<div class="filters stay-filters" id="stayFilters" role="group" aria-label="Filter stays">
+<div class="filters" id="filters" role="group" aria-label="Filter Stays">
   <div class="wrap">
     <label class="sel"><span>Area</span>
       <select id="fArea">
@@ -97,922 +103,1250 @@
         <option value="Kilimani">Kilimani</option><option value="Westlands">Westlands</option><option value="CBD">CBD</option><option value="Karen">Karen</option><option value="Ngong Road">Ngong Road</option><option value="Airport &amp; Mombasa Road">Airport &amp; Mombasa Road</option>
         <option value="__near">Near Talanta Stadium</option>
       </select></label>
-    <label class="sel"><span>Vibe</span>
-      <select id="fVibe">
-        <option value="">Any vibe</option>
-        <option value="Party Base">🌆 Party Base</option><option value="Chill &amp; Green">🌿 Chill &amp; Green</option><option value="Transit Fast">✈️ Transit Fast</option>
-      </select></label>
-    <label class="sel"><span>Stay type</span>
+    
+    <label class="sel"><span>Type</span>
       <select id="fType">
         <option value="">Any type</option>
-        <option value="Hotel">Hotel</option><option value="B&amp;B">B&amp;B</option><option value="Apartment">Apartment</option><option value="Guesthouse">Guesthouse</option>
+        <option value="Apartment">Apartment</option><option value="Guesthouse">Guesthouse</option><option value="Hotel">Hotel</option>
       </select></label>
-    <button type="button" class="chip" id="fClear" hidden>Clear</button>
-    <span class="stay-count" id="stayCount" aria-live="polite"></span>
+    
+    
+    <label class="find"><span class="sr-only">Search Stays</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search by name or street" autocomplete="off"></label>
+    <button type="button" class="chip" id="fClear" hidden>Clear filters</button>
+    <span class="count" id="listCount" aria-live="polite"></span>
   </div>
 </div>
 
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">Stays in Nairobi</h2><p>Listings marked “Not yet verified” use only the name and location from each business's own website. Booking switches on when the business joins.</p></div>
-    <p class="hint vibe-help" id="vibeHelp" hidden></p>
-    <label class="find" style="margin-bottom:20px"><span class="sr-only">Search stays</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search stays by name, area or feature" autocomplete="off"></label>
-    <div class="grid-cards" id="cards" data-page="stays">
+    <div class="sec-head"><h2 id="listH">Stays in Nairobi</h2><p>We are building the Nairobi stays directory area by area: Kilimani, Westlands, the city centre, Karen, Ngong Road and the airport side.</p></div>
+    <p class="notice-soft" id="areaNote" hidden></p>
+    <p class="notice-soft"><span class="badge badge-directory">Directory listing</span> means we show only the name and location published on the business's own website. Prices and WhatsApp booking switch on when the business joins.</p>
+    <div class="grid-cards" id="cards" data-page="stays" data-noun="stays">
       
       
-      <article class="card stay-card unclaimed" id="card-woodmere-grand-hotel-and-serviced-apartments" data-id="woodmere-grand-hotel-and-serviced-apartments" data-type="Hotel" data-area="Kilimani" data-near="" data-vibe="" data-search="woodmere grand hotel and serviced apartments hotel kilimani kilimani rose avenue, off lenana rd">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F2E8"/>
+
+<article class="card is-directory" id="card-woodmere-grand-hotel-and-serviced-apartments" data-id="woodmere-grand-hotel-and-serviced-apartments" data-type="Hotel" data-area="Kilimani" data-near="" data-vibe="" data-search="woodmere grand hotel and serviced apartments hotel kilimani kilimani rose avenue, off lenana rd  ">
+  <button type="button" class="card-photo place-open" data-id="woodmere-grand-hotel-and-serviced-apartments" aria-label="View details for Woodmere Grand Hotel and Serviced Apartments">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
   <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#F7F2E8" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
   <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#1F4D2B"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
-</svg><span class="badge badge-vibe">Kilimani</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Woodmere Grand Hotel and Serviced Apartments</h3>
-          <div class="card-meta">Hotel · Rose Avenue, off Lenana Rd</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://woodmeregrandhotel.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Woodmere%20Grand%20Hotel%20and%20Serviced%20Apartments%2C%20Rose%20Avenue%2C%20off%20Lenana%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Woodmere Grand Hotel and Serviced Apartments">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Woodmere%20Grand%20Hotel%20and%20Serviced%20Apartments">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Kilimani</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Woodmere Grand Hotel and Serviced Apartments</h3>
+    <div class="card-meta">Hotel · Rose Avenue, off Lenana Rd</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="woodmere-grand-hotel-and-serviced-apartments">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Woodmere%20Grand%20Hotel%20and%20Serviced%20Apartments%2C%20Rose%20Avenue%2C%20off%20Lenana%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Woodmere Grand Hotel and Serviced Apartments (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-royal-canaan-nairobi-hotel" data-id="royal-canaan-nairobi-hotel" data-type="Hotel" data-area="Kilimani" data-near="" data-vibe="" data-search="royal canaan nairobi hotel hotel kilimani kilimani tigoni road off chakka road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F2E8"/>
+
+<article class="card is-directory" id="card-royal-canaan-nairobi-hotel" data-id="royal-canaan-nairobi-hotel" data-type="Hotel" data-area="Kilimani" data-near="" data-vibe="" data-search="royal canaan nairobi hotel hotel kilimani kilimani tigoni road off chakka road  ">
+  <button type="button" class="card-photo place-open" data-id="royal-canaan-nairobi-hotel" aria-label="View details for Royal Canaan Nairobi Hotel">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
   <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#F7F2E8" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
   <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#1F4D2B"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
-</svg><span class="badge badge-vibe">Kilimani</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Royal Canaan Nairobi Hotel</h3>
-          <div class="card-meta">Hotel · Tigoni Road off Chakka Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://royalcanaannairobi.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Royal%20Canaan%20Nairobi%20Hotel%2C%20Tigoni%20Road%20off%20Chakka%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Royal Canaan Nairobi Hotel">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Royal%20Canaan%20Nairobi%20Hotel">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Kilimani</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Royal Canaan Nairobi Hotel</h3>
+    <div class="card-meta">Hotel · Tigoni Road off Chakka Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="royal-canaan-nairobi-hotel">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Royal%20Canaan%20Nairobi%20Hotel%2C%20Tigoni%20Road%20off%20Chakka%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Royal Canaan Nairobi Hotel (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-roma-courts-serviced-apartments" data-id="roma-courts-serviced-apartments" data-type="Apartment" data-area="Kilimani" data-near="" data-vibe="" data-search="roma courts serviced apartments apartment kilimani kilimani ">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F2E8"/>
+
+<article class="card is-directory" id="card-roma-courts-serviced-apartments" data-id="roma-courts-serviced-apartments" data-type="Apartment" data-area="Kilimani" data-near="" data-vibe="" data-search="roma courts serviced apartments apartment kilimani kilimani   ">
+  <button type="button" class="card-photo place-open" data-id="roma-courts-serviced-apartments" aria-label="View details for Roma Courts Serviced Apartments">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
   <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#F7F2E8" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
   <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#1F4D2B"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
-</svg><span class="badge badge-vibe">Kilimani</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Roma Courts Serviced Apartments</h3>
-          <div class="card-meta">Apartment</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://romacourts.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Roma%20Courts%20Serviced%20Apartments%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Roma Courts Serviced Apartments">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Roma%20Courts%20Serviced%20Apartments">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Kilimani</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Roma Courts Serviced Apartments</h3>
+    <div class="card-meta">Apartment</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="roma-courts-serviced-apartments">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Roma%20Courts%20Serviced%20Apartments%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Roma Courts Serviced Apartments (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-gemina-court" data-id="gemina-court" data-type="Apartment" data-area="Kilimani" data-near="" data-vibe="" data-search="gemina court apartment kilimani kilimani george padmore road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F2E8"/>
+
+<article class="card is-directory" id="card-gemina-court" data-id="gemina-court" data-type="Apartment" data-area="Kilimani" data-near="" data-vibe="" data-search="gemina court apartment kilimani kilimani george padmore road  ">
+  <button type="button" class="card-photo place-open" data-id="gemina-court" aria-label="View details for Gemina Court">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
   <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#F7F2E8" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
   <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#1F4D2B"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
-</svg><span class="badge badge-vibe">Kilimani</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Gemina Court</h3>
-          <div class="card-meta">Apartment · George Padmore Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.geminacourt.co.ke/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Gemina%20Court%2C%20George%20Padmore%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Gemina Court">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Gemina%20Court">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Kilimani</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Gemina Court</h3>
+    <div class="card-meta">Apartment · George Padmore Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="gemina-court">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Gemina%20Court%2C%20George%20Padmore%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Gemina Court (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
+      <aside class="card vendor-card" aria-label="For Nairobi businesses">
+  <span class="eyebrow">For Nairobi businesses</span>
+  <h3>Own a hotel, B&amp;B or apartment in Nairobi?</h3>
+  <p>Get listed before visiting fans arrive for the 2027 tournament. No listing fee: you pay a commission only on customers we send you.</p>
+  <a class="btn btn-navy" href="../list-your-business/">List your business</a>
+</aside>
       
       
-      
-      <article class="card stay-card unclaimed" id="card-waridi-paradise-hotel-suites" data-id="waridi-paradise-hotel-suites" data-type="Hotel" data-area="Kilimani" data-near="" data-vibe="" data-search="waridi paradise hotel &amp; suites hotel kilimani kilimani rose avenue, off argwings kodhek rd">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F2E8"/>
+
+<article class="card is-directory" id="card-waridi-paradise-hotel-suites" data-id="waridi-paradise-hotel-suites" data-type="Hotel" data-area="Kilimani" data-near="" data-vibe="" data-search="waridi paradise hotel &amp; suites hotel kilimani kilimani rose avenue, off argwings kodhek rd  ">
+  <button type="button" class="card-photo place-open" data-id="waridi-paradise-hotel-suites" aria-label="View details for Waridi Paradise Hotel &amp; Suites">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
   <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#F7F2E8" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
   <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#1F4D2B"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
-</svg><span class="badge badge-vibe">Kilimani</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Waridi Paradise Hotel &amp; Suites</h3>
-          <div class="card-meta">Hotel · Rose Avenue, off Argwings Kodhek Rd</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://waridi-paradise.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Waridi%20Paradise%20Hotel%20%26%20Suites%2C%20Rose%20Avenue%2C%20off%20Argwings%20Kodhek%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Waridi Paradise Hotel &amp; Suites">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Waridi%20Paradise%20Hotel%20%26%20Suites">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Kilimani</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Waridi Paradise Hotel &amp; Suites</h3>
+    <div class="card-meta">Hotel · Rose Avenue, off Argwings Kodhek Rd</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="waridi-paradise-hotel-suites">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Waridi%20Paradise%20Hotel%20%26%20Suites%2C%20Rose%20Avenue%2C%20off%20Argwings%20Kodhek%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Waridi Paradise Hotel &amp; Suites (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-the-monarch-hotel-nairobi" data-id="the-monarch-hotel-nairobi" data-type="Hotel" data-area="Kilimani" data-near="" data-vibe="" data-search="the monarch hotel nairobi hotel kilimani kilimani rose avenue, off argwings kodhek">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F2E8"/>
+
+<article class="card is-directory" id="card-the-monarch-hotel-nairobi" data-id="the-monarch-hotel-nairobi" data-type="Hotel" data-area="Kilimani" data-near="" data-vibe="" data-search="the monarch hotel nairobi hotel kilimani kilimani rose avenue, off argwings kodhek  ">
+  <button type="button" class="card-photo place-open" data-id="the-monarch-hotel-nairobi" aria-label="View details for The Monarch Hotel Nairobi">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
   <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#F7F2E8" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
   <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#1F4D2B"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
-</svg><span class="badge badge-vibe">Kilimani</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>The Monarch Hotel Nairobi</h3>
-          <div class="card-meta">Hotel · Rose Avenue, off Argwings Kodhek</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.monarchhotelskenya.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Monarch%20Hotel%20Nairobi%2C%20Rose%20Avenue%2C%20off%20Argwings%20Kodhek%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Monarch Hotel Nairobi">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=The%20Monarch%20Hotel%20Nairobi">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Kilimani</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>The Monarch Hotel Nairobi</h3>
+    <div class="card-meta">Hotel · Rose Avenue, off Argwings Kodhek</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="the-monarch-hotel-nairobi">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Monarch%20Hotel%20Nairobi%2C%20Rose%20Avenue%2C%20off%20Argwings%20Kodhek%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Monarch Hotel Nairobi (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-ngong-hills-hotel" data-id="ngong-hills-hotel" data-type="Hotel" data-area="Kilimani" data-near="" data-vibe="" data-search="ngong hills hotel hotel kilimani kilimani off ngong road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F2E8"/>
+
+<article class="card is-directory" id="card-ngong-hills-hotel" data-id="ngong-hills-hotel" data-type="Hotel" data-area="Kilimani" data-near="" data-vibe="" data-search="ngong hills hotel hotel kilimani kilimani off ngong road  ">
+  <button type="button" class="card-photo place-open" data-id="ngong-hills-hotel" aria-label="View details for Ngong Hills Hotel">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
   <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#F7F2E8" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
   <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#1F4D2B"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
-</svg><span class="badge badge-vibe">Kilimani</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Ngong Hills Hotel</h3>
-          <div class="card-meta">Hotel · off Ngong Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.ngonghillshotel.co.ke/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Ngong%20Hills%20Hotel%2C%20off%20Ngong%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Ngong Hills Hotel">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Ngong%20Hills%20Hotel">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Kilimani</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Ngong Hills Hotel</h3>
+    <div class="card-meta">Hotel · off Ngong Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="ngong-hills-hotel">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Ngong%20Hills%20Hotel%2C%20off%20Ngong%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Ngong Hills Hotel (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-golden-tulip-westlands-nairobi" data-id="golden-tulip-westlands-nairobi" data-type="Hotel" data-area="Westlands" data-near="" data-vibe="" data-search="golden tulip westlands nairobi hotel westlands westlands 65 muthithi road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#F5A623"/></linearGradient></defs>
+
+<article class="card is-directory" id="card-golden-tulip-westlands-nairobi" data-id="golden-tulip-westlands-nairobi" data-type="Hotel" data-area="Westlands" data-near="" data-vibe="" data-search="golden tulip westlands nairobi hotel westlands westlands 65 muthithi road  ">
+  <button type="button" class="card-photo place-open" data-id="golden-tulip-westlands-nairobi" aria-label="View details for Golden Tulip Westlands Nairobi">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#gW)"/>
-  <g fill="#131C40"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
-  <g fill="#F5A623"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
-</svg><span class="badge badge-vibe">Westlands</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Golden Tulip Westlands Nairobi</h3>
-          <div class="card-meta">Hotel · 65 Muthithi Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://westlands-nairobi.goldentulip.com/en-us/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Golden%20Tulip%20Westlands%20Nairobi%2C%2065%20Muthithi%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Golden Tulip Westlands Nairobi">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Golden%20Tulip%20Westlands%20Nairobi">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Westlands</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Golden Tulip Westlands Nairobi</h3>
+    <div class="card-meta">Hotel · 65 Muthithi Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="golden-tulip-westlands-nairobi">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Golden%20Tulip%20Westlands%20Nairobi%2C%2065%20Muthithi%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Golden Tulip Westlands Nairobi (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-ibis-styles-nairobi-westlands" data-id="ibis-styles-nairobi-westlands" data-type="Hotel" data-area="Westlands" data-near="" data-vibe="" data-search="ibis styles nairobi westlands hotel westlands westlands rhapta road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#F5A623"/></linearGradient></defs>
+
+<article class="card is-directory" id="card-ibis-styles-nairobi-westlands" data-id="ibis-styles-nairobi-westlands" data-type="Hotel" data-area="Westlands" data-near="" data-vibe="" data-search="ibis styles nairobi westlands hotel westlands westlands rhapta road  ">
+  <button type="button" class="card-photo place-open" data-id="ibis-styles-nairobi-westlands" aria-label="View details for Ibis Styles Nairobi Westlands">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#gW)"/>
-  <g fill="#131C40"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
-  <g fill="#F5A623"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
-</svg><span class="badge badge-vibe">Westlands</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Ibis Styles Nairobi Westlands</h3>
-          <div class="card-meta">Hotel · Rhapta Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.ibisstylesnairobi.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Ibis%20Styles%20Nairobi%20Westlands%2C%20Rhapta%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Ibis Styles Nairobi Westlands">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Ibis%20Styles%20Nairobi%20Westlands">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Westlands</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Ibis Styles Nairobi Westlands</h3>
+    <div class="card-meta">Hotel · Rhapta Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="ibis-styles-nairobi-westlands">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Ibis%20Styles%20Nairobi%20Westlands%2C%20Rhapta%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Ibis Styles Nairobi Westlands (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-acacia-furnished-apartments" data-id="acacia-furnished-apartments" data-type="Apartment" data-area="Westlands" data-near="" data-vibe="" data-search="acacia furnished apartments apartment westlands westlands stima lane, off lower kabete road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#F5A623"/></linearGradient></defs>
+
+<article class="card is-directory" id="card-acacia-furnished-apartments" data-id="acacia-furnished-apartments" data-type="Apartment" data-area="Westlands" data-near="" data-vibe="" data-search="acacia furnished apartments apartment westlands westlands stima lane, off lower kabete road  ">
+  <button type="button" class="card-photo place-open" data-id="acacia-furnished-apartments" aria-label="View details for Acacia Furnished Apartments">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#gW)"/>
-  <g fill="#131C40"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
-  <g fill="#F5A623"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
-</svg><span class="badge badge-vibe">Westlands</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Acacia Furnished Apartments</h3>
-          <div class="card-meta">Apartment · Stima Lane, off Lower Kabete Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://acacia-apartments.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Acacia%20Furnished%20Apartments%2C%20Stima%20Lane%2C%20off%20Lower%20Kabete%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Acacia Furnished Apartments">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Acacia%20Furnished%20Apartments">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Westlands</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Acacia Furnished Apartments</h3>
+    <div class="card-meta">Apartment · Stima Lane, off Lower Kabete Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="acacia-furnished-apartments">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Acacia%20Furnished%20Apartments%2C%20Stima%20Lane%2C%20off%20Lower%20Kabete%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Acacia Furnished Apartments (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-prime-serviced-residence" data-id="prime-serviced-residence" data-type="Apartment" data-area="Westlands" data-near="" data-vibe="" data-search="prime serviced residence apartment westlands westlands rhapta road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#F5A623"/></linearGradient></defs>
+
+<article class="card is-directory" id="card-prime-serviced-residence" data-id="prime-serviced-residence" data-type="Apartment" data-area="Westlands" data-near="" data-vibe="" data-search="prime serviced residence apartment westlands westlands rhapta road  ">
+  <button type="button" class="card-photo place-open" data-id="prime-serviced-residence" aria-label="View details for Prime Serviced Residence">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#gW)"/>
-  <g fill="#131C40"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
-  <g fill="#F5A623"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
-</svg><span class="badge badge-vibe">Westlands</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Prime Serviced Residence</h3>
-          <div class="card-meta">Apartment · Rhapta Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.primeresidence.co.ke/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Prime%20Serviced%20Residence%2C%20Rhapta%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Prime Serviced Residence">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Prime%20Serviced%20Residence">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Westlands</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Prime Serviced Residence</h3>
+    <div class="card-meta">Apartment · Rhapta Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="prime-serviced-residence">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Prime%20Serviced%20Residence%2C%20Rhapta%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Prime Serviced Residence (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-west-wood-hotel" data-id="west-wood-hotel" data-type="Hotel" data-area="Westlands" data-near="" data-vibe="" data-search="west wood hotel hotel westlands westlands ">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#F5A623"/></linearGradient></defs>
+
+<article class="card is-directory" id="card-west-wood-hotel" data-id="west-wood-hotel" data-type="Hotel" data-area="Westlands" data-near="" data-vibe="" data-search="west wood hotel hotel westlands westlands   ">
+  <button type="button" class="card-photo place-open" data-id="west-wood-hotel" aria-label="View details for West Wood Hotel">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#gW)"/>
-  <g fill="#131C40"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
-  <g fill="#F5A623"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
-</svg><span class="badge badge-vibe">Westlands</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>West Wood Hotel</h3>
-          <div class="card-meta">Hotel</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://superiorhotelskenya.com/hotels-in-nairobi/west-wood-hotel/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=West%20Wood%20Hotel%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to West Wood Hotel">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=West%20Wood%20Hotel">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Westlands</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>West Wood Hotel</h3>
+    <div class="card-meta">Hotel</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="west-wood-hotel">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=West%20Wood%20Hotel%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to West Wood Hotel (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-la-maison-royale-westlands" data-id="la-maison-royale-westlands" data-type="Hotel" data-area="Westlands" data-near="" data-vibe="" data-search="la maison royale - westlands hotel westlands westlands ">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#F5A623"/></linearGradient></defs>
+
+<article class="card is-directory" id="card-la-maison-royale-westlands" data-id="la-maison-royale-westlands" data-type="Hotel" data-area="Westlands" data-near="" data-vibe="" data-search="la maison royale - westlands hotel westlands westlands   ">
+  <button type="button" class="card-photo place-open" data-id="la-maison-royale-westlands" aria-label="View details for La Maison Royale - Westlands">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#gW)"/>
-  <g fill="#131C40"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
-  <g fill="#F5A623"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
-</svg><span class="badge badge-vibe">Westlands</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>La Maison Royale - Westlands</h3>
-          <div class="card-meta">Hotel</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://lmrhotel.com/westlands/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=La%20Maison%20Royale%20-%20Westlands%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to La Maison Royale - Westlands">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=La%20Maison%20Royale%20-%20Westlands">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Westlands</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>La Maison Royale - Westlands</h3>
+    <div class="card-meta">Hotel</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="la-maison-royale-westlands">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=La%20Maison%20Royale%20-%20Westlands%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to La Maison Royale - Westlands (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-sarova-stanley" data-id="sarova-stanley" data-type="Hotel" data-area="CBD" data-near="" data-vibe="" data-search="sarova stanley hotel cbd cbd ">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+
+<article class="card is-directory" id="card-sarova-stanley" data-id="sarova-stanley" data-type="Hotel" data-area="CBD" data-near="" data-vibe="" data-search="sarova stanley hotel cbd cbd   ">
+  <button type="button" class="card-photo place-open" data-id="sarova-stanley" aria-label="View details for Sarova Stanley">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
   <rect width="320" height="140" fill="#E9EFE6"/>
   <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#1F4D2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#F7F2E8" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <g fill="#1B4D3E"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F4EF" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
-</svg><span class="badge badge-vibe">CBD</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Sarova Stanley</h3>
-          <div class="card-meta">Hotel</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.sarovahotels.com/stanley-nairobi/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Sarova%20Stanley%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Sarova Stanley">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Sarova%20Stanley">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">CBD</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Sarova Stanley</h3>
+    <div class="card-meta">Hotel</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="sarova-stanley">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Sarova%20Stanley%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Sarova Stanley (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-best-western-plus-meridian-hotel" data-id="best-western-plus-meridian-hotel" data-type="Hotel" data-area="CBD" data-near="" data-vibe="" data-search="best western plus meridian hotel hotel cbd cbd murang&#39;a road, off moi avenue">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#E9EFE6"/>
-  <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#1F4D2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#F7F2E8" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
-</svg><span class="badge badge-vibe">CBD</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Best Western Plus Meridian Hotel</h3>
-          <div class="card-meta">Hotel · Murang&#39;a Road, off Moi Avenue</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.bwplusmeridian.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Best%20Western%20Plus%20Meridian%20Hotel%2C%20Murang%27a%20Road%2C%20off%20Moi%20Avenue%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Best Western Plus Meridian Hotel">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Best%20Western%20Plus%20Meridian%20Hotel">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
-      
-      
-      
-      <article class="card stay-card unclaimed" id="card-kenya-comfort-hotel-suites" data-id="kenya-comfort-hotel-suites" data-type="Hotel" data-area="CBD" data-near="" data-vibe="" data-search="kenya comfort hotel &amp; suites hotel cbd cbd junction of muindi mbingu &amp; monrovia street">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+<article class="card is-directory" id="card-best-western-plus-meridian-hotel" data-id="best-western-plus-meridian-hotel" data-type="Hotel" data-area="CBD" data-near="" data-vibe="" data-search="best western plus meridian hotel hotel cbd cbd murang&#39;a road, off moi avenue  ">
+  <button type="button" class="card-photo place-open" data-id="best-western-plus-meridian-hotel" aria-label="View details for Best Western Plus Meridian Hotel">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
   <rect width="320" height="140" fill="#E9EFE6"/>
   <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#1F4D2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#F7F2E8" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <g fill="#1B4D3E"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F4EF" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
-</svg><span class="badge badge-vibe">CBD</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Kenya Comfort Hotel &amp; Suites</h3>
-          <div class="card-meta">Hotel · Junction of Muindi Mbingu &amp; Monrovia Street</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://kenyacomfort.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Kenya%20Comfort%20Hotel%20%26%20Suites%2C%20Junction%20of%20Muindi%20Mbingu%20%26%20Monrovia%20Street%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Kenya Comfort Hotel &amp; Suites">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Kenya%20Comfort%20Hotel%20%26%20Suites">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">CBD</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Best Western Plus Meridian Hotel</h3>
+    <div class="card-meta">Hotel · Murang&#39;a Road, off Moi Avenue</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="best-western-plus-meridian-hotel">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Best%20Western%20Plus%20Meridian%20Hotel%2C%20Murang%27a%20Road%2C%20off%20Moi%20Avenue%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Best Western Plus Meridian Hotel (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-metro-hotel" data-id="metro-hotel" data-type="Hotel" data-area="CBD" data-near="" data-vibe="" data-search="metro hotel hotel cbd cbd koinange street">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#E9EFE6"/>
-  <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#1F4D2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#F7F2E8" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
-</svg><span class="badge badge-vibe">CBD</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Metro Hotel</h3>
-          <div class="card-meta">Hotel · Koinange Street</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://hotelmetro.co.ke/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Metro%20Hotel%2C%20Koinange%20Street%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Metro Hotel">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Metro%20Hotel">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
-      
-      
-      
-      <article class="card stay-card unclaimed" id="card-longonot-place-serviced-apartments" data-id="longonot-place-serviced-apartments" data-type="Apartment" data-area="CBD" data-near="" data-vibe="" data-search="longonot place serviced apartments apartment cbd cbd harry thuku road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+<article class="card is-directory" id="card-kenya-comfort-hotel-suites" data-id="kenya-comfort-hotel-suites" data-type="Hotel" data-area="CBD" data-near="" data-vibe="" data-search="kenya comfort hotel &amp; suites hotel cbd cbd junction of muindi mbingu &amp; monrovia street  ">
+  <button type="button" class="card-photo place-open" data-id="kenya-comfort-hotel-suites" aria-label="View details for Kenya Comfort Hotel &amp; Suites">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
   <rect width="320" height="140" fill="#E9EFE6"/>
   <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#1F4D2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#F7F2E8" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <g fill="#1B4D3E"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F4EF" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
-</svg><span class="badge badge-vibe">CBD</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Longonot Place Serviced Apartments</h3>
-          <div class="card-meta">Apartment · Harry Thuku Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.longonotplace.co.ke/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Longonot%20Place%20Serviced%20Apartments%2C%20Harry%20Thuku%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Longonot Place Serviced Apartments">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Longonot%20Place%20Serviced%20Apartments">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">CBD</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Kenya Comfort Hotel &amp; Suites</h3>
+    <div class="card-meta">Hotel · Junction of Muindi Mbingu &amp; Monrovia Street</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="kenya-comfort-hotel-suites">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Kenya%20Comfort%20Hotel%20%26%20Suites%2C%20Junction%20of%20Muindi%20Mbingu%20%26%20Monrovia%20Street%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Kenya Comfort Hotel &amp; Suites (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-norfolk-towers" data-id="norfolk-towers" data-type="Apartment" data-area="CBD" data-near="" data-vibe="" data-search="norfolk towers apartment cbd cbd kijabe street, off harry thuku rd">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+
+<article class="card is-directory" id="card-metro-hotel" data-id="metro-hotel" data-type="Hotel" data-area="CBD" data-near="" data-vibe="" data-search="metro hotel hotel cbd cbd koinange street  ">
+  <button type="button" class="card-photo place-open" data-id="metro-hotel" aria-label="View details for Metro Hotel">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
   <rect width="320" height="140" fill="#E9EFE6"/>
   <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#1F4D2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#F7F2E8" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <g fill="#1B4D3E"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F4EF" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
-</svg><span class="badge badge-vibe">CBD</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Norfolk Towers</h3>
-          <div class="card-meta">Apartment · Kijabe Street, off Harry Thuku Rd</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.norfolktowers.co.ke/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Norfolk%20Towers%2C%20Kijabe%20Street%2C%20off%20Harry%20Thuku%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Norfolk Towers">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Norfolk%20Towers">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">CBD</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Metro Hotel</h3>
+    <div class="card-meta">Hotel · Koinange Street</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="metro-hotel">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Metro%20Hotel%2C%20Koinange%20Street%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Metro Hotel (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-karen-gables" data-id="karen-gables" data-type="Guesthouse" data-area="Karen" data-near="" data-vibe="" data-search="karen gables guesthouse karen karen mbagathi ridge">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F2E8"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#E3A23B"/>
+
+<article class="card is-directory" id="card-longonot-place-serviced-apartments" data-id="longonot-place-serviced-apartments" data-type="Apartment" data-area="CBD" data-near="" data-vibe="" data-search="longonot place serviced apartments apartment cbd cbd harry thuku road  ">
+  <button type="button" class="card-photo place-open" data-id="longonot-place-serviced-apartments" aria-label="View details for Longonot Place Serviced Apartments">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#E9EFE6"/>
+  <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#1B4D3E"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F4EF" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+
+</svg>
+    <span class="tag-area">CBD</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Longonot Place Serviced Apartments</h3>
+    <div class="card-meta">Apartment · Harry Thuku Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="longonot-place-serviced-apartments">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Longonot%20Place%20Serviced%20Apartments%2C%20Harry%20Thuku%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Longonot Place Serviced Apartments (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
+      
+      
+      
+
+
+<article class="card is-directory" id="card-norfolk-towers" data-id="norfolk-towers" data-type="Apartment" data-area="CBD" data-near="" data-vibe="" data-search="norfolk towers apartment cbd cbd kijabe street, off harry thuku rd  ">
+  <button type="button" class="card-photo place-open" data-id="norfolk-towers" aria-label="View details for Norfolk Towers">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#E9EFE6"/>
+  <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#1B4D3E"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F4EF" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+
+</svg>
+    <span class="tag-area">CBD</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Norfolk Towers</h3>
+    <div class="card-meta">Apartment · Kijabe Street, off Harry Thuku Rd</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="norfolk-towers">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Norfolk%20Towers%2C%20Kijabe%20Street%2C%20off%20Harry%20Thuku%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Norfolk Towers (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
+      
+      
+      
+
+
+<article class="card is-directory" id="card-karen-gables" data-id="karen-gables" data-type="Guesthouse" data-area="Karen" data-near="" data-vibe="" data-search="karen gables guesthouse karen karen mbagathi ridge  ">
+  <button type="button" class="card-photo place-open" data-id="karen-gables" aria-label="View details for Karen Gables">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#D4AF37"/>
   <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#9DBFA0"/>
   <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4F8A3C"/>
-  <g fill="#1F4D2B"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <g fill="#1B4D3E"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
-</svg><span class="badge badge-vibe">Karen</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Karen Gables</h3>
-          <div class="card-meta">Guesthouse · Mbagathi Ridge</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://karengables.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Karen%20Gables%2C%20Mbagathi%20Ridge%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Karen Gables">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Karen%20Gables">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Karen</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Karen Gables</h3>
+    <div class="card-meta">Guesthouse · Mbagathi Ridge</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="karen-gables">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Karen%20Gables%2C%20Mbagathi%20Ridge%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Karen Gables (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-karen-inn-and-suites" data-id="karen-inn-and-suites" data-type="Hotel" data-area="Karen" data-near="" data-vibe="" data-search="karen inn and suites hotel karen karen karen road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F2E8"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#E3A23B"/>
+
+<article class="card is-directory" id="card-karen-inn-and-suites" data-id="karen-inn-and-suites" data-type="Hotel" data-area="Karen" data-near="" data-vibe="" data-search="karen inn and suites hotel karen karen karen road  ">
+  <button type="button" class="card-photo place-open" data-id="karen-inn-and-suites" aria-label="View details for Karen Inn and Suites">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#D4AF37"/>
   <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#9DBFA0"/>
   <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4F8A3C"/>
-  <g fill="#1F4D2B"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <g fill="#1B4D3E"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
-</svg><span class="badge badge-vibe">Karen</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Karen Inn and Suites</h3>
-          <div class="card-meta">Hotel · Karen Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://kareninn-suites.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Karen%20Inn%20and%20Suites%2C%20Karen%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Karen Inn and Suites">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Karen%20Inn%20and%20Suites">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Karen</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Karen Inn and Suites</h3>
+    <div class="card-meta">Hotel · Karen Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="karen-inn-and-suites">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Karen%20Inn%20and%20Suites%2C%20Karen%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Karen Inn and Suites (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-house-of-waine" data-id="house-of-waine" data-type="Hotel" data-area="Karen" data-near="" data-vibe="" data-search="house of waine hotel karen karen ">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F2E8"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#E3A23B"/>
+
+<article class="card is-directory" id="card-house-of-waine" data-id="house-of-waine" data-type="Hotel" data-area="Karen" data-near="" data-vibe="" data-search="house of waine hotel karen karen   ">
+  <button type="button" class="card-photo place-open" data-id="house-of-waine" aria-label="View details for House Of Waine">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#D4AF37"/>
   <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#9DBFA0"/>
   <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4F8A3C"/>
-  <g fill="#1F4D2B"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <g fill="#1B4D3E"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
-</svg><span class="badge badge-vibe">Karen</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>House Of Waine</h3>
-          <div class="card-meta">Hotel</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.houseofwaine.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=House%20Of%20Waine%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to House Of Waine">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=House%20Of%20Waine">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Karen</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>House Of Waine</h3>
+    <div class="card-meta">Hotel</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="house-of-waine">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=House%20Of%20Waine%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to House Of Waine (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-karen-blixen-coffee-garden-cottages" data-id="karen-blixen-coffee-garden-cottages" data-type="Hotel" data-area="Karen" data-near="" data-vibe="" data-search="karen blixen coffee garden &amp; cottages hotel karen karen 336 karen road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F2E8"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#E3A23B"/>
+
+<article class="card is-directory" id="card-karen-blixen-coffee-garden-cottages" data-id="karen-blixen-coffee-garden-cottages" data-type="Hotel" data-area="Karen" data-near="" data-vibe="" data-search="karen blixen coffee garden &amp; cottages hotel karen karen 336 karen road  ">
+  <button type="button" class="card-photo place-open" data-id="karen-blixen-coffee-garden-cottages" aria-label="View details for Karen Blixen Coffee Garden &amp; Cottages">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#D4AF37"/>
   <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#9DBFA0"/>
   <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4F8A3C"/>
-  <g fill="#1F4D2B"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <g fill="#1B4D3E"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
-</svg><span class="badge badge-vibe">Karen</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Karen Blixen Coffee Garden &amp; Cottages</h3>
-          <div class="card-meta">Hotel · 336 Karen Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.karenblixencoffeegardens.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Karen%20Blixen%20Coffee%20Garden%20%26%20Cottages%2C%20336%20Karen%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Karen Blixen Coffee Garden &amp; Cottages">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Karen%20Blixen%20Coffee%20Garden%20%26%20Cottages">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Karen</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Karen Blixen Coffee Garden &amp; Cottages</h3>
+    <div class="card-meta">Hotel · 336 Karen Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="karen-blixen-coffee-garden-cottages">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Karen%20Blixen%20Coffee%20Garden%20%26%20Cottages%2C%20336%20Karen%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Karen Blixen Coffee Garden &amp; Cottages (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-the-margarita-house" data-id="the-margarita-house" data-type="Hotel" data-area="Karen" data-near="" data-vibe="" data-search="the margarita house hotel karen karen 53 lower plains road, off karen rd">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F2E8"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#E3A23B"/>
+
+<article class="card is-directory" id="card-the-margarita-house" data-id="the-margarita-house" data-type="Hotel" data-area="Karen" data-near="" data-vibe="" data-search="the margarita house hotel karen karen 53 lower plains road, off karen rd  ">
+  <button type="button" class="card-photo place-open" data-id="the-margarita-house" aria-label="View details for The Margarita House">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#D4AF37"/>
   <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#9DBFA0"/>
   <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4F8A3C"/>
-  <g fill="#1F4D2B"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <g fill="#1B4D3E"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
-</svg><span class="badge badge-vibe">Karen</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>The Margarita House</h3>
-          <div class="card-meta">Hotel · 53 Lower Plains Road, off Karen Rd</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://themargaritahouse.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Margarita%20House%2C%2053%20Lower%20Plains%20Road%2C%20off%20Karen%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Margarita House">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=The%20Margarita%20House">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Karen</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>The Margarita House</h3>
+    <div class="card-meta">Hotel · 53 Lower Plains Road, off Karen Rd</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="the-margarita-house">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Margarita%20House%2C%2053%20Lower%20Plains%20Road%2C%20off%20Karen%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Margarita House (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-the-residences-at-karen" data-id="the-residences-at-karen" data-type="Apartment" data-area="Karen" data-near="" data-vibe="" data-search="the residences at karen apartment karen karen karen road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F2E8"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#E3A23B"/>
+
+<article class="card is-directory" id="card-the-residences-at-karen" data-id="the-residences-at-karen" data-type="Apartment" data-area="Karen" data-near="" data-vibe="" data-search="the residences at karen apartment karen karen karen road  ">
+  <button type="button" class="card-photo place-open" data-id="the-residences-at-karen" aria-label="View details for The Residences At Karen">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#D4AF37"/>
   <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#9DBFA0"/>
   <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4F8A3C"/>
-  <g fill="#1F4D2B"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <g fill="#1B4D3E"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
-</svg><span class="badge badge-vibe">Karen</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>The Residences At Karen</h3>
-          <div class="card-meta">Apartment · Karen Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://theresidences.or.ke/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Residences%20At%20Karen%2C%20Karen%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Residences At Karen">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=The%20Residences%20At%20Karen">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Karen</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>The Residences At Karen</h3>
+    <div class="card-meta">Apartment · Karen Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="the-residences-at-karen">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Residences%20At%20Karen%2C%20Karen%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Residences At Karen (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-67-airport-hotel" data-id="67-airport-hotel" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="67 airport hotel hotel syokimau airport &amp; mombasa road muthama access road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#BFD9E8"/>
-  <g fill="#F7F2E8" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1F4D2B"/>
-  <rect y="112" width="320" height="28" fill="#4A5750"/>
-  <g fill="#F7F2E8"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
-</svg><span class="badge badge-vibe">Syokimau</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>67 Airport Hotel</h3>
-          <div class="card-meta">Hotel · Muthama Access Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://67airporthotel.co.ke/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=67%20Airport%20Hotel%2C%20Muthama%20Access%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to 67 Airport Hotel">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=67%20Airport%20Hotel">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
-      
-      
-      
-      <article class="card stay-card unclaimed" id="card-easy-hotel-kenya" data-id="easy-hotel-kenya" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="easy hotel kenya hotel syokimau airport &amp; mombasa road chady rd, off syokimau airport road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+<article class="card is-directory" id="card-67-airport-hotel" data-id="67-airport-hotel" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="67 airport hotel hotel syokimau airport &amp; mombasa road muthama access road  ">
+  <button type="button" class="card-photo place-open" data-id="67-airport-hotel" aria-label="View details for 67 Airport Hotel">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
   <rect width="320" height="140" fill="#BFD9E8"/>
-  <g fill="#F7F2E8" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1F4D2B"/>
+  <g fill="#F7F4EF" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1B4D3E"/>
   <rect y="112" width="320" height="28" fill="#4A5750"/>
-  <g fill="#F7F2E8"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
+  <g fill="#F7F4EF"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
-</svg><span class="badge badge-vibe">Syokimau</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Easy Hotel Kenya</h3>
-          <div class="card-meta">Hotel · Chady Rd, off Syokimau Airport Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://easyhotelkenya.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Easy%20Hotel%20Kenya%2C%20Chady%20Rd%2C%20off%20Syokimau%20Airport%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Easy Hotel Kenya">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Easy%20Hotel%20Kenya">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Syokimau</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>67 Airport Hotel</h3>
+    <div class="card-meta">Hotel · Muthama Access Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="67-airport-hotel">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=67%20Airport%20Hotel%2C%20Muthama%20Access%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to 67 Airport Hotel (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-four-points-by-sheraton-nairobi-airport" data-id="four-points-by-sheraton-nairobi-airport" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="four points by sheraton nairobi airport hotel jkia airport &amp; mombasa road tower avenue">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+
+<article class="card is-directory" id="card-easy-hotel-kenya" data-id="easy-hotel-kenya" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="easy hotel kenya hotel syokimau airport &amp; mombasa road chady rd, off syokimau airport road  ">
+  <button type="button" class="card-photo place-open" data-id="easy-hotel-kenya" aria-label="View details for Easy Hotel Kenya">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
   <rect width="320" height="140" fill="#BFD9E8"/>
-  <g fill="#F7F2E8" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1F4D2B"/>
+  <g fill="#F7F4EF" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1B4D3E"/>
   <rect y="112" width="320" height="28" fill="#4A5750"/>
-  <g fill="#F7F2E8"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
+  <g fill="#F7F4EF"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
-</svg><span class="badge badge-vibe">JKIA</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Four Points by Sheraton Nairobi Airport</h3>
-          <div class="card-meta">Hotel · Tower Avenue</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.marriott.com/en-us/hotels/nbofa-four-points-by-sheraton-nairobi-airport/overview/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Four%20Points%20by%20Sheraton%20Nairobi%20Airport%2C%20Tower%20Avenue%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Four Points by Sheraton Nairobi Airport">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Four%20Points%20by%20Sheraton%20Nairobi%20Airport">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Syokimau</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Easy Hotel Kenya</h3>
+    <div class="card-meta">Hotel · Chady Rd, off Syokimau Airport Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="easy-hotel-kenya">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Easy%20Hotel%20Kenya%2C%20Chady%20Rd%2C%20off%20Syokimau%20Airport%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Easy Hotel Kenya (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-crowne-plaza-nairobi-airport" data-id="crowne-plaza-nairobi-airport" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="crowne plaza nairobi airport hotel jkia airport &amp; mombasa road first freight lane">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+
+<article class="card is-directory" id="card-four-points-by-sheraton-nairobi-airport" data-id="four-points-by-sheraton-nairobi-airport" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="four points by sheraton nairobi airport hotel jkia airport &amp; mombasa road tower avenue  ">
+  <button type="button" class="card-photo place-open" data-id="four-points-by-sheraton-nairobi-airport" aria-label="View details for Four Points by Sheraton Nairobi Airport">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
   <rect width="320" height="140" fill="#BFD9E8"/>
-  <g fill="#F7F2E8" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1F4D2B"/>
+  <g fill="#F7F4EF" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1B4D3E"/>
   <rect y="112" width="320" height="28" fill="#4A5750"/>
-  <g fill="#F7F2E8"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
+  <g fill="#F7F4EF"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
-</svg><span class="badge badge-vibe">JKIA</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Crowne Plaza Nairobi Airport</h3>
-          <div class="card-meta">Hotel · First Freight Lane</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.ihg.com/crowneplaza/hotels/us/en/nairobi/nboir/hoteldetail" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Crowne%20Plaza%20Nairobi%20Airport%2C%20First%20Freight%20Lane%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Crowne Plaza Nairobi Airport">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Crowne%20Plaza%20Nairobi%20Airport">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">JKIA</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Four Points by Sheraton Nairobi Airport</h3>
+    <div class="card-meta">Hotel · Tower Avenue</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="four-points-by-sheraton-nairobi-airport">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Four%20Points%20by%20Sheraton%20Nairobi%20Airport%2C%20Tower%20Avenue%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Four Points by Sheraton Nairobi Airport (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-eka-hotel-nairobi" data-id="eka-hotel-nairobi" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="eka hotel nairobi hotel mombasa road airport &amp; mombasa road mombasa road, at the southern bypass">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+
+<article class="card is-directory" id="card-crowne-plaza-nairobi-airport" data-id="crowne-plaza-nairobi-airport" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="crowne plaza nairobi airport hotel jkia airport &amp; mombasa road first freight lane  ">
+  <button type="button" class="card-photo place-open" data-id="crowne-plaza-nairobi-airport" aria-label="View details for Crowne Plaza Nairobi Airport">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
   <rect width="320" height="140" fill="#BFD9E8"/>
-  <g fill="#F7F2E8" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1F4D2B"/>
+  <g fill="#F7F4EF" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1B4D3E"/>
   <rect y="112" width="320" height="28" fill="#4A5750"/>
-  <g fill="#F7F2E8"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
+  <g fill="#F7F4EF"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
-</svg><span class="badge badge-vibe">Mombasa Road</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Eka Hotel Nairobi</h3>
-          <div class="card-meta">Hotel · Mombasa Road, at the Southern Bypass</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.ekahotel.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Eka%20Hotel%20Nairobi%2C%20Mombasa%20Road%2C%20at%20the%20Southern%20Bypass%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Eka Hotel Nairobi">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Eka%20Hotel%20Nairobi">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">JKIA</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Crowne Plaza Nairobi Airport</h3>
+    <div class="card-meta">Hotel · First Freight Lane</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="crowne-plaza-nairobi-airport">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Crowne%20Plaza%20Nairobi%20Airport%2C%20First%20Freight%20Lane%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Crowne Plaza Nairobi Airport (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-ole-sereni" data-id="ole-sereni" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="ole sereni hotel mombasa road airport &amp; mombasa road mombasa road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+
+<article class="card is-directory" id="card-eka-hotel-nairobi" data-id="eka-hotel-nairobi" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="eka hotel nairobi hotel mombasa road airport &amp; mombasa road mombasa road, at the southern bypass  ">
+  <button type="button" class="card-photo place-open" data-id="eka-hotel-nairobi" aria-label="View details for Eka Hotel Nairobi">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
   <rect width="320" height="140" fill="#BFD9E8"/>
-  <g fill="#F7F2E8" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1F4D2B"/>
+  <g fill="#F7F4EF" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1B4D3E"/>
   <rect y="112" width="320" height="28" fill="#4A5750"/>
-  <g fill="#F7F2E8"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
+  <g fill="#F7F4EF"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
-</svg><span class="badge badge-vibe">Mombasa Road</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Ole Sereni</h3>
-          <div class="card-meta">Hotel · Mombasa Road</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://www.ole-sereni.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Ole%20Sereni%2C%20Mombasa%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Ole Sereni">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Ole%20Sereni">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Mombasa Road</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Eka Hotel Nairobi</h3>
+    <div class="card-meta">Hotel · Mombasa Road, at the Southern Bypass</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="eka-hotel-nairobi">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Eka%20Hotel%20Nairobi%2C%20Mombasa%20Road%2C%20at%20the%20Southern%20Bypass%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Eka Hotel Nairobi (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-shalom-house" data-id="shalom-house" data-type="Guesthouse" data-area="Ngong Road" data-near="1" data-vibe="" data-search="shalom house guesthouse ngong road ngong road st. daniel comboni rd, off ngong road">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#0B1128"/>
+
+<article class="card is-directory" id="card-ole-sereni" data-id="ole-sereni" data-type="Hotel" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="ole sereni hotel mombasa road airport &amp; mombasa road mombasa road  ">
+  <button type="button" class="card-photo place-open" data-id="ole-sereni" aria-label="View details for Ole Sereni">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#BFD9E8"/>
+  <g fill="#F7F4EF" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1B4D3E"/>
+  <rect y="112" width="320" height="28" fill="#4A5750"/>
+  <g fill="#F7F4EF"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
+
+</svg>
+    <span class="tag-area">Mombasa Road</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Ole Sereni</h3>
+    <div class="card-meta">Hotel · Mombasa Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="ole-sereni">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Ole%20Sereni%2C%20Mombasa%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Ole Sereni (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
+      
+      
+      
+
+
+<article class="card is-directory" id="card-shalom-house" data-id="shalom-house" data-type="Guesthouse" data-area="Ngong Road" data-near="1" data-vibe="" data-search="shalom house guesthouse ngong road ngong road st. daniel comboni rd, off ngong road  ">
+  <button type="button" class="card-photo place-open" data-id="shalom-house" aria-label="View details for Shalom House">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#0A1128"/>
   <g fill="#F3F5FA" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
   <g fill="#8A93B2"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
-  <g fill="#F5A623"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
+  <g fill="#E67E22"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
   <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#1B2656"/>
-  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#F5A623" stroke-width="3"/>
+  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#E67E22" stroke-width="3"/>
   <ellipse cx="160" cy="124" rx="86" ry="14" fill="#4F8A3C"/>
   <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#F3F5FA" stroke-width="1.5" opacity=".6"/>
 
-</svg><span class="badge badge-vibe">Ngong Road</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Shalom House</h3>
-          <div class="card-meta">Guesthouse · St. Daniel Comboni Rd, off Ngong Road</div>
-          <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>Near Talanta Stadium</div>
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://shalomhousekenya.org/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Shalom%20House%2C%20St.%20Daniel%20Comboni%20Rd%2C%20off%20Ngong%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Shalom House">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Shalom%20House">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Ngong Road</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Shalom House</h3>
+    <div class="card-meta">Guesthouse · St. Daniel Comboni Rd, off Ngong Road</div>
+    
+    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>Near Talanta Stadium</div>
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="shalom-house">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Shalom%20House%2C%20St.%20Daniel%20Comboni%20Rd%2C%20off%20Ngong%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Shalom House (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-eldon-villas" data-id="eldon-villas" data-type="Apartment" data-area="Ngong Road" data-near="1" data-vibe="" data-search="eldon villas apartment ngong road ngong road ngong road, next to the junction mall">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#0B1128"/>
+
+<article class="card is-directory" id="card-eldon-villas" data-id="eldon-villas" data-type="Apartment" data-area="Ngong Road" data-near="1" data-vibe="" data-search="eldon villas apartment ngong road ngong road ngong road, next to the junction mall  ">
+  <button type="button" class="card-photo place-open" data-id="eldon-villas" aria-label="View details for Eldon Villas">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#0A1128"/>
   <g fill="#F3F5FA" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
   <g fill="#8A93B2"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
-  <g fill="#F5A623"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
+  <g fill="#E67E22"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
   <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#1B2656"/>
-  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#F5A623" stroke-width="3"/>
+  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#E67E22" stroke-width="3"/>
   <ellipse cx="160" cy="124" rx="86" ry="14" fill="#4F8A3C"/>
   <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#F3F5FA" stroke-width="1.5" opacity=".6"/>
 
-</svg><span class="badge badge-vibe">Ngong Road</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Eldon Villas</h3>
-          <div class="card-meta">Apartment · Ngong Road, next to The Junction Mall</div>
-          <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>Near Talanta Stadium</div>
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://eldonvillas.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Eldon%20Villas%2C%20Ngong%20Road%2C%20next%20to%20The%20Junction%20Mall%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Eldon Villas">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Eldon%20Villas">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Ngong Road</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Eldon Villas</h3>
+    <div class="card-meta">Apartment · Ngong Road, next to The Junction Mall</div>
+    
+    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>Near Talanta Stadium</div>
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="eldon-villas">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Eldon%20Villas%2C%20Ngong%20Road%2C%20next%20to%20The%20Junction%20Mall%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Eldon Villas (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
       
-      <article class="card stay-card unclaimed" id="card-leon-villas-guest-house" data-id="leon-villas-guest-house" data-type="Guesthouse" data-area="Ngong Road" data-near="" data-vibe="" data-search="leon villas guest house guesthouse ngong road ngong road ngong road, near adams arcade">
-        <div class="un-art"><svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#0B1128"/>
+
+<article class="card is-directory" id="card-leon-villas-guest-house" data-id="leon-villas-guest-house" data-type="Guesthouse" data-area="Ngong Road" data-near="" data-vibe="" data-search="leon villas guest house guesthouse ngong road ngong road ngong road, near adams arcade  ">
+  <button type="button" class="card-photo place-open" data-id="leon-villas-guest-house" aria-label="View details for Leon Villas Guest House">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#0A1128"/>
   <g fill="#F3F5FA" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
   <g fill="#8A93B2"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
-  <g fill="#F5A623"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
+  <g fill="#E67E22"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
   <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#1B2656"/>
-  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#F5A623" stroke-width="3"/>
+  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#E67E22" stroke-width="3"/>
   <ellipse cx="160" cy="124" rx="86" ry="14" fill="#4F8A3C"/>
   <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#F3F5FA" stroke-width="1.5" opacity=".6"/>
 
-</svg><span class="badge badge-vibe">Ngong Road</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
-        <div class="card-body">
-          <h3>Leon Villas Guest House</h3>
-          <div class="card-meta">Guesthouse · Ngong Road, near Adams Arcade</div>
-          
-          <p class="hint un-src">Name and location from the business's own website, checked 5 Oct 2026.</p>
-          <div class="card-actions" style="margin-top:auto">
-            <a class="btn btn-ghost" href="https://leonvillasguesthouse.com/" target="_blank" rel="noopener nofollow">Visit website ↗</a>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Leon%20Villas%20Guest%20House%2C%20Ngong%20Road%2C%20near%20Adams%20Arcade%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Leon Villas Guest House">Directions</a>
-          </div>
-          <a class="un-claim" href="../list-your-business/?claim=Leon%20Villas%20Guest%20House">Is this your business? Claim or remove this listing</a>
-        </div>
-      </article>
+</svg>
+    <span class="tag-area">Ngong Road</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
       
-      
-      
-      
-      <article class="card stay-card" id="card-example" data-id="example" data-type="Apartment" data-area="Kilimani" data-near="" data-vibe="Chill &amp; Green" data-search="[example: a business that has joined] apartment kilimani chill &amp; green quiet high-speed fibre wi-fi self check-in kitchen balcony">
-        <button type="button" class="card-photo stay-open" data-id="example" aria-label="View details for [Example: a business that has joined]">
-          
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-          <span class="badge badge-vibe"><span aria-hidden="true">🌿</span> Kilimani · Quiet</span>
-          <span class="sample">EXAMPLE LISTING</span>
-        </button>
-        <div class="card-body">
-          <div class="card-top"><h3>[Example: a business that has joined]</h3></div>
-          <div class="card-meta">Apartment · Kilimani</div>
-          <div class="stay-price">from KES [X] / night</div>
-          
-          <div class="tags"><span>High-speed fibre Wi-Fi</span><span>Self check-in</span><span>Kitchen</span></div>
-          <div class="card-actions" style="margin-top:auto">
-            <button type="button" class="btn btn-green stay-open" data-id="example">View and book</button>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BExample%3A%20a%20business%20that%20has%20joined%5D%20Kilimani%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Example: a business that has joined]">Directions</a>
-          </div>
-        </div>
-      </article>
+    </div>
+    <h3>Leon Villas Guest House</h3>
+    <div class="card-meta">Guesthouse · Ngong Road, near Adams Arcade</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="leon-villas-guest-house">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Leon%20Villas%20Guest%20House%2C%20Ngong%20Road%2C%20near%20Adams%20Arcade%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Leon Villas Guest House (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
       
       
     </div>
-    <p class="coming" id="noMatch" hidden style="margin-top:24px">No stays match those filters yet. <button type="button" class="linklike" id="noMatchClear">Clear the filters</button></p>
+    <p class="coming" id="noMatch" hidden>Nothing matches those filters yet. <button type="button" class="linklike" id="noMatchClear">Clear the filters</button></p>
   </div>
 </section>
 
-<div class="drawer-veil" id="stayVeil" hidden></div>
-<aside class="drawer" id="stayDrawer" role="dialog" aria-modal="true" aria-labelledby="dName" hidden tabindex="-1">
+<div class="drawer-veil" id="placeVeil" hidden></div>
+<aside class="drawer" id="placeDrawer" role="dialog" aria-modal="true" aria-labelledby="dName" hidden tabindex="-1">
   <div class="drawer-head">
     <button type="button" class="icon-btn" id="dClose" aria-label="Close details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <button type="button" class="chip" id="dShare">Share this stay</button>
+    <span class="drawer-crumb">Stays</span>
+    <button type="button" class="chip" id="dShare">Share</button>
   </div>
   <div class="drawer-scroll">
     <div class="d-photos" id="dPhotos"></div>
     <div class="d-body">
-      <span class="sample d-sample" id="dSample" hidden>EXAMPLE LISTING</span>
+      <span class="badge" id="dBadge"></span>
       <h2 id="dName"></h2>
       <p class="card-meta" id="dMeta"></p>
-      <p class="d-price" id="dPrice"></p>
+      <p class="d-street" id="dStreet" hidden></p>
+      <p class="d-price" id="dPrice" hidden></p>
       <p class="hint" id="dChecked" hidden></p>
-      <p id="dAbout"></p>
+      <p id="dAbout" hidden></p>
       <ul class="d-amen" id="dAmen" aria-label="What you get"></ul>
       <p class="dist" id="dDist" hidden></p>
 
-      <fieldset class="d-form">
+      <div class="d-unclaimed" id="dUnclaimed" hidden>
+        <p class="d-pay">Prices and WhatsApp booking switch on when this business joins KaribuFans. Until then, book with the business directly on its own website.</p>
+        <p class="hint" id="dSource"></p>
+      </div>
+
+      <fieldset class="d-form" id="dForm" hidden>
         <legend>Ask about your dates</legend>
         <div class="d-row">
           <label>Check-in<input type="date" id="dIn"></label>
@@ -1027,17 +1361,24 @@
         <blockquote class="d-preview" id="dPreview"></blockquote>
       </fieldset>
 
-      <a class="btn btn-green d-cta" id="dWa" target="_blank" rel="noopener">Book via WhatsApp</a>
-      <p class="hint" id="dWaNote" hidden>The WhatsApp button switches on when this business joins.</p>
-      <div class="card-actions">
+      <a class="btn btn-primary d-cta" id="dWa" target="_blank" rel="noopener" hidden>Book via WhatsApp</a>
+      <div class="card-actions d-actions">
+        <a class="btn btn-primary" id="dSite" target="_blank" rel="noopener nofollow" hidden>Visit website ↗</a>
         <a class="btn btn-ghost" id="dCall" hidden>Call</a>
-        <a class="btn btn-ghost" id="dMap" target="_blank" rel="noopener">Directions</a>
+        <a class="btn btn-ghost" id="dMap" target="_blank" rel="noopener">Directions ↗</a>
       </div>
-      <p class="d-pay">You pay the host directly, for example by Lipa na M-PESA. KaribuFans never handles your payment. Check that the till name matches the business before you pay.</p>
+      <p class="d-pay" id="dPay" hidden>You pay the host directly, for example by Lipa na M-PESA. KaribuFans never handles your payment. Check that the till name matches the business before you pay.</p>
+
+      <section class="d-route" id="dRoute" aria-labelledby="dRouteH" hidden>
+        <h3 id="dRouteH">Continue your route</h3>
+        <ul id="dRouteList"></ul>
+      </section>
+      <a class="d-claim" id="dClaim" hidden>Is this your business? Claim or remove this listing</a>
     </div>
   </div>
 </aside>
-<script type="application/json" id="staysData">{"icons": {"Airport transfer": "\ud83d\ude90", "Balcony": "\ud83c\udf07", "Breakfast": "\ud83c\udf73", "Garden": "\ud83c\udf33", "High-speed fibre Wi-Fi": "\ud83d\udcf6", "Kitchen": "\ud83c\udf7d\ufe0f", "Secure parking": "\ud83d\ude98", "Self check-in": "\ud83d\udd11", "Sleeps 4": "\ud83d\udecf\ufe0f"}, "listings": [{"about": "[Two lines from the host about the place.]", "amenities": ["High-speed fibre Wi-Fi", "Self check-in", "Kitchen", "Balcony"], "area": "Kilimani", "badge": "Quiet", "dist": "", "id": "example", "map_query": "", "name": "[Example: a business that has joined]", "near_stadium": false, "phone": "", "photos": [], "price": "from KES [X] / night", "price_checked": "", "sample": true, "status": "joined", "tags": ["High-speed fibre Wi-Fi", "Self check-in"], "type": "Apartment", "vibe": "Chill \u0026 Green", "whatsapp": "", "zone": "Kilimani"}], "site": "KaribuFans", "vibes": [{"desc": "Close to the clubs and late-night spots.", "icon": "\ud83c\udf06", "name": "Party Base"}, {"desc": "Quiet places with gardens or balconies.", "icon": "\ud83c\udf3f", "name": "Chill \u0026 Green"}, {"desc": "Easy access to the Nairobi Expressway and the airport.", "icon": "\u2708\ufe0f", "name": "Transit Fast"}]}</script>
+
+<script type="application/json" id="placeData">{"icons": {"Airport transfer": "\ud83d\ude90", "Balcony": "\ud83c\udf07", "Breakfast": "\ud83c\udf73", "Garden": "\ud83c\udf33", "High-speed fibre Wi-Fi": "\ud83d\udcf6", "Kitchen": "\ud83c\udf7d\ufe0f", "Secure parking": "\ud83d\ude98", "Self check-in": "\ud83d\udd11", "Sleeps 4": "\ud83d\udecf\ufe0f"}, "label": "Stays", "listings": [{"amenities": [], "area": "Kilimani", "badge": "", "checked": "5 Oct 2026", "id": "woodmere-grand-hotel-and-serviced-apartments", "map_query": "Woodmere Grand Hotel and Serviced Apartments, Rose Avenue, off Lenana Rd, Nairobi", "name": "Woodmere Grand Hotel and Serviced Apartments", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://woodmeregrandhotel.com/", "status": "unclaimed", "street": "Rose Avenue, off Lenana Rd", "tags": [], "type": "Hotel", "vibe": "", "website": "https://woodmeregrandhotel.com/", "whatsapp": "", "zone": "Kilimani"}, {"amenities": [], "area": "Kilimani", "badge": "", "checked": "5 Oct 2026", "id": "royal-canaan-nairobi-hotel", "map_query": "Royal Canaan Nairobi Hotel, Tigoni Road off Chakka Road, Nairobi", "name": "Royal Canaan Nairobi Hotel", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://royalcanaannairobi.com/", "status": "unclaimed", "street": "Tigoni Road off Chakka Road", "tags": [], "type": "Hotel", "vibe": "", "website": "https://royalcanaannairobi.com/", "whatsapp": "", "zone": "Kilimani"}, {"amenities": [], "area": "Kilimani", "badge": "", "checked": "5 Oct 2026", "id": "roma-courts-serviced-apartments", "map_query": "Roma Courts Serviced Apartments, Nairobi", "name": "Roma Courts Serviced Apartments", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://romacourts.com/", "status": "unclaimed", "street": "", "tags": [], "type": "Apartment", "vibe": "", "website": "https://romacourts.com/", "whatsapp": "", "zone": "Kilimani"}, {"amenities": [], "area": "Kilimani", "badge": "", "checked": "5 Oct 2026", "id": "gemina-court", "map_query": "Gemina Court, George Padmore Road, Nairobi", "name": "Gemina Court", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.geminacourt.co.ke/contact", "status": "unclaimed", "street": "George Padmore Road", "tags": [], "type": "Apartment", "vibe": "", "website": "https://www.geminacourt.co.ke/", "whatsapp": "", "zone": "Kilimani"}, {"amenities": [], "area": "Kilimani", "badge": "", "checked": "5 Oct 2026", "id": "waridi-paradise-hotel-suites", "map_query": "Waridi Paradise Hotel \u0026 Suites, Rose Avenue, off Argwings Kodhek Rd, Nairobi", "name": "Waridi Paradise Hotel \u0026 Suites", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://waridi-paradise.com/", "status": "unclaimed", "street": "Rose Avenue, off Argwings Kodhek Rd", "tags": [], "type": "Hotel", "vibe": "", "website": "https://waridi-paradise.com/", "whatsapp": "", "zone": "Kilimani"}, {"amenities": [], "area": "Kilimani", "badge": "", "checked": "5 Oct 2026", "id": "the-monarch-hotel-nairobi", "map_query": "The Monarch Hotel Nairobi, Rose Avenue, off Argwings Kodhek, Nairobi", "name": "The Monarch Hotel Nairobi", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.monarchhotelskenya.com/", "status": "unclaimed", "street": "Rose Avenue, off Argwings Kodhek", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.monarchhotelskenya.com/", "whatsapp": "", "zone": "Kilimani"}, {"amenities": [], "area": "Kilimani", "badge": "", "checked": "5 Oct 2026", "id": "ngong-hills-hotel", "map_query": "Ngong Hills Hotel, off Ngong Road, Nairobi", "name": "Ngong Hills Hotel", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.ngonghillshotel.co.ke/", "status": "unclaimed", "street": "off Ngong Road", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.ngonghillshotel.co.ke/", "whatsapp": "", "zone": "Kilimani"}, {"amenities": [], "area": "Westlands", "badge": "", "checked": "5 Oct 2026", "id": "golden-tulip-westlands-nairobi", "map_query": "Golden Tulip Westlands Nairobi, 65 Muthithi Road, Nairobi", "name": "Golden Tulip Westlands Nairobi", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://westlands-nairobi.goldentulip.com/en-us/", "status": "unclaimed", "street": "65 Muthithi Road", "tags": [], "type": "Hotel", "vibe": "", "website": "https://westlands-nairobi.goldentulip.com/en-us/", "whatsapp": "", "zone": "Westlands"}, {"amenities": [], "area": "Westlands", "badge": "", "checked": "5 Oct 2026", "id": "ibis-styles-nairobi-westlands", "map_query": "Ibis Styles Nairobi Westlands, Rhapta Road, Nairobi", "name": "Ibis Styles Nairobi Westlands", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.ibisstylesnairobi.com/", "status": "unclaimed", "street": "Rhapta Road", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.ibisstylesnairobi.com/", "whatsapp": "", "zone": "Westlands"}, {"amenities": [], "area": "Westlands", "badge": "", "checked": "5 Oct 2026", "id": "acacia-furnished-apartments", "map_query": "Acacia Furnished Apartments, Stima Lane, off Lower Kabete Road, Nairobi", "name": "Acacia Furnished Apartments", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://acacia-apartments.com/", "status": "unclaimed", "street": "Stima Lane, off Lower Kabete Road", "tags": [], "type": "Apartment", "vibe": "", "website": "https://acacia-apartments.com/", "whatsapp": "", "zone": "Westlands"}, {"amenities": [], "area": "Westlands", "badge": "", "checked": "5 Oct 2026", "id": "prime-serviced-residence", "map_query": "Prime Serviced Residence, Rhapta Road, Nairobi", "name": "Prime Serviced Residence", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.primeresidence.co.ke/", "status": "unclaimed", "street": "Rhapta Road", "tags": [], "type": "Apartment", "vibe": "", "website": "https://www.primeresidence.co.ke/", "whatsapp": "", "zone": "Westlands"}, {"amenities": [], "area": "Westlands", "badge": "", "checked": "5 Oct 2026", "id": "west-wood-hotel", "map_query": "West Wood Hotel, Nairobi", "name": "West Wood Hotel", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://superiorhotelskenya.com/hotels-in-nairobi/west-wood-hotel/", "status": "unclaimed", "street": "", "tags": [], "type": "Hotel", "vibe": "", "website": "https://superiorhotelskenya.com/hotels-in-nairobi/west-wood-hotel/", "whatsapp": "", "zone": "Westlands"}, {"amenities": [], "area": "Westlands", "badge": "", "checked": "5 Oct 2026", "id": "la-maison-royale-westlands", "map_query": "La Maison Royale - Westlands, Nairobi", "name": "La Maison Royale - Westlands", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://lmrhotel.com/westlands/", "status": "unclaimed", "street": "", "tags": [], "type": "Hotel", "vibe": "", "website": "https://lmrhotel.com/westlands/", "whatsapp": "", "zone": "Westlands"}, {"amenities": [], "area": "CBD", "badge": "", "checked": "5 Oct 2026", "id": "sarova-stanley", "map_query": "Sarova Stanley, Nairobi", "name": "Sarova Stanley", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.sarovahotels.com/stanley-nairobi/", "status": "unclaimed", "street": "", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.sarovahotels.com/stanley-nairobi/", "whatsapp": "", "zone": "CBD"}, {"amenities": [], "area": "CBD", "badge": "", "checked": "5 Oct 2026", "id": "best-western-plus-meridian-hotel", "map_query": "Best Western Plus Meridian Hotel, Murang\u0027a Road, off Moi Avenue, Nairobi", "name": "Best Western Plus Meridian Hotel", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.bwplusmeridian.com/index.html", "status": "unclaimed", "street": "Murang\u0027a Road, off Moi Avenue", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.bwplusmeridian.com/", "whatsapp": "", "zone": "CBD"}, {"amenities": [], "area": "CBD", "badge": "", "checked": "5 Oct 2026", "id": "kenya-comfort-hotel-suites", "map_query": "Kenya Comfort Hotel \u0026 Suites, Junction of Muindi Mbingu \u0026 Monrovia Street, Nairobi", "name": "Kenya Comfort Hotel \u0026 Suites", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://kenyacomfort.com/kch/contact.html", "status": "unclaimed", "street": "Junction of Muindi Mbingu \u0026 Monrovia Street", "tags": [], "type": "Hotel", "vibe": "", "website": "https://kenyacomfort.com/", "whatsapp": "", "zone": "CBD"}, {"amenities": [], "area": "CBD", "badge": "", "checked": "5 Oct 2026", "id": "metro-hotel", "map_query": "Metro Hotel, Koinange Street, Nairobi", "name": "Metro Hotel", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://hotelmetro.co.ke/", "status": "unclaimed", "street": "Koinange Street", "tags": [], "type": "Hotel", "vibe": "", "website": "https://hotelmetro.co.ke/", "whatsapp": "", "zone": "CBD"}, {"amenities": [], "area": "CBD", "badge": "", "checked": "5 Oct 2026", "id": "longonot-place-serviced-apartments", "map_query": "Longonot Place Serviced Apartments, Harry Thuku Road, Nairobi", "name": "Longonot Place Serviced Apartments", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.longonotplace.co.ke/", "status": "unclaimed", "street": "Harry Thuku Road", "tags": [], "type": "Apartment", "vibe": "", "website": "https://www.longonotplace.co.ke/", "whatsapp": "", "zone": "CBD"}, {"amenities": [], "area": "CBD", "badge": "", "checked": "5 Oct 2026", "id": "norfolk-towers", "map_query": "Norfolk Towers, Kijabe Street, off Harry Thuku Rd, Nairobi", "name": "Norfolk Towers", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.norfolktowers.co.ke/", "status": "unclaimed", "street": "Kijabe Street, off Harry Thuku Rd", "tags": [], "type": "Apartment", "vibe": "", "website": "https://www.norfolktowers.co.ke/", "whatsapp": "", "zone": "CBD"}, {"amenities": [], "area": "Karen", "badge": "", "checked": "5 Oct 2026", "id": "karen-gables", "map_query": "Karen Gables, Mbagathi Ridge, Nairobi", "name": "Karen Gables", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://karengables.com/", "status": "unclaimed", "street": "Mbagathi Ridge", "tags": [], "type": "Guesthouse", "vibe": "", "website": "https://karengables.com/", "whatsapp": "", "zone": "Karen"}, {"amenities": [], "area": "Karen", "badge": "", "checked": "5 Oct 2026", "id": "karen-inn-and-suites", "map_query": "Karen Inn and Suites, Karen Road, Nairobi", "name": "Karen Inn and Suites", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://kareninn-suites.com/", "status": "unclaimed", "street": "Karen Road", "tags": [], "type": "Hotel", "vibe": "", "website": "https://kareninn-suites.com/", "whatsapp": "", "zone": "Karen"}, {"amenities": [], "area": "Karen", "badge": "", "checked": "5 Oct 2026", "id": "house-of-waine", "map_query": "House Of Waine, Nairobi", "name": "House Of Waine", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.houseofwaine.com/", "status": "unclaimed", "street": "", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.houseofwaine.com/", "whatsapp": "", "zone": "Karen"}, {"amenities": [], "area": "Karen", "badge": "", "checked": "5 Oct 2026", "id": "karen-blixen-coffee-garden-cottages", "map_query": "Karen Blixen Coffee Garden \u0026 Cottages, 336 Karen Road, Nairobi", "name": "Karen Blixen Coffee Garden \u0026 Cottages", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.karenblixencoffeegardens.com/contact-us/", "status": "unclaimed", "street": "336 Karen Road", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.karenblixencoffeegardens.com/", "whatsapp": "", "zone": "Karen"}, {"amenities": [], "area": "Karen", "badge": "", "checked": "5 Oct 2026", "id": "the-margarita-house", "map_query": "The Margarita House, 53 Lower Plains Road, off Karen Rd, Nairobi", "name": "The Margarita House", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://themargaritahouse.com/", "status": "unclaimed", "street": "53 Lower Plains Road, off Karen Rd", "tags": [], "type": "Hotel", "vibe": "", "website": "https://themargaritahouse.com/", "whatsapp": "", "zone": "Karen"}, {"amenities": [], "area": "Karen", "badge": "", "checked": "5 Oct 2026", "id": "the-residences-at-karen", "map_query": "The Residences At Karen, Karen Road, Nairobi", "name": "The Residences At Karen", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://theresidences.or.ke/", "status": "unclaimed", "street": "Karen Road", "tags": [], "type": "Apartment", "vibe": "", "website": "https://theresidences.or.ke/", "whatsapp": "", "zone": "Karen"}, {"amenities": [], "area": "Syokimau", "badge": "", "checked": "5 Oct 2026", "id": "67-airport-hotel", "map_query": "67 Airport Hotel, Muthama Access Road, Nairobi", "name": "67 Airport Hotel", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://67airporthotel.co.ke/", "status": "unclaimed", "street": "Muthama Access Road", "tags": [], "type": "Hotel", "vibe": "", "website": "https://67airporthotel.co.ke/", "whatsapp": "", "zone": "Airport \u0026 Mombasa Road"}, {"amenities": [], "area": "Syokimau", "badge": "", "checked": "5 Oct 2026", "id": "easy-hotel-kenya", "map_query": "Easy Hotel Kenya, Chady Rd, off Syokimau Airport Road, Nairobi", "name": "Easy Hotel Kenya", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://easyhotelkenya.com/", "status": "unclaimed", "street": "Chady Rd, off Syokimau Airport Road", "tags": [], "type": "Hotel", "vibe": "", "website": "https://easyhotelkenya.com/", "whatsapp": "", "zone": "Airport \u0026 Mombasa Road"}, {"amenities": [], "area": "JKIA", "badge": "", "checked": "5 Oct 2026", "id": "four-points-by-sheraton-nairobi-airport", "map_query": "Four Points by Sheraton Nairobi Airport, Tower Avenue, Nairobi", "name": "Four Points by Sheraton Nairobi Airport", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.marriott.com/en-us/hotels/nbofa-four-points-by-sheraton-nairobi-airport/overview/", "status": "unclaimed", "street": "Tower Avenue", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.marriott.com/en-us/hotels/nbofa-four-points-by-sheraton-nairobi-airport/overview/", "whatsapp": "", "zone": "Airport \u0026 Mombasa Road"}, {"amenities": [], "area": "JKIA", "badge": "", "checked": "5 Oct 2026", "id": "crowne-plaza-nairobi-airport", "map_query": "Crowne Plaza Nairobi Airport, First Freight Lane, Nairobi", "name": "Crowne Plaza Nairobi Airport", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.ihg.com/crowneplaza/hotels/us/en/nairobi/nboir/hoteldetail", "status": "unclaimed", "street": "First Freight Lane", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.ihg.com/crowneplaza/hotels/us/en/nairobi/nboir/hoteldetail", "whatsapp": "", "zone": "Airport \u0026 Mombasa Road"}, {"amenities": [], "area": "Mombasa Road", "badge": "", "checked": "5 Oct 2026", "id": "eka-hotel-nairobi", "map_query": "Eka Hotel Nairobi, Mombasa Road, at the Southern Bypass, Nairobi", "name": "Eka Hotel Nairobi", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.ekahotel.com/", "status": "unclaimed", "street": "Mombasa Road, at the Southern Bypass", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.ekahotel.com/", "whatsapp": "", "zone": "Airport \u0026 Mombasa Road"}, {"amenities": [], "area": "Mombasa Road", "badge": "", "checked": "5 Oct 2026", "id": "ole-sereni", "map_query": "Ole Sereni, Mombasa Road, Nairobi", "name": "Ole Sereni", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://www.ole-sereni.com/", "status": "unclaimed", "street": "Mombasa Road", "tags": [], "type": "Hotel", "vibe": "", "website": "https://www.ole-sereni.com/", "whatsapp": "", "zone": "Airport \u0026 Mombasa Road"}, {"amenities": [], "area": "Ngong Road", "badge": "", "checked": "5 Oct 2026", "id": "shalom-house", "map_query": "Shalom House, St. Daniel Comboni Rd, off Ngong Road, Nairobi", "name": "Shalom House", "near_stadium": true, "phone": "", "photos": [], "sample": false, "source_url": "https://shalomhousekenya.org/contact-details/", "status": "unclaimed", "street": "St. Daniel Comboni Rd, off Ngong Road", "tags": [], "type": "Guesthouse", "vibe": "", "website": "https://shalomhousekenya.org/", "whatsapp": "", "zone": "Ngong Road"}, {"amenities": [], "area": "Ngong Road", "badge": "", "checked": "5 Oct 2026", "id": "eldon-villas", "map_query": "Eldon Villas, Ngong Road, next to The Junction Mall, Nairobi", "name": "Eldon Villas", "near_stadium": true, "phone": "", "photos": [], "sample": false, "source_url": "https://eldonvillas.com/", "status": "unclaimed", "street": "Ngong Road, next to The Junction Mall", "tags": [], "type": "Apartment", "vibe": "", "website": "https://eldonvillas.com/", "whatsapp": "", "zone": "Ngong Road"}, {"amenities": [], "area": "Ngong Road", "badge": "", "checked": "5 Oct 2026", "id": "leon-villas-guest-house", "map_query": "Leon Villas Guest House, Ngong Road, near Adams Arcade, Nairobi", "name": "Leon Villas Guest House", "near_stadium": false, "phone": "", "photos": [], "sample": false, "source_url": "https://leonvillasguesthouse.com/", "status": "unclaimed", "street": "Ngong Road, near Adams Arcade", "tags": [], "type": "Guesthouse", "vibe": "", "website": "https://leonvillasguesthouse.com/", "whatsapp": "", "zone": "Ngong Road"}], "nearLabel": "Near Talanta Stadium", "page": "stays", "root": "../", "route": {"food": {"CBD": 1, "Karen": 1, "Kilimani": 2, "Lang\u0027ata": 1, "Westlands": 1}, "matchday": {"Karen": 1}, "movies-games": {"Airport \u0026 Mombasa Road": 1, "Gigiri \u0026 Limuru Road": 2, "Ngong Road": 1, "Thika Road": 1, "Westlands": 3}, "nightlife": {"Kilimani": 1, "Westlands": 2}, "rides": {}, "stays": {"Airport \u0026 Mombasa Road": 6, "CBD": 6, "Karen": 6, "Kilimani": 7, "Ngong Road": 3, "Westlands": 6}, "tickets": {}}, "site": "KaribuFans", "stops": [{"label": "Stays", "slug": "stays", "stop": 1}, {"label": "Food", "slug": "food", "stop": 2}, {"label": "Rides", "slug": "rides", "stop": 3}, {"label": "Matchday", "slug": "matchday", "stop": 4}, {"label": "Nightlife", "slug": "nightlife", "stop": 5}, {"label": "Movies \u0026 Games", "slug": "movies-games", "stop": 6}, {"label": "Tickets", "slug": "tickets", "stop": 7}], "vibes": [{"desc": "Close to the clubs and late-night spots.", "icon": "\ud83c\udf06", "name": "Party Base"}, {"desc": "Quiet places with gardens or balconies.", "icon": "\ud83c\udf3f", "name": "Chill \u0026 Green"}, {"desc": "Easy access to the Nairobi Expressway and the airport.", "icon": "\u2708\ufe0f", "name": "Transit Fast"}]}</script>
 
 
 
@@ -1045,24 +1386,35 @@
 
 
 
+
+
+<nav class="next-stop" aria-label="Continue the route">
+  <div class="wrap">
+    <a class="ns ns-prev" href="../"><span>← Start</span><strong>Home</strong></a>
+    <a class="ns ns-next" href="../food/"><span>Next stop 2 →</span><strong>Food</strong><em>Restaurants and food spots across the city.</em></a>
+  </div>
+</nav>
 
 </main>
 
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="footer-brand">
         <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
   <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
-      <div><h4>Explore</h4><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
-      <div><h4>Language</h4><div class="langs"><button type="button" data-lang="EN" aria-pressed="true">EN</button><button type="button" data-lang="SW" aria-pressed="false">SW</button><button type="button" data-lang="FR" aria-pressed="false">FR</button><button type="button" data-lang="AR" aria-pressed="false">AR</button><button type="button" data-lang="PT" aria-pressed="false">PT</button></div><p id="langNote" style="font-size:13px;margin-top:10px;color:var(--muted-night)">Kiswahili, French, Arabic and Portuguese coming after launch.</p></div>
+      <div><h2>Explore</h2><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
+      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li><a href="../privacy/">Privacy</a></li></ul></div>
+      <div id="languages"><h2>Language</h2>
+        <div class="langs"><button type="button" data-lang="EN" data-name="English" data-live="1" aria-pressed="true">EN</button><button type="button" data-lang="SW" data-name="Kiswahili" data-live="" aria-pressed="false" class="soon">SW<small>soon</small></button><button type="button" data-lang="FR" data-name="French" data-live="" aria-pressed="false" class="soon">FR<small>soon</small></button><button type="button" data-lang="AR" data-name="Arabic" data-live="" aria-pressed="false" class="soon">AR<small>soon</small></button><button type="button" data-lang="PT" data-name="Portuguese" data-live="" aria-pressed="false" class="soon">PT<small>soon</small></button></div>
+        <p class="lang-note" id="langNote" aria-live="polite">The site is in English. Kiswahili, French, Arabic and Portuguese follow after launch.</p>
+      </div>
     </div>
-    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 [Registered business name].</p>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 KaribuFans.</p>
   </div>
 </footer>
 <script src="../js/site.js" defer></script>
