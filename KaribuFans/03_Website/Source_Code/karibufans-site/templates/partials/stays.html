@@ -1,4 +1,5 @@
 {% set f = m.filters %}
+{% from "partials/area_art.html" import area_art %}
 {% set vicons = {} %}{% for v in f.vibes %}{% set _ = vicons.update({v.name: v.icon}) %}{% endfor %}
 <div class="filters stay-filters" id="stayFilters" role="group" aria-label="Filter stays">
   <div class="wrap">
@@ -32,8 +33,8 @@
       {% for v in listings %}
       {% if v.status == 'unclaimed' %}
       <article class="card stay-card unclaimed" id="card-{{ v.id }}" data-id="{{ v.id }}" data-type="{{ v.type }}" data-area="{{ v.zone }}" data-near="{{ '1' if v.near_stadium else '' }}" data-vibe="" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ v.zone ~ ' ' ~ v.street) | lower }}">
+        <div class="un-art">{{ area_art(v.zone) }}<span class="badge badge-vibe">{{ v.area }}</span><span class="sample un-flag">NOT YET VERIFIED BY THIS BUSINESS</span></div>
         <div class="card-body">
-          <div class="un-top"><span class="un-area">{{ v.area }}</span><span class="un-flag">Not yet verified by this business</span></div>
           <h3>{{ v.name }}</h3>
           <div class="card-meta">{{ v.type }}{% if v.street %} · {{ v.street }}{% endif %}</div>
           {% if v.near_stadium %}<div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>{{ f.near_label }}</div>{% endif %}

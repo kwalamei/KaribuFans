@@ -8,6 +8,7 @@
   --gutter:clamp(16px,5vw,72px); --max:1296px; --radius:16px;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:var(--body);font-size:16px;line-height:1.5;color:var(--ink);background:var(--ivory)}
 body.night{background:var(--night);color:var(--flood)}
@@ -315,9 +316,8 @@ body.drawer-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.drawer,.drawer-veil{transition:none}}
 
 /* Stays: unclaimed listings */
-.card.unclaimed{background:transparent;border-style:dashed;border-color:rgba(22,32,26,.28)}
-.un-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.un-area{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--canopy);color:var(--ivory)}
-.un-flag{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-day)}
+.un-art{position:relative;aspect-ratio:16/7;overflow:hidden;background:#E4DCCB}
+.un-art-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.un-art .un-flag{font-size:10px}
 .un-src{font-size:12px}
 .un-claim{font-size:13px;font-weight:700;color:var(--canopy)}
