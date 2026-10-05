@@ -1,0 +1,20 @@
+{# Shared fixtures list. mode = 'matchday' or 'tickets' #}
+<div class="fixtures">
+  {% if fixtures.fixtures %}
+  {% for f in fixtures.fixtures %}
+  <div class="fx" data-date="{{ f.date }}" data-time="{{ f.time }}" data-title="{{ f.home }} vs {{ f.away }}">
+    <div><strong class="fx-date">{{ f.date }}</strong><span>{{ f.stage }}</span></div>
+    <span class="fx-teams">{{ f.home }} vs {{ f.away }}</span>
+    <span class="fx-meta">Kick-off {{ f.time }}{% if f.gates %} · Gates {{ f.gates }}{% endif %}</span>
+    {% if mode == 'tickets' %}
+    <span class="status status-{{ f.status or 'opens_soon' }}">{{ {'on_sale':'On sale','opens_soon':'Opens soon','sold_out':'Sold out','official_resale':'Official resale'}[f.status or 'opens_soon'] }}</span>
+    {% if fixtures.official_ticket_url %}<a class="btn btn-light" href="{{ fixtures.official_ticket_url }}" target="_blank" rel="noopener">Official site ↗</a>{% endif %}
+    {% else %}
+    <button type="button" class="btn btn-ghost add-cal">Add to calendar</button>
+    {% endif %}
+  </div>
+  {% endfor %}
+  {% else %}
+  <div class="coming">Nairobi fixtures will appear here once they are officially published. {% if mode == 'matchday' %}Each match will have an "Add to calendar" button.{% else %}Each match will show its sale status and a link to the official ticket site.{% endif %}</div>
+  {% endif %}
+</div>

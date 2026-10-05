@@ -12,6 +12,7 @@
   "copyright": "[Registered business name]",
   "languages": [
     "EN",
+    "SW",
     "FR",
     "AR",
     "PT"
@@ -19,5 +20,13 @@
   "brand": {
     "first": "Karibu",
     "second": "Fans"
-  }
+  },
+  "contact_whatsapp": "",
+  "contact_whatsapp_note": "KaribuFans business WhatsApp number, international format without + (e.g. 2547XXXXXXXX). Used by the vendor sign-up and ticket alert forms.",
+  "uber_client_id": "",
+  "uber_client_id_note": "Uber's developer docs list client_id as required for ride links. Register free at developer.uber.com and paste it here.",
+  "stadiums": [
+    "Talanta Stadium"
+  ],
+  "stadiums_note": "Only list stadiums officially confirmed as Nairobi venues."
 }

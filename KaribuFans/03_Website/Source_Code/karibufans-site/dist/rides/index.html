@@ -22,8 +22,9 @@
       <a href="../stays/" >Stays</a><a href="../food/" >Food</a><a href="../rides/" aria-current="page">Rides</a><a href="../matchday/" >Matchday</a><a href="../nightlife/" >Nightlife</a><a href="../movies-games/" >Movies &amp; Games</a><a href="../tickets/" >Tickets</a>
     </nav>
     <div class="nav-tools">
-      <button type="button" class="lang" aria-label="Change language">EN</button>
-      <a class="btn btn-amber" href="../#vendors">List your business</a>
+      <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
+      <button type="button" class="lang" id="langBtn" aria-label="Change language">EN</button>
+      <a class="btn btn-amber" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -84,14 +85,61 @@
 
 
 
-<section class="band" aria-labelledby="listH">
+
+<section class="band" aria-labelledby="tripH">
   <div class="wrap">
-    
-    <h2 id="listH" class="sr-only">Rides</h2>
-    <div class="coming">This page's tools are being built next: trip buttons for Uber and Bolt, popular routes and ride safety tips.</div>
-    
+    <div class="sec-head"><h2 id="tripH" style="font-size:clamp(26px,3vw,36px)">Plan a ride</h2><p>Pick where you are going. Uber opens with the destination filled in; for Bolt and Little, type it in their app.</p></div>
+    <div class="ride-grid">
+      <form class="ride-card" id="rideForm" onsubmit="return false" aria-label="Ride planner">
+        <label for="rideTo">Where to?</label>
+        <select id="rideTo">
+          <option value="Talanta Stadium, Nairobi" data-name="Talanta Stadium">Talanta Stadium</option><option value="Jomo Kenyatta International Airport, Nairobi" data-name="JKIA airport">JKIA airport</option><option value="Nairobi CBD" data-name="City centre">City centre</option>
+          <option value="" data-name="">Somewhere else (type in the app)</option>
+        </select>
+        <p class="hint">Pickup is your current location. Fares are shown and paid inside each app.</p>
+        <div class="ride-btns">
+          <a class="btn btn-light" id="uberLink" href="https://m.uber.com/ul/?action=setPickup&amp;pickup=my_location" target="_blank" rel="noopener" data-client="">Open Uber ↗</a>
+          <a class="btn btn-amber" href="https://bolt.eu/" target="_blank" rel="noopener">Open Bolt ↗</a>
+        </div>
+        <p class="hint">Little: open the Little Ride app on your phone and type the destination.</p>
+      </form>
+      <div class="ride-card">
+        <h3>Popular trips</h3>
+        <ul class="trip-list">
+          <li><strong>JKIA airport → your stay</strong><span>Arrival day</span></li><li><strong>Your stay → Talanta Stadium</strong><span>Matchday · leave early</span></li><li><strong>Talanta Stadium → city centre</strong><span>After the match · expect high demand</span></li><li><strong>Your stay → JKIA airport</strong><span>Departure day · allow extra time for traffic</span></li>
+        </ul>
+        <p class="hint">We don't show fare estimates: prices change with traffic and demand, so check the price in the app before you confirm.</p>
+      </div>
+    </div>
   </div>
 </section>
+
+<section class="band band-panel" aria-labelledby="zoneH">
+  <div class="wrap two-col">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="eyebrow">Matchday</div>
+      <h2 id="zoneH" style="font-weight:800;font-size:clamp(28px,3.4vw,40px)">Pickup and drop-off zones</h2>
+      <p style="color:var(--muted-night)">Roads near the stadium may close on matchdays. We will show the official pickup zones here once the traffic plan is published.</p>
+    </div>
+    <div class="coming">Official matchday traffic plan: [not yet published]</div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="safeH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="safeH" style="font-size:clamp(26px,3vw,36px)">Ride safe</h2></div>
+    <div class="tips"><div class="tip"><strong>Match the car</strong><p>Check the plate, car model and driver photo before you get in.</p></div><div class="tip"><strong>Share your trip</strong><p>Use the app&#39;s share-trip feature so a friend can follow your ride.</p></div><div class="tip"><strong>Pay the app price</strong><p>Pay through the app or as it shows. Do not agree a separate cash price.</p></div><div class="tip"><strong>Expect surge pricing</strong><p>Fares rise after matches and in rain. Waiting a little or walking to a quieter street can help.</p></div></div>
+    <div class="sec-head" style="margin-top:48px"><h2 style="font-size:clamp(22px,2.6vw,30px)">Taking a matatu</h2><p>Matatus are Nairobi's shared minibuses: cheap and everywhere, but busy.</p></div>
+    <div class="tips"><div class="tip"><strong>Ask before you board</strong><p>Routes are shown on the front of the matatu. Confirm the destination and fare with the conductor before you get in.</p></div><div class="tip"><strong>Keep valuables close</strong><p>Matatus get crowded at rush hour and after matches. Keep your phone and wallet out of sight.</p></div><div class="tip"><strong>Ask a local</strong><p>Your host or hotel can tell you the right route and stage for where you are going.</p></div></div>
+  </div>
+</section>
+
+
+
+
+
+
+
 
 </main>
 
@@ -106,8 +154,8 @@
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h4>Explore</h4><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../#vendors">List your business</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
-      <div><h4>Language</h4><div class="langs"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">FR</button><button type="button" aria-pressed="false">AR</button><button type="button" aria-pressed="false">PT</button></div><p style="font-size:13px;margin-top:10px;color:var(--muted-night)">French, Arabic and Portuguese coming after launch.</p></div>
+      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
+      <div><h4>Language</h4><div class="langs"><button type="button" data-lang="EN" aria-pressed="true">EN</button><button type="button" data-lang="SW" aria-pressed="false">SW</button><button type="button" data-lang="FR" aria-pressed="false">FR</button><button type="button" data-lang="AR" aria-pressed="false">AR</button><button type="button" data-lang="PT" aria-pressed="false">PT</button></div><p id="langNote" style="font-size:13px;margin-top:10px;color:var(--muted-night)">Kiswahili, French, Arabic and Portuguese coming after launch.</p></div>
     </div>
     <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 [Registered business name].</p>
   </div>

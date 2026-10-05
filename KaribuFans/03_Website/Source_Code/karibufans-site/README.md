@@ -19,12 +19,23 @@ In `data/site.json` set `"mode": "tournament"` and rebuild. Default is `"everyda
 ## Add a real vendor
 In `data/listings/<page>.json` add an entry with `"sample": false`, the WhatsApp number in international format without `+` (e.g. `2547XXXXXXXX`) and, optionally, a phone number. The WhatsApp button then opens a chat with a pre-filled "I found you on KaribuFans" message.
 
+## Add a real stay
+In `data/listings/stays.json` each stay has: `id` (short, unique, no spaces, e.g. `kilimani-green-apts`; it becomes the share link), `type` (Hotel, B&B, Apartment, Guesthouse), `area`, `near_stadium` (true/false), `vibe` (Party Base, Chill & Green, Transit Fast), `badge` (two or three words shown on the photo), `price` (e.g. `from KES 4,500 / night`), `price_checked` (date the host confirmed it), `amenities` (list), `about`, `photos` (up to three paths, first one is the card photo), `whatsapp`, `phone`. Set `"sample": false`. The filter choices, vibe descriptions and the payment note are in `data/modules.json` under Stays, `filters`.
+
 ## Deploy on Vercel (first time)
 1. Push this folder to a new GitHub repository.
 2. In Vercel: Add New → Project → import the repository.
 3. Framework preset: Other. Leave the build command empty. Output directory: `dist` (already set in `vercel.json`).
 4. Deploy. Vercel gives a free preview address; connect the domain later.
 
-## Status (29 Sep 2026, Day 1)
-Done: homepage, shared header, footer, page hero with route bar, seven module pages with sample listings and filters, mobile layout.
-Next: Rides and Tickets tools, Matchday essentials, vendor sign-up form, privacy notice, real photos.
+## Settings to fill in (data/site.json)
+- `contact_whatsapp`: the KaribuFans business WhatsApp number. Vendor sign-up and ticket alerts send to it.
+- `uber_client_id`: Uber's docs list it as required for ride links. Register free at developer.uber.com.
+- `stadiums`: only officially confirmed Nairobi venues.
+- Fixtures go in `data/fixtures.json` once officially published; they then show on Matchday (with Add to calendar) and Tickets (with sale status).
+
+## Status
+- 29 Sep (Day 1): homepage, shared header and footer, page hero with route bar, seven module pages with sample listings and filters, mobile layout.
+- 29 Sep (Days 2–4 batch): search page and in-page search; filters and language remembered; WhatsApp, Call and Directions buttons; distance-to-stadium tag; opening hours with Open now/Closed (Nairobi time); nightlife dress code and busiest times; Rides planner (Uber link with destination, Bolt, Little, popular trips, safety, matatu tips); Matchday fixtures with Add to calendar, stadium essentials; Tickets notice, fixtures with status labels, alert request, fake-ticket tips; vendor sign-up form (sends via WhatsApp); Kiswahili added to languages.
+- 5 Oct: Stays page: Area / Vibe / Stay type filters in a sticky bar, vibe badge on cards, details drawer with three photos, dates and guests, pre-filled WhatsApp enquiry, payment note, shareable link per stay.
+- Next: real photos, privacy notice text, first real vendors.

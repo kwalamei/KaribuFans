@@ -8,10 +8,16 @@
       "Outdoor",
       "Groups"
     ],
-    "note": "Open till [time]",
+    "note": "",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "hours": {
+      "open": "11:00",
+      "close": "23:00"
+    }
   },
   {
     "type": "Swahili",
@@ -22,10 +28,16 @@
       "Halal",
       "Takeaway"
     ],
-    "note": "Open till [time]",
+    "note": "",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "hours": {
+      "open": "08:00",
+      "close": "22:00"
+    }
   },
   {
     "type": "Cafés",
@@ -36,10 +48,16 @@
       "Breakfast",
       "Wi-Fi"
     ],
-    "note": "Open till [time]",
+    "note": "",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "hours": {
+      "open": "07:00",
+      "close": "18:00"
+    }
   },
   {
     "type": "Open late",
@@ -50,9 +68,15 @@
       "Screens",
       "Groups"
     ],
-    "note": "Open till [time]",
+    "note": "",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "hours": {
+      "open": "12:00",
+      "close": "02:00"
+    }
   }
 ]

@@ -25,7 +25,9 @@ def main():
     site = load("site.json")
     modules = load("modules.json")
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]))
-    common = dict(site=site, modules=modules, year=date.today().year)
+    rides = load("rides.json")
+    fixtures = load("fixtures.json")
+    common = dict(site=site, modules=modules, rides=rides, fixtures=fixtures, year=date.today().year)
 
     if DIST.exists():
         shutil.rmtree(DIST)
@@ -39,14 +41,20 @@ def main():
     home_look = "day"
     write("index.html", env.get_template("index.html").render(root="./", look=home_look, active="", **common))
 
+    index = []
     for m in modules:
         f = ROOT / "data" / "listings" / f"{m['slug']}.json"
         listings = json.loads(f.read_text(encoding="utf-8")) if f.exists() else []
+        for v in listings:
+            index.append({"page": m["slug"], "page_label": m["label"], "name": v["name"], "type": v["type"], "area": v["area"], "price": v.get("price", ""), "tags": v.get("tags", []), "sample": v.get("sample", False)})
         html = env.get_template("module.html").render(root="../", look=m["look"], active=m["slug"], m=m, listings=listings, **common)
         write(f"{m['slug']}/index.html", html)
 
+    (DIST / "search-index.json").write_text(json.dumps(index, ensure_ascii=False), encoding="utf-8")
+    write("search/index.html", env.get_template("search.html").render(root="../", look="day", active="", **common))
+    write("list-your-business/index.html", env.get_template("join.html").render(root="../", look="day", active="", **common))
+
     simple = [
-        ("list-your-business", dict(eyebrow="For Nairobi businesses", title="List your business", body="The sign-up form is being built and will be ready before launch. No listing fee: you pay a commission only on customers we send you.")),
         ("privacy", dict(eyebrow="Legal", title="Privacy notice", body="Draft in progress. It will explain what we collect, why, and your rights under Kenya's Data Protection Act, 2019.")),
     ]
     for slug, page in simple:

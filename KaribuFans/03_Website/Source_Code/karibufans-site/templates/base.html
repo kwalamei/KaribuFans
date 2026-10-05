@@ -19,8 +19,9 @@
       {% for m in modules %}<a href="{{ root }}{{ m.slug }}/" {% if active == m.slug %}aria-current="page"{% endif %}>{{ m.label }}</a>{% endfor %}
     </nav>
     <div class="nav-tools">
-      <button type="button" class="lang" aria-label="Change language">EN</button>
-      <a class="btn {{ 'btn-amber' if look == 'night' else 'btn-green' }}" href="{{ root }}#vendors">List your business</a>
+      <a class="icon-btn" href="{{ root }}search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
+      <button type="button" class="lang" id="langBtn" aria-label="Change language">EN</button>
+      <a class="btn {{ 'btn-amber' if look == 'night' else 'btn-green' }}" href="{{ root }}list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -40,8 +41,8 @@
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h4>Explore</h4><ul>{% for m in modules %}<li><a href="{{ root }}{{ m.slug }}/">{{ m.label }}</a></li>{% endfor %}</ul></div>
-      <div><h4>{{ site.name }}</h4><ul><li><a href="{{ root }}#how">How it works</a></li><li><a href="{{ root }}#vendors">List your business</a></li><li><a href="{{ root }}privacy/">Privacy [draft]</a></li></ul></div>
-      <div><h4>Language</h4><div class="langs">{% for l in site.languages %}<button type="button" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ l }}</button>{% endfor %}</div><p style="font-size:13px;margin-top:10px;color:var(--muted-night)">French, Arabic and Portuguese coming after launch.</p></div>
+      <div><h4>{{ site.name }}</h4><ul><li><a href="{{ root }}#how">How it works</a></li><li><a href="{{ root }}list-your-business/">List your business</a></li><li><a href="{{ root }}search/">Search</a></li><li><a href="{{ root }}privacy/">Privacy [draft]</a></li></ul></div>
+      <div><h4>Language</h4><div class="langs">{% for l in site.languages %}<button type="button" data-lang="{{ l }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ l }}</button>{% endfor %}</div><p id="langNote" style="font-size:13px;margin-top:10px;color:var(--muted-night)">Kiswahili, French, Arabic and Portuguese coming after launch.</p></div>
     </div>
     <p class="legal">{{ site.disclaimer }} © {{ year }} {{ site.copyright }}.</p>
   </div>

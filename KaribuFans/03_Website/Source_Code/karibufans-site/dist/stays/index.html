@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Stays · KaribuFans</title>
-<meta name="description" content="Hotels, B&amp;Bs and apartments across Nairobi. You book and pay the host directly.">
+<meta name="description" content="Hotels, B&amp;Bs and apartments across Nairobi. Message the host on WhatsApp and pay them directly.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
@@ -22,8 +22,9 @@
       <a href="../stays/" aria-current="page">Stays</a><a href="../food/" >Food</a><a href="../rides/" >Rides</a><a href="../matchday/" >Matchday</a><a href="../nightlife/" >Nightlife</a><a href="../movies-games/" >Movies &amp; Games</a><a href="../tickets/" >Tickets</a>
     </nav>
     <div class="nav-tools">
-      <button type="button" class="lang" aria-label="Change language">EN</button>
-      <a class="btn btn-green" href="../#vendors">List your business</a>
+      <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
+      <button type="button" class="lang" id="langBtn" aria-label="Change language">EN</button>
+      <a class="btn btn-green" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -41,8 +42,8 @@
   <div class="wrap hero-body">
     <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 1 · Stays</div>
     <div class="script">Lala salama.</div>
-    <h1 id="pageH">Stay close to the action.</h1>
-    <p class="lede">Hotels, B&amp;Bs and apartments across Nairobi. You book and pay the host directly.</p>
+    <h1 id="pageH">Wake up to the best views of Nairobi.</h1>
+    <p class="lede">Hotels, B&amp;Bs and apartments across Nairobi. Message the host on WhatsApp and pay them directly.</p>
   </div>
   <nav class="routebar" aria-label="The route: seven stops">
   <div class="wrap"><div style="position:relative">
@@ -83,97 +84,222 @@
 </section>
 
 
-<div class="filters" role="group" aria-label="Filter Stays">
+
+
+
+
+<div class="filters stay-filters" id="stayFilters" role="group" aria-label="Filter stays">
   <div class="wrap">
-    <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
-    <button type="button" class="chip" data-filter="Hotels" aria-pressed="false">Hotels</button><button type="button" class="chip" data-filter="B&amp;Bs" aria-pressed="false">B&amp;Bs</button><button type="button" class="chip" data-filter="Apartments" aria-pressed="false">Apartments</button><button type="button" class="chip" data-filter="Guesthouses" aria-pressed="false">Guesthouses</button><button type="button" class="chip" data-filter="Family friendly" aria-pressed="false">Family friendly</button><button type="button" class="chip" data-filter="Near the airport" aria-pressed="false">Near the airport</button>
+    <label class="sel"><span>Area</span>
+      <select id="fArea">
+        <option value="">Any area</option>
+        <option value="Kilimani">Kilimani</option><option value="Westlands">Westlands</option><option value="CBD">CBD</option><option value="Karen">Karen</option><option value="Syokimau">Syokimau</option>
+        <option value="__near">Near Talanta Stadium</option>
+      </select></label>
+    <label class="sel"><span>Vibe</span>
+      <select id="fVibe">
+        <option value="">Any vibe</option>
+        <option value="Party Base">🌆 Party Base</option><option value="Chill &amp; Green">🌿 Chill &amp; Green</option><option value="Transit Fast">✈️ Transit Fast</option>
+      </select></label>
+    <label class="sel"><span>Stay type</span>
+      <select id="fType">
+        <option value="">Any type</option>
+        <option value="Hotel">Hotel</option><option value="B&amp;B">B&amp;B</option><option value="Apartment">Apartment</option><option value="Guesthouse">Guesthouse</option>
+      </select></label>
+    <button type="button" class="chip" id="fClear" hidden>Clear</button>
+    <span class="stay-count" id="stayCount" aria-live="polite"></span>
   </div>
 </div>
 
-
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    
     <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">Stays in Nairobi</h2><p>Sample listings are shown until real businesses sign up.</p></div>
-    <div class="grid-cards" id="cards">
-      <article class="card" data-type="Hotel">
-  <div class="card-photo">
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Hotel</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
-  <div class="card-body">
-    <h3>[Hotel name]</h3>
-    <div class="card-meta">[Area] · from KES [X] / night</div>
-    <div class="tags"><span>Breakfast</span><span>Parking</span></div>
-    <div class="card-note">Open till [time]</div>
-    <div class="card-actions">
+    <p class="hint vibe-help" id="vibeHelp" hidden></p>
+    <label class="find" style="margin-bottom:20px"><span class="sr-only">Search stays</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search stays by name, area or feature" autocomplete="off"></label>
+    <div class="grid-cards" id="cards" data-page="stays">
       
-      <span class="btn btn-green" aria-disabled="true">WhatsApp soon</span>
       
+      <article class="card stay-card" id="card-sample-1" data-id="sample-1" data-type="Hotel" data-area="Westlands" data-near="" data-vibe="Party Base" data-search="[hotel name] hotel westlands party base near nightlife high-speed fibre wi-fi secure parking breakfast">
+        <button type="button" class="card-photo stay-open" data-id="sample-1" aria-label="View details for [Hotel name]">
+          
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
+          <span class="badge badge-vibe"><span aria-hidden="true">🌆</span> Westlands · Near nightlife</span>
+          <span class="sample">SAMPLE LISTING</span>
+        </button>
+        <div class="card-body">
+          <div class="card-top"><h3>[Hotel name]</h3></div>
+          <div class="card-meta">Hotel · Westlands</div>
+          <div class="stay-price">from KES [X] / night</div>
+          <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
+          <div class="tags"><span>High-speed fibre Wi-Fi</span><span>Secure parking</span><span>Breakfast</span></div>
+          <div class="card-actions" style="margin-top:auto">
+            <button type="button" class="btn btn-green stay-open" data-id="sample-1">View and book</button>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BHotel%20name%5D%20Westlands%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Hotel name]">Directions</a>
+          </div>
+        </div>
+      </article>
+      
+      
+      <article class="card stay-card" id="card-sample-2" data-id="sample-2" data-type="Apartment" data-area="Kilimani" data-near="" data-vibe="Chill &amp; Green" data-search="[apartment name] apartment kilimani chill &amp; green quiet high-speed fibre wi-fi self check-in kitchen balcony">
+        <button type="button" class="card-photo stay-open" data-id="sample-2" aria-label="View details for [Apartment name]">
+          
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
+          <span class="badge badge-vibe"><span aria-hidden="true">🌿</span> Kilimani · Quiet</span>
+          <span class="sample">SAMPLE LISTING</span>
+        </button>
+        <div class="card-body">
+          <div class="card-top"><h3>[Apartment name]</h3></div>
+          <div class="card-meta">Apartment · Kilimani</div>
+          <div class="stay-price">from KES [X] / night</div>
+          <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
+          <div class="tags"><span>High-speed fibre Wi-Fi</span><span>Self check-in</span><span>Kitchen</span></div>
+          <div class="card-actions" style="margin-top:auto">
+            <button type="button" class="btn btn-green stay-open" data-id="sample-2">View and book</button>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BApartment%20name%5D%20Kilimani%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Apartment name]">Directions</a>
+          </div>
+        </div>
+      </article>
+      
+      
+      <article class="card stay-card" id="card-sample-3" data-id="sample-3" data-type="B&amp;B" data-area="Karen" data-near="" data-vibe="Chill &amp; Green" data-search="[b&amp;b name] b&amp;b karen chill &amp; green garden breakfast garden secure parking">
+        <button type="button" class="card-photo stay-open" data-id="sample-3" aria-label="View details for [B&amp;B name]">
+          
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
+          <span class="badge badge-vibe"><span aria-hidden="true">🌿</span> Karen · Garden</span>
+          <span class="sample">SAMPLE LISTING</span>
+        </button>
+        <div class="card-body">
+          <div class="card-top"><h3>[B&amp;B name]</h3></div>
+          <div class="card-meta">B&amp;B · Karen</div>
+          <div class="stay-price">from KES [X] / night</div>
+          <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
+          <div class="tags"><span>Breakfast</span><span>Garden</span><span>Secure parking</span></div>
+          <div class="card-actions" style="margin-top:auto">
+            <button type="button" class="btn btn-green stay-open" data-id="sample-3">View and book</button>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BB%26B%20name%5D%20Karen%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [B&amp;B name]">Directions</a>
+          </div>
+        </div>
+      </article>
+      
+      
+      <article class="card stay-card" id="card-sample-4" data-id="sample-4" data-type="Hotel" data-area="Syokimau" data-near="" data-vibe="Transit Fast" data-search="[hotel name] hotel syokimau transit fast near airport airport transfer secure parking high-speed fibre wi-fi">
+        <button type="button" class="card-photo stay-open" data-id="sample-4" aria-label="View details for [Hotel name]">
+          
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
+          <span class="badge badge-vibe"><span aria-hidden="true">✈️</span> Syokimau · Near airport</span>
+          <span class="sample">SAMPLE LISTING</span>
+        </button>
+        <div class="card-body">
+          <div class="card-top"><h3>[Hotel name]</h3></div>
+          <div class="card-meta">Hotel · Syokimau</div>
+          <div class="stay-price">from KES [X] / night</div>
+          <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
+          <div class="tags"><span>Airport transfer</span><span>Secure parking</span><span>High-speed fibre Wi-Fi</span></div>
+          <div class="card-actions" style="margin-top:auto">
+            <button type="button" class="btn btn-green stay-open" data-id="sample-4">View and book</button>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BHotel%20name%5D%20Syokimau%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Hotel name]">Directions</a>
+          </div>
+        </div>
+      </article>
+      
+      
+      <article class="card stay-card" id="card-sample-5" data-id="sample-5" data-type="Guesthouse" data-area="CBD" data-near="" data-vibe="Transit Fast" data-search="[guesthouse name] guesthouse cbd transit fast central high-speed fibre wi-fi self check-in">
+        <button type="button" class="card-photo stay-open" data-id="sample-5" aria-label="View details for [Guesthouse name]">
+          
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
+          <span class="badge badge-vibe"><span aria-hidden="true">✈️</span> CBD · Central</span>
+          <span class="sample">SAMPLE LISTING</span>
+        </button>
+        <div class="card-body">
+          <div class="card-top"><h3>[Guesthouse name]</h3></div>
+          <div class="card-meta">Guesthouse · CBD</div>
+          <div class="stay-price">from KES [X] / night</div>
+          <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
+          <div class="tags"><span>High-speed fibre Wi-Fi</span><span>Self check-in</span></div>
+          <div class="card-actions" style="margin-top:auto">
+            <button type="button" class="btn btn-green stay-open" data-id="sample-5">View and book</button>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BGuesthouse%20name%5D%20CBD%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Guesthouse name]">Directions</a>
+          </div>
+        </div>
+      </article>
+      
+      
+      <article class="card stay-card" id="card-sample-6" data-id="sample-6" data-type="Apartment" data-area="[Area]" data-near="1" data-vibe="Party Base" data-search="[apartment name] apartment [area] party base near the stadium sleeps 4 kitchen secure parking">
+        <button type="button" class="card-photo stay-open" data-id="sample-6" aria-label="View details for [Apartment name]">
+          
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
+          <span class="badge badge-vibe"><span aria-hidden="true">🌆</span> [Area] · Near the stadium</span>
+          <span class="sample">SAMPLE LISTING</span>
+        </button>
+        <div class="card-body">
+          <div class="card-top"><h3>[Apartment name]</h3></div>
+          <div class="card-meta">Apartment · [Area]</div>
+          <div class="stay-price">from KES [X] / night</div>
+          <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
+          <div class="tags"><span>Sleeps 4</span><span>Kitchen</span><span>Secure parking</span></div>
+          <div class="card-actions" style="margin-top:auto">
+            <button type="button" class="btn btn-green stay-open" data-id="sample-6">View and book</button>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BApartment%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Apartment name]">Directions</a>
+          </div>
+        </div>
+      </article>
       
     </div>
-  </div>
-</article><article class="card" data-type="B&amp;B">
-  <div class="card-photo">
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">B&amp;B</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
-  <div class="card-body">
-    <h3>[B&amp;B name]</h3>
-    <div class="card-meta">[Area] · from KES [X] / night</div>
-    <div class="tags"><span>Garden</span><span>Wi-Fi</span></div>
-    <div class="card-note">Open till [time]</div>
-    <div class="card-actions">
-      
-      <span class="btn btn-green" aria-disabled="true">WhatsApp soon</span>
-      
-      
-    </div>
-  </div>
-</article><article class="card" data-type="Apartment">
-  <div class="card-photo">
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Apartment</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
-  <div class="card-body">
-    <h3>[Apartment name]</h3>
-    <div class="card-meta">[Area] · from KES [X] / night</div>
-    <div class="tags"><span>Sleeps 4</span><span>Kitchen</span></div>
-    <div class="card-note">Open till [time]</div>
-    <div class="card-actions">
-      
-      <span class="btn btn-green" aria-disabled="true">WhatsApp soon</span>
-      
-      
-    </div>
-  </div>
-</article><article class="card" data-type="Guesthouse">
-  <div class="card-photo">
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Guesthouse</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
-  <div class="card-body">
-    <h3>[Guesthouse name]</h3>
-    <div class="card-meta">[Area] · from KES [X] / night</div>
-    <div class="tags"><span>Budget</span><span>Wi-Fi</span></div>
-    <div class="card-note">Open till [time]</div>
-    <div class="card-actions">
-      
-      <span class="btn btn-green" aria-disabled="true">WhatsApp soon</span>
-      
-      
-    </div>
-  </div>
-</article>
-    </div>
-    <p class="coming" id="noMatch" hidden style="margin-top:24px">Nothing in this category yet. Check back soon.</p>
-    
+    <p class="coming" id="noMatch" hidden style="margin-top:24px">No stays match those filters yet. <button type="button" class="linklike" id="noMatchClear">Clear the filters</button></p>
   </div>
 </section>
+
+<div class="drawer-veil" id="stayVeil" hidden></div>
+<aside class="drawer" id="stayDrawer" role="dialog" aria-modal="true" aria-labelledby="dName" hidden tabindex="-1">
+  <div class="drawer-head">
+    <button type="button" class="icon-btn" id="dClose" aria-label="Close details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button type="button" class="chip" id="dShare">Share this stay</button>
+  </div>
+  <div class="drawer-scroll">
+    <div class="d-photos" id="dPhotos"></div>
+    <div class="d-body">
+      <span class="sample d-sample" id="dSample" hidden>SAMPLE LISTING</span>
+      <h2 id="dName"></h2>
+      <p class="card-meta" id="dMeta"></p>
+      <p class="d-price" id="dPrice"></p>
+      <p class="hint" id="dChecked" hidden></p>
+      <p id="dAbout"></p>
+      <ul class="d-amen" id="dAmen" aria-label="What you get"></ul>
+      <p class="dist" id="dDist" hidden></p>
+
+      <fieldset class="d-form">
+        <legend>Ask about your dates</legend>
+        <div class="d-row">
+          <label>Check-in<input type="date" id="dIn"></label>
+          <label>Check-out<input type="date" id="dOut"></label>
+        </div>
+        <div class="d-row">
+          <label>Guests<select id="dGuests"><option value="">Not sure yet</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option value="9 or more">9+</option></select></label>
+          <label>Your name<input type="text" id="dWho" autocomplete="given-name" placeholder="Optional"></label>
+        </div>
+        <p class="hint" id="dErr" role="alert" hidden></p>
+        <p class="hint">Your message will read:</p>
+        <blockquote class="d-preview" id="dPreview"></blockquote>
+      </fieldset>
+
+      <a class="btn btn-green d-cta" id="dWa" target="_blank" rel="noopener">Book via WhatsApp</a>
+      <p class="hint" id="dWaNote" hidden>The WhatsApp button switches on when this business joins.</p>
+      <div class="card-actions">
+        <a class="btn btn-ghost" id="dCall" hidden>Call</a>
+        <a class="btn btn-ghost" id="dMap" target="_blank" rel="noopener">Directions</a>
+      </div>
+      <p class="d-pay">You pay the host directly, for example by Lipa na M-PESA. KaribuFans never handles your payment. Check that the till name matches the business before you pay.</p>
+    </div>
+  </div>
+</aside>
+<script type="application/json" id="staysData">{"icons": {"Airport transfer": "\ud83d\ude90", "Balcony": "\ud83c\udf07", "Breakfast": "\ud83c\udf73", "Garden": "\ud83c\udf33", "High-speed fibre Wi-Fi": "\ud83d\udcf6", "Kitchen": "\ud83c\udf7d\ufe0f", "Secure parking": "\ud83d\ude98", "Self check-in": "\ud83d\udd11", "Sleeps 4": "\ud83d\udecf\ufe0f"}, "listings": [{"about": "[Two lines from the host about the place.]", "amenities": ["High-speed fibre Wi-Fi", "Secure parking", "Breakfast"], "area": "Westlands", "badge": "Near nightlife", "dist": "[X] min to Talanta Stadium", "id": "sample-1", "map_query": "", "name": "[Hotel name]", "near_stadium": false, "phone": "", "photos": [], "price": "from KES [X] / night", "price_checked": "", "sample": true, "tags": ["High-speed fibre Wi-Fi", "Secure parking"], "type": "Hotel", "vibe": "Party Base", "whatsapp": ""}, {"about": "[Two lines from the host about the place.]", "amenities": ["High-speed fibre Wi-Fi", "Self check-in", "Kitchen", "Balcony"], "area": "Kilimani", "badge": "Quiet", "dist": "[X] min to Talanta Stadium", "id": "sample-2", "map_query": "", "name": "[Apartment name]", "near_stadium": false, "phone": "", "photos": [], "price": "from KES [X] / night", "price_checked": "", "sample": true, "tags": ["High-speed fibre Wi-Fi", "Self check-in"], "type": "Apartment", "vibe": "Chill \u0026 Green", "whatsapp": ""}, {"about": "[Two lines from the host about the place.]", "amenities": ["Breakfast", "Garden", "Secure parking"], "area": "Karen", "badge": "Garden", "dist": "[X] min to Talanta Stadium", "id": "sample-3", "map_query": "", "name": "[B\u0026B name]", "near_stadium": false, "phone": "", "photos": [], "price": "from KES [X] / night", "price_checked": "", "sample": true, "tags": ["Breakfast", "Garden"], "type": "B\u0026B", "vibe": "Chill \u0026 Green", "whatsapp": ""}, {"about": "[Two lines from the host about the place.]", "amenities": ["Airport transfer", "Secure parking", "High-speed fibre Wi-Fi"], "area": "Syokimau", "badge": "Near airport", "dist": "[X] min to Talanta Stadium", "id": "sample-4", "map_query": "", "name": "[Hotel name]", "near_stadium": false, "phone": "", "photos": [], "price": "from KES [X] / night", "price_checked": "", "sample": true, "tags": ["Airport transfer", "Secure parking"], "type": "Hotel", "vibe": "Transit Fast", "whatsapp": ""}, {"about": "[Two lines from the host about the place.]", "amenities": ["High-speed fibre Wi-Fi", "Self check-in"], "area": "CBD", "badge": "Central", "dist": "[X] min to Talanta Stadium", "id": "sample-5", "map_query": "", "name": "[Guesthouse name]", "near_stadium": false, "phone": "", "photos": [], "price": "from KES [X] / night", "price_checked": "", "sample": true, "tags": ["High-speed fibre Wi-Fi", "Self check-in"], "type": "Guesthouse", "vibe": "Transit Fast", "whatsapp": ""}, {"about": "[Two lines from the host about the place.]", "amenities": ["Sleeps 4", "Kitchen", "Secure parking"], "area": "[Area]", "badge": "Near the stadium", "dist": "[X] min to Talanta Stadium", "id": "sample-6", "map_query": "", "name": "[Apartment name]", "near_stadium": true, "phone": "", "photos": [], "price": "from KES [X] / night", "price_checked": "", "sample": true, "tags": ["Sleeps 4", "Kitchen"], "type": "Apartment", "vibe": "Party Base", "whatsapp": ""}], "site": "KaribuFans", "vibes": [{"desc": "Close to the clubs and late-night spots.", "icon": "\ud83c\udf06", "name": "Party Base"}, {"desc": "Quiet places with gardens or balconies.", "icon": "\ud83c\udf3f", "name": "Chill \u0026 Green"}, {"desc": "Easy access to the Nairobi Expressway and the airport.", "icon": "\u2708\ufe0f", "name": "Transit Fast"}]}</script>
+
+
+
+
+
+
+
 
 </main>
 
@@ -188,8 +314,8 @@
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h4>Explore</h4><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../#vendors">List your business</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
-      <div><h4>Language</h4><div class="langs"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">FR</button><button type="button" aria-pressed="false">AR</button><button type="button" aria-pressed="false">PT</button></div><p style="font-size:13px;margin-top:10px;color:var(--muted-night)">French, Arabic and Portuguese coming after launch.</p></div>
+      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
+      <div><h4>Language</h4><div class="langs"><button type="button" data-lang="EN" aria-pressed="true">EN</button><button type="button" data-lang="SW" aria-pressed="false">SW</button><button type="button" data-lang="FR" aria-pressed="false">FR</button><button type="button" data-lang="AR" aria-pressed="false">AR</button><button type="button" data-lang="PT" aria-pressed="false">PT</button></div><p id="langNote" style="font-size:13px;margin-top:10px;color:var(--muted-night)">Kiswahili, French, Arabic and Portuguese coming after launch.</p></div>
     </div>
     <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 [Registered business name].</p>
   </div>

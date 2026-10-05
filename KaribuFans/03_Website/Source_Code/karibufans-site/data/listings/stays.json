@@ -1,58 +1,164 @@
 [
   {
+    "id": "sample-1",
     "type": "Hotel",
     "name": "[Hotel name]",
-    "area": "[Area]",
+    "area": "Westlands",
+    "near_stadium": false,
+    "vibe": "Party Base",
+    "badge": "Near nightlife",
     "price": "from KES [X] / night",
-    "tags": [
-      "Breakfast",
-      "Parking"
+    "price_checked": "",
+    "amenities": [
+      "High-speed fibre Wi-Fi",
+      "Secure parking",
+      "Breakfast"
     ],
-    "note": "Open till [time]",
+    "tags": [
+      "High-speed fibre Wi-Fi",
+      "Secure parking"
+    ],
+    "about": "[Two lines from the host about the place.]",
+    "photos": [],
     "whatsapp": "",
     "phone": "",
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
     "sample": true
   },
   {
+    "id": "sample-2",
+    "type": "Apartment",
+    "name": "[Apartment name]",
+    "area": "Kilimani",
+    "near_stadium": false,
+    "vibe": "Chill & Green",
+    "badge": "Quiet",
+    "price": "from KES [X] / night",
+    "price_checked": "",
+    "amenities": [
+      "High-speed fibre Wi-Fi",
+      "Self check-in",
+      "Kitchen",
+      "Balcony"
+    ],
+    "tags": [
+      "High-speed fibre Wi-Fi",
+      "Self check-in"
+    ],
+    "about": "[Two lines from the host about the place.]",
+    "photos": [],
+    "whatsapp": "",
+    "phone": "",
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "sample": true
+  },
+  {
+    "id": "sample-3",
     "type": "B&B",
     "name": "[B&B name]",
-    "area": "[Area]",
+    "area": "Karen",
+    "near_stadium": false,
+    "vibe": "Chill & Green",
+    "badge": "Garden",
     "price": "from KES [X] / night",
-    "tags": [
+    "price_checked": "",
+    "amenities": [
+      "Breakfast",
       "Garden",
-      "Wi-Fi"
+      "Secure parking"
     ],
-    "note": "Open till [time]",
+    "tags": [
+      "Breakfast",
+      "Garden"
+    ],
+    "about": "[Two lines from the host about the place.]",
+    "photos": [],
     "whatsapp": "",
     "phone": "",
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
     "sample": true
   },
   {
+    "id": "sample-4",
+    "type": "Hotel",
+    "name": "[Hotel name]",
+    "area": "Syokimau",
+    "near_stadium": false,
+    "vibe": "Transit Fast",
+    "badge": "Near airport",
+    "price": "from KES [X] / night",
+    "price_checked": "",
+    "amenities": [
+      "Airport transfer",
+      "Secure parking",
+      "High-speed fibre Wi-Fi"
+    ],
+    "tags": [
+      "Airport transfer",
+      "Secure parking"
+    ],
+    "about": "[Two lines from the host about the place.]",
+    "photos": [],
+    "whatsapp": "",
+    "phone": "",
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "sample": true
+  },
+  {
+    "id": "sample-5",
+    "type": "Guesthouse",
+    "name": "[Guesthouse name]",
+    "area": "CBD",
+    "near_stadium": false,
+    "vibe": "Transit Fast",
+    "badge": "Central",
+    "price": "from KES [X] / night",
+    "price_checked": "",
+    "amenities": [
+      "High-speed fibre Wi-Fi",
+      "Self check-in"
+    ],
+    "tags": [
+      "High-speed fibre Wi-Fi",
+      "Self check-in"
+    ],
+    "about": "[Two lines from the host about the place.]",
+    "photos": [],
+    "whatsapp": "",
+    "phone": "",
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
+    "sample": true
+  },
+  {
+    "id": "sample-6",
     "type": "Apartment",
     "name": "[Apartment name]",
     "area": "[Area]",
+    "near_stadium": true,
+    "vibe": "Party Base",
+    "badge": "Near the stadium",
     "price": "from KES [X] / night",
+    "price_checked": "",
+    "amenities": [
+      "Sleeps 4",
+      "Kitchen",
+      "Secure parking"
+    ],
     "tags": [
       "Sleeps 4",
       "Kitchen"
     ],
-    "note": "Open till [time]",
+    "about": "[Two lines from the host about the place.]",
+    "photos": [],
     "whatsapp": "",
     "phone": "",
-    "sample": true
-  },
-  {
-    "type": "Guesthouse",
-    "name": "[Guesthouse name]",
-    "area": "[Area]",
-    "price": "from KES [X] / night",
-    "tags": [
-      "Budget",
-      "Wi-Fi"
-    ],
-    "note": "Open till [time]",
-    "whatsapp": "",
-    "phone": "",
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium",
     "sample": true
   }
 ]

@@ -23,27 +23,32 @@
   {{ routebar(modules, m.stop, root) }}
 </section>
 
-{% if m.chips %}
-<div class="filters" role="group" aria-label="Filter {{ m.label }}">
+{% if listings and m.slug != 'stays' %}
+<div class="filters" role="group" aria-label="Search and filter {{ m.label }}">
   <div class="wrap">
+    <label class="find"><span class="sr-only">Search {{ m.label }}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search {{ m.label | lower }} by name, area or tag" autocomplete="off"></label>
     <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+    {% if m.slug in ['food','nightlife'] %}<button type="button" class="chip" data-filter="open-now" aria-pressed="false">Open now</button>{% endif %}
     {% for c in m.chips %}<button type="button" class="chip" data-filter="{{ c }}" aria-pressed="false">{{ c }}</button>{% endfor %}
   </div>
 </div>
 {% endif %}
 
+{% if m.slug == 'stays' %}
+{% include "partials/stays.html" %}
+{% elif m.slug == 'rides' %}
+{% include "partials/rides.html" %}
+{% elif listings %}
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    {% if listings %}
-    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">{{ m.label }} in Nairobi</h2><p>Sample listings are shown until real businesses sign up.</p></div>
-    <div class="grid-cards" id="cards">
+    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">{{ 'Fan zones and watch parties' if m.slug == 'matchday' else m.label ~ ' in Nairobi' }}</h2><p>Sample listings are shown until real businesses sign up.</p></div>
+    <div class="grid-cards" id="cards" data-page="{{ m.slug }}">
       {% for v in listings %}{{ card(v, m.look) }}{% endfor %}
     </div>
-    <p class="coming" id="noMatch" hidden style="margin-top:24px">Nothing in this category yet. Check back soon.</p>
-    {% else %}
-    <h2 id="listH" class="sr-only">{{ m.label }}</h2>
-    <div class="coming">This page's tools are being built next: {{ 'trip buttons for Uber and Bolt, popular routes and ride safety tips' if m.slug == 'rides' else 'match list, official ticket links, sale alerts and fake-ticket warnings' }}.</div>
-    {% endif %}
+    <p class="coming" id="noMatch" hidden style="margin-top:24px">Nothing matches yet. Try another filter or search.</p>
   </div>
 </section>
+{% endif %}
+
+{% include "partials/extras.html" %}
 {% endblock %}

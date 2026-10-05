@@ -1,0 +1,5 @@
+{
+  "_note": "Add fixtures only once officially published. date = YYYY-MM-DD, time = HH:MM Nairobi time. status: on_sale | opens_soon | sold_out | official_resale",
+  "official_ticket_url": "",
+  "fixtures": []
+}

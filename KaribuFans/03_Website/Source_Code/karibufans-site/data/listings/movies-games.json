@@ -11,7 +11,9 @@
     "note": "Open till [time]",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium"
   },
   {
     "type": "Gaming lounges",
@@ -25,7 +27,9 @@
     "note": "Open till [time]",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium"
   },
   {
     "type": "Bowling & arcades",
@@ -39,7 +43,9 @@
     "note": "Open till [time]",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium"
   },
   {
     "type": "Gaming lounges",
@@ -53,6 +59,8 @@
     "note": "Open till [time]",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium"
   }
 ]

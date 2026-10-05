@@ -22,8 +22,9 @@
       <a href="../stays/" >Stays</a><a href="../food/" aria-current="page">Food</a><a href="../rides/" >Rides</a><a href="../matchday/" >Matchday</a><a href="../nightlife/" >Nightlife</a><a href="../movies-games/" >Movies &amp; Games</a><a href="../tickets/" >Tickets</a>
     </nav>
     <div class="nav-tools">
-      <button type="button" class="lang" aria-label="Change language">EN</button>
-      <a class="btn btn-green" href="../#vendors">List your business</a>
+      <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
+      <button type="button" class="lang" id="langBtn" aria-label="Change language">EN</button>
+      <a class="btn btn-green" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -86,97 +87,153 @@
 </section>
 
 
-<div class="filters" role="group" aria-label="Filter Food">
+<div class="filters" role="group" aria-label="Search and filter Food">
   <div class="wrap">
+    <label class="find"><span class="sr-only">Search Food</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search food by name, area or tag" autocomplete="off"></label>
     <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="chip" data-filter="open-now" aria-pressed="false">Open now</button>
     <button type="button" class="chip" data-filter="Nyama choma" aria-pressed="false">Nyama choma</button><button type="button" class="chip" data-filter="Swahili" aria-pressed="false">Swahili</button><button type="button" class="chip" data-filter="Ethiopian" aria-pressed="false">Ethiopian</button><button type="button" class="chip" data-filter="Indian" aria-pressed="false">Indian</button><button type="button" class="chip" data-filter="Cafés" aria-pressed="false">Cafés</button><button type="button" class="chip" data-filter="Vegetarian" aria-pressed="false">Vegetarian</button><button type="button" class="chip" data-filter="Halal" aria-pressed="false">Halal</button><button type="button" class="chip" data-filter="Open late" aria-pressed="false">Open late</button>
   </div>
 </div>
 
 
+
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    
     <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">Food in Nairobi</h2><p>Sample listings are shown until real businesses sign up.</p></div>
-    <div class="grid-cards" id="cards">
-      <article class="card" data-type="Nyama choma">
+    <div class="grid-cards" id="cards" data-page="food">
+      
+
+<article class="card" data-type="Nyama choma" data-search="[restaurant name] nyama choma [area] outdoor groups" data-open="11:00" data-close="23:00">
   <div class="card-photo">
+    
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
     <span class="badge">Nyama choma</span>
     <span class="sample">SAMPLE LISTING</span>
   </div>
   <div class="card-body">
-    <h3>[Restaurant name]</h3>
+    <div class="card-top"><h3>[Restaurant name]</h3><span class="open-state" aria-live="polite"></span></div>
     <div class="card-meta">[Area] · KES [X]–[X] per person</div>
+    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
     <div class="tags"><span>Outdoor</span><span>Groups</span></div>
-    <div class="card-note">Open till [time]</div>
+    
+    <dl class="facts">
+      <div><dt>Hours</dt><dd>11:00–23:00</dd></div>
+      
+      
+    </dl>
+    
+    
     <div class="card-actions">
       
-      <span class="btn btn-green" aria-disabled="true">WhatsApp soon</span>
+      <span class="btn btn-green" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
       
       
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BRestaurant%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Restaurant name]">Directions</a>
     </div>
   </div>
-</article><article class="card" data-type="Swahili">
+</article>
+
+<article class="card" data-type="Swahili" data-search="[restaurant name] swahili [area] halal takeaway" data-open="08:00" data-close="22:00">
   <div class="card-photo">
+    
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
     <span class="badge">Swahili</span>
     <span class="sample">SAMPLE LISTING</span>
   </div>
   <div class="card-body">
-    <h3>[Restaurant name]</h3>
+    <div class="card-top"><h3>[Restaurant name]</h3><span class="open-state" aria-live="polite"></span></div>
     <div class="card-meta">[Area] · KES [X]–[X] per person</div>
+    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
     <div class="tags"><span>Halal</span><span>Takeaway</span></div>
-    <div class="card-note">Open till [time]</div>
+    
+    <dl class="facts">
+      <div><dt>Hours</dt><dd>08:00–22:00</dd></div>
+      
+      
+    </dl>
+    
+    
     <div class="card-actions">
       
-      <span class="btn btn-green" aria-disabled="true">WhatsApp soon</span>
+      <span class="btn btn-green" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
       
       
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BRestaurant%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Restaurant name]">Directions</a>
     </div>
   </div>
-</article><article class="card" data-type="Cafés">
+</article>
+
+<article class="card" data-type="Cafés" data-search="[café name] cafés [area] breakfast wi-fi" data-open="07:00" data-close="18:00">
   <div class="card-photo">
+    
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
     <span class="badge">Cafés</span>
     <span class="sample">SAMPLE LISTING</span>
   </div>
   <div class="card-body">
-    <h3>[Café name]</h3>
+    <div class="card-top"><h3>[Café name]</h3><span class="open-state" aria-live="polite"></span></div>
     <div class="card-meta">[Area] · KES [X]–[X] per person</div>
+    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
     <div class="tags"><span>Breakfast</span><span>Wi-Fi</span></div>
-    <div class="card-note">Open till [time]</div>
+    
+    <dl class="facts">
+      <div><dt>Hours</dt><dd>07:00–18:00</dd></div>
+      
+      
+    </dl>
+    
+    
     <div class="card-actions">
       
-      <span class="btn btn-green" aria-disabled="true">WhatsApp soon</span>
+      <span class="btn btn-green" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
       
       
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BCaf%C3%A9%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Café name]">Directions</a>
     </div>
   </div>
-</article><article class="card" data-type="Open late">
+</article>
+
+<article class="card" data-type="Open late" data-search="[restaurant name] open late [area] screens groups" data-open="12:00" data-close="02:00">
   <div class="card-photo">
+    
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
     <span class="badge">Open late</span>
     <span class="sample">SAMPLE LISTING</span>
   </div>
   <div class="card-body">
-    <h3>[Restaurant name]</h3>
+    <div class="card-top"><h3>[Restaurant name]</h3><span class="open-state" aria-live="polite"></span></div>
     <div class="card-meta">[Area] · KES [X]–[X] per person</div>
+    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
     <div class="tags"><span>Screens</span><span>Groups</span></div>
-    <div class="card-note">Open till [time]</div>
+    
+    <dl class="facts">
+      <div><dt>Hours</dt><dd>12:00–02:00</dd></div>
+      
+      
+    </dl>
+    
+    
     <div class="card-actions">
       
-      <span class="btn btn-green" aria-disabled="true">WhatsApp soon</span>
+      <span class="btn btn-green" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
       
       
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BRestaurant%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Restaurant name]">Directions</a>
     </div>
   </div>
 </article>
     </div>
-    <p class="coming" id="noMatch" hidden style="margin-top:24px">Nothing in this category yet. Check back soon.</p>
-    
+    <p class="coming" id="noMatch" hidden style="margin-top:24px">Nothing matches yet. Try another filter or search.</p>
   </div>
 </section>
+
+
+
+
+
+
+
 
 </main>
 
@@ -191,8 +248,8 @@
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h4>Explore</h4><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../#vendors">List your business</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
-      <div><h4>Language</h4><div class="langs"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">FR</button><button type="button" aria-pressed="false">AR</button><button type="button" aria-pressed="false">PT</button></div><p style="font-size:13px;margin-top:10px;color:var(--muted-night)">French, Arabic and Portuguese coming after launch.</p></div>
+      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
+      <div><h4>Language</h4><div class="langs"><button type="button" data-lang="EN" aria-pressed="true">EN</button><button type="button" data-lang="SW" aria-pressed="false">SW</button><button type="button" data-lang="FR" aria-pressed="false">FR</button><button type="button" data-lang="AR" aria-pressed="false">AR</button><button type="button" data-lang="PT" aria-pressed="false">PT</button></div><p id="langNote" style="font-size:13px;margin-top:10px;color:var(--muted-night)">Kiswahili, French, Arabic and Portuguese coming after launch.</p></div>
     </div>
     <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 [Registered business name].</p>
   </div>

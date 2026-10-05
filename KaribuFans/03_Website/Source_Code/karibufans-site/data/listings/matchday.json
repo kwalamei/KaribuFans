@@ -11,7 +11,9 @@
     "note": "Open till [time]",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium"
   },
   {
     "type": "Fan zones",
@@ -25,7 +27,9 @@
     "note": "Open till [time]",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium"
   },
   {
     "type": "Watch parties",
@@ -39,7 +43,9 @@
     "note": "Open till [time]",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium"
   },
   {
     "type": "Family friendly",
@@ -53,6 +59,8 @@
     "note": "Open till [time]",
     "whatsapp": "",
     "phone": "",
-    "sample": true
+    "sample": true,
+    "map_query": "",
+    "dist": "[X] min to Talanta Stadium"
   }
 ]

@@ -22,8 +22,9 @@
       <a href="../stays/" >Stays</a><a href="../food/" >Food</a><a href="../rides/" >Rides</a><a href="../matchday/" aria-current="page">Matchday</a><a href="../nightlife/" >Nightlife</a><a href="../movies-games/" >Movies &amp; Games</a><a href="../tickets/" >Tickets</a>
     </nav>
     <div class="nav-tools">
-      <button type="button" class="lang" aria-label="Change language">EN</button>
-      <a class="btn btn-amber" href="../#vendors">List your business</a>
+      <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
+      <button type="button" class="lang" id="langBtn" aria-label="Change language">EN</button>
+      <a class="btn btn-amber" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -83,97 +84,154 @@
 </section>
 
 
-<div class="filters" role="group" aria-label="Filter Matchday">
+<div class="filters" role="group" aria-label="Search and filter Matchday">
   <div class="wrap">
+    <label class="find"><span class="sr-only">Search Matchday</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search matchday by name, area or tag" autocomplete="off"></label>
     <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+    
     <button type="button" class="chip" data-filter="Watch parties" aria-pressed="false">Watch parties</button><button type="button" class="chip" data-filter="Fan zones" aria-pressed="false">Fan zones</button><button type="button" class="chip" data-filter="Big screens" aria-pressed="false">Big screens</button><button type="button" class="chip" data-filter="Family friendly" aria-pressed="false">Family friendly</button>
   </div>
 </div>
 
 
+
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    
-    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">Matchday in Nairobi</h2><p>Sample listings are shown until real businesses sign up.</p></div>
-    <div class="grid-cards" id="cards">
-      <article class="card" data-type="Watch parties">
+    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">Fan zones and watch parties</h2><p>Sample listings are shown until real businesses sign up.</p></div>
+    <div class="grid-cards" id="cards" data-page="matchday">
+      
+
+<article class="card" data-type="Watch parties" data-search="[venue name] watch parties [area] big screens groups">
   <div class="card-photo">
+    
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
     <span class="badge">Watch parties</span>
     <span class="sample">SAMPLE LISTING</span>
   </div>
   <div class="card-body">
-    <h3>[Venue name]</h3>
+    <div class="card-top"><h3>[Venue name]</h3></div>
     <div class="card-meta">[Area] · Entry KES [X]</div>
+    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
     <div class="tags"><span>Big screens</span><span>Groups</span></div>
+    
     <div class="card-note">Open till [time]</div>
     <div class="card-actions">
       
-      <span class="btn btn-amber" aria-disabled="true">WhatsApp soon</span>
+      <span class="btn btn-amber" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
       
       
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BVenue%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Venue name]">Directions</a>
     </div>
   </div>
-</article><article class="card" data-type="Fan zones">
+</article>
+
+<article class="card" data-type="Fan zones" data-search="[fan zone name] fan zones [area] food stalls family friendly">
   <div class="card-photo">
+    
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
     <span class="badge">Fan zones</span>
     <span class="sample">SAMPLE LISTING</span>
   </div>
   <div class="card-body">
-    <h3>[Fan zone name]</h3>
+    <div class="card-top"><h3>[Fan zone name]</h3></div>
     <div class="card-meta">[Area] · Free entry [TBC]</div>
+    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
     <div class="tags"><span>Food stalls</span><span>Family friendly</span></div>
+    
     <div class="card-note">Open till [time]</div>
     <div class="card-actions">
       
-      <span class="btn btn-amber" aria-disabled="true">WhatsApp soon</span>
+      <span class="btn btn-amber" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
       
       
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BFan%20zone%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Fan zone name]">Directions</a>
     </div>
   </div>
-</article><article class="card" data-type="Watch parties">
+</article>
+
+<article class="card" data-type="Watch parties" data-search="[bar name] watch parties [area] big screens food">
   <div class="card-photo">
+    
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
     <span class="badge">Watch parties</span>
     <span class="sample">SAMPLE LISTING</span>
   </div>
   <div class="card-body">
-    <h3>[Bar name]</h3>
+    <div class="card-top"><h3>[Bar name]</h3></div>
     <div class="card-meta">[Area] · No entry fee</div>
+    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
     <div class="tags"><span>Big screens</span><span>Food</span></div>
+    
     <div class="card-note">Open till [time]</div>
     <div class="card-actions">
       
-      <span class="btn btn-amber" aria-disabled="true">WhatsApp soon</span>
+      <span class="btn btn-amber" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
       
       
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BBar%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Bar name]">Directions</a>
     </div>
   </div>
-</article><article class="card" data-type="Family friendly">
+</article>
+
+<article class="card" data-type="Family friendly" data-search="[venue name] family friendly [area] kids area screens">
   <div class="card-photo">
+    
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
     <span class="badge">Family friendly</span>
     <span class="sample">SAMPLE LISTING</span>
   </div>
   <div class="card-body">
-    <h3>[Venue name]</h3>
+    <div class="card-top"><h3>[Venue name]</h3></div>
     <div class="card-meta">[Area] · Entry KES [X]</div>
+    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
     <div class="tags"><span>Kids area</span><span>Screens</span></div>
+    
     <div class="card-note">Open till [time]</div>
     <div class="card-actions">
       
-      <span class="btn btn-amber" aria-disabled="true">WhatsApp soon</span>
+      <span class="btn btn-amber" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
       
       
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BVenue%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Venue name]">Directions</a>
     </div>
   </div>
 </article>
     </div>
-    <p class="coming" id="noMatch" hidden style="margin-top:24px">Nothing in this category yet. Check back soon.</p>
-    
+    <p class="coming" id="noMatch" hidden style="margin-top:24px">Nothing matches yet. Try another filter or search.</p>
   </div>
 </section>
+
+
+
+<section class="band band-panel" aria-labelledby="fxH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="fxH" style="font-size:clamp(26px,3vw,36px)">Matches in Nairobi · 2027</h2><p>From the official schedule only.</p></div>
+    
+<div class="fixtures">
+  
+  <div class="coming">Nairobi fixtures will appear here once they are officially published. Each match will have an "Add to calendar" button.</div>
+  
+</div>
+  </div>
+</section>
+<section class="band" aria-labelledby="essH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="essH" style="font-size:clamp(26px,3vw,36px)">Stadium essentials</h2><p>Filled in from the organisers' guidance as it is published.</p></div>
+    <div class="tips">
+      <div class="tip"><strong>Gates and entry</strong><p>Gate opening times and entry gates: [from the official guide].</p></div>
+      <div class="tip"><strong>Bags and banned items</strong><p>[Official list, once published.]</p></div>
+      <div class="tip"><strong>Getting there</strong><p>Leave early and use the pickup zones on the <a href="../rides/">Rides page</a>.</p></div>
+      <div class="tip"><strong>Accessibility</strong><p>[Accessible entrances, seating and drop-off points.]</p></div>
+      <div class="tip"><strong>Weather</strong><p>Nairobi evenings can be cool. Bring a light jacket.</p></div>
+      <div class="tip"><strong>Directions</strong><p><a href="https://www.google.com/maps/search/?api=1&amp;query=Talanta%20Stadium%20Nairobi" target="_blank" rel="noopener">Open Talanta Stadium in Google Maps ↗</a></p></div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 
 </main>
 
@@ -188,8 +246,8 @@
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h4>Explore</h4><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../#vendors">List your business</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
-      <div><h4>Language</h4><div class="langs"><button type="button" aria-pressed="true">EN</button><button type="button" aria-pressed="false">FR</button><button type="button" aria-pressed="false">AR</button><button type="button" aria-pressed="false">PT</button></div><p style="font-size:13px;margin-top:10px;color:var(--muted-night)">French, Arabic and Portuguese coming after launch.</p></div>
+      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
+      <div><h4>Language</h4><div class="langs"><button type="button" data-lang="EN" aria-pressed="true">EN</button><button type="button" data-lang="SW" aria-pressed="false">SW</button><button type="button" data-lang="FR" aria-pressed="false">FR</button><button type="button" data-lang="AR" aria-pressed="false">AR</button><button type="button" data-lang="PT" aria-pressed="false">PT</button></div><p id="langNote" style="font-size:13px;margin-top:10px;color:var(--muted-night)">Kiswahili, French, Arabic and Portuguese coming after launch.</p></div>
     </div>
     <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 [Registered business name].</p>
   </div>

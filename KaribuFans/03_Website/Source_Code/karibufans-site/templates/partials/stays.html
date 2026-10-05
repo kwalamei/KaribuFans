@@ -1,0 +1,102 @@
+{% set f = m.filters %}
+{% set vicons = {} %}{% for v in f.vibes %}{% set _ = vicons.update({v.name: v.icon}) %}{% endfor %}
+<div class="filters stay-filters" id="stayFilters" role="group" aria-label="Filter stays">
+  <div class="wrap">
+    <label class="sel"><span>Area</span>
+      <select id="fArea">
+        <option value="">Any area</option>
+        {% for a in f.areas %}<option value="{{ a }}">{{ a }}</option>{% endfor %}
+        <option value="__near">{{ f.near_label }}</option>
+      </select></label>
+    <label class="sel"><span>Vibe</span>
+      <select id="fVibe">
+        <option value="">Any vibe</option>
+        {% for v in f.vibes %}<option value="{{ v.name }}">{{ v.icon }} {{ v.name }}</option>{% endfor %}
+      </select></label>
+    <label class="sel"><span>Stay type</span>
+      <select id="fType">
+        <option value="">Any type</option>
+        {% for t in f.types %}<option value="{{ t }}">{{ t }}</option>{% endfor %}
+      </select></label>
+    <button type="button" class="chip" id="fClear" hidden>Clear</button>
+    <span class="stay-count" id="stayCount" aria-live="polite"></span>
+  </div>
+</div>
+
+<section class="band" aria-labelledby="listH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">Stays in Nairobi</h2><p>Sample listings are shown until real businesses sign up.</p></div>
+    <p class="hint vibe-help" id="vibeHelp" hidden></p>
+    <label class="find" style="margin-bottom:20px"><span class="sr-only">Search stays</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search stays by name, area or feature" autocomplete="off"></label>
+    <div class="grid-cards" id="cards" data-page="stays">
+      {% for v in listings %}
+      {% set q = v.map_query or (v.name ~ ' ' ~ v.area ~ ' Nairobi') %}
+      <article class="card stay-card" id="card-{{ v.id }}" data-id="{{ v.id }}" data-type="{{ v.type }}" data-area="{{ v.area }}" data-near="{{ '1' if v.near_stadium else '' }}" data-vibe="{{ v.vibe }}" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ v.vibe ~ ' ' ~ v.badge ~ ' ' ~ (v.amenities|join(' '))) | lower }}">
+        <button type="button" class="card-photo stay-open" data-id="{{ v.id }}" aria-label="View details for {{ v.name }}">
+          {% if v.photos and v.photos[0] %}<img src="{{ v.photos[0] }}" alt="" loading="lazy">{% else %}
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>{% endif %}
+          <span class="badge badge-vibe"><span aria-hidden="true">{{ vicons[v.vibe] }}</span> {{ v.area }} · {{ v.badge }}</span>
+          {% if v.sample %}<span class="sample">SAMPLE LISTING</span>{% endif %}
+        </button>
+        <div class="card-body">
+          <div class="card-top"><h3>{{ v.name }}</h3></div>
+          <div class="card-meta">{{ v.type }} · {{ v.area }}</div>
+          <div class="stay-price">{{ v.price }}</div>
+          {% if v.dist %}<div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>{{ v.dist }}</div>{% endif %}
+          <div class="tags">{% for t in v.amenities[:3] %}<span>{{ t }}</span>{% endfor %}</div>
+          <div class="card-actions" style="margin-top:auto">
+            <button type="button" class="btn btn-green stay-open" data-id="{{ v.id }}">View and book</button>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query={{ q | urlencode }}" target="_blank" rel="noopener" aria-label="Directions to {{ v.name }}">Directions</a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="coming" id="noMatch" hidden style="margin-top:24px">No stays match those filters yet. <button type="button" class="linklike" id="noMatchClear">Clear the filters</button></p>
+  </div>
+</section>
+
+<div class="drawer-veil" id="stayVeil" hidden></div>
+<aside class="drawer" id="stayDrawer" role="dialog" aria-modal="true" aria-labelledby="dName" hidden tabindex="-1">
+  <div class="drawer-head">
+    <button type="button" class="icon-btn" id="dClose" aria-label="Close details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button type="button" class="chip" id="dShare">Share this stay</button>
+  </div>
+  <div class="drawer-scroll">
+    <div class="d-photos" id="dPhotos"></div>
+    <div class="d-body">
+      <span class="sample d-sample" id="dSample" hidden>SAMPLE LISTING</span>
+      <h2 id="dName"></h2>
+      <p class="card-meta" id="dMeta"></p>
+      <p class="d-price" id="dPrice"></p>
+      <p class="hint" id="dChecked" hidden></p>
+      <p id="dAbout"></p>
+      <ul class="d-amen" id="dAmen" aria-label="What you get"></ul>
+      <p class="dist" id="dDist" hidden></p>
+
+      <fieldset class="d-form">
+        <legend>Ask about your dates</legend>
+        <div class="d-row">
+          <label>Check-in<input type="date" id="dIn"></label>
+          <label>Check-out<input type="date" id="dOut"></label>
+        </div>
+        <div class="d-row">
+          <label>Guests<select id="dGuests"><option value="">Not sure yet</option>{% for n in range(1,9) %}<option>{{ n }}</option>{% endfor %}<option value="9 or more">9+</option></select></label>
+          <label>Your name<input type="text" id="dWho" autocomplete="given-name" placeholder="Optional"></label>
+        </div>
+        <p class="hint" id="dErr" role="alert" hidden></p>
+        <p class="hint">Your message will read:</p>
+        <blockquote class="d-preview" id="dPreview"></blockquote>
+      </fieldset>
+
+      <a class="btn btn-green d-cta" id="dWa" target="_blank" rel="noopener">Book via WhatsApp</a>
+      <p class="hint" id="dWaNote" hidden>The WhatsApp button switches on when this business joins.</p>
+      <div class="card-actions">
+        <a class="btn btn-ghost" id="dCall" hidden>Call</a>
+        <a class="btn btn-ghost" id="dMap" target="_blank" rel="noopener">Directions</a>
+      </div>
+      <p class="d-pay">{{ f.pay_note }}</p>
+    </div>
+  </div>
+</aside>
+<script type="application/json" id="staysData">{{ {'site': site.name, 'listings': listings, 'vibes': f.vibes, 'icons': f.amenity_icons} | tojson }}</script>

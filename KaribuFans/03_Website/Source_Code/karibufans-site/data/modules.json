@@ -1,64 +1,199 @@
 [
   {
-    "slug": "stays", "stop": 1, "label": "Stays", "look": "day",
-    "script": "Lala salama.", "title": "Stay close to the action.",
-    "sub": "Hotels, B&Bs and apartments across Nairobi. You book and pay the host directly.",
-    "image": "window-golden.webp", "image_alt": "A guest looking out over Nairobi's green canopy at golden hour", "image_pos": "60% 50%",
-    "slot": "STAY-01", "card_home": "Hotels, B&Bs and apartments across the city.", "cta": "Find a stay",
+    "slug": "stays",
+    "stop": 1,
+    "label": "Stays",
+    "look": "day",
+    "script": "Lala salama.",
+    "title": "Wake up to the best views of Nairobi.",
+    "sub": "Hotels, B&Bs and apartments across Nairobi. Message the host on WhatsApp and pay them directly.",
+    "image": "window-golden.webp",
+    "image_alt": "A guest looking out over Nairobi's green canopy at golden hour",
+    "image_pos": "60% 50%",
+    "slot": "STAY-01",
+    "card_home": "Hotels, B&Bs and apartments across the city.",
+    "cta": "Find a stay",
     "icon": "M3 18V7M3 13h18v5M21 18v-5a3 3 0 0 0-3-3h-7v3M7 9.5a1.5 1.5 0 1 0 0 .01",
-    "chips": ["Hotels", "B&Bs", "Apartments", "Guesthouses", "Family friendly", "Near the airport"]
+    "chips": [
+      "Hotels",
+      "B&Bs",
+      "Apartments",
+      "Guesthouses",
+      "Family friendly",
+      "Near the airport"
+    ],
+    "filters": {
+      "areas": [
+        "Kilimani",
+        "Westlands",
+        "CBD",
+        "Karen",
+        "Syokimau"
+      ],
+      "near_label": "Near Talanta Stadium",
+      "types": [
+        "Hotel",
+        "B&B",
+        "Apartment",
+        "Guesthouse"
+      ],
+      "vibes": [
+        {
+          "name": "Party Base",
+          "icon": "🌆",
+          "desc": "Close to the clubs and late-night spots."
+        },
+        {
+          "name": "Chill & Green",
+          "icon": "🌿",
+          "desc": "Quiet places with gardens or balconies."
+        },
+        {
+          "name": "Transit Fast",
+          "icon": "✈️",
+          "desc": "Easy access to the Nairobi Expressway and the airport."
+        }
+      ],
+      "amenity_icons": {
+        "High-speed fibre Wi-Fi": "📶",
+        "Secure parking": "🚘",
+        "Self check-in": "🔑",
+        "Breakfast": "🍳",
+        "Kitchen": "🍽️",
+        "Balcony": "🌇",
+        "Garden": "🌳",
+        "Airport transfer": "🚐",
+        "Sleeps 4": "🛏️"
+      },
+      "pay_note": "You pay the host directly, for example by Lipa na M-PESA. KaribuFans never handles your payment. Check that the till name matches the business before you pay."
+    }
   },
   {
-    "slug": "food", "stop": 2, "label": "Food", "look": "day",
-    "script": "Karibu mezani.", "title": "Eat like Nairobi.",
+    "slug": "food",
+    "stop": 2,
+    "label": "Food",
+    "look": "day",
+    "script": "Karibu mezani.",
+    "title": "Eat like Nairobi.",
     "sub": "Nyama choma joints, Swahili kitchens, cafés and late-night bites. Reserve or order straight from the restaurant.",
-    "image": "", "image_alt": "", "image_pos": "50% 50%",
-    "slot": "FOOD-01", "card_home": "Nyama choma, local kitchens and late-night bites.", "cta": "Find food",
+    "image": "",
+    "image_alt": "",
+    "image_pos": "50% 50%",
+    "slot": "FOOD-01",
+    "card_home": "Nyama choma, local kitchens and late-night bites.",
+    "cta": "Find food",
     "icon": "M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 1-3 3-3 6v3h3M17 3v18",
-    "chips": ["Nyama choma", "Swahili", "Ethiopian", "Indian", "Cafés", "Vegetarian", "Halal", "Open late"]
+    "chips": [
+      "Nyama choma",
+      "Swahili",
+      "Ethiopian",
+      "Indian",
+      "Cafés",
+      "Vegetarian",
+      "Halal",
+      "Open late"
+    ]
   },
   {
-    "slug": "rides", "stop": 3, "label": "Rides", "look": "night",
-    "script": "Twende!", "title": "Get there. Get back.",
+    "slug": "rides",
+    "stop": 3,
+    "label": "Rides",
+    "look": "night",
+    "script": "Twende!",
+    "title": "Get there. Get back.",
     "sub": "Choose where you are going and we open Uber or Bolt with the trip ready. You see the fare and pay inside their app.",
-    "image": "golden-expressway.webp", "image_alt": "Golden hour over the elevated expressway curving toward the stadium", "image_pos": "60% 55%",
-    "slot": "RIDES-01", "card_home": "Open Uber or Bolt with your destination set.", "cta": "Get a ride",
+    "image": "golden-expressway.webp",
+    "image_alt": "Golden hour over the elevated expressway curving toward the stadium",
+    "image_pos": "60% 55%",
+    "slot": "RIDES-01",
+    "card_home": "Open Uber or Bolt with your destination set.",
+    "cta": "Get a ride",
     "icon": "M3 13l2-5h14l2 5v5h-3v-2H6v2H3zM7 13.5h.01M17 13.5h.01",
     "chips": []
   },
   {
-    "slug": "matchday", "stop": 4, "label": "Matchday", "look": "night",
-    "script": "Siku ya mechi.", "title": "Matchday in Nairobi.",
+    "slug": "matchday",
+    "stop": 4,
+    "label": "Matchday",
+    "look": "night",
+    "script": "Siku ya mechi.",
+    "title": "Matchday in Nairobi.",
     "sub": "Watch parties and fan zones every weekend, and the full stadium guide for 2027 as official details are published.",
-    "image": "dusk-expressway.webp", "image_alt": "Dusk view of the expressway with light trails leading to a floodlit stadium", "image_pos": "70% 50%",
-    "slot": "MATCH-01", "card_home": "Watch parties, fan zones and the stadium guide.", "cta": "Matchday guide",
+    "image": "dusk-expressway.webp",
+    "image_alt": "Dusk view of the expressway with light trails leading to a floodlit stadium",
+    "image_pos": "70% 50%",
+    "slot": "MATCH-01",
+    "card_home": "Watch parties, fan zones and the stadium guide.",
+    "cta": "Matchday guide",
     "icon": "M21 12a9 9 0 1 1-18 0a9 9 0 1 1 18 0M12 7l4 3-1.5 4.5h-5L8 10z",
-    "chips": ["Watch parties", "Fan zones", "Big screens", "Family friendly"]
+    "chips": [
+      "Watch parties",
+      "Fan zones",
+      "Big screens",
+      "Family friendly"
+    ]
   },
   {
-    "slug": "nightlife", "stop": 5, "label": "Nightlife", "look": "night",
-    "script": "Sherehe!", "title": "The night after the whistle.",
+    "slug": "nightlife",
+    "stop": 5,
+    "label": "Nightlife",
+    "look": "night",
+    "script": "Sherehe!",
+    "title": "The night after the whistle.",
     "sub": "Clubs, bars, rooftop lounges and live music, with entry fees, dress codes and closing times. 18+ only.",
-    "image": "", "image_alt": "", "image_pos": "50% 50%",
-    "slot": "NIGHT-01", "card_home": "Clubs, bars and live music, 18+.", "cta": "Nightlife",
+    "image": "",
+    "image_alt": "",
+    "image_pos": "50% 50%",
+    "slot": "NIGHT-01",
+    "card_home": "Clubs, bars and live music, 18+.",
+    "cta": "Nightlife",
     "icon": "M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0a3 3 0 1 1 6 0M20 16a3 3 0 1 1-6 0a3 3 0 1 1 6 0",
-    "chips": ["Clubs", "Bars", "Rooftops & lounges", "Live music", "Match screenings", "No entry fee"]
+    "chips": [
+      "Clubs",
+      "Bars",
+      "Rooftops & lounges",
+      "Live music",
+      "Match screenings",
+      "No entry fee"
+    ]
   },
   {
-    "slug": "movies-games", "stop": 6, "label": "Movies & Games", "look": "night",
-    "script": "Pumzika.", "title": "Screens, games and rest days.",
+    "slug": "movies-games",
+    "stop": 6,
+    "label": "Movies & Games",
+    "look": "night",
+    "script": "Pumzika.",
+    "title": "Screens, games and rest days.",
     "sub": "Cinemas, gaming lounges, bowling and arcades. Showtimes and bookings come from each venue.",
-    "image": "", "image_alt": "", "image_pos": "50% 50%",
-    "slot": "MOVIES-01", "card_home": "Cinemas, gaming lounges and arcades.", "cta": "See what's on",
+    "image": "",
+    "image_alt": "",
+    "image_pos": "50% 50%",
+    "slot": "MOVIES-01",
+    "card_home": "Cinemas, gaming lounges and arcades.",
+    "cta": "See what's on",
     "icon": "M3 5h18v14H3zM3 9h18M7 5v4M12 5v4M17 5v4M10 12.5v4l4-2z",
-    "chips": ["Cinemas", "Gaming lounges", "Bowling & arcades", "Family", "Open late"]
+    "chips": [
+      "Cinemas",
+      "Gaming lounges",
+      "Bowling & arcades",
+      "Family",
+      "Open late"
+    ]
   },
   {
-    "slug": "tickets", "stop": 7, "label": "Tickets", "look": "night",
-    "script": "Tiketi yako.", "title": "Your ticket, the official way.",
+    "slug": "tickets",
+    "stop": 7,
+    "label": "Tickets",
+    "look": "night",
+    "script": "Tiketi yako.",
+    "title": "Your ticket, the official way.",
     "sub": "KaribuFans does not sell tickets. We show when sales open and send you straight to the official site.",
-    "image": "", "image_alt": "", "image_pos": "50% 50%",
-    "slot": "TICKETS-01", "card_home": "Official ticket links and sale alerts.", "cta": "Ticket guide",
+    "image": "",
+    "image_alt": "",
+    "image_pos": "50% 50%",
+    "slot": "TICKETS-01",
+    "card_home": "Official ticket links and sale alerts.",
+    "cta": "Ticket guide",
     "icon": "M3 8a2 2 0 0 0 0 4v4h18v-4a2 2 0 0 1 0-4V4H3zM14 4v12",
     "chips": []
   }
