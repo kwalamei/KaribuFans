@@ -1,17 +1,37 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-stop="6">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Movies &amp; Games · KaribuFans</title>
 <meta name="description" content="Cinemas, gaming lounges, bowling and arcades. Showtimes and bookings come from each venue.">
+<meta name="theme-color" content="#0A1128">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
-</head>
-<body class="night">
 
+<script>
+(function(w,d){try{
+var h=d.documentElement,n=+h.getAttribute('data-stop')||0,K='kf_from',P=['.nav','.routebar .trail','.routebar .current .dot i'];
+if(!w.matchMedia||w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+function parts(trim){for(var i=0,el,r;i<P.length;i++){el=d.querySelector(P[i]);if(!el)continue;
+el.style.viewTransitionName='';
+if(trim){r=el.getBoundingClientRect();if(r.bottom<0||r.top>w.innerHeight)el.style.viewTransitionName='none';}}}
+w.addEventListener('pageswap',function(e){try{if(!e.viewTransition)return;parts(1);sessionStorage.setItem(K,n);}catch(x){}});
+w.addEventListener('pagereveal',function(e){try{
+var t=e.viewTransition,f,c=function(){parts(0);h.removeAttribute('data-go');};
+parts(0);try{f=+sessionStorage.getItem(K)||0;sessionStorage.removeItem(K);}catch(x){f=0;}
+if(!t)return;
+parts(1);t.finished.then(c,c);
+if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
+}catch(x){}});
+}catch(x){}})(window,document);
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="../" aria-label="KaribuFans home">
@@ -23,8 +43,8 @@
     </nav>
     <div class="nav-tools">
       <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
-      <button type="button" class="lang" id="langBtn" aria-label="Change language">EN</button>
-      <a class="btn btn-amber" href="../list-your-business/">List your business</a>
+      <a class="lang" href="#languages" aria-label="Language: English. See other languages">EN</a>
+      <a class="btn btn-primary nav-cta" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -32,52 +52,57 @@
   </div>
 </header>
 
-<main>
+<main id="main">
+
+
+
+
 
 <section class="hero page-hero" aria-labelledby="pageH">
   
   <div class="hero-glow" aria-hidden="true"></div>
-  <div class="slot" aria-hidden="true">
-    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <strong>PHOTO · MOVIES-01</strong><span>Arriving with the photo set</span>
-  </div>
   
   <div class="wrap hero-body">
-    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 6 · Movies &amp; Games</div>
+    <nav class="crumbs" aria-label="Breadcrumb"><ol>
+  <li><a href="../">KaribuFans</a></li>
+  <li><span aria-current="page">Movies &amp; Games</span></li>
+  <li id="crumbArea" hidden></li>
+</ol></nav>
+    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 6 of 7 · Movies &amp; Games</div>
     <div class="script">Pumzika.</div>
     <h1 id="pageH">Screens, games and rest days.</h1>
     <p class="lede">Cinemas, gaming lounges, bowling and arcades. Showtimes and bookings come from each venue.</p>
   </div>
   <nav class="routebar" aria-label="The route: seven stops">
-  <div class="wrap"><div style="position:relative">
+  <div class="wrap"><div class="routebar-in">
     <ol>
       
       <li class="done">
-        <a href="../stays/" ><span class="dot"><i></i></span><span class="label">1 Stays</span></a>
+        <a href="../stays/" ><span class="dot"><i></i></span><span class="label"><span class="n">1</span> Stays</span></a>
       </li>
       
       <li class="done">
-        <a href="../food/" ><span class="dot"><i></i></span><span class="label">2 Food</span></a>
+        <a href="../food/" ><span class="dot"><i></i></span><span class="label"><span class="n">2</span> Food</span></a>
       </li>
       
       <li class="done">
-        <a href="../rides/" ><span class="dot"><i></i></span><span class="label">3 Rides</span></a>
+        <a href="../rides/" ><span class="dot"><i></i></span><span class="label"><span class="n">3</span> Rides</span></a>
       </li>
       
       <li class="done">
-        <a href="../matchday/" ><span class="dot"><i></i></span><span class="label">4 Matchday</span></a>
+        <a href="../matchday/" ><span class="dot"><i></i></span><span class="label"><span class="n">4</span> Matchday</span></a>
       </li>
       
       <li class="done">
-        <a href="../nightlife/" ><span class="dot"><i></i></span><span class="label">5 Nightlife</span></a>
+        <a href="../nightlife/" ><span class="dot"><i></i></span><span class="label"><span class="n">5</span> Nightlife</span></a>
       </li>
       
       <li class="current">
-        <a href="../movies-games/" aria-current="page"><span class="dot"><i></i></span><span class="label">6 Movies &amp; Games</span></a>
+        <a href="../movies-games/" aria-current="step"><span class="dot"><i></i></span><span class="label"><span class="n">6</span> Movies &amp; Games</span></a>
       </li>
       
       <li class="">
-        <a href="../tickets/" ><span class="dot"><i></i></span><span class="label">7 Tickets</span></a>
+        <a href="../tickets/" ><span class="dot"><i></i></span><span class="label"><span class="n">7</span> Tickets</span></a>
       </li>
       
     </ol>
@@ -87,147 +112,419 @@
 </section>
 
 
-<div class="filters" role="group" aria-label="Search and filter Movies &amp; Games">
+<div class="filters" id="filters" role="group" aria-label="Filter Movies &amp; Games">
   <div class="wrap">
-    <label class="find"><span class="sr-only">Search Movies &amp; Games</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search movies &amp; games by name, area or tag" autocomplete="off"></label>
-    <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+    <label class="sel"><span>Area</span>
+      <select id="fArea">
+        <option value="">Any area</option>
+        <option value="Westlands">Westlands</option><option value="Ngong Road">Ngong Road</option><option value="Airport &amp; Mombasa Road">Airport &amp; Mombasa Road</option><option value="Gigiri &amp; Limuru Road">Gigiri &amp; Limuru Road</option><option value="Thika Road">Thika Road</option>
+        
+      </select></label>
     
-    <button type="button" class="chip" data-filter="Cinemas" aria-pressed="false">Cinemas</button><button type="button" class="chip" data-filter="Gaming lounges" aria-pressed="false">Gaming lounges</button><button type="button" class="chip" data-filter="Bowling &amp; arcades" aria-pressed="false">Bowling &amp; arcades</button><button type="button" class="chip" data-filter="Family" aria-pressed="false">Family</button><button type="button" class="chip" data-filter="Open late" aria-pressed="false">Open late</button>
+    <label class="sel"><span>Type</span>
+      <select id="fType">
+        <option value="">Any type</option>
+        <option value="Bowling &amp; arcade">Bowling &amp; arcade</option><option value="Cinema">Cinema</option>
+      </select></label>
+    
+    
+    <label class="find"><span class="sr-only">Search Movies &amp; Games</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="pageSearch" placeholder="Search by name or street" autocomplete="off"></label>
+    <button type="button" class="chip" id="fClear" hidden>Clear filters</button>
+    <span class="count" id="listCount" aria-live="polite"></span>
   </div>
 </div>
 
-
-
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="listH" style="font-size:clamp(26px,3vw,36px)">Movies &amp; Games in Nairobi</h2><p>Sample listings are shown until real businesses sign up.</p></div>
-    <div class="grid-cards" id="cards" data-page="movies-games">
+    <div class="sec-head"><h2 id="listH">Movies and games in Nairobi</h2><p>Cinemas, bowling and arcades across Nairobi for rest days and rainy afternoons. Showtimes and bookings are on each venue&#39;s own website.</p></div>
+    <p class="notice-soft" id="areaNote" hidden></p>
+    <p class="notice-soft"><span class="badge badge-directory">Directory listing</span> means we show only the name and location published on the business's own website. Prices and WhatsApp booking switch on when the business joins.</p>
+    <div class="grid-cards" id="cards" data-page="movies-games" data-noun="venues">
+      
       
 
-<article class="card" data-type="Cinemas" data-search="[cinema name] cinemas [area] snacks parking">
-  <div class="card-photo">
-    
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Cinemas</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
+
+<article class="card is-directory" id="card-century-cinemax-junction-mall" data-id="century-cinemax-junction-mall" data-type="Cinema" data-area="Ngong Road" data-near="" data-vibe="" data-search="century cinemax, junction mall cinema ngong road ngong road junction mall, ngong road  ">
+  <button type="button" class="card-photo place-open" data-id="century-cinemax-junction-mall" aria-label="View details for Century Cinemax, Junction Mall">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#0A1128"/>
+  <g fill="#F3F5FA" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
+  <g fill="#8A93B2"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
+  <g fill="#E67E22"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
+  <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#1B2656"/>
+  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#E67E22" stroke-width="3"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="#4F8A3C"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#F3F5FA" stroke-width="1.5" opacity=".6"/>
+
+</svg>
+    <span class="tag-area">Ngong Road</span>
+  </button>
   <div class="card-body">
-    <div class="card-top"><h3>[Cinema name]</h3></div>
-    <div class="card-meta">[Area] · Tickets KES [X]</div>
-    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
-    <div class="tags"><span>Snacks</span><span>Parking</span></div>
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Century Cinemax, Junction Mall</h3>
+    <div class="card-meta">Cinema · Junction Mall, Ngong Road</div>
     
-    <div class="card-note">Open till [time]</div>
+    
+    
+    
     <div class="card-actions">
-      
-      <span class="btn btn-amber" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
-      
-      
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BCinema%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Cinema name]">Directions</a>
+      <button type="button" class="btn btn-primary place-open" data-id="century-cinemax-junction-mall">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Century%20Cinemax%2C%20Junction%20Mall%2C%20Junction%20Mall%2C%20Ngong%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Century Cinemax, Junction Mall (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
 </article>
+      
+      
+      
 
-<article class="card" data-type="Gaming lounges" data-search="[gaming lounge name] gaming lounges [area] football games tournaments">
-  <div class="card-photo">
-    
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Gaming lounges</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
+
+<article class="card is-directory" id="card-century-cinemax-sarit" data-id="century-cinemax-sarit" data-type="Cinema" data-area="Westlands" data-near="" data-vibe="" data-search="century cinemax, sarit cinema westlands westlands sarit, westlands  ">
+  <button type="button" class="card-photo place-open" data-id="century-cinemax-sarit" aria-label="View details for Century Cinemax, Sarit">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gW)"/>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+
+</svg>
+    <span class="tag-area">Westlands</span>
+  </button>
   <div class="card-body">
-    <div class="card-top"><h3>[Gaming lounge name]</h3></div>
-    <div class="card-meta">[Area] · KES [X] per hour</div>
-    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
-    <div class="tags"><span>Football games</span><span>Tournaments</span></div>
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Century Cinemax, Sarit</h3>
+    <div class="card-meta">Cinema · Sarit, Westlands</div>
     
-    <div class="card-note">Open till [time]</div>
+    
+    
+    
     <div class="card-actions">
-      
-      <span class="btn btn-amber" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
-      
-      
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BGaming%20lounge%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Gaming lounge name]">Directions</a>
+      <button type="button" class="btn btn-primary place-open" data-id="century-cinemax-sarit">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Century%20Cinemax%20Sarit%2C%20Westlands%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Century Cinemax, Sarit (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
 </article>
+      
+      
+      
 
-<article class="card" data-type="Bowling &amp; arcades" data-search="[arcade name] bowling &amp; arcades [area] bowling family">
-  <div class="card-photo">
-    
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Bowling &amp; arcades</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
+
+<article class="card is-directory" id="card-anga-cinemas-diamond-plaza" data-id="anga-cinemas-diamond-plaza" data-type="Cinema" data-area="Westlands" data-near="" data-vibe="" data-search="anga cinemas, diamond plaza cinema parklands westlands diamond plaza, pramukh swami avenue  ">
+  <button type="button" class="card-photo place-open" data-id="anga-cinemas-diamond-plaza" aria-label="View details for Anga Cinemas, Diamond Plaza">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gW)"/>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+
+</svg>
+    <span class="tag-area">Parklands</span>
+  </button>
   <div class="card-body">
-    <div class="card-top"><h3>[Arcade name]</h3></div>
-    <div class="card-meta">[Area] · KES [X] per game</div>
-    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
-    <div class="tags"><span>Bowling</span><span>Family</span></div>
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Anga Cinemas, Diamond Plaza</h3>
+    <div class="card-meta">Cinema · Diamond Plaza, Pramukh Swami Avenue</div>
     
-    <div class="card-note">Open till [time]</div>
+    
+    
+    
     <div class="card-actions">
-      
-      <span class="btn btn-amber" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
-      
-      
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BArcade%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Arcade name]">Directions</a>
+      <button type="button" class="btn btn-primary place-open" data-id="anga-cinemas-diamond-plaza">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Anga%20Cinemas%2C%20Diamond%20Plaza%2C%20Diamond%20Plaza%2C%20Pramukh%20Swami%20Avenue%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Anga Cinemas, Diamond Plaza (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
 </article>
+      
+      
+      
 
-<article class="card" data-type="Gaming lounges" data-search="[gaming lounge name] gaming lounges [area] vr groups">
-  <div class="card-photo">
-    
-    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 15l5-5 4 4 3-3 6 6M15.5 8.5h.01"/></svg>
-    <span class="badge">Gaming lounges</span>
-    <span class="sample">SAMPLE LISTING</span>
-  </div>
+
+<article class="card is-directory" id="card-strikez-at-westgate" data-id="strikez-at-westgate" data-type="Bowling &amp; arcade" data-area="Westlands" data-near="" data-vibe="" data-search="strikez at westgate bowling &amp; arcade westlands westlands westgate shopping mall, mwanzi road bowling pool arcade ">
+  <button type="button" class="card-photo place-open" data-id="strikez-at-westgate" aria-label="View details for Strikez at Westgate">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gW)"/>
+  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+
+</svg>
+    <span class="tag-area">Westlands</span>
+  </button>
   <div class="card-body">
-    <div class="card-top"><h3>[Gaming lounge name]</h3></div>
-    <div class="card-meta">[Area] · KES [X] per hour</div>
-    <div class="dist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10a6 6 0 0 1 12 0c0 4.5-6 10-6 10zM12 9a2 2 0 1 0 0 4a2 2 0 1 0 0-4"/></svg>[X] min to Talanta Stadium</div>
-    <div class="tags"><span>VR</span><span>Groups</span></div>
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Strikez at Westgate</h3>
+    <div class="card-meta">Bowling &amp; arcade · Westgate Shopping Mall, Mwanzi Road</div>
     
-    <div class="card-note">Open till [time]</div>
+    
+    
+    <div class="tags"><span>Bowling</span><span>Pool</span><span>Arcade</span></div>
     <div class="card-actions">
-      
-      <span class="btn btn-amber" aria-disabled="true" title="Appears when the business joins">WhatsApp</span>
-      
-      
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=%5BGaming%20lounge%20name%5D%20%5BArea%5D%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to [Gaming lounge name]">Directions</a>
+      <button type="button" class="btn btn-primary place-open" data-id="strikez-at-westgate">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Strikez%20at%20Westgate%2C%20Westgate%20Shopping%20Mall%2C%20Mwanzi%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Strikez at Westgate (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
 </article>
+      <aside class="card vendor-card" aria-label="For Nairobi businesses">
+  <span class="eyebrow">For Nairobi businesses</span>
+  <h3>Own a cinema, gaming lounge or arcade in Nairobi?</h3>
+  <p>Get listed before visiting fans arrive for the 2027 tournament. No listing fee: you pay a commission only on customers we send you.</p>
+  <a class="btn btn-navy" href="../list-your-business/">List your business</a>
+</aside>
+      
+      
+
+
+<article class="card is-directory" id="card-anga-cinemas-panari" data-id="anga-cinemas-panari" data-type="Cinema" data-area="Airport &amp; Mombasa Road" data-near="" data-vibe="" data-search="anga cinemas, panari sky centre cinema mombasa road airport &amp; mombasa road panari sky centre, mombasa road  ">
+  <button type="button" class="card-photo place-open" data-id="anga-cinemas-panari" aria-label="View details for Anga Cinemas, Panari Sky Centre">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#BFD9E8"/>
+  <g fill="#F7F4EF" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#1B4D3E"/>
+  <rect y="112" width="320" height="28" fill="#4A5750"/>
+  <g fill="#F7F4EF"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
+
+</svg>
+    <span class="tag-area">Mombasa Road</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
     </div>
-    <p class="coming" id="noMatch" hidden style="margin-top:24px">Nothing matches yet. Try another filter or search.</p>
+    <h3>Anga Cinemas, Panari Sky Centre</h3>
+    <div class="card-meta">Cinema · Panari Sky Centre, Mombasa Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="anga-cinemas-panari">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Anga%20Cinemas%2C%20Panari%20Sky%20Centre%2C%20Panari%20Sky%20Centre%2C%20Mombasa%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Anga Cinemas, Panari Sky Centre (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
+      
+      
+      
+
+
+<article class="card is-directory" id="card-village-bowl" data-id="village-bowl" data-type="Bowling &amp; arcade" data-area="Gigiri &amp; Limuru Road" data-near="" data-vibe="" data-search="village bowl bowling &amp; arcade gigiri gigiri &amp; limuru road village market, 2nd floor, new wing bowling ">
+  <button type="button" class="card-photo place-open" data-id="village-bowl" aria-label="View details for Village Bowl">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gG)"/><circle cx="250" cy="44" r="18" fill="#E67E22" opacity=".85"/>
+  <g fill="#C9B79A"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
+  <g fill="#0A1128" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
+  <g fill="#F7F4EF" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
+
+</svg>
+    <span class="tag-area">Gigiri</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Village Bowl</h3>
+    <div class="card-meta">Bowling &amp; arcade · Village Market, 2nd Floor, New Wing</div>
+    
+    
+    
+    <div class="tags"><span>Bowling</span></div>
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="village-bowl">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Village%20Bowl%2C%20Village%20Market%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Village Bowl (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
+      
+      
+      
+
+
+<article class="card is-directory" id="card-century-cinemax-two-rivers" data-id="century-cinemax-two-rivers" data-type="Cinema" data-area="Gigiri &amp; Limuru Road" data-near="" data-vibe="" data-search="century cinemax, two rivers cinema limuru road gigiri &amp; limuru road two rivers, limuru road  ">
+  <button type="button" class="card-photo place-open" data-id="century-cinemax-two-rivers" aria-label="View details for Century Cinemax, Two Rivers">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gG)"/><circle cx="250" cy="44" r="18" fill="#E67E22" opacity=".85"/>
+  <g fill="#C9B79A"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
+  <g fill="#0A1128" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
+  <g fill="#F7F4EF" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
+
+</svg>
+    <span class="tag-area">Limuru Road</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Century Cinemax, Two Rivers</h3>
+    <div class="card-meta">Cinema · Two Rivers, Limuru Road</div>
+    
+    
+    
+    
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="century-cinemax-two-rivers">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Century%20Cinemax%2C%20Two%20Rivers%2C%20Two%20Rivers%2C%20Limuru%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Century Cinemax, Two Rivers (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
+      
+      
+      
+
+
+<article class="card is-directory" id="card-century-imax-garden-city" data-id="century-imax-garden-city" data-type="Cinema" data-area="Thika Road" data-near="" data-vibe="" data-search="century imax, garden city mall cinema thika road thika road garden city mall, thika road, exit 7 imax ">
+  <button type="button" class="card-photo place-open" data-id="century-imax-garden-city" aria-label="View details for Century IMAX, Garden City Mall">
+    <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#gG)"/><circle cx="250" cy="44" r="18" fill="#E67E22" opacity=".85"/>
+  <g fill="#C9B79A"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
+  <g fill="#0A1128" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
+  <g fill="#F7F4EF" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
+
+</svg>
+    <span class="tag-area">Thika Road</span>
+  </button>
+  <div class="card-body">
+    <div class="card-top">
+      <span class="badge badge-directory">Directory listing</span>
+      
+    </div>
+    <h3>Century IMAX, Garden City Mall</h3>
+    <div class="card-meta">Cinema · Garden City Mall, Thika Road, Exit 7</div>
+    
+    
+    
+    <div class="tags"><span>IMAX</span></div>
+    <div class="card-actions">
+      <button type="button" class="btn btn-primary place-open" data-id="century-imax-garden-city">View details</button>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Century%20IMAX%2C%20Garden%20City%20Mall%2C%20Garden%20City%20Mall%2C%20Thika%20Road%2C%20Exit%207%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Century IMAX, Garden City Mall (opens Google Maps)">Directions ↗</a>
+    </div>
+  </div>
+</article>
+      
+      
+    </div>
+    <p class="coming" id="noMatch" hidden>Nothing matches those filters yet. <button type="button" class="linklike" id="noMatchClear">Clear the filters</button></p>
   </div>
 </section>
 
+<div class="drawer-veil" id="placeVeil" hidden></div>
+<aside class="drawer" id="placeDrawer" role="dialog" aria-modal="true" aria-labelledby="dName" hidden tabindex="-1">
+  <div class="drawer-head">
+    <button type="button" class="icon-btn" id="dClose" aria-label="Close details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="drawer-crumb">Movies &amp; Games</span>
+    <button type="button" class="chip" id="dShare">Share</button>
+  </div>
+  <div class="drawer-scroll">
+    <div class="d-photos" id="dPhotos"></div>
+    <div class="d-body">
+      <span class="badge" id="dBadge"></span>
+      <h2 id="dName"></h2>
+      <p class="card-meta" id="dMeta"></p>
+      <p class="d-street" id="dStreet" hidden></p>
+      <p class="d-price" id="dPrice" hidden></p>
+      <p class="hint" id="dChecked" hidden></p>
+      <p id="dAbout" hidden></p>
+      <ul class="d-amen" id="dAmen" aria-label="What you get"></ul>
+      <p class="dist" id="dDist" hidden></p>
+
+      <div class="d-unclaimed" id="dUnclaimed" hidden>
+        <p class="d-pay">Prices and WhatsApp booking switch on when this business joins KaribuFans. Until then, book with the business directly on its own website.</p>
+        <p class="hint" id="dSource"></p>
+      </div>
+
+      <fieldset class="d-form" id="dForm" hidden>
+        <legend>Ask about your dates</legend>
+        <div class="d-row">
+          <label>Check-in<input type="date" id="dIn"></label>
+          <label>Check-out<input type="date" id="dOut"></label>
+        </div>
+        <div class="d-row">
+          <label>Guests<select id="dGuests"><option value="">Not sure yet</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option value="9 or more">9+</option></select></label>
+          <label>Your name<input type="text" id="dWho" autocomplete="given-name" placeholder="Optional"></label>
+        </div>
+        <p class="hint" id="dErr" role="alert" hidden></p>
+        <p class="hint">Your message will read:</p>
+        <blockquote class="d-preview" id="dPreview"></blockquote>
+      </fieldset>
+
+      <a class="btn btn-primary d-cta" id="dWa" target="_blank" rel="noopener" hidden>Book via WhatsApp</a>
+      <div class="card-actions d-actions">
+        <a class="btn btn-primary" id="dSite" target="_blank" rel="noopener nofollow" hidden>Visit website ↗</a>
+        <a class="btn btn-ghost" id="dCall" hidden>Call</a>
+        <a class="btn btn-ghost" id="dMap" target="_blank" rel="noopener">Directions ↗</a>
+      </div>
+      <p class="d-pay" id="dPay" hidden>You pay the business directly. KaribuFans never handles your payment.</p>
+
+      <section class="d-route" id="dRoute" aria-labelledby="dRouteH" hidden>
+        <h3 id="dRouteH">Continue your route</h3>
+        <ul id="dRouteList"></ul>
+      </section>
+      <a class="d-claim" id="dClaim" hidden>Is this your business? Claim or remove this listing</a>
+    </div>
+  </div>
+</aside>
+
+<script type="application/json" id="placeData">{"icons": {}, "label": "Movies \u0026 Games", "listings": [{"area": "Ngong Road", "checked": "5 Oct 2026", "id": "century-cinemax-junction-mall", "map_query": "Century Cinemax, Junction Mall, Junction Mall, Ngong Road, Nairobi", "name": "Century Cinemax, Junction Mall", "phone": "", "photos": [], "sample": false, "source_url": "https://centurycinemax.co.ke/about-us", "status": "unclaimed", "street": "Junction Mall, Ngong Road", "tags": [], "type": "Cinema", "website": "https://centurycinemax.co.ke/", "whatsapp": "", "zone": "Ngong Road"}, {"area": "Westlands", "checked": "5 Oct 2026", "id": "century-cinemax-sarit", "map_query": "Century Cinemax Sarit, Westlands, Nairobi", "name": "Century Cinemax, Sarit", "phone": "", "photos": [], "sample": false, "source_url": "https://centurycinemax.co.ke/about-us", "status": "unclaimed", "street": "Sarit, Westlands", "tags": [], "type": "Cinema", "website": "https://centurycinemax.co.ke/", "whatsapp": "", "zone": "Westlands"}, {"area": "Parklands", "checked": "5 Oct 2026", "id": "anga-cinemas-diamond-plaza", "map_query": "Anga Cinemas, Diamond Plaza, Diamond Plaza, Pramukh Swami Avenue, Nairobi", "name": "Anga Cinemas, Diamond Plaza", "phone": "", "photos": [], "sample": false, "source_url": "https://www.angacinemas.com/contacts", "status": "unclaimed", "street": "Diamond Plaza, Pramukh Swami Avenue", "tags": [], "type": "Cinema", "website": "https://www.angacinemas.com/", "whatsapp": "", "zone": "Westlands"}, {"area": "Westlands", "checked": "5 Oct 2026", "id": "strikez-at-westgate", "map_query": "Strikez at Westgate, Westgate Shopping Mall, Mwanzi Road, Nairobi", "name": "Strikez at Westgate", "phone": "", "photos": [], "sample": false, "source_url": "https://strikez.co.ke/", "status": "unclaimed", "street": "Westgate Shopping Mall, Mwanzi Road", "tags": ["Bowling", "Pool", "Arcade"], "type": "Bowling \u0026 arcade", "website": "https://strikez.co.ke/", "whatsapp": "", "zone": "Westlands"}, {"area": "Mombasa Road", "checked": "5 Oct 2026", "id": "anga-cinemas-panari", "map_query": "Anga Cinemas, Panari Sky Centre, Panari Sky Centre, Mombasa Road, Nairobi", "name": "Anga Cinemas, Panari Sky Centre", "phone": "", "photos": [], "sample": false, "source_url": "https://www.angacinemas.com/contacts", "status": "unclaimed", "street": "Panari Sky Centre, Mombasa Road", "tags": [], "type": "Cinema", "website": "https://www.angacinemas.com/", "whatsapp": "", "zone": "Airport \u0026 Mombasa Road"}, {"area": "Gigiri", "checked": "5 Oct 2026", "id": "village-bowl", "map_query": "Village Bowl, Village Market, Nairobi", "name": "Village Bowl", "phone": "", "photos": [], "sample": false, "source_url": "https://villagemarket-kenya.com/entertainment", "status": "unclaimed", "street": "Village Market, 2nd Floor, New Wing", "tags": ["Bowling"], "type": "Bowling \u0026 arcade", "website": "https://villagemarket-kenya.com/entertainment", "whatsapp": "", "zone": "Gigiri \u0026 Limuru Road"}, {"area": "Limuru Road", "checked": "5 Oct 2026", "id": "century-cinemax-two-rivers", "map_query": "Century Cinemax, Two Rivers, Two Rivers, Limuru Road, Nairobi", "name": "Century Cinemax, Two Rivers", "phone": "", "photos": [], "sample": false, "source_url": "https://centurycinemax.co.ke/about-us", "status": "unclaimed", "street": "Two Rivers, Limuru Road", "tags": [], "type": "Cinema", "website": "https://centurycinemax.co.ke/", "whatsapp": "", "zone": "Gigiri \u0026 Limuru Road"}, {"area": "Thika Road", "checked": "5 Oct 2026", "id": "century-imax-garden-city", "map_query": "Century IMAX, Garden City Mall, Garden City Mall, Thika Road, Exit 7, Nairobi", "name": "Century IMAX, Garden City Mall", "phone": "", "photos": [], "sample": false, "source_url": "https://centurycinemax.co.ke/about-us", "status": "unclaimed", "street": "Garden City Mall, Thika Road, Exit 7", "tags": ["IMAX"], "type": "Cinema", "website": "https://centurycinemax.co.ke/", "whatsapp": "", "zone": "Thika Road"}], "nearLabel": "", "page": "movies-games", "root": "../", "route": {"food": {"CBD": 1, "Karen": 1, "Kilimani": 2, "Lang\u0027ata": 1, "Westlands": 1}, "matchday": {"Karen": 1}, "movies-games": {"Airport \u0026 Mombasa Road": 1, "Gigiri \u0026 Limuru Road": 2, "Ngong Road": 1, "Thika Road": 1, "Westlands": 3}, "nightlife": {"Kilimani": 1, "Westlands": 2}, "rides": {}, "stays": {"Airport \u0026 Mombasa Road": 6, "CBD": 6, "Karen": 6, "Kilimani": 7, "Ngong Road": 3, "Westlands": 6}, "tickets": {}}, "site": "KaribuFans", "stops": [{"label": "Stays", "slug": "stays", "stop": 1}, {"label": "Food", "slug": "food", "stop": 2}, {"label": "Rides", "slug": "rides", "stop": 3}, {"label": "Matchday", "slug": "matchday", "stop": 4}, {"label": "Nightlife", "slug": "nightlife", "stop": 5}, {"label": "Movies \u0026 Games", "slug": "movies-games", "stop": 6}, {"label": "Tickets", "slug": "tickets", "stop": 7}], "vibes": []}</script>
 
 
 
 
 
 
+
+
+
+<nav class="next-stop" aria-label="Continue the route">
+  <div class="wrap">
+    <a class="ns ns-prev" href="../nightlife/"><span>← Stop 5</span><strong>Nightlife</strong></a>
+    <a class="ns ns-next" href="../tickets/"><span>Next stop 7 →</span><strong>Tickets</strong><em>Official ticket links and sale alerts.</em></a>
+  </div>
+</nav>
 
 </main>
 
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="footer-brand">
         <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
   <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
-      <div><h4>Explore</h4><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h4>KaribuFans</h4><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li><a href="../privacy/">Privacy [draft]</a></li></ul></div>
-      <div><h4>Language</h4><div class="langs"><button type="button" data-lang="EN" aria-pressed="true">EN</button><button type="button" data-lang="SW" aria-pressed="false">SW</button><button type="button" data-lang="FR" aria-pressed="false">FR</button><button type="button" data-lang="AR" aria-pressed="false">AR</button><button type="button" data-lang="PT" aria-pressed="false">PT</button></div><p id="langNote" style="font-size:13px;margin-top:10px;color:var(--muted-night)">Kiswahili, French, Arabic and Portuguese coming after launch.</p></div>
+      <div><h2>Explore</h2><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
+      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li><a href="../privacy/">Privacy</a></li></ul></div>
+      <div id="languages"><h2>Language</h2>
+        <div class="langs"><button type="button" data-lang="EN" data-name="English" data-live="1" aria-pressed="true">EN</button><button type="button" data-lang="SW" data-name="Kiswahili" data-live="" aria-pressed="false" class="soon">SW<small>soon</small></button><button type="button" data-lang="FR" data-name="French" data-live="" aria-pressed="false" class="soon">FR<small>soon</small></button><button type="button" data-lang="AR" data-name="Arabic" data-live="" aria-pressed="false" class="soon">AR<small>soon</small></button><button type="button" data-lang="PT" data-name="Portuguese" data-live="" aria-pressed="false" class="soon">PT<small>soon</small></button></div>
+        <p class="lang-note" id="langNote" aria-live="polite">The site is in English. Kiswahili, French, Arabic and Portuguese follow after launch.</p>
+      </div>
     </div>
-    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 [Registered business name].</p>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 KaribuFans.</p>
   </div>
 </footer>
 <script src="../js/site.js" defer></script>

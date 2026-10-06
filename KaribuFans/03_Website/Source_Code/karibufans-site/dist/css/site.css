@@ -23,6 +23,8 @@
   --display:'Bricolage Grotesque',Georgia,serif; --body:'DM Sans',system-ui,-apple-system,sans-serif; --script:'Caveat',cursive;
   --gutter:clamp(16px,5vw,72px); --max:1296px; --radius:16px; --radius-sm:10px;
   --shadow:0 1px 2px rgba(10,17,40,.06),0 6px 18px rgba(10,17,40,.06);
+  /* motion: arrive by slowing down, leave by speeding up */
+  --ease-out:cubic-bezier(.22,1,.36,1); --ease-in:cubic-bezier(.4,0,1,1);
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -297,9 +299,9 @@ section{scroll-margin-top:80px}
 .prose a:not(.btn){font-weight:700}
 
 /* ---------- Details drawer ---------- */
-.drawer-veil{position:fixed;inset:0;z-index:90;background:rgba(10,17,40,.55);opacity:0;transition:opacity .2s}
+.drawer-veil{position:fixed;inset:0;z-index:90;background:rgba(10,17,40,.55);opacity:0}
 .drawer-veil.in{opacity:1}
-.drawer{position:fixed;top:0;right:0;bottom:0;z-index:100;width:min(480px,100%);background:var(--sand);color:var(--text);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease;box-shadow:-8px 0 30px rgba(10,17,40,.25);outline:none}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:100;width:min(480px,100%);background:var(--sand);color:var(--text);display:flex;flex-direction:column;transform:translateX(100%);box-shadow:-8px 0 30px rgba(10,17,40,.25);outline:none}
 .drawer.in{transform:none}
 body.drawer-open{overflow:hidden}
 .drawer-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;background:var(--navy);color:var(--on-navy)}
@@ -334,8 +336,6 @@ body.drawer-open{overflow:hidden}
 .d-route a:hover{border-color:var(--amber)}
 .d-route a span{font-weight:500;font-size:14px;color:var(--muted)}
 .d-claim{font-size:13px;font-weight:700;color:var(--muted)}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.drawer,.drawer-veil,.card,.btn,.zone,.stop a{transition:none}}
-
 /* ---------- Next stop ---------- */
 .next-stop{background:var(--navy);color:var(--on-navy);border-bottom:1px solid var(--line-navy)}
 .next-stop .wrap{display:grid;grid-template-columns:1fr 2fr;gap:16px;padding-block:28px}
@@ -364,3 +364,72 @@ body.drawer-open{overflow:hidden}
 .lang-note{font-size:13px;margin-top:10px}
 .legal{border-top:1px solid var(--line-navy);margin-top:32px;padding-top:18px;font-size:13px}
 .two-col h2{font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1.05}
+
+/* ---------- Motion ----------
+   Motion says where you are on the route; it is never decoration. Rules for this section:
+     - only transform and opacity are animated (the route trail changes length inside a view-transition snapshot);
+     - every part is an extra: without view transitions or JavaScript the page looks and works the same;
+     - nothing readable starts hidden unless js/site.js has added .kf-reveal to <html>, and it only does so for groups still below the screen;
+     - prefers-reduced-motion: reduce switches all of it off (last rule of this section).
+   Parts: 1 details drawer · 2 travelling between pages · 3 filters re-flowing the cards · 4 homepage scroll reveals */
+
+/* 1. Details drawer: slides in slowing down, slides out a little quicker. js/site.js hides it once the slide-out ends. */
+.drawer{transition:transform .22s var(--ease-in)}
+.drawer.in{transition:transform .36s var(--ease-out)}
+.drawer-veil{transition:opacity .22s linear;pointer-events:none}   /* while it fades out, clicks already reach the page */
+.drawer-veil.in{transition:opacity .3s var(--ease-out);pointer-events:auto}
+
+@media (prefers-reduced-motion:no-preference){
+  /* 2. Travelling between pages (cross-document view transitions; browsers without them just load the page).
+        The header stays put, the amber trail and the current dot move from the old stop to the new one,
+        and the page itself shifts a short way in the direction of travel. The script in <head> sets
+        data-go="fwd" (to a later stop) or "back" (to an earlier one); with neither, the page cross-fades. */
+  @view-transition{navigation:auto}
+  .nav{view-transition-name:kf-nav}
+  .routebar .trail{view-transition-name:kf-trail}
+  .routebar .current .dot i{view-transition-name:kf-dot}
+  ::view-transition-group(*){animation-duration:.3s;animation-timing-function:var(--ease-out)}
+  ::view-transition-old(*),::view-transition-new(*){animation-timing-function:var(--ease-out)}
+  ::view-transition-group(kf-trail),::view-transition-group(kf-dot){animation-duration:.4s}
+  ::view-transition-old(kf-trail),::view-transition-new(kf-trail){height:100%}
+  ::view-transition-new(kf-trail):only-child{animation:kf-draw .4s var(--ease-out) both;transform-origin:0 50%}
+  ::view-transition-old(kf-trail):only-child{animation:kf-undraw .3s var(--ease-out) both;transform-origin:0 50%}
+  html[data-go]::view-transition-old(root),html[data-go]::view-transition-new(root){mix-blend-mode:plus-lighter}   /* keeps the cross-fade solid: no wash-out half way */
+  html[data-go="fwd"]::view-transition-old(root){animation:kf-to-left .32s var(--ease-out) both}
+  html[data-go="fwd"]::view-transition-new(root){animation:kf-from-right .32s var(--ease-out) both}
+  html[data-go="back"]::view-transition-old(root){animation:kf-to-right .32s var(--ease-out) both}
+  html[data-go="back"]::view-transition-new(root){animation:kf-from-left .32s var(--ease-out) both}
+
+  /* 3. Filters (same-page view transition started by js/site.js). While html.kf-filtering is set, each card on or
+        near the screen has its own name: cards that stay slide to their new place, cards that leave fade out,
+        new ones fade in, and everything further down the page simply cross-fades. The sticky filter bar gets a
+        name too, so sliding cards pass under it; the route trail and dot sit this one out. */
+  html.kf-filtering .grid-cards>.card.kf-near{view-transition-name:var(--vt);view-transition-class:kf-card}
+  html.kf-filtering .filters{view-transition-name:kf-filters}
+  html.kf-filtering .routebar .trail,html.kf-filtering .routebar .current .dot i{view-transition-name:none}
+  ::view-transition-old(.kf-card):only-child{animation:kf-card-out .16s var(--ease-in) both}
+  ::view-transition-new(.kf-card):only-child{animation:kf-card-in .3s var(--ease-out) both}
+}
+@keyframes kf-draw{from{transform:scaleX(0)}}
+@keyframes kf-undraw{to{transform:scaleX(0)}}
+@keyframes kf-to-left{to{opacity:0;transform:translateX(-36px)}}
+@keyframes kf-from-right{from{opacity:0;transform:translateX(36px)}}
+@keyframes kf-to-right{to{opacity:0;transform:translateX(36px)}}
+@keyframes kf-from-left{from{opacity:0;transform:translateX(-36px)}}
+@keyframes kf-card-out{to{opacity:0;transform:scale(.96)}}
+@keyframes kf-card-in{from{opacity:0;transform:scale(.96)}}
+
+/* 4. Homepage scroll reveals. A group marked .rv settles its children in one after another when js/site.js adds
+      .is-in (IntersectionObserver, once). On the route the amber line draws along first. The hidden starting state
+      exists only under .kf-reveal, so with no JavaScript, in print, or with reduced motion everything is simply there. */
+@media screen and (prefers-reduced-motion:no-preference){
+  .kf-reveal .rv>*{transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);transition-delay:calc(var(--i,0)*80ms)}
+  .kf-reveal .rv:not(.is-in)>*{opacity:0;transform:translateY(14px)}
+  .rv>:nth-child(2){--i:1}.rv>:nth-child(3){--i:2}.rv>:nth-child(4){--i:3}.rv>:nth-child(5){--i:4}.rv>:nth-child(6){--i:5}.rv>:nth-child(7){--i:6}
+  .kf-reveal .stops::before{transform-origin:0 50%;transition:transform .9s var(--ease-out)}
+  .kf-reveal .stops:not(.is-in)::before{transform:scaleX(0)}
+  @media (max-width:640px){.kf-reveal .stops::before{transform-origin:50% 0}.kf-reveal .stops:not(.is-in)::before{transform:scaleY(0)}}
+}
+
+/* Reduced motion: no transitions, no view transitions (the rules above sit inside no-preference), no smooth scroll. */
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.drawer,.drawer.in,.drawer-veil,.drawer-veil.in,.card,.btn,.zone,.stop a,.ns,.routebar .dot i{transition:none}}

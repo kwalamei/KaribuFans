@@ -8,6 +8,24 @@
   function each(list, fn) { Array.prototype.forEach.call(list, fn); }
   var params = new URLSearchParams(location.search);
 
+  // Motion. Everything here is an extra: without it the page simply updates at once.
+  var html = document.documentElement;
+  function calm() { return !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  // Scroll reveals (homepage route, example day, steps). Groups already on screen (or above it) when this script
+  // runs are marked as shown first; only then is kf-reveal set, which lets the CSS hide the groups still below the
+  // screen until they scroll into view. So nothing readable ever waits on a timer, and without this script nothing hides.
+  var rvs = document.querySelectorAll('.rv');
+  if (rvs.length && window.IntersectionObserver && !calm()) {
+    try {
+      each(rvs, function (el) { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-in'); });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -10% 0px' });
+      each(rvs, function (el) { if (!el.classList.contains('is-in')) io.observe(el); });
+      html.classList.add('kf-reveal');
+    } catch (e) { html.classList.remove('kf-reveal'); }
+  }
+
   // Mobile menu
   var nav = $('nav'), menuBtn = $('menuBtn');
   if (nav && menuBtn) {
@@ -89,16 +107,36 @@
       history.replaceState(history.state, '', u.pathname + u.search + u.hash);
       carryArea();
     }
-    function clearAll() { area = ''; st = { t: '', v: '', q: '', near: false }; if (box) box.value = ''; apply(); }
-    if (fA) fA.addEventListener('change', function () { st.near = fA.value === '__near'; if (!st.near) area = fA.value; apply(); });
-    if (fT) fT.addEventListener('change', function () { st.t = fT.value; apply(); });
-    if (fV) fV.addEventListener('change', function () { st.v = fV.value; apply(); });
-    if (box) { box.value = st.q || ''; box.addEventListener('input', function () { st.q = box.value; apply(); }); }
+    // A filter change re-flows the cards inside a view transition where the browser has one; otherwise it applies at once.
+    // Each card has its own name (--vt) so it can slide to its new place. Only cards on or near the screen (.kf-near,
+    // kept up to date by an IntersectionObserver) use it, and only while html.kf-filtering is set: naming all of
+    // them made the browser snapshot the whole list and the filter felt slow to respond.
+    var flow = null, qTimer = 0;
+    if (document.startViewTransition && window.IntersectionObserver && !calm()) {
+      var near = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { en.target.classList.toggle('kf-near', en.isIntersecting); });
+      }, { rootMargin: '120px 0px' });
+      each(grid.children, function (c, i) { c.style.setProperty('--vt', 'kf-card-' + i); near.observe(c); });
+    }
+    function update() {
+      clearTimeout(qTimer);
+      if (!document.startViewTransition || calm()) { apply(); return; }
+      var t, done = function () { if (flow === t) { flow = null; html.classList.remove('kf-filtering'); } };
+      html.classList.add('kf-filtering');
+      try { t = flow = document.startViewTransition(apply); } catch (e) { flow = null; html.classList.remove('kf-filtering'); apply(); return; }
+      t.ready.then(null, function () {}); t.finished.then(done, done);
+    }
+    function clearAll() { area = ''; st = { t: '', v: '', q: '', near: false }; if (box) box.value = ''; update(); }
+    if (fA) fA.addEventListener('change', function () { st.near = fA.value === '__near'; if (!st.near) area = fA.value; update(); });
+    if (fT) fT.addEventListener('change', function () { st.t = fT.value; update(); });
+    if (fV) fV.addEventListener('change', function () { st.v = fV.value; update(); });
+    // Typing: wait for a short pause, so there is one transition per word and not one per keystroke.
+    if (box) { box.value = st.q || ''; box.addEventListener('input', function () { st.q = box.value; clearTimeout(qTimer); qTimer = setTimeout(update, 160); }); }
     $('fClear').addEventListener('click', clearAll); $('noMatchClear').addEventListener('click', clearAll);
     apply();
 
     // Drawer
-    var dr = $('placeDrawer'), veil = $('placeVeil'), cur = null, lastFocus = null;
+    var dr = $('placeDrawer'), veil = $('placeVeil'), cur = null, lastFocus = null, isUp = false, shut = 0;
     var dIn = $('dIn'), dOut = $('dOut'), dGuests = $('dGuests'), dWho = $('dWho'), dWa = $('dWa');
     function iso(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
     var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -183,7 +221,8 @@
     }
     function show(id, push) {
       var v = byId[id]; if (!v) return;
-      if (dr.hidden) lastFocus = document.activeElement;
+      if (!isUp) lastFocus = document.activeElement;
+      clearTimeout(shut); isUp = true; dr.inert = false;   // also cancels a close that is still sliding out
       fill(v);
       dr.hidden = false; veil.hidden = false; document.body.classList.add('drawer-open');
       requestAnimationFrame(function () { dr.classList.add('in'); veil.classList.add('in'); });
@@ -191,10 +230,15 @@
       if (push) history.pushState({ place: id }, '', location.pathname + location.search + '#place-' + id);
     }
     function hide() {
-      if (dr.hidden) return;
+      if (!isUp) return;
+      isUp = false; dr.inert = true;   // closed for keyboard and screen readers straight away
       dr.classList.remove('in'); veil.classList.remove('in'); document.body.classList.remove('drawer-open');
-      dr.hidden = true; veil.hidden = true; cur = null;
       if (lastFocus && lastFocus.focus) lastFocus.focus();
+      // Let the slide-out play, then take the drawer out of the page. No transition (reduced motion) means no wait.
+      var gone = function () { dr.hidden = true; veil.hidden = true; cur = null; };
+      var ms = (parseFloat(getComputedStyle(dr).transitionDuration) || 0) * 1000;
+      clearTimeout(shut);
+      if (ms) shut = setTimeout(gone, ms + 40); else gone();
     }
     function close() { if (history.state && history.state.place) history.back(); else { history.replaceState(null, '', location.pathname + location.search); hide(); } }
     function fromHash() { var m = /^#(?:place|stay)-(.+)$/.exec(location.hash); if (m && byId[decodeURIComponent(m[1])]) show(decodeURIComponent(m[1]), false); else hide(); }
@@ -202,7 +246,7 @@
     $('dClose').addEventListener('click', close); veil.addEventListener('click', close);
     window.addEventListener('popstate', fromHash);
     document.addEventListener('keydown', function (e) {
-      if (dr.hidden) return;
+      if (!isUp) return;
       if (e.key === 'Escape') { close(); return; }
       if (e.key !== 'Tab') return;
       var f = Array.prototype.filter.call(dr.querySelectorAll('button,a[href],input,select'), function (el) { return el.offsetParent !== null; });

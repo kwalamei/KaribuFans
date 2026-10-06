@@ -24,6 +24,9 @@ Every colour is a named token at the top of `static/css/site.css`. Change a valu
 - Emerald `#1B4D3E` is reserved for "Verified by the business" and "Open now".
 There are three buttons only: `btn-primary` (amber), `btn-ghost` (outline) and `btn-navy`. Do not add page-specific colours.
 
+## Motion ("The Route comes alive")
+All motion lives in the "Motion" section at the end of `static/css/site.css`, with a small script at the top of `templates/base.html`. Moving between stops slides the page a short way in the direction of travel while the amber trail in the route bar grows or retracts; filters re-flow the cards; the details drawer slides in and out; the homepage route draws itself when scrolled into view. All of it is an extra: browsers without view transitions load pages as before, and visitors who ask for reduced motion get none.
+
 ## Directory listings (any page)
 An entry with `"status": "unclaimed"` in `data/listings/<page>.json` is a real business that has not joined yet. It shows a "Directory listing" badge and only: name, type, area, street, a link to the business's own website, Directions and a claim/remove link. No photos, price, phone or WhatsApp.
 Fields: `id` (short, unique, no spaces; it becomes the share link), `name`, `type`, `area` (label on the card), `zone` (the Area filter group, e.g. Kilimani, Westlands, CBD, Karen, Ngong Road), `street`, `website`, `source_url` (the page where you read the address), `checked` (date), `map_query`, `tags` (only facts stated on the business's own site).
@@ -54,3 +57,4 @@ Change `status` to `"joined"` and add: `price`, `price_checked`, `about`, `photo
 - 5 Oct: Stays filters, details drawer, 34 real Nairobi stays loaded as directory listings.
 - 5 Oct (theme and flow): one colour system on every page ("Sunset on Ngong Road"); Food, Matchday, Nightlife and Movies & Games moved from bracketed sample cards to directory listings (18 venues, each confirmed on the business's own website); details drawer on every listing with "Continue your route" links; chosen area carried from stop to stop; breadcrumbs; next/previous stop links; homepage "Browse by area"; privacy notice published; placeholder text removed.
 - Still to fill in: `contact_whatsapp` and `uber_client_id` in `data/site.json`; registered business name in `copyright`; real photos; first joined businesses; official fixtures, fan zones and traffic plan when published.
+- 7 Oct: motion layer ("The Route comes alive"); full rebuild of `dist/`, which also republished six pages that were still on the old theme (Tickets, Nightlife, Movies & Games, Privacy, Search, List your business).

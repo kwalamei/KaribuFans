@@ -46,7 +46,7 @@
       </div>
       <p>Follow the light from where you sleep to where you celebrate.</p>
     </div>
-    <ol class="stops">
+    <ol class="stops rv">
       {% for m in modules %}
       <li class="stop{{ ' hl' if m.slug == 'matchday' }}">
         <a href="{{ root }}{{ m.slug }}/">
@@ -70,7 +70,7 @@
       <p class="lede-dark">Follow the route in order, or jump to the stop you need. Each stop keeps the area you chose.</p>
       <a class="btn btn-primary" href="{{ root }}stays/" style="align-self:flex-start">Start at stop 1: Stays</a>
     </div>
-    <div class="plan-card" aria-label="An example day">
+    <div class="plan-card rv" aria-label="An example day">
       <div class="plan-head"><strong>An example day</strong><span class="badge badge-directory">Example</span></div>
       {% set rows = [('11:00','Brunch near your stay','food','Food'),('15:00','Watch the big match','matchday','Matchday'),('19:00','Dinner','food','Food'),('22:00','Live music or a rooftop','nightlife','Nightlife'),('01:00','Ride home','rides','Rides')] %}
       {% for t,title,slug,mod in rows %}
@@ -83,7 +83,7 @@
 <section class="band" id="how" aria-labelledby="howH">
   <div class="wrap">
     <div class="sec-head"><h2 id="howH">How it works</h2><p>{{ site.name }} connects you to the business. You pay them directly, not us.</p></div>
-    <div class="steps">
+    <div class="steps rv">
       <div class="step"><span class="num">1</span><h3>Choose</h3><p>Browse local stays, food spots, nightlife and rides in one place.</p></div>
       <div class="step"><span class="num">2</span><h3>Book directly</h3><p>Message the business on WhatsApp or call them, and pay them by M-Pesa.</p></div>
       <div class="step"><span class="num">3</span><h3>Enjoy</h3><p>Keep your plan on your phone. Rides open straight in the Uber or Bolt app.</p></div>

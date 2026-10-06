@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-stop="2">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,6 +10,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
+
+<script>
+(function(w,d){try{
+var h=d.documentElement,n=+h.getAttribute('data-stop')||0,K='kf_from',P=['.nav','.routebar .trail','.routebar .current .dot i'];
+if(!w.matchMedia||w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+function parts(trim){for(var i=0,el,r;i<P.length;i++){el=d.querySelector(P[i]);if(!el)continue;
+el.style.viewTransitionName='';
+if(trim){r=el.getBoundingClientRect();if(r.bottom<0||r.top>w.innerHeight)el.style.viewTransitionName='none';}}}
+w.addEventListener('pageswap',function(e){try{if(!e.viewTransition)return;parts(1);sessionStorage.setItem(K,n);}catch(x){}});
+w.addEventListener('pagereveal',function(e){try{
+var t=e.viewTransition,f,c=function(){parts(0);h.removeAttribute('data-go');};
+parts(0);try{f=+sessionStorage.getItem(K)||0;sessionStorage.removeItem(K);}catch(x){f=0;}
+if(!t)return;
+parts(1);t.finished.then(c,c);
+if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
+}catch(x){}});
+}catch(x){}})(window,document);
+</script>
 </head>
 <body>
 
