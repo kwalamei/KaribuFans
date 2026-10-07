@@ -39,6 +39,23 @@ Change `status` to `"joined"` and add: `price`, `price_checked`, `about`, `photo
 ## Languages
 `data/site.json`, `languages`: set `"live": true` for a language only when its translation is published. Until then its button shows "soon".
 
+## Accounts (sign in and saved places)
+Visitors can save places (a bookmark on every card and in the details drawer) and, if they sign in, keep them in an account. Saving works without signing in: the list lives in the browser. The account page is `/account/`. All of it is in `static/js/account.js` and `templates/account.html`.
+
+The switch is `accounts` in `data/site.json`:
+- `"live": false` (now): nothing about accounts is visible to the public. To test on the live site, open any page with `?preview=accounts` at the end of the address, for example `https://your-site/?preview=accounts`. That switches accounts on in that browser only and it stays on from page to page. `?preview=off` switches it off again.
+- `"live": true`: accounts are on for everyone. Rebuild and publish after changing it.
+- `methods`: the sign-in options shown, `"google"`, `"email"` or both.
+- `supabase_url` and `supabase_key`: the project address and the publishable key. Both are public by design. Never put a secret or `service_role` key in this repository.
+
+Three things must be set up once in the Supabase project before sign-in works:
+1. The `saved_places` table: columns `user_id` (uuid, default `auth.uid()`, linked to `auth.users`), `place_id` (text), `page` (text), `created_at` (timestamp, default `now()`); primary key (`user_id`, `place_id`); row level security on, with policies that let a signed-in user select, insert and delete only rows where `user_id = auth.uid()`.
+2. The site address: under Authentication, URL Configuration, set the Site URL to the live address and add `https://<live address>/account/` to the redirect list (one entry for every address the site is served from, including the vercel.app one).
+3. The Google provider: under Authentication, Providers, switch on Google with a client ID and secret from Google Cloud, and give Google the callback address Supabase shows there.
+Until the table exists the site still works: places are saved in the browser only.
+
+The Supabase library is not stored in this repository. The browser fetches it from jsDelivr (version pinned in `static/js/account.js`), and only on the account page or when the visitor is already signed in. Account deletion is by email request to `contact_email` for now.
+
 ## Deploy on Vercel (first time)
 1. Push this folder to a new GitHub repository.
 2. In Vercel: Add New → Project → import the repository.
@@ -58,3 +75,4 @@ Change `status` to `"joined"` and add: `price`, `price_checked`, `about`, `photo
 - 5 Oct (theme and flow): one colour system on every page ("Sunset on Ngong Road"); Food, Matchday, Nightlife and Movies & Games moved from bracketed sample cards to directory listings (18 venues, each confirmed on the business's own website); details drawer on every listing with "Continue your route" links; chosen area carried from stop to stop; breadcrumbs; next/previous stop links; homepage "Browse by area"; privacy notice published; placeholder text removed.
 - Still to fill in: `contact_whatsapp` and `uber_client_id` in `data/site.json`; registered business name in `copyright`; real photos; first joined businesses; official fixtures, fan zones and traffic plan when published.
 - 7 Oct: motion layer ("The Route comes alive"); full rebuild of `dist/`, which also republished six pages that were still on the old theme (Tickets, Nightlife, Movies & Games, Privacy, Search, List your business).
+- 7 Oct (accounts): saved places on every listing, account page with Google and email-link sign-in through Supabase, privacy notice updated. Built and tested against a stand-in for the Supabase library only; hidden behind `accounts.live: false` until the Supabase project is set up and a real sign-in has been tried with `?preview=accounts`.

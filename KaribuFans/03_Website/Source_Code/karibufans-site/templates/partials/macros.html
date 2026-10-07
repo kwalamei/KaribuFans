@@ -47,6 +47,8 @@
     {% if v.photos and v.photos[0] %}<img src="{{ v.photos[0] }}" alt="" loading="lazy">{% else %}{{ area_art(v.zone) }}{% endif %}
     <span class="tag-area">{{ v.area }}</span>
   </button>
+  {# Save toggle. Hidden until js/account.js switches accounts on. #}
+  <button type="button" class="icon-btn save-btn" data-id="{{ v.id }}" data-page="{{ m.slug }}" data-name="{{ v.name }}" aria-pressed="false" aria-label="Save {{ v.name }}" data-acct hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4h11v16.5L12 16.6l-5.5 3.9z" stroke-linejoin="round"/></svg></button>
   <div class="card-body">
     <div class="card-top">
       {% if unclaimed %}<span class="badge badge-directory">Directory listing</span>{% else %}<span class="badge badge-verified">Verified by the business</span>{% endif %}

@@ -2,8 +2,10 @@
   'use strict';
   var store = {
     get: function (k) { try { return JSON.parse(localStorage.getItem('kf_' + k)); } catch (e) { return null; } },
-    set: function (k, v) { try { localStorage.setItem('kf_' + k, JSON.stringify(v)); } catch (e) {} }
+    set: function (k, v) { try { localStorage.setItem('kf_' + k, JSON.stringify(v)); } catch (e) {} },
+    del: function (k) { try { localStorage.removeItem('kf_' + k); } catch (e) {} }
   };
+  window.KF = { store: store };   // shared with js/account.js (saved places, accounts)
   function $(id) { return document.getElementById(id); }
   function each(list, fn) { Array.prototype.forEach.call(list, fn); }
   var params = new URLSearchParams(location.search);
@@ -218,6 +220,9 @@
       var claim = $('dClaim'); claim.hidden = !un; claim.href = S.root + 'list-your-business/?claim=' + encodeURIComponent(v.name);
       routeLinks(v);
       if (!un) message();
+      // Tell the save toggle in the drawer head which place is showing; js/account.js does the rest.
+      var sv = $('dSave'); if (sv) { sv.setAttribute('data-id', v.id); sv.setAttribute('data-name', v.name); }
+      try { document.dispatchEvent(new CustomEvent('kf:place')); } catch (e) {}
     }
     function show(id, push) {
       var v = byId[id]; if (!v) return;

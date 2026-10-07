@@ -4,7 +4,10 @@
   <div class="drawer-head">
     <button type="button" class="icon-btn" id="dClose" aria-label="Close details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <span class="drawer-crumb">{{ m.label }}</span>
-    <button type="button" class="chip" id="dShare">Share</button>
+    <span class="drawer-tools">
+      <button type="button" class="icon-btn save-btn" id="dSave" data-page="{{ m.slug }}" aria-pressed="false" aria-label="Save this place" data-acct hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 4h11v16.5L12 16.6l-5.5 3.9z" stroke-linejoin="round"/></svg></button>
+      <button type="button" class="chip" id="dShare">Share</button>
+    </span>
   </div>
   <div class="drawer-scroll">
     <div class="d-photos" id="dPhotos"></div>

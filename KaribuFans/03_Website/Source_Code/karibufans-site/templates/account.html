@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import crumbs %}
+{% block title %}Your account · {{ site.name }}{% endblock %}
+{% block description %}Sign in to {{ site.name }} to keep your saved Nairobi places on any phone.{% endblock %}
+{% block main %}
+{# Everything except the first message starts hidden. js/account.js shows the right part once it knows
+   whether accounts are on for this browser (accounts in data/site.json) and whether the visitor is signed in. #}
+{% set methods = site.accounts.methods %}
+<section class="band page-plain">
+  <div class="wrap stack acct">
+    {{ crumbs(site, root, [('Account', '')]) }}
+    <h1 class="h-page" id="acctH" tabindex="-1">Your account</h1>
+
+    <div class="stack" id="acctOff">
+      {% if site.accounts.live %}
+      <p class="lede-dark">Accounts need JavaScript, which is switched off or did not load in this browser. Everything else on {{ site.name }} works without an account.</p>
+      {% else %}
+      <p class="lede-dark">Accounts are not open yet. You can use every part of {{ site.name }} without one.</p>
+      {% endif %}
+      <p><a class="btn btn-ghost" href="{{ root }}">Back to the homepage</a></p>
+    </div>
+
+    <div class="stack" id="acctOn" hidden>
+      <p class="hint" id="acctStatus" role="status" aria-live="polite"></p>
+
+      <div class="stack" id="acctDown" hidden>
+        <p class="lede-dark">Sign-in could not load just now. Your saved places below still work on this device.</p>
+        <p><button type="button" class="btn btn-ghost" id="acctRetry">Try again</button></p>
+      </div>
+
+      <div class="stack" id="acctOut" hidden>
+        <p class="lede-dark">Keep your saved places on any phone.</p>
+        <div class="acct-panel">
+          {% if 'google' in methods %}
+          <button type="button" class="btn btn-primary" id="acctGoogle">Continue with Google</button>
+          {% endif %}
+          {% if 'google' in methods and 'email' in methods %}<p class="hint acct-or">or</p>{% endif %}
+          {% if 'email' in methods %}
+          <form id="acctEmailForm" class="acct-form" novalidate>
+            <label for="acctEmail">Email address<input class="field" type="email" id="acctEmail" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" required aria-describedby="acctEmailErr"></label>
+            <p class="hint field-err" id="acctEmailErr" role="alert" hidden></p>
+            <button type="submit" class="btn {{ 'btn-ghost' if 'google' in methods else 'btn-primary' }}" id="acctEmailGo">Email me a sign-in link</button>
+          </form>
+          <div class="acct-sent" id="acctSent" tabindex="-1" hidden>
+            <h2>Check your inbox</h2>
+            <p>We sent a sign-in link to <strong id="acctSentTo"></strong>. Open it on the phone or computer you want to use.</p>
+            <p><button type="button" class="linklike" id="acctSentBack">Use a different email address</button></p>
+          </div>
+          {% endif %}
+          <p class="hint">By signing in you agree that {{ site.name }} keeps your name, your email address and your saved places, as explained in the <a href="{{ root }}privacy/#accounts">privacy notice</a>.</p>
+        </div>
+      </div>
+
+      <div class="stack" id="acctIn" hidden>
+        <p class="lede-dark">Signed in as <strong id="acctWho"></strong></p>
+        <div class="acct-panel">
+          <form id="acctNameForm" class="acct-form" novalidate>
+            <label for="acctName">Display name<input class="field" type="text" id="acctName" name="name" autocomplete="name" maxlength="60" aria-describedby="acctNameMsg"></label>
+            <p class="hint" id="acctNameMsg" aria-live="polite">Shown only to you, on this page and in the menu bar.</p>
+            <button type="submit" class="btn btn-ghost" id="acctNameGo">Save name</button>
+          </form>
+        </div>
+      </div>
+
+      <section class="stack acct-saved" aria-labelledby="savedH">
+        <h2 id="savedH" tabindex="-1">Your saved places</h2>
+        <p class="hint" id="savedNote"></p>
+        <p class="hint" id="savedMsg" role="status" aria-live="polite"></p>
+        <div class="stack" id="savedGroups"></div>
+        <p class="coming" id="savedEmpty" hidden>Nothing saved yet. Start at <a href="{{ root }}stays/">Stays</a>, the first stop, and tap the bookmark on any place you like.</p>
+        <p class="hint" id="savedGone" hidden><span id="savedGoneText"></span> <button type="button" class="linklike" id="savedGoneClear">Clear</button></p>
+      </section>
+
+      <div class="stack" id="acctFoot" hidden>
+        <p><button type="button" class="btn btn-navy" id="acctSignOut">Sign out</button></p>
+        <h2>Delete my account</h2>
+        <p class="acct-del">To delete your account and the places saved in it, email <strong class="acct-mail">{{ site.contact_email }}</strong> from the address you sign in with. For now, deletion is done by request. <a href="mailto:{{ site.contact_email }}?subject={{ ('Delete my ' ~ site.name ~ ' account') | urlencode }}">Open your email app</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+{% set stops = [] %}{% for x in modules %}{% set _ = stops.append({'slug': x.slug, 'label': x.label, 'stop': x.stop}) %}{% endfor %}
+<script type="application/json" id="acctData">{{ {'site': site.name, 'stops': stops} | tojson }}</script>
+{% endblock %}

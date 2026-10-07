@@ -87,7 +87,9 @@ def main():
     (DIST / "search-index.json").write_text(json.dumps(index, ensure_ascii=False), encoding="utf-8")
     page("search.html", "search/index.html")
     page("join.html", "list-your-business/index.html")
-    page("privacy.html", "privacy/index.html")
+    # The notice that describes accounts is published only once accounts are open to everyone.
+    page("privacy_accounts.html" if site.get("accounts", {}).get("live") else "privacy.html", "privacy/index.html")
+    page("account.html", "account/index.html")
 
     print("Built", sum(1 for _ in DIST.rglob("*.html")), "pages into", DIST)
 

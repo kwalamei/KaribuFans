@@ -44,6 +44,8 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     <div class="nav-tools">
       <a class="icon-btn" href="{{ root }}search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
       <a class="lang" href="#languages" aria-label="Language: English. See other languages">EN</a>
+      {# Account entry. Hidden until js/account.js switches accounts on (see accounts in data/site.json). #}
+      <a class="icon-btn acct-link" id="acctLink" href="{{ root }}account/" aria-label="Account" data-acct hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM4.5 20a7.5 7.5 0 0 1 15 0"/></svg><span id="acctInitial" aria-hidden="true" hidden></span></a>
       <a class="btn btn-primary nav-cta" href="{{ root }}list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -64,7 +66,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h2>Explore</h2><ul>{% for m in modules %}<li><a href="{{ root }}{{ m.slug }}/">{{ m.label }}</a></li>{% endfor %}</ul></div>
-      <div><h2>{{ site.name }}</h2><ul><li><a href="{{ root }}#how">How it works</a></li><li><a href="{{ root }}list-your-business/">List your business</a></li><li><a href="{{ root }}search/">Search</a></li><li><a href="{{ root }}privacy/">Privacy</a></li></ul></div>
+      <div><h2>{{ site.name }}</h2><ul><li><a href="{{ root }}#how">How it works</a></li><li><a href="{{ root }}list-your-business/">List your business</a></li><li><a href="{{ root }}search/">Search</a></li><li data-acct hidden><a href="{{ root }}account/">Account</a></li><li><a href="{{ root }}privacy/">Privacy</a></li></ul></div>
       <div id="languages"><h2>Language</h2>
         <div class="langs">{% for l in site.languages %}<button type="button" data-lang="{{ l.code }}" data-name="{{ l.name }}" data-live="{{ '1' if l.live else '' }}" aria-pressed="{{ 'true' if l.live and loop.first else 'false' }}"{% if not l.live %} class="soon"{% endif %}>{{ l.code }}{% if not l.live %}<small>soon</small>{% endif %}</button>{% endfor %}</div>
         {% set pending = site.languages | rejectattr('live') | map(attribute='name') | list %}<p class="lang-note" id="langNote" aria-live="polite">The site is in English.{% if pending %} {{ pending[:-1] | join(', ') }}{{ ' and ' if pending | length > 1 }}{{ pending[-1] }} follow after launch.{% endif %}</p>
@@ -74,5 +76,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   </div>
 </footer>
 <script src="{{ root }}js/site.js" defer></script>
+{# Visitor accounts and saved places. The file is small and does nothing unless accounts are on for this browser. #}
+<script src="{{ root }}js/account.js" defer id="kfAccount" data-root="{{ root }}" data-live="{{ '1' if site.accounts.live else '' }}" data-url="{{ site.accounts.supabase_url }}" data-key="{{ site.accounts.supabase_key }}"></script>
 </body>
 </html>

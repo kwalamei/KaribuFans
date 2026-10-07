@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>List your business · KaribuFans</title>
-<meta name="description" content="KaribuFans: stays, food, rides, nightlife and matchday in Nairobi, in one city guide.">
+<title>Your account · KaribuFans</title>
+<meta name="description" content="Sign in to KaribuFans to keep your saved Nairobi places on any phone.">
 <meta name="theme-color" content="#0A1128">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,36 +56,85 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 <main id="main">
 
+
+
 <section class="band page-plain">
-  <div class="wrap two-col" style="align-items:start">
-    <div class="stack">
-      <nav class="crumbs" aria-label="Breadcrumb"><ol>
+  <div class="wrap stack acct">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol>
   <li><a href="../">KaribuFans</a></li>
-  <li><span aria-current="page">List your business</span></li>
+  <li><span aria-current="page">Account</span></li>
   <li id="crumbArea" hidden></li>
 </ol></nav>
-      <div class="eyebrow on-light">For Nairobi businesses</div>
-      <h1 class="h-page">List your business</h1>
-      <p class="lede-dark">No listing fee. You pay a commission only on customers we send you. Customers contact you directly on WhatsApp or by phone and pay you directly.</p>
-      <div class="tips" style="grid-template-columns:1fr">
-        <div class="tip"><strong>1. Send your details</strong><p>Fill in the form. It opens WhatsApp with your details ready to send to us.</p></div>
-        <div class="tip"><strong>2. We check and set up</strong><p>We confirm your details and ask for 3–5 photos.</p></div>
-        <div class="tip"><strong>3. You go live</strong><p>Your listing appears with WhatsApp, Call and Directions buttons.</p></div>
+    <h1 class="h-page" id="acctH" tabindex="-1">Your account</h1>
+
+    <div class="stack" id="acctOff">
+      
+      <p class="lede-dark">Accounts are not open yet. You can use every part of KaribuFans without one.</p>
+      
+      <p><a class="btn btn-ghost" href="../">Back to the homepage</a></p>
+    </div>
+
+    <div class="stack" id="acctOn" hidden>
+      <p class="hint" id="acctStatus" role="status" aria-live="polite"></p>
+
+      <div class="stack" id="acctDown" hidden>
+        <p class="lede-dark">Sign-in could not load just now. Your saved places below still work on this device.</p>
+        <p><button type="button" class="btn btn-ghost" id="acctRetry">Try again</button></p>
+      </div>
+
+      <div class="stack" id="acctOut" hidden>
+        <p class="lede-dark">Keep your saved places on any phone.</p>
+        <div class="acct-panel">
+          
+          <button type="button" class="btn btn-primary" id="acctGoogle">Continue with Google</button>
+          
+          <p class="hint acct-or">or</p>
+          
+          <form id="acctEmailForm" class="acct-form" novalidate>
+            <label for="acctEmail">Email address<input class="field" type="email" id="acctEmail" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" required aria-describedby="acctEmailErr"></label>
+            <p class="hint field-err" id="acctEmailErr" role="alert" hidden></p>
+            <button type="submit" class="btn btn-ghost" id="acctEmailGo">Email me a sign-in link</button>
+          </form>
+          <div class="acct-sent" id="acctSent" tabindex="-1" hidden>
+            <h2>Check your inbox</h2>
+            <p>We sent a sign-in link to <strong id="acctSentTo"></strong>. Open it on the phone or computer you want to use.</p>
+            <p><button type="button" class="linklike" id="acctSentBack">Use a different email address</button></p>
+          </div>
+          
+          <p class="hint">By signing in you agree that KaribuFans keeps your name, your email address and your saved places, as explained in the <a href="../privacy/#accounts">privacy notice</a>.</p>
+        </div>
+      </div>
+
+      <div class="stack" id="acctIn" hidden>
+        <p class="lede-dark">Signed in as <strong id="acctWho"></strong></p>
+        <div class="acct-panel">
+          <form id="acctNameForm" class="acct-form" novalidate>
+            <label for="acctName">Display name<input class="field" type="text" id="acctName" name="name" autocomplete="name" maxlength="60" aria-describedby="acctNameMsg"></label>
+            <p class="hint" id="acctNameMsg" aria-live="polite">Shown only to you, on this page and in the menu bar.</p>
+            <button type="submit" class="btn btn-ghost" id="acctNameGo">Save name</button>
+          </form>
+        </div>
+      </div>
+
+      <section class="stack acct-saved" aria-labelledby="savedH">
+        <h2 id="savedH" tabindex="-1">Your saved places</h2>
+        <p class="hint" id="savedNote"></p>
+        <p class="hint" id="savedMsg" role="status" aria-live="polite"></p>
+        <div class="stack" id="savedGroups"></div>
+        <p class="coming" id="savedEmpty" hidden>Nothing saved yet. Start at <a href="../stays/">Stays</a>, the first stop, and tap the bookmark on any place you like.</p>
+        <p class="hint" id="savedGone" hidden><span id="savedGoneText"></span> <button type="button" class="linklike" id="savedGoneClear">Clear</button></p>
+      </section>
+
+      <div class="stack" id="acctFoot" hidden>
+        <p><button type="button" class="btn btn-navy" id="acctSignOut">Sign out</button></p>
+        <h2>Delete my account</h2>
+        <p class="acct-del">To delete your account and the places saved in it, email <strong class="acct-mail">maxkobaai@gmail.com</strong> from the address you sign in with. For now, deletion is done by request. <a href="mailto:maxkobaai@gmail.com?subject=Delete%20my%20KaribuFans%20account">Open your email app</a></p>
       </div>
     </div>
-    <form class="join-form" id="joinForm" onsubmit="return false" aria-label="Business sign-up">
-      <label for="jName">Business name<input id="jName" required></label>
-      <label for="jType">Type of business<select id="jType"><option>Stays</option><option>Food</option><option>Matchday</option><option>Nightlife</option><option>Movies &amp; Games</option></select></label>
-      <label for="jArea">Area<input id="jArea" placeholder="e.g. Westlands"></label>
-      <label for="jContact">Your name<input id="jContact"></label>
-      <label for="jPhone">WhatsApp number<input id="jPhone" inputmode="tel" placeholder="07XX XXX XXX"></label>
-      <label for="jNote">Anything else?<textarea id="jNote" rows="3" placeholder="Opening hours, prices, what makes you special"></textarea></label>
-      <label class="check"><input type="checkbox" id="jOk"> <span>I agree that KaribuFans may use these details to set up my listing, as explained in the <a href="../privacy/">privacy notice</a>.</span></label>
-      <button type="button" class="btn btn-primary" id="joinGo" data-wa="">Send on WhatsApp</button>
-      <p class="hint" id="joinMsg" aria-live="polite"></p>
-    </form>
   </div>
 </section>
+
+<script type="application/json" id="acctData">{"site": "KaribuFans", "stops": [{"label": "Stays", "slug": "stays", "stop": 1}, {"label": "Food", "slug": "food", "stop": 2}, {"label": "Rides", "slug": "rides", "stop": 3}, {"label": "Matchday", "slug": "matchday", "stop": 4}, {"label": "Nightlife", "slug": "nightlife", "stop": 5}, {"label": "Movies \u0026 Games", "slug": "movies-games", "stop": 6}, {"label": "Tickets", "slug": "tickets", "stop": 7}]}</script>
 
 </main>
 

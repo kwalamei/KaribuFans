@@ -68,6 +68,10 @@ p{margin:0}
 .linklike{border:none;background:none;padding:0;font:inherit;font-weight:700;color:inherit;text-decoration:underline;cursor:pointer}
 .icon-btn{width:44px;height:44px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--line-navy);background:transparent;color:inherit;cursor:pointer}
 .icon-btn svg,.find svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;flex-shrink:0}
+/* Save toggle: an icon button that turns amber (the selected state) when the place is saved */
+.save-btn:hover{border-color:currentColor}
+.save-btn[aria-pressed="true"]{background:var(--amber);border-color:var(--amber-dark);color:var(--navy)}
+.save-btn[aria-pressed="true"] svg{fill:currentColor}
 
 /* ---------- Badges and tags ---------- */
 .badge{display:inline-flex;align-items:center;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:6px;white-space:nowrap}
@@ -306,6 +310,7 @@ section{scroll-margin-top:80px}
 body.drawer-open{overflow:hidden}
 .drawer-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;background:var(--navy);color:var(--on-navy)}
 .drawer-head .chip{background:transparent;color:var(--on-navy);border-color:rgba(247,244,239,.45);min-height:40px}
+.drawer-tools{display:flex;align-items:center;gap:10px}
 .drawer-crumb{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 .drawer-scroll{overflow-y:auto;flex:1;overscroll-behavior:contain}
 .d-photos{position:relative;aspect-ratio:16/8;background:var(--sand-2);overflow:hidden}
@@ -336,6 +341,39 @@ body.drawer-open{overflow:hidden}
 .d-route a:hover{border-color:var(--amber)}
 .d-route a span{font-weight:500;font-size:14px;color:var(--muted)}
 .d-claim{font-size:13px;font-weight:700;color:var(--muted)}
+
+/* ---------- Accounts ----------
+   Every account element is in the page with the hidden attribute and is shown by js/account.js only when accounts
+   are on for this browser (html.kf-accounts). With accounts off, or without JavaScript, none of this is visible. */
+.card{position:relative}
+.card>.save-btn{position:absolute;top:8px;right:8px;z-index:1;background:var(--surface);border-color:var(--line);color:var(--navy);box-shadow:0 1px 4px rgba(10,17,40,.15)}
+.card>.save-btn[aria-pressed="true"]{background:var(--amber);border-color:var(--amber-dark)}
+.acct-link{text-decoration:none;font:700 16px var(--body)}
+.acct-link.is-in{border-color:var(--gold);color:var(--gold)}
+.acct-link.is-in svg{display:none}
+@media (max-width:430px){.kf-accounts .nav .wrap{gap:10px}.kf-accounts .nav-tools{gap:4px}}
+@media (max-width:375px){.kf-accounts .brand b{font-size:22px}}
+@media (max-width:340px){.kf-accounts .nav .wrap{gap:6px}.kf-accounts .nav-tools{gap:2px}.kf-accounts .brand b{font-size:20px}}
+.acct{max-width:calc(680px + 2*var(--gutter))}
+.acct h2{font-weight:800;font-size:24px}
+.acct h3{font-weight:600;font-size:18px}
+.acct .hint:empty{display:none}
+.acct [role="status"]:empty{display:block;margin-top:-18px}   /* an empty status line stays in the page for screen readers but takes no room */
+.acct-panel{display:flex;flex-direction:column;gap:14px;padding:24px;border-radius:20px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.acct-form{display:flex;flex-direction:column;gap:10px}
+.acct-form label{display:flex;flex-direction:column;gap:6px}
+.acct-or{text-align:center}
+.field:hover{border-color:var(--navy)}
+.field[aria-invalid="true"]{border-color:var(--danger)}
+.field-err{color:var(--danger);font-weight:700}
+.acct-sent{display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:var(--radius-sm);background:var(--gold-soft);border-left:6px solid var(--gold);overflow-wrap:anywhere}
+.acct-sent h2{font-size:20px}
+.saved-group{display:flex;flex-direction:column;gap:10px}
+.saved-list{max-width:none}
+.saved-list li{display:flex;align-items:center;gap:10px}
+.saved-list a{flex:1;min-width:0;overflow-wrap:anywhere}
+.acct-mail{user-select:all;overflow-wrap:anywhere}
+.acct-del a{font-weight:700}
 /* ---------- Next stop ---------- */
 .next-stop{background:var(--navy);color:var(--on-navy);border-bottom:1px solid var(--line-navy)}
 .next-stop .wrap{display:grid;grid-template-columns:1fr 2fr;gap:16px;padding-block:28px}

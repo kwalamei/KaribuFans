@@ -16,6 +16,8 @@ The live site is `KaribuFans/03_Website/Source_Code/karibufans-site/`. Everythin
 
 Build: `python3 build.py` (needs `pip install jinja2`). Always rebuild and commit `dist/` together with the source change, because Vercel serves `dist/` as committed and runs no build step.
 
+The root `.gitignore` ignores `dist`, so a NEW file under `dist/` is skipped by `git add -A`. Add new published files with `git add -f`, and check `git status --ignored` before every commit. A page or script missing from `dist/` is a 404 on the live site.
+
 It is plain HTML, CSS and JavaScript. No framework, no bundler, no npm. Keep it that way unless Marx decides otherwise.
 
 ## Design rules ("Sunset on Ngong Road")
@@ -42,6 +44,14 @@ Colours are tokens at the top of `static/css/site.css`. Use the tokens; never wr
 - Everything is switched off under `prefers-reduced-motion: reduce`.
 - New browser features are progressive enhancement: the site must work unchanged where they are missing.
 
+## Accounts
+Visitors can save places (kept in the browser) and, when accounts are on, sign in to keep them across devices. Sign-in and storage are a Supabase project; its address and publishable key are in `data/site.json` under `accounts` and are public by design. Never commit a secret or service-role key.
+
+- `accounts.live` is the public switch. While it is `false`, no account feature is visible and no outside service is contacted; `?preview=accounts` on any page turns them on for that browser only, `?preview=off` turns them off.
+- All account code is in `static/js/account.js`. The Supabase library is loaded from jsDelivr only on the account page or when a sign-in is already held. It is the one outside script on the site.
+- The public privacy notice is `templates/privacy.html` while accounts are off and `templates/privacy_accounts.html` once `live` is true. Keep the second one true to what the code actually does.
+- This workspace cannot reach Supabase or jsDelivr, so account changes are tested against a stand-in and must be confirmed by Marx on the live site before `live` is switched on.
+
 ## How the team works
 - Lead: holds this brief, splits the work, checks results, and is the only one who commits and pushes.
 - Builder: changes `templates/`, `static/` and `data/`. One builder at a time per file.
@@ -55,4 +65,4 @@ Nothing is pushed until the reviewer has passed it. Marx chose commits straight 
 - `uber_client_id` in `data/site.json`
 - Registered business name for the footer
 - Real photographs; hero images are currently labelled as artist's impressions
-- Visitor accounts with sign-in: wanted, needs a sign-in service to be chosen and set up
+- Visitor accounts: built, hidden behind `accounts.live`. Before switching on: Supabase table and address settings, Google sign-in credential, an email sending service for sign-in links, and a live test by Marx
