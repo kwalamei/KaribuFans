@@ -5,16 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rides · KaribuFans</title>
 <meta name="description" content="Choose where you are going and we open Uber or Bolt with the trip ready. You see the fare and pay inside their app.">
-<meta name="theme-color" content="#0A1128">
+<meta name="theme-color" content="#2A1A12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="../css/art.css">
 
 <script>
 (function(w,d){try{
 var h=d.documentElement,n=+h.getAttribute('data-stop')||0,K='kf_from',P=['.nav','.routebar .trail','.routebar .current .dot i'];
 if(!w.matchMedia||w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+h.classList.add('kf-draw');
 function parts(trim){for(var i=0,el,r;i<P.length;i++){el=d.querySelector(P[i]);if(!el)continue;
 el.style.viewTransitionName='';
 if(trim){r=el.getBoundingClientRect();if(r.bottom<0||r.top>w.innerHeight)el.style.viewTransitionName='none';}}}
@@ -23,6 +25,7 @@ w.addEventListener('pagereveal',function(e){try{
 var t=e.viewTransition,f,c=function(){parts(0);h.removeAttribute('data-go');};
 parts(0);try{f=+sessionStorage.getItem(K)||0;sessionStorage.removeItem(K);}catch(x){f=0;}
 if(!t)return;
+h.classList.remove('kf-draw');
 parts(1);t.finished.then(c,c);
 if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 }catch(x){}});
@@ -71,6 +74,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <li><span aria-current="page">Rides</span></li>
   <li id="crumbArea" hidden></li>
 </ol></nav>
+    
     <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 3 of 7 · Rides</div>
     <div class="script">Twende!</div>
     <h1 id="pageH">Get there. Get back.</h1>
@@ -119,7 +123,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 <section class="band" aria-labelledby="tripH">
   <div class="wrap">
     <div class="sec-head"><h2 id="tripH">Plan a ride</h2><p>Pick where you are going. Uber opens with the destination filled in; for Bolt and Little, type it in their app.</p></div>
-    <div class="ride-grid">
+    <div class="ride-grid rv">
       <form class="ride-card" id="rideForm" onsubmit="return false" aria-label="Ride planner">
         <label for="rideTo">Where to?</label>
         <select id="rideTo">
@@ -144,7 +148,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   </div>
 </section>
 
-<section class="band band-navy" aria-labelledby="zoneH">
+<section class="band band-dark" aria-labelledby="zoneH">
   <div class="wrap two-col">
     <div class="stack">
       <div class="eyebrow">Matchday</div>
@@ -158,9 +162,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 <section class="band" aria-labelledby="safeH">
   <div class="wrap">
     <div class="sec-head"><h2 id="safeH">Ride safe</h2></div>
-    <div class="tips"><div class="tip"><strong>Match the car</strong><p>Check the plate, car model and driver photo before you get in.</p></div><div class="tip"><strong>Share your trip</strong><p>Use the app&#39;s share-trip feature so a friend can follow your ride.</p></div><div class="tip"><strong>Pay the app price</strong><p>Pay through the app or as it shows. Do not agree a separate cash price.</p></div><div class="tip"><strong>Expect surge pricing</strong><p>Fares rise after matches and in rain. Waiting a little or walking to a quieter street can help.</p></div></div>
+    <div class="tips rv-each"><div class="tip"><strong>Match the car</strong><p>Check the plate, car model and driver photo before you get in.</p></div><div class="tip"><strong>Share your trip</strong><p>Use the app&#39;s share-trip feature so a friend can follow your ride.</p></div><div class="tip"><strong>Pay the app price</strong><p>Pay through the app or as it shows. Do not agree a separate cash price.</p></div><div class="tip"><strong>Expect surge pricing</strong><p>Fares rise after matches and in rain. Waiting a little or walking to a quieter street can help.</p></div></div>
     <div class="sec-head" style="margin-top:48px"><h2>Taking a matatu</h2><p>Matatus are Nairobi's shared minibuses: cheap and everywhere, but busy.</p></div>
-    <div class="tips"><div class="tip"><strong>Ask before you board</strong><p>Routes are shown on the front of the matatu. Confirm the destination and fare with the conductor before you get in.</p></div><div class="tip"><strong>Keep valuables close</strong><p>Matatus get crowded at rush hour and after matches. Keep your phone and wallet out of sight.</p></div><div class="tip"><strong>Ask a local</strong><p>Your host or hotel can tell you the right route and stage for where you are going.</p></div></div>
+    <div class="tips rv-each"><div class="tip"><strong>Ask before you board</strong><p>Routes are shown on the front of the matatu. Confirm the destination and fare with the conductor before you get in.</p></div><div class="tip"><strong>Keep valuables close</strong><p>Matatus get crowded at rush hour and after matches. Keep your phone and wallet out of sight.</p></div><div class="tip"><strong>Ask a local</strong><p>Your host or hotel can tell you the right route and stage for where you are going.</p></div></div>
   </div>
 </section>
 
@@ -177,6 +181,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 </nav>
 
 </main>
+
 
 <footer class="footer">
   <div class="wrap">

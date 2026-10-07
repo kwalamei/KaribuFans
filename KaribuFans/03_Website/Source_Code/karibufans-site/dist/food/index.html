@@ -5,16 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Food · KaribuFans</title>
 <meta name="description" content="Restaurants and food spots across Nairobi. Find one near you, get directions and book with the restaurant directly.">
-<meta name="theme-color" content="#0A1128">
+<meta name="theme-color" content="#2A1A12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
+<link rel="stylesheet" href="../css/art.css">
 
 <script>
 (function(w,d){try{
 var h=d.documentElement,n=+h.getAttribute('data-stop')||0,K='kf_from',P=['.nav','.routebar .trail','.routebar .current .dot i'];
 if(!w.matchMedia||w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+h.classList.add('kf-draw');
 function parts(trim){for(var i=0,el,r;i<P.length;i++){el=d.querySelector(P[i]);if(!el)continue;
 el.style.viewTransitionName='';
 if(trim){r=el.getBoundingClientRect();if(r.bottom<0||r.top>w.innerHeight)el.style.viewTransitionName='none';}}}
@@ -23,6 +25,7 @@ w.addEventListener('pagereveal',function(e){try{
 var t=e.viewTransition,f,c=function(){parts(0);h.removeAttribute('data-go');};
 parts(0);try{f=+sessionStorage.getItem(K)||0;sessionStorage.removeItem(K);}catch(x){f=0;}
 if(!t)return;
+h.classList.remove('kf-draw');
 parts(1);t.finished.then(c,c);
 if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 }catch(x){}});
@@ -60,7 +63,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 
 
-<section class="hero page-hero" aria-labelledby="pageH">
+<section class="hero page-hero has-art" aria-labelledby="pageH">
   
   <div class="hero-glow" aria-hidden="true"></div>
   
@@ -70,6 +73,46 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <li><span aria-current="page">Food</span></li>
   <li id="crumbArea" hidden></li>
 </ol></nav>
+    <div class="hero-art"><svg class="kf-art kf-art--food" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+
+<rect width="480" height="300" fill="#FBF6EE"/>
+<circle cx="240" cy="150" r="136" fill="#F3E9DA"/>
+<circle cx="240" cy="150" r="96" fill="#EDB750" opacity=".28"/>
+<g fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity=".95">
+ <path class="kf-steam" d="M168 150c-10-14 10-24 0-38s10-24 0-36"/>
+ <path class="kf-steam kf-d2" d="M246 140c-10-14 10-24 0-38s10-24 0-36"/>
+ <path class="kf-steam kf-d4" d="M318 146c-10-14 10-24 0-38s10-24 0-36"/>
+</g>
+<rect y="234" width="480" height="66" fill="#3A271C"/>
+<g><rect y="252" width="480" height="6" fill="#B8262B"/><rect y="258" width="480" height="3" fill="#EDB750"/><rect y="261" width="480" height="6" fill="#2458A6"/><rect y="230" width="480" height="6" fill="#2A1A12"/></g>
+<ellipse cx="240" cy="236" rx="168" ry="34" fill="#2A1A12" opacity=".35"/>
+<ellipse cx="240" cy="226" rx="164" ry="38" fill="#FFFFFF"/>
+<ellipse cx="240" cy="224" rx="130" ry="28" fill="#FBF6EE" stroke="#E4D8C6" stroke-width="2"/>
+<g>
+ <ellipse cx="170" cy="222" rx="62" ry="17" fill="#C98A3A"/>
+ <ellipse cx="170" cy="216" rx="62" ry="17" fill="#EDB750"/>
+ <ellipse cx="166" cy="210" rx="62" ry="17" fill="#C98A3A"/>
+ <ellipse cx="166" cy="204" rx="62" ry="17" fill="#F2C46A"/>
+ <g fill="#C4521C" opacity=".55"><ellipse cx="142" cy="200" rx="7" ry="3"/><ellipse cx="170" cy="208" rx="5" ry="2"/><ellipse cx="190" cy="198" rx="8" ry="3"/><ellipse cx="158" cy="196" rx="3" ry="1.5"/><ellipse cx="206" cy="206" rx="4" ry="2"/><ellipse cx="128" cy="208" rx="4" ry="1.6"/></g>
+</g>
+<g>
+ <path d="M246 210c-4-12 6-20 20-20s24 4 26 14-6 18-22 18-22-4-24-12z" fill="#7A3A1C"/>
+ <path d="M282 216c-2-14 10-22 26-20s24 8 24 18-10 16-26 16-22-4-24-14z" fill="#8E4524"/>
+ <path d="M318 206c0-12 12-18 26-16s20 10 18 18-12 14-26 12-18-6-18-14z" fill="#7A3A1C"/>
+ <path d="M266 226c0-10 10-16 22-14s20 8 18 16-12 12-24 10-16-4-16-12z" fill="#6A3016"/>
+ <g fill="none" stroke="#2A1A12" stroke-width="2.4" stroke-linecap="round" opacity=".7"><path d="M256 202l8 10m4-14 8 10"/><path d="M294 206l8 12m4-14 8 10"/><path d="M332 198l6 10m6-12 6 9"/><path d="M278 218l6 8m6-10 6 8"/></g>
+ <g fill="#E2672A" opacity=".8"><ellipse cx="262" cy="198" rx="6" ry="2"/><ellipse cx="300" cy="204" rx="7" ry="2"/><ellipse cx="338" cy="196" rx="6" ry="2"/></g>
+</g>
+<path d="M352 230l14-14 6 6c-4 8-12 12-20 8z" fill="#2F6B4F"/><path d="M356 228l10-10 3 3c-3 5-8 8-13 7z" fill="#9CC48A"/>
+<g>
+ <path d="M370 254a44 13 0 0 0 88 0l-6 22c-4 8-18 12-38 12s-34-4-38-12z" fill="#E2672A"/>
+ <ellipse cx="414" cy="254" rx="44" ry="12" fill="#FBF6EE"/>
+ <g fill="#B8262B"><circle cx="396" cy="252" r="5"/><circle cx="420" cy="250" r="5"/><circle cx="434" cy="256" r="4.5"/><circle cx="408" cy="258" r="4"/></g>
+ <g fill="#2F6B4F"><circle cx="410" cy="248" r="2.4"/><circle cx="428" cy="252" r="2.2"/><circle cx="390" cy="258" r="2"/><circle cx="444" cy="252" r="2"/></g>
+ <g fill="none" stroke="#E4D8C6" stroke-width="2"><path d="M402 246a6 4 0 0 1 10 2"/><path d="M424 258a6 4 0 0 1 10 0"/></g>
+</g>
+
+</svg></div>
     <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 2 of 7 · Food</div>
     <div class="script">Karibu mezani.</div>
     <h1 id="pageH">Eat like Nairobi.</h1>
@@ -141,7 +184,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     <div class="sec-head"><h2 id="listH">Food in Nairobi</h2><p>Exploring Nairobi for the tournament, or just hungry this weekend? We are curating restaurants and food spots across Ngong Road, Kilimani, Westlands, Karen and near Talanta Stadium.</p></div>
     <p class="notice-soft" id="areaNote" hidden></p>
     <p class="notice-soft"><span class="badge badge-directory">Directory listing</span> means we show only the name and location published on the business's own website. Prices and WhatsApp booking switch on when the business joins.</p>
-    <div class="grid-cards" id="cards" data-page="food" data-noun="places to eat">
+    <div class="grid-cards rv-each" id="cards" data-page="food" data-noun="places to eat">
       
       
 
@@ -150,11 +193,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <button type="button" class="card-photo place-open" data-id="the-talisman-restaurant" aria-label="View details for The Talisman Restaurant">
     <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#gK)"/><circle cx="70" cy="46" r="18" fill="#D4AF37"/>
-  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#9DBFA0"/>
-  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4F8A3C"/>
-  <g fill="#1B4D3E"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <defs><linearGradient id="kfz-gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gK)"/><circle cx="70" cy="46" r="18" fill="#E2672A"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#BFC48E"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4E8A63"/>
+  <g fill="#2A1A12"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
 </svg>
     <span class="tag-area">Karen</span>
@@ -187,11 +230,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <button type="button" class="card-photo place-open" data-id="fogo-gaucho-kilimani" aria-label="View details for Fogo Gaucho, Kilimani">
     <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
-  <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
+  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
 </svg>
     <span class="tag-area">Kilimani</span>
@@ -224,10 +267,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <button type="button" class="card-photo place-open" data-id="abyssinia-restaurant" aria-label="View details for Abyssinia Restaurant">
     <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2656"/><stop offset=".7" stop-color="#C8643C"/><stop offset="1" stop-color="#E67E22"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#gW)"/>
-  <g fill="#0A1128"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
-  <g fill="#E67E22"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+  <defs><linearGradient id="kfz-gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".7" stop-color="#B8502A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gW)"/>
+  <g fill="#2A1A12"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
 </svg>
     <span class="tag-area">Westlands</span>
@@ -260,10 +303,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <button type="button" class="card-photo place-open" data-id="cjs-koinange-street" aria-label="View details for CJ&#39;s, Koinange Street">
     <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#E9EFE6"/>
-  <g fill="#B9CDB9"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#1B4D3E"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#F7F4EF" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <rect width="320" height="140" fill="#F3E9DA"/>
+  <g fill="#E0CBAE"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#3A271C"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#FBF6EE" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
 </svg>
     <span class="tag-area">CBD</span>
@@ -291,7 +334,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <span class="eyebrow">For Nairobi businesses</span>
   <h3>Own a restaurant, café or food joint in Nairobi?</h3>
   <p>Get listed before visiting fans arrive for the 2027 tournament. No listing fee: you pay a commission only on customers we send you.</p>
-  <a class="btn btn-navy" href="../list-your-business/">List your business</a>
+  <a class="btn btn-dark" href="../list-your-business/">List your business</a>
 </aside>
       
       
@@ -301,11 +344,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <button type="button" class="card-photo place-open" data-id="cjs-kilimani" aria-label="View details for CJ&#39;s, Kilimani">
     <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#CFE3EC"/><circle cx="262" cy="34" r="16" fill="#F7F4EF"/>
-  <g fill="#9DBFA0"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#F7F4EF" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4F8A3C"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#1B4D3E"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
+  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
 </svg>
     <span class="tag-area">Kilimani</span>
@@ -338,11 +381,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <button type="button" class="card-photo place-open" data-id="the-carnivore-restaurant" aria-label="View details for The Carnivore Restaurant">
     <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D9A4"/><stop offset="1" stop-color="#F7F4EF"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#gG)"/><circle cx="250" cy="44" r="18" fill="#E67E22" opacity=".85"/>
-  <g fill="#C9B79A"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
-  <g fill="#0A1128" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
-  <g fill="#F7F4EF" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
+  <defs><linearGradient id="kfz-gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gG)"/><circle cx="250" cy="44" r="18" fill="#E2672A" opacity=".85"/>
+  <g fill="#DCC3A3"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
+  <g fill="#3A271C" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
+  <g fill="#FBF6EE" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
 
 </svg>
     <span class="tag-area">Lang&#39;ata</span>
@@ -451,6 +494,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 </nav>
 
 </main>
+
 
 <footer class="footer">
   <div class="wrap">

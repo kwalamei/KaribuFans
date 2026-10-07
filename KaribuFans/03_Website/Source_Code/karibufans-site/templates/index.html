@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% from "partials/macros.html" import icon %}
+{% from "partials/art.html" import module_art %}
 {% block title %}{{ site.name }} · Nairobi city guide{% endblock %}
+{% block footer_edge %}{% endblock %}
 {% block main %}
 {% set tournament = site.mode == 'tournament' %}
 
@@ -24,7 +26,7 @@
 <section class="band" aria-labelledby="areaH">
   <div class="wrap">
     <div class="sec-head"><h2 id="areaH">Browse by area</h2><p>Pick an area once and it follows you along the route, from stays to food to a night out.</p></div>
-    <ul class="zone-grid">
+    <ul class="zone-grid rv-each">
       {% for z in zone_cards %}
       <li><a class="zone" href="{{ root }}{{ z.counts[0][1] }}/?area={{ z.name | urlencode }}" data-area="{{ z.name }}">
         <span class="zone-art">{{ area_art(z.name) }}</span>
@@ -50,6 +52,7 @@
       {% for m in modules %}
       <li class="stop{{ ' hl' if m.slug == 'matchday' }}">
         <a href="{{ root }}{{ m.slug }}/">
+          <span class="stop-art">{{ module_art(m.slug) }}</span>
           {{ icon(m.icon) }}
           <span class="n">Stop {{ m.stop }}</span>
           <h3>{{ m.label }}</h3>
@@ -91,7 +94,7 @@
   </div>
 </section>
 
-<section class="band-navy" id="vendors" aria-labelledby="vendH">
+<section class="band-dark" id="vendors" aria-labelledby="vendH">
   <div class="bead-rule" aria-hidden="true"></div>
   <div class="wrap band">
     <div class="cta-row">

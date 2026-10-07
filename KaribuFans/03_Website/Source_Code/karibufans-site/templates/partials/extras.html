@@ -1,5 +1,5 @@
 {% if m.slug == 'matchday' %}
-<section class="band band-navy" aria-labelledby="fxH">
+<section class="band band-dark" aria-labelledby="fxH">
   <div class="wrap">
     <div class="sec-head"><h2 id="fxH">Matches in Nairobi · 2027</h2><p>From the official schedule only.</p></div>
     {% set mode = 'matchday' %}{% include "partials/fixtures.html" %}
@@ -8,7 +8,7 @@
 <section class="band" aria-labelledby="essH">
   <div class="wrap">
     <div class="sec-head"><h2 id="essH">Stadium essentials</h2><p>Filled in from the organisers' guidance as it is published.</p></div>
-    <div class="tips">
+    <div class="tips rv-each">
       <div class="tip"><strong>Gates and entry</strong><p>Gate times and entry gates will be added from the official guide once it is published.</p></div>
       <div class="tip"><strong>Bags and banned items</strong><p>The official list has not been published yet. We will add it here when it is.</p></div>
       <div class="tip"><strong>Getting there</strong><p>Leave early and use the pickup zones on the <a href="{{ root }}rides/">Rides page</a>.</p></div>
@@ -21,10 +21,10 @@
 {% endif %}
 
 {% if m.slug == 'nightlife' %}
-<section class="band band-navy" aria-labelledby="nsH">
+<section class="band band-dark" aria-labelledby="nsH">
   <div class="wrap">
     <div class="sec-head"><h2 id="nsH">Get home safe</h2><p>18+ only. Carry ID.</p></div>
-    <div class="tips">
+    <div class="tips rv-each">
       <div class="tip"><strong>Book the ride from inside</strong><p>Wait indoors until your Uber, Bolt or Little driver arrives, and check the plate matches.</p></div>
       <div class="tip"><strong>Keep your drink with you</strong><p>Don't leave drinks unattended or accept drinks from strangers.</p></div>
       <div class="tip"><strong>Share your plans</strong><p>Tell a friend where you are going and share your ride in the app.</p></div>
@@ -43,7 +43,7 @@
       <div class="sec-head"><h2 id="tkH">Matches in Nairobi</h2><p>Status labels: On sale · Opens soon · Sold out · Official resale (only if the organisers run one).</p></div>
       {% set mode = 'tickets' %}{% include "partials/fixtures.html" %}
     </div>
-    <div class="ride-grid">
+    <div class="ride-grid rv">
       <form class="ride-card" id="alertForm" onsubmit="return false" aria-label="Ticket sale alert">
         <h3>Get told when sales open</h3>
         <label for="alertMatch">Match</label>

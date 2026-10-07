@@ -1,7 +1,7 @@
 <section class="band" aria-labelledby="tripH">
   <div class="wrap">
     <div class="sec-head"><h2 id="tripH">Plan a ride</h2><p>Pick where you are going. Uber opens with the destination filled in; for Bolt and Little, type it in their app.</p></div>
-    <div class="ride-grid">
+    <div class="ride-grid rv">
       <form class="ride-card" id="rideForm" onsubmit="return false" aria-label="Ride planner">
         <label for="rideTo">Where to?</label>
         <select id="rideTo">
@@ -26,7 +26,7 @@
   </div>
 </section>
 
-<section class="band band-navy" aria-labelledby="zoneH">
+<section class="band band-dark" aria-labelledby="zoneH">
   <div class="wrap two-col">
     <div class="stack">
       <div class="eyebrow">Matchday</div>
@@ -40,8 +40,8 @@
 <section class="band" aria-labelledby="safeH">
   <div class="wrap">
     <div class="sec-head"><h2 id="safeH">Ride safe</h2></div>
-    <div class="tips">{% for t in rides.safety %}<div class="tip"><strong>{{ t[0] }}</strong><p>{{ t[1] }}</p></div>{% endfor %}</div>
+    <div class="tips rv-each">{% for t in rides.safety %}<div class="tip"><strong>{{ t[0] }}</strong><p>{{ t[1] }}</p></div>{% endfor %}</div>
     <div class="sec-head" style="margin-top:48px"><h2>Taking a matatu</h2><p>Matatus are Nairobi's shared minibuses: cheap and everywhere, but busy.</p></div>
-    <div class="tips">{% for t in rides.matatu %}<div class="tip"><strong>{{ t[0] }}</strong><p>{{ t[1] }}</p></div>{% endfor %}</div>
+    <div class="tips rv-each">{% for t in rides.matatu %}<div class="tip"><strong>{{ t[0] }}</strong><p>{{ t[1] }}</p></div>{% endfor %}</div>
   </div>
 </section>

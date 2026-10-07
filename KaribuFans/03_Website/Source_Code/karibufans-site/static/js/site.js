@@ -13,19 +13,54 @@
   // Motion. Everything here is an extra: without it the page simply updates at once.
   var html = document.documentElement;
   function calm() { return !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
-  // Scroll reveals (homepage route, example day, steps). Groups already on screen (or above it) when this script
-  // runs are marked as shown first; only then is kf-reveal set, which lets the CSS hide the groups still below the
-  // screen until they scroll into view. So nothing readable ever waits on a timer, and without this script nothing hides.
-  var rvs = document.querySelectorAll('.rv');
+  // Scroll reveals. A .rv group (homepage route, example day, steps) settles in as one; in a .rv-each grid (listing
+  // cards, area tiles, tips) every item is watched on its own, and items that arrive together are staggered.
+  // Anything already on screen (or above it) when this script runs is marked as shown first; only then is kf-reveal
+  // set, which lets the CSS hide what is still below the screen until it scrolls into view. So nothing readable
+  // ever waits on a timer, and without this script nothing hides.
+  var rvs = document.querySelectorAll('.rv, .rv-each > *');
   if (rvs.length && window.IntersectionObserver && !calm()) {
     try {
       each(rvs, function (el) { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-in'); });
       var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
-      }, { rootMargin: '0px 0px -10% 0px' });
+        var k = 0;
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var t = en.target;
+          if (t.parentNode.classList.contains('rv-each')) t.style.setProperty('--i', Math.min(k++, 5));
+          t.classList.add('is-in'); io.unobserve(t);
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
       each(rvs, function (el) { if (!el.classList.contains('is-in')) io.observe(el); });
       html.classList.add('kf-reveal');
     } catch (e) { html.classList.remove('kf-reveal'); }
+  }
+
+  // Tilt (CSS 3D). With a mouse or trackpad, cards, area tiles and route stops lean up to 5deg towards the pointer.
+  // One requestAnimationFrame per move, passive listeners, and a reset when the pointer leaves. The CSS only acts
+  // on .is-tilt inside the same (hover, fine pointer, no reduced motion) media query, so this is purely an extra.
+  if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !calm() && window.requestAnimationFrame) {
+    var MAX = 5;
+    each(document.querySelectorAll('.card:not(.vendor-card), .zone, .stop a'), function (el) {
+      var frame = 0, px = 0, py = 0;
+      function paint() {
+        frame = 0;
+        var r = el.getBoundingClientRect(); if (!r.width || !r.height) return;
+        var x = (px - r.left) / r.width - 0.5, y = (py - r.top) / r.height - 0.5;   // -0.5 … 0.5 from the centre
+        el.style.setProperty('--ry', (x * 2 * MAX).toFixed(2) + 'deg');
+        el.style.setProperty('--rx', (-y * 2 * MAX).toFixed(2) + 'deg');
+        el.classList.add('is-tilt');
+      }
+      el.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch') return;
+        px = e.clientX; py = e.clientY;
+        if (!frame) frame = requestAnimationFrame(paint);
+      }, { passive: true });
+      el.addEventListener('pointerleave', function () {
+        if (frame) { cancelAnimationFrame(frame); frame = 0; }
+        el.classList.remove('is-tilt'); el.style.removeProperty('--rx'); el.style.removeProperty('--ry');
+      }, { passive: true });
+    });
   }
 
   // Mobile menu
@@ -122,6 +157,8 @@
     }
     function update() {
       clearTimeout(qTimer);
+      // Once the visitor filters, every card is simply shown: no card still waiting for its scroll reveal.
+      each(grid.children, function (c) { c.classList.add('is-in'); });
       if (!document.startViewTransition || calm()) { apply(); return; }
       var t, done = function () { if (flow === t) { flow = null; html.classList.remove('kf-filtering'); } };
       html.classList.add('kf-filtering');
