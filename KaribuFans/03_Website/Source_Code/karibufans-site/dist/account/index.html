@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
+<meta name="robots" content="noindex">
 
 <script>
 (function(w,d){try{
@@ -101,7 +102,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
             <p><button type="button" class="linklike" id="acctSentBack">Use a different email address</button></p>
           </div>
           
-          <p class="hint">By signing in you agree that KaribuFans keeps your name, your email address and your saved places, as explained in the <a href="../privacy/#accounts">privacy notice</a>.</p>
+          <p class="hint">By signing in you agree that your name, your email address, a few sign-in details and the places you add to your account are kept as explained in the <a href="../privacy/#accounts">privacy notice</a>.</p>
         </div>
       </div>
 
@@ -120,6 +121,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
         <h2 id="savedH" tabindex="-1">Your saved places</h2>
         <p class="hint" id="savedNote"></p>
         <p class="hint" id="savedMsg" role="status" aria-live="polite"></p>
+        <div class="acct-sent" id="savedAsk" hidden>
+          <p id="savedAskText"></p>
+          <p class="acct-btns"><button type="button" class="btn btn-primary" id="savedAskAdd">Add them</button> <button type="button" class="btn btn-ghost" id="savedAskKeep">Keep them on this device only</button></p>
+        </div>
+        <p class="hint" id="savedLater" hidden><span id="savedLaterText"></span> <button type="button" class="linklike" id="savedLaterAdd">Add to your account</button></p>
         <div class="stack" id="savedGroups"></div>
         <p class="coming" id="savedEmpty" hidden>Nothing saved yet. Start at <a href="../stays/">Stays</a>, the first stop, and tap the bookmark on any place you like.</p>
         <p class="hint" id="savedGone" hidden><span id="savedGoneText"></span> <button type="button" class="linklike" id="savedGoneClear">Clear</button></p>

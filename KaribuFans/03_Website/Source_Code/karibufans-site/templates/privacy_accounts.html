@@ -3,28 +3,41 @@
 {% block title %}Privacy notice · {{ site.name }}{% endblock %}
 {% block description %}What {{ site.name }} collects, what stays on your device, and your rights under Kenya's Data Protection Act, 2019.{% endblock %}
 {% block main %}
+{# ==========================================================================================================
+   OWNER TO DECIDE BEFORE THIS NOTICE IS PUBLISHED (it is published when accounts.live is true in data/site.json).
+   These facts are not known to the team and must not be guessed. Add them to the "Accounts" section below, then
+   update privacy_updated in data/site.json:
+     1. Where account data is stored: the region of the Supabase project (shown in the Supabase project settings).
+     2. Which email delivery service sends the sign-in links (set up in Supabase), so it can be named below.
+     3. How long an account is kept, for example whether unused accounts are removed after a set time.
+   Also confirm on the live project that what the sign-in service stores matches the "What is kept" paragraph.
+   Keep every statement here true to static/js/account.js; if the code changes, change this notice with it.
+   ========================================================================================================== #}
 <section class="band page-plain">
   <div class="wrap prose">
     {{ crumbs(site, root, [('Privacy notice', '')]) }}
     <h1 class="h-page">Privacy notice</h1>
     <p class="hint">Last updated {{ site.privacy_updated }}</p>
-    <p class="lede-dark">{{ site.name }} is a city guide for Nairobi. You do not need an account to use it. If you choose to sign in, we keep only your name, your email address and the places you save. This notice explains the little information that is involved and who handles it.</p>
+    <p class="lede-dark">{{ site.name }} is a city guide for Nairobi. You do not need an account to use it. If you choose to sign in, your name, your email address, a few sign-in details and the places you add to your account are kept for you. This notice explains the little information that is involved and who handles it.</p>
 
     <h2>Who we are</h2>
     <p>{{ site.name }} is run from Nairobi, Kenya. For any question about this notice or your information, email <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>.</p>
 
     <h2>What stays on your own device</h2>
-    <p>To save you repeating yourself, your browser remembers a few choices on your own phone or computer: the area and filters you picked, your search words on each page, the dates and number of guests you entered for a stay, and the places you save. This is kept in your browser's local storage. It is not sent to us, and you can remove it at any time by clearing this site's data in your browser settings.</p>
+    <p>To save you repeating yourself, your browser remembers a few choices on your own phone or computer: the area and filters you picked, your search words on each page, the dates and number of guests you entered for a stay, and the places you save. This is kept in your browser's local storage, and you can remove it at any time by clearing this site's data in your browser settings. It is not sent to us, with one exception: if you sign in, the places you add to your account are sent to it, as described under Accounts below.</p>
 
     <h2 id="accounts">Accounts</h2>
-    <p>An account is optional. Its only purpose is to keep your saved places together, so that you see them on any phone or computer you sign in on.{% if not site.accounts.live %} Accounts are being opened in stages, so you may not see the sign-in option yet; this section applies from the moment you sign in.{% endif %}</p>
+    <p>An account is optional. Its only purpose is to keep your saved places together, so that you see them on any phone or computer you sign in on.</p>
     <ul>
-      <li><strong>What is kept.</strong> Your name and email address, and the list of places you save. If you sign in with Google, the name and email address come from your Google account. Google also passes on the web address of your profile picture; we do not use or show it. If you sign in by email, we keep the address you type, and you can add a display name on the account page.</li>
+      <li><strong>What is kept.</strong> Your email address, your name, and the places you add to your account. If you sign in with Google, the sign-in service receives from Google and stores your name, your email address, your Google account identifier and the web address of your profile picture. We do not show the picture. If you sign in by email, it stores the address you type. It also keeps the times you signed in, and the display name you choose on the account page.</li>
       <li><strong>Why.</strong> To sign you in, to greet you by name, and to show your saved places. We do not use these details for advertising and we do not sell them or pass them to the businesses listed here.</li>
-      <li><strong>Who provides it.</strong> Sign-in and storage are provided by Supabase, a separate company that runs them on our behalf, and Google sign-in is provided by Google. As with any sign-in service, they also record technical details such as the time you signed in and your IP address. When you open the account page, the sign-in code is loaded from the jsDelivr network, so your browser contacts it.</li>
+      <li><strong>Who provides it.</strong> Sign-in and storage are provided by Supabase, a separate company that runs them on our behalf, and Google sign-in is provided by Google. Like any online service, they also process technical details such as your IP address.</li>
+      <li><strong>Signing in by email.</strong> When you ask for a sign-in link, the address you typed is sent to the sign-in service straight away, before you have signed in, so that it can send the link. The link itself is sent to you by an email delivery service.</li>
       <li><strong>No password.</strong> {{ site.name }} does not store a password for you. You sign in with Google or with a link sent to your email address.</li>
-      <li><strong>In your browser.</strong> Your saved places also stay in this browser's local storage, so saving works before you sign in and after you sign out. While you are signed in, the sign-in service keeps a sign-in token there too; signing out removes it.</li>
-      <li><strong>Deleting your account.</strong> Email <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a> from the address you sign in with and ask us to delete your account. We then remove the account and its saved places. You can remove single places yourself at any time on the account page.</li>
+      <li><strong>Places already saved on your device.</strong> Places you saved before signing in are added to your account only if you agree when the account page asks. If you say no, they stay on that device only. Places you save while you are signed in go to your account.</li>
+      <li><strong>In your browser.</strong> While you are signed in, the sign-in service keeps a sign-in token in this browser's local storage, together with a copy of your saved places. A short record of your choices also stays there after you sign out (that you kept a place on this device only, or removed a place while offline), labelled with your account identifier, which is a random code and not your name or email address. The code that runs sign-in is loaded from the jsDelivr network when you open the account page, and on the other pages for as long as you are signed in; those pages then also contact the sign-in service to keep your saved places up to date. If you are not signed in, only the account page loads it.</li>
+      <li><strong>Signing out.</strong> Signing out removes the sign-in token from this browser, and removes from it the places that are in your account; they stay in your account. Places that were only ever on the device stay on the device.</li>
+      <li><strong>Deleting your account.</strong> Email <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a> from the address you sign in with and ask us to delete your account. We delete the account, which removes its saved places. You can remove single places yourself at any time on the account page.</li>
     </ul>
 
     <h2>What we receive from you</h2>

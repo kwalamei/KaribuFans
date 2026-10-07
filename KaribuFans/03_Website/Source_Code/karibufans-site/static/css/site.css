@@ -348,6 +348,7 @@ body.drawer-open{overflow:hidden}
 .card{position:relative}
 .card>.save-btn{position:absolute;top:8px;right:8px;z-index:1;background:var(--surface);border-color:var(--line);color:var(--navy);box-shadow:0 1px 4px rgba(10,17,40,.15)}
 .card>.save-btn[aria-pressed="true"]{background:var(--amber);border-color:var(--amber-dark)}
+.acct h1,.acct .lede-dark,.acct strong{overflow-wrap:anywhere;min-width:0}   /* long names and email addresses wrap instead of widening the page */
 .acct-link{text-decoration:none;font:700 16px var(--body)}
 .acct-link.is-in{border-color:var(--gold);color:var(--gold)}
 .acct-link.is-in svg{display:none}
@@ -368,6 +369,12 @@ body.drawer-open{overflow:hidden}
 .field-err{color:var(--danger);font-weight:700}
 .acct-sent{display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:var(--radius-sm);background:var(--gold-soft);border-left:6px solid var(--gold);overflow-wrap:anywhere}
 .acct-sent h2{font-size:20px}
+.acct-btns{display:flex;flex-wrap:wrap;gap:8px}
+/* Feedback on the save toggles: one status line fixed to the bottom of the screen. Clicks pass through it. With the
+   details drawer open it sits under the drawer head instead, clear of the drawer's buttons. Empty, it is invisible. */
+.toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:120;width:max-content;max-width:calc(100% - 32px);margin:0;padding:12px 18px;border-radius:var(--radius-sm);background:var(--navy);color:var(--on-navy);border:1px solid var(--line-navy);box-shadow:var(--shadow);font-size:14px;font-weight:700;pointer-events:none}
+.toast:empty{opacity:0}
+body.drawer-open .toast{left:auto;right:16px;bottom:auto;top:76px;transform:none;max-width:min(448px,calc(100% - 32px))}
 .saved-group{display:flex;flex-direction:column;gap:10px}
 .saved-list{max-width:none}
 .saved-list li{display:flex;align-items:center;gap:10px}
@@ -409,7 +416,7 @@ body.drawer-open{overflow:hidden}
      - every part is an extra: without view transitions or JavaScript the page looks and works the same;
      - nothing readable starts hidden unless js/site.js has added .kf-reveal to <html>, and it only does so for groups still below the screen;
      - prefers-reduced-motion: reduce switches all of it off (last rule of this section).
-   Parts: 1 details drawer · 2 travelling between pages · 3 filters re-flowing the cards · 4 homepage scroll reveals */
+   Parts: 1 details drawer · 2 travelling between pages · 3 filters re-flowing the cards · 4 homepage scroll reveals · 5 save feedback line */
 
 /* 1. Details drawer: slides in slowing down, slides out a little quicker. js/site.js hides it once the slide-out ends. */
 .drawer{transition:transform .22s var(--ease-in)}
@@ -468,6 +475,9 @@ body.drawer-open{overflow:hidden}
   .kf-reveal .stops:not(.is-in)::before{transform:scaleX(0)}
   @media (max-width:640px){.kf-reveal .stops::before{transform-origin:50% 0}.kf-reveal .stops:not(.is-in)::before{transform:scaleY(0)}}
 }
+
+/* 5. Save-toggle feedback line (accounts): fades in and out. */
+@media (prefers-reduced-motion:no-preference){.toast{transition:opacity .2s linear}}
 
 /* Reduced motion: no transitions, no view transitions (the rules above sit inside no-preference), no smooth scroll. */
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.drawer,.drawer.in,.drawer-veil,.drawer-veil.in,.card,.btn,.zone,.stop a,.ns,.routebar .dot i{transition:none}}
