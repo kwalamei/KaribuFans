@@ -1,0 +1,208 @@
+{#- Module illustrations ("Savanna Dusk"). Original, generic, unbranded inline SVG.
+    Usage: {% from "partials/art.html" import module_art %} {{ module_art(m.slug) }}
+    Decorative only (aria-hidden). Gentle motion lives in static/css/art.css and is
+    switched off under prefers-reduced-motion: reduce. Palette: kahawa #2A1A12,
+    kahawa-2 #3A271C, ivory #FBF6EE, sand-2 #F3E9DA, sunset #E2672A, gold #EDB750,
+    acacia #2F6B4F, bead red #B8262B, bead blue #2458A6. -#}
+{% macro module_art(slug, extra_class='') -%}
+<svg class="kf-art kf-art--{{ slug }}{{ ' ' ~ extra_class if extra_class }}" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+{% if slug == 'stays' %}
+<defs>
+<linearGradient id="kfa-st-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".42" stop-color="#A9472A"/><stop offset=".72" stop-color="#E2672A"/><stop offset="1" stop-color="#EDB750"/></linearGradient>
+<clipPath id="kfa-st-win"><path d="M70 270V112a170 82 0 0 1 340 0v158z"/></clipPath>
+</defs>
+<rect width="480" height="300" fill="#2A1A12"/>
+<path d="M70 270V112a170 82 0 0 1 340 0v158z" fill="url(#kfa-st-sky)"/>
+<g clip-path="url(#kfa-st-win)">
+ <g fill="#FBF6EE"><circle class="kf-twinkle" cx="170" cy="62" r="1.6"/><circle class="kf-twinkle kf-d2" cx="252" cy="48" r="1.3"/><circle class="kf-twinkle kf-d3" cx="320" cy="70" r="1.5"/></g>
+ <circle class="kf-glow" cx="292" cy="198" r="58" fill="#EDB750" opacity=".35"/>
+ <circle cx="292" cy="198" r="34" fill="#F6CF7A"/>
+ <path d="M70 214c40-14 58-30 92-18 20-18 40-20 58-2 18-18 40-18 56 0 18-12 42-8 66 10 30-8 50 0 68 6v60H70z" fill="#3A271C" opacity=".5"/>
+ <g fill="#3A271C"><rect x="88" y="196" width="28" height="74"/><rect x="120" y="186" width="22" height="84"/><rect x="146" y="204" width="30" height="66"/><path d="M182 270V182h8v-12h4v12h8v88z"/><rect x="206" y="188" width="34" height="82"/><rect x="314" y="182" width="26" height="88"/><rect x="344" y="202" width="32" height="68"/><rect x="380" y="170" width="26" height="100"/></g>
+ <g fill="#EDB750"><rect class="kf-twinkle" x="94" y="206" width="5" height="6"/><rect class="kf-twinkle kf-d2" x="126" y="196" width="5" height="6"/><rect x="126" y="210" width="5" height="6"/><rect class="kf-twinkle kf-d3" x="188" y="192" width="4" height="6"/><rect x="214" y="198" width="5" height="6"/><rect class="kf-twinkle kf-d1" x="226" y="212" width="5" height="6"/><rect x="320" y="194" width="5" height="6"/><rect class="kf-twinkle kf-d4" x="386" y="182" width="5" height="6"/><rect x="396" y="198" width="5" height="6"/></g>
+ <g class="kf-sway"><path d="M154 268l-2-82-24-30m26 30 10-26m-10 26 28-30" fill="none" stroke="#2A1A12" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M76 160c18-22 62-32 86-26 30-8 76 0 96 20-46-8-140-8-182 6z" fill="#2A1A12"/><path d="M98 144c18-8 50-12 64-9 22-3 50 2 64 10-38-3-92-4-128-1z" fill="#2A1A12"/></g>
+ <g class="kf-glide" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round"><path d="M150 112l7 5 7-5"/><path d="M172 98l5 4 5-4"/></g>
+</g>
+<path d="M70 270V112a170 82 0 0 1 340 0v158" fill="none" stroke="#3A271C" stroke-width="10"/>
+<rect x="66" y="226" width="348" height="8" rx="2" fill="#2A1A12"/>
+<path d="M86 252h324" stroke="#2A1A12" stroke-width="36" stroke-dasharray="4 18"/>
+<rect y="268" width="480" height="32" fill="#3A271C"/><rect x="40" y="266" width="400" height="4" fill="#EDB750" opacity=".55"/>
+<rect x="18" y="14" width="444" height="5" rx="2.5" fill="#EDB750"/>
+<path d="M24 18h70c-8 74-4 160 16 250H24z" fill="#C4521C"/><path d="M50 18c-2 80 2 170 12 250" fill="none" stroke="#2A1A12" stroke-width="3" opacity=".25"/>
+<path d="M456 18h-64c8 74 4 160-14 250h78z" fill="#C4521C"/><path d="M430 18c2 80-2 170-12 250" fill="none" stroke="#2A1A12" stroke-width="3" opacity=".25"/>
+<g fill="#B8262B"><rect x="24" y="22" width="70" height="5"/><rect x="392" y="22" width="64" height="5"/></g>
+<g fill="#2458A6"><rect x="24" y="27" width="70" height="3"/><rect x="392" y="27" width="64" height="3"/></g>
+<path d="M336 268l-6-26h40l-6 26z" fill="#E2672A"/><g class="kf-sway kf-d2" fill="#2F6B4F"><path d="M350 242c-14-10-20-26-14-38 10 10 14 24 14 38z"/><path d="M350 242c8-14 22-22 34-20-6 12-18 20-34 20z"/><path d="M350 242c-2-16 4-30 14-36 2 14-4 28-14 36z"/></g>
+{% elif slug == 'food' %}
+<rect width="480" height="300" fill="#FBF6EE"/>
+<circle cx="240" cy="150" r="136" fill="#F3E9DA"/>
+<circle cx="240" cy="150" r="96" fill="#EDB750" opacity=".28"/>
+<g fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity=".95">
+ <path class="kf-steam" d="M168 150c-10-14 10-24 0-38s10-24 0-36"/>
+ <path class="kf-steam kf-d2" d="M246 140c-10-14 10-24 0-38s10-24 0-36"/>
+ <path class="kf-steam kf-d4" d="M318 146c-10-14 10-24 0-38s10-24 0-36"/>
+</g>
+<rect y="234" width="480" height="66" fill="#3A271C"/>
+<g><rect y="252" width="480" height="6" fill="#B8262B"/><rect y="258" width="480" height="3" fill="#EDB750"/><rect y="261" width="480" height="6" fill="#2458A6"/><rect y="230" width="480" height="6" fill="#2A1A12"/></g>
+<ellipse cx="240" cy="236" rx="168" ry="34" fill="#2A1A12" opacity=".35"/>
+<ellipse cx="240" cy="226" rx="164" ry="38" fill="#FFFFFF"/>
+<ellipse cx="240" cy="224" rx="130" ry="28" fill="#FBF6EE" stroke="#E4D8C6" stroke-width="2"/>
+<g>
+ <ellipse cx="170" cy="222" rx="62" ry="17" fill="#C98A3A"/>
+ <ellipse cx="170" cy="216" rx="62" ry="17" fill="#EDB750"/>
+ <ellipse cx="166" cy="210" rx="62" ry="17" fill="#C98A3A"/>
+ <ellipse cx="166" cy="204" rx="62" ry="17" fill="#F2C46A"/>
+ <g fill="#C4521C" opacity=".55"><ellipse cx="142" cy="200" rx="7" ry="3"/><ellipse cx="170" cy="208" rx="5" ry="2"/><ellipse cx="190" cy="198" rx="8" ry="3"/><ellipse cx="158" cy="196" rx="3" ry="1.5"/><ellipse cx="206" cy="206" rx="4" ry="2"/><ellipse cx="128" cy="208" rx="4" ry="1.6"/></g>
+</g>
+<g>
+ <path d="M246 210c-4-12 6-20 20-20s24 4 26 14-6 18-22 18-22-4-24-12z" fill="#7A3A1C"/>
+ <path d="M282 216c-2-14 10-22 26-20s24 8 24 18-10 16-26 16-22-4-24-14z" fill="#8E4524"/>
+ <path d="M318 206c0-12 12-18 26-16s20 10 18 18-12 14-26 12-18-6-18-14z" fill="#7A3A1C"/>
+ <path d="M266 226c0-10 10-16 22-14s20 8 18 16-12 12-24 10-16-4-16-12z" fill="#6A3016"/>
+ <g fill="none" stroke="#2A1A12" stroke-width="2.4" stroke-linecap="round" opacity=".7"><path d="M256 202l8 10m4-14 8 10"/><path d="M294 206l8 12m4-14 8 10"/><path d="M332 198l6 10m6-12 6 9"/><path d="M278 218l6 8m6-10 6 8"/></g>
+ <g fill="#E2672A" opacity=".8"><ellipse cx="262" cy="198" rx="6" ry="2"/><ellipse cx="300" cy="204" rx="7" ry="2"/><ellipse cx="338" cy="196" rx="6" ry="2"/></g>
+</g>
+<path d="M352 230l14-14 6 6c-4 8-12 12-20 8z" fill="#2F6B4F"/><path d="M356 228l10-10 3 3c-3 5-8 8-13 7z" fill="#9CC48A"/>
+<g>
+ <path d="M370 254a44 13 0 0 0 88 0l-6 22c-4 8-18 12-38 12s-34-4-38-12z" fill="#E2672A"/>
+ <ellipse cx="414" cy="254" rx="44" ry="12" fill="#FBF6EE"/>
+ <g fill="#B8262B"><circle cx="396" cy="252" r="5"/><circle cx="420" cy="250" r="5"/><circle cx="434" cy="256" r="4.5"/><circle cx="408" cy="258" r="4"/></g>
+ <g fill="#2F6B4F"><circle cx="410" cy="248" r="2.4"/><circle cx="428" cy="252" r="2.2"/><circle cx="390" cy="258" r="2"/><circle cx="444" cy="252" r="2"/></g>
+ <g fill="none" stroke="#E4D8C6" stroke-width="2"><path d="M402 246a6 4 0 0 1 10 2"/><path d="M424 258a6 4 0 0 1 10 0"/></g>
+</g>
+{% elif slug == 'rides' %}
+<defs>
+<linearGradient id="kfa-rd-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A1A12"/><stop offset=".35" stop-color="#5A2C1A"/><stop offset=".7" stop-color="#E2672A"/><stop offset="1" stop-color="#EDB750"/></linearGradient>
+<linearGradient id="kfa-rd-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EDB750" stop-opacity="0"/><stop offset="1" stop-color="#F6CF7A"/></linearGradient>
+<linearGradient id="kfa-rd-r" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E2672A"/><stop offset="1" stop-color="#B8262B" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="480" height="300" fill="url(#kfa-rd-sky)"/>
+<g fill="#FBF6EE"><circle class="kf-twinkle" cx="60" cy="30" r="1.5"/><circle class="kf-twinkle kf-d2" cx="180" cy="22" r="1.2"/><circle class="kf-twinkle kf-d3" cx="300" cy="40" r="1.4"/><circle class="kf-twinkle kf-d1" cx="430" cy="26" r="1.3"/></g>
+<circle class="kf-glow" cx="384" cy="168" r="50" fill="#EDB750" opacity=".35"/><circle cx="384" cy="168" r="28" fill="#F6CF7A"/>
+<g fill="#3A271C" opacity=".85"><rect x="14" y="120" width="30" height="80"/><rect x="48" y="96" width="22" height="104"/><rect x="74" y="132" width="36" height="68"/><path d="M118 200V84l12-12 12 12v116z"/><rect x="150" y="116" width="28" height="84"/><rect x="290" y="128" width="32" height="72"/><rect x="326" y="108" width="20" height="92"/><rect x="420" y="118" width="30" height="82"/><rect x="452" y="140" width="28" height="60"/></g>
+<g fill="#EDB750" opacity=".9"><rect class="kf-twinkle" x="54" y="110" width="4" height="5"/><rect x="24" y="134" width="4" height="5"/><rect class="kf-twinkle kf-d3" x="126" y="98" width="4" height="5"/><rect x="158" y="130" width="4" height="5"/><rect class="kf-twinkle kf-d2" x="332" y="122" width="4" height="5"/><rect x="428" y="132" width="4" height="5"/></g>
+<rect y="244" width="480" height="56" fill="#2A1A12"/>
+<g fill="#2A1A12"><path d="M70 196h40l-8 14v38H78v-38z"/><path d="M290 196h40l-8 14v38h-24v-38z"/></g>
+<g fill="#EDB750"><rect x="34" y="118" width="3" height="56" fill="#2A1A12"/><rect x="28" y="116" width="16" height="4" rx="2" fill="#2A1A12"/><circle class="kf-twinkle" cx="40" cy="122" r="3"/><rect x="236" y="118" width="3" height="56" fill="#2A1A12"/><rect x="230" y="116" width="16" height="4" rx="2" fill="#2A1A12"/><circle class="kf-twinkle kf-d2" cx="242" cy="122" r="3"/><rect x="438" y="118" width="3" height="56" fill="#2A1A12"/><rect x="432" y="116" width="16" height="4" rx="2" fill="#2A1A12"/><circle class="kf-twinkle kf-d3" cx="444" cy="122" r="3"/></g>
+<g class="kf-bob">
+ <path class="kf-beam" d="M340 160l120-14v40z" fill="#F6CF7A" opacity=".45"/>
+ <path d="M168 176v-34c0-12 8-20 20-20h112c12 0 20 6 26 16l14 22v16z" fill="#FBF6EE"/>
+ <path d="M168 164h172v12H168z" fill="#E2672A"/><path d="M168 160h172v4H168z" fill="#EDB750"/>
+ <rect x="182" y="114" width="108" height="8" rx="3" fill="#3A271C"/>
+ <g fill="#3A271C"><rect x="180" y="130" width="28" height="22" rx="3"/><rect x="214" y="130" width="28" height="22" rx="3"/><rect x="248" y="130" width="28" height="22" rx="3"/><path d="M284 130h18c6 0 10 4 14 10l8 12h-40z"/></g>
+ <g fill="#EDB750" opacity=".35"><path d="M184 150l14-18h6l-14 18z"/><path d="M218 150l14-18h6l-14 18z"/><path d="M252 150l14-18h6l-14 18z"/></g>
+ <rect x="334" y="158" width="8" height="6" rx="2" fill="#F6CF7A"/><rect x="164" y="156" width="6" height="6" rx="2" fill="#B8262B"/>
+ <g fill="#2A1A12"><circle cx="200" cy="178" r="12"/><circle cx="306" cy="178" r="12"/></g><g fill="#D2C3B1"><circle cx="200" cy="178" r="4"/><circle cx="306" cy="178" r="4"/></g>
+</g>
+<rect y="180" width="480" height="18" fill="#2A1A12"/><rect y="176" width="480" height="5" fill="#3A271C"/><rect y="190" width="480" height="2" fill="#E2672A" opacity=".6"/>
+<g>
+ <rect class="kf-trail" x="-20" y="184" width="140" height="3" rx="1.5" fill="url(#kfa-rd-g)"/>
+ <rect class="kf-trail kf-d2" x="120" y="186" width="110" height="2.5" rx="1.25" fill="url(#kfa-rd-g)"/>
+ <rect class="kf-trail kf-d4" x="300" y="184" width="130" height="3" rx="1.5" fill="url(#kfa-rd-g)"/>
+ <rect class="kf-trail kf-d1" x="10" y="266" width="170" height="4" rx="2" fill="url(#kfa-rd-g)"/>
+ <rect class="kf-trail kf-d3" x="250" y="270" width="150" height="4" rx="2" fill="url(#kfa-rd-g)"/>
+ <rect class="kf-trail-back" x="60" y="282" width="160" height="4" rx="2" fill="url(#kfa-rd-r)"/>
+ <rect class="kf-trail-back kf-d3" x="300" y="284" width="140" height="4" rx="2" fill="url(#kfa-rd-r)"/>
+</g>
+<g fill="#3A271C"><rect x="0" y="276" width="480" height="2"/></g>
+{% elif slug == 'matchday' %}
+<defs>
+<linearGradient id="kfa-md-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A1A12"/><stop offset="1" stop-color="#5A2C1A"/></linearGradient>
+<pattern id="kfa-md-crowd" width="16" height="10" patternUnits="userSpaceOnUse"><circle cx="4" cy="3" r="2.2" fill="#E2672A"/><circle cx="12" cy="3" r="2.2" fill="#FBF6EE"/><circle cx="0" cy="8" r="2.2" fill="#EDB750"/><circle cx="16" cy="8" r="2.2" fill="#EDB750"/><circle cx="8" cy="8" r="2.2" fill="#B8262B"/></pattern>
+<pattern id="kfa-md-crowd2" width="16" height="10" patternUnits="userSpaceOnUse"><circle cx="4" cy="3" r="2.2" fill="#2458A6"/><circle cx="8" cy="8" r="2.2" fill="#FBF6EE"/></pattern>
+<linearGradient id="kfa-md-beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6CF7A" stop-opacity=".55"/><stop offset="1" stop-color="#F6CF7A" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="480" height="300" fill="url(#kfa-md-sky)"/>
+<g fill="#FBF6EE"><circle class="kf-twinkle" cx="120" cy="30" r="1.4"/><circle class="kf-twinkle kf-d2" cx="240" cy="18" r="1.6"/><circle class="kf-twinkle kf-d3" cx="350" cy="36" r="1.3"/><circle class="kf-twinkle kf-d1" cx="200" cy="56" r="1.2"/></g>
+<path class="kf-flicker" d="M44 46h52l120 150H-20z" fill="url(#kfa-md-beam)"/>
+<path class="kf-flicker kf-d3" d="M384 46h52l64 150H264z" fill="url(#kfa-md-beam)"/>
+<g fill="#3A271C"><path d="M66 60h8l6 140H60z"/><path d="M406 60h8l6 140h-20z"/></g>
+<g><rect x="42" y="32" width="56" height="28" rx="3" fill="#3A271C"/><rect x="382" y="32" width="56" height="28" rx="3" fill="#3A271C"/>
+<g class="kf-flicker" fill="#F6CF7A">{% for bx in (49, 63, 77, 389, 403, 417) %}<rect x="{{ bx }}" y="37" width="10" height="7" rx="1.5"/><rect x="{{ bx }}" y="48" width="10" height="7" rx="1.5"/>{% endfor %}</g></g>
+<path d="M28 196v44a212 70 0 0 0 424 0v-44z" fill="#2A1A12"/>
+<g fill="#3A271C">{% for ax in (70, 130, 196, 264, 330, 392) %}<rect x="{{ ax }}" y="236" width="18" height="30" rx="9"/>{% endfor %}</g>
+<ellipse cx="240" cy="196" rx="212" ry="70" fill="#3A271C"/>
+<ellipse cx="240" cy="196" rx="200" ry="62" fill="url(#kfa-md-crowd)"/>
+<ellipse class="kf-twinkle" cx="240" cy="196" rx="200" ry="62" fill="url(#kfa-md-crowd2)"/>
+<ellipse cx="240" cy="200" rx="136" ry="38" fill="#2A1A12"/>
+<ellipse cx="240" cy="202" rx="128" ry="34" fill="#2F6B4F"/>
+<clipPath id="kfa-md-pitch"><ellipse cx="240" cy="202" rx="128" ry="34"/></clipPath><path clip-path="url(#kfa-md-pitch)" d="M136 160h26v84h-26zM188 160h26v84h-26zM240 160h26v84h-26zM292 160h26v84h-26z" fill="#3B7A5B"/>
+<ellipse cx="240" cy="202" rx="128" ry="34" fill="none" stroke="#2A1A12" stroke-width="10" opacity=".4"/>
+<g fill="none" stroke="#FBF6EE" stroke-width="2" opacity=".85"><ellipse cx="240" cy="202" rx="110" ry="26"/><path d="M240 176v52"/><ellipse cx="240" cy="202" rx="20" ry="6"/></g>
+<circle class="kf-bob" cx="262" cy="210" r="3.5" fill="#FBF6EE"/>
+<ellipse cx="240" cy="196" rx="212" ry="70" fill="none" stroke="#E2672A" stroke-width="4"/>
+<g>{% for fx in range(52, 430, 26) %}<path d="M{{ fx }} {{ 250 if fx < 100 or fx > 380 else 262 }}l8 12 8-12z" fill="{{ ('#B8262B','#EDB750','#2458A6','#FBF6EE','#2F6B4F')[loop.index0 % 5] }}"/>{% endfor %}</g>
+{% elif slug == 'nightlife' %}
+<defs>
+<linearGradient id="kfa-nl-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F130D"/><stop offset=".45" stop-color="#4A2A1C"/><stop offset="1" stop-color="#C4521C"/></linearGradient>
+</defs>
+<rect width="480" height="300" fill="url(#kfa-nl-sky)"/>
+<g fill="#FBF6EE">{% for sx, sy, d in [(40,40,1),(98,22,2),(150,60,3),(210,30,4),(268,52,1),(330,24,3),(130,100,2),(300,96,4),(450,110,2),(20,120,3)] %}<circle class="kf-twinkle kf-d{{ d }}" cx="{{ sx }}" cy="{{ sy }}" r="{{ 1.6 if d is odd else 1.1 }}"/>{% endfor %}</g>
+<path d="M410 34a26 26 0 1 0 22 42 22 22 0 1 1-22-42z" fill="#EDB750"/>
+<g fill="#2A1A12"><rect x="10" y="150" width="40" height="150"/><rect x="54" y="118" width="30" height="182"/><rect x="88" y="168" width="44" height="132"/><path d="M138 300V120l18-20 18 20v180z"/><rect x="180" y="160" width="36" height="140"/><rect x="222" y="132" width="28" height="168"/><rect x="256" y="176" width="46" height="124"/><rect x="306" y="110" width="34" height="190"/><rect x="346" y="150" width="40" height="150"/><rect x="392" y="124" width="30" height="176"/><rect x="428" y="164" width="52" height="136"/></g>
+<g fill="#EDB750">{% for wx, wy, d in [(20,164,1),(34,186,0),(62,132,2),(62,160,0),(72,196,3),(98,182,0),(116,208,4),(150,134,1),(160,168,0),(188,176,2),(230,148,0),(230,180,3),(268,190,0),(286,214,1),(314,124,4),(326,156,0),(354,166,2),(368,200,0),(400,140,3),(408,176,0),(440,180,1),(458,206,0)] %}<rect{% if d %} class="kf-twinkle kf-d{{ d }}"{% endif %} x="{{ wx }}" y="{{ wy }}" width="6" height="8"/>{% endfor %}</g>
+<rect y="246" width="480" height="54" fill="#3A271C"/><rect y="244" width="480" height="4" fill="#E2672A" opacity=".7"/>
+<g fill="#2A1A12"><rect x="26" y="70" width="5" height="176"/><rect x="449" y="70" width="5" height="176"/></g>
+<path d="M28 74Q240 196 452 74" fill="none" stroke="#D2C3B1" stroke-width="1.5" opacity=".7"/>
+<path d="M28 74Q240 140 452 74" fill="none" stroke="#D2C3B1" stroke-width="1.5" opacity=".5"/>
+{% for row in ((196, 15), (140, 13)) %}{% set n = row[1] %}{% for i in range(1, n) %}{% set t = i / n %}<circle class="kf-twinkle kf-d{{ (i % 4) + 1 }}" cx="{{ ((1-t)*(1-t)*28 + 2*(1-t)*t*240 + t*t*452) | round(1) }}" cy="{{ ((1-t)*(1-t)*74 + 2*(1-t)*t*row[0] + t*t*74 + 4) | round(1) }}" r="{{ 5 if row[0] == 196 else 4 }}" fill="{{ ('#EDB750','#E2672A','#FBF6EE','#B8262B','#2458A6')[i % 5] }}"/>{% endfor %}{% endfor %}
+<g fill="#EDB750">
+ <g class="kf-float"><path d="M118 218v-30l18-4v26" fill="none" stroke="#EDB750" stroke-width="3"/><ellipse cx="113" cy="219" rx="6" ry="4.5"/><ellipse cx="131" cy="211" rx="6" ry="4.5"/></g>
+ <g class="kf-float kf-d2"><path d="M246 224v-26l10 6" fill="none" stroke="#F6CF7A" stroke-width="3" stroke-linecap="round"/><ellipse cx="241" cy="225" rx="6" ry="4.5"/></g>
+ <g class="kf-float kf-d4"><path d="M362 214v-28l18-4v26" fill="none" stroke="#EDB750" stroke-width="3"/><ellipse cx="357" cy="215" rx="6" ry="4.5"/><ellipse cx="375" cy="207" rx="6" ry="4.5"/></g>
+</g>
+<rect y="262" width="480" height="6" fill="#2A1A12"/><path d="M8 284h472" stroke="#2A1A12" stroke-width="32" stroke-dasharray="4 16"/>
+{% elif slug == 'movies-games' %}
+<rect width="480" height="300" fill="#F3E9DA"/>
+<rect x="148" y="28" width="306" height="166" rx="10" fill="#2A1A12"/>
+<defs><linearGradient id="kfa-mg-scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2672A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+<rect x="162" y="40" width="278" height="142" rx="4" fill="url(#kfa-mg-scr)"/>
+<circle cx="300" cy="120" r="26" fill="#F6CF7A"/>
+<path d="M162 150c40-24 70-22 100-6 30-24 70-30 110-4 26-10 50-8 68 2v40H162z" fill="#3A271C"/>
+<path d="M162 168c60-12 120-10 180-2 40 4 70 2 98-2v18H162z" fill="#2A1A12"/>
+<g fill="#B8262B"><path d="M148 30h34c-8 50-6 110 6 164h-40z"/><path d="M454 30h-34c8 50 6 110-6 164h40z"/></g>
+<rect x="140" y="20" width="322" height="12" rx="4" fill="#B8262B"/><rect x="140" y="30" width="322" height="3" fill="#2A1A12" opacity=".3"/>
+<path class="kf-flicker" d="M112 152L250 70v80z" fill="#FBF6EE" opacity=".45"/>
+<path d="M100 228c40 10 50 40 110 46s120-6 150 10" fill="none" stroke="#3A271C" stroke-width="22"/>
+<path d="M100 228c40 10 50 40 110 46s120-6 150 10" fill="none" stroke="#F3E9DA" stroke-width="5" stroke-dasharray="5 8"/>
+<g class="kf-spin">
+ <circle cx="104" cy="168" r="66" fill="#2A1A12"/>
+ <circle cx="104" cy="168" r="58" fill="none" stroke="#3A271C" stroke-width="6"/>
+ <g fill="#F3E9DA"><circle cx="104" cy="132" r="15"/><circle cx="138" cy="157" r="15"/><circle cx="125" cy="197" r="15"/><circle cx="83" cy="197" r="15"/><circle cx="70" cy="157" r="15"/></g>
+ <circle cx="104" cy="168" r="9" fill="#E2672A"/><circle cx="104" cy="168" r="3.5" fill="#2A1A12"/>
+</g>
+<g class="kf-wobble">
+ <path d="M248 292c-16 0-20-14-18-34 2-18 12-30 10-46-1-10-6-14-6-26 0-12 6-20 14-20s14 8 14 20c0 12-5 16-6 26-2 16 8 28 10 46 2 20-2 34-18 34z" fill="#FFFFFF"/>
+ <path d="M236 202h24l-1 6h-22zM234 214h28l-1 5h-26z" fill="#B8262B"/>
+</g>
+<circle cx="200" cy="268" r="26" fill="#2458A6"/><g fill="#2A1A12" opacity=".7"><circle cx="192" cy="258" r="3.5"/><circle cx="203" cy="255" r="3.5"/><circle cx="196" cy="268" r="3.5"/></g>
+<path d="M330 236c0-18 10-26 28-26h64c18 0 28 8 28 26l8 34c4 16-4 26-16 26-10 0-16-8-22-18l-6-10h-48l-6 10c-6 10-12 18-22 18-12 0-20-10-16-26z" fill="#3A271C"/>
+<g fill="#FBF6EE"><rect x="350" y="232" width="18" height="6" rx="2"/><rect x="356" y="226" width="6" height="18" rx="2"/></g>
+<circle class="kf-blink" cx="424" cy="226" r="5" fill="#E2672A"/><circle class="kf-blink kf-d2" cx="434" cy="236" r="5" fill="#EDB750"/><circle class="kf-blink kf-d3" cx="414" cy="236" r="5" fill="#2F6B4F"/><circle class="kf-blink kf-d4" cx="424" cy="246" r="5" fill="#B8262B"/>
+<g fill="#2A1A12"><circle cx="374" cy="256" r="8"/><circle cx="404" cy="256" r="8"/></g><rect x="384" y="226" width="12" height="4" rx="2" fill="#D2C3B1"/>
+{% elif slug == 'tickets' %}
+<rect width="480" height="300" fill="#FBF6EE"/>
+<circle class="kf-rays" cx="240" cy="150" r="110" fill="none" stroke="#F3E9DA" stroke-width="220" stroke-dasharray="21.6 21.6"/>
+<circle cx="240" cy="150" r="104" fill="#EDB750" opacity=".18"/>
+<g transform="translate(112 66) rotate(-9 120 55)">
+ <path d="M0 0h240v40a15 15 0 0 0 0 30v40H0V70a15 15 0 0 0 0-30z" fill="#EDB750"/>
+ <path d="M178 6v98" stroke="#2A1A12" stroke-width="2" stroke-dasharray="4 5" opacity=".4"/>
+ <g fill="#2A1A12" opacity=".2"><rect x="24" y="26" width="120" height="10" rx="5"/><rect x="24" y="46" width="80" height="8" rx="4"/></g>
+</g>
+<g class="kf-tilt">
+<g transform="translate(118 112) rotate(5 125 60)">
+ <path d="M4 10h250v44a16 16 0 0 0 0 32v44H4V86a16 16 0 0 0 0-32z" fill="#2A1A12" opacity=".18"/>
+ <path d="M0 0h250v44a16 16 0 0 0 0 32v44H0V76a16 16 0 0 0 0-32z" fill="#E2672A"/>
+ <path d="M10 10h230v34a26 26 0 0 0 0 32v34H10V76a26 26 0 0 0 0-32z" fill="none" stroke="#FBF6EE" stroke-width="1.5" opacity=".55"/>
+ <path d="M184 8v104" stroke="#2A1A12" stroke-width="2.5" stroke-dasharray="5 6" opacity=".55"/>
+ <text x="28" y="52" fill="#2A1A12" font-family="'Bricolage Grotesque',Georgia,serif" font-weight="800" font-size="21" letter-spacing=".5">ADMIT ONE</text>
+ <g fill="#2A1A12" opacity=".35"><rect x="28" y="68" width="124" height="8" rx="4"/><rect x="28" y="84" width="84" height="8" rx="4"/></g>
+ <g fill="#B8262B"><rect x="28" y="100" width="18" height="5"/></g><rect x="46" y="100" width="18" height="5" fill="#FBF6EE"/><rect x="64" y="100" width="18" height="5" fill="#2458A6"/><rect x="82" y="100" width="18" height="5" fill="#EDB750"/>
+ <g transform="translate(217 60)"><path class="kf-rock" d="M0-24L5.8-8 22.8-7.4 9.4 3 14.1 19.4 0 9.8-14.1 19.4-9.4 3-22.8-7.4-5.8-8Z" fill="#EDB750" stroke="#2A1A12" stroke-width="2.5" stroke-linejoin="round"/></g>
+</g>
+</g>
+<g fill="#E2672A"><path class="kf-twinkle" d="M74 70q0 12 12 12-12 0-12 12 0-12-12-12 12 0 12-12z"/><path class="kf-twinkle kf-d2" d="M412 54q0 10 10 10-10 0-10 10 0-10-10-10 10 0 10-10z" fill="#EDB750"/><path class="kf-twinkle kf-d3" d="M418 236q0 14 14 14-14 0-14 14 0-14-14-14 14 0 14-14z"/><path class="kf-twinkle kf-d4" d="M60 226q0 9 9 9-9 0-9 9 0-9-9-9 9 0 9-9z" fill="#EDB750"/></g>
+<g><circle cx="100" cy="140" r="4" fill="#B8262B"/><circle cx="388" cy="120" r="4" fill="#2458A6"/><circle cx="378" cy="270" r="3.5" fill="#2F6B4F"/><circle cx="120" cy="270" r="3.5" fill="#E2672A"/><rect x="430" y="160" width="8" height="4" rx="2" fill="#B8262B" transform="rotate(30 434 162)"/><rect x="40" y="160" width="8" height="4" rx="2" fill="#2458A6" transform="rotate(-30 44 162)"/></g>
+{% endif %}
+</svg>
+{%- endmacro %}

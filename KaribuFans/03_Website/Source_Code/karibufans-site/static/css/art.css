@@ -1,0 +1,46 @@
+/* Module illustrations (templates/partials/art.html).
+   Motion: transform and opacity only, slow calm loops, and only when the visitor
+   has not asked for reduced motion. Without this block every part is static and
+   fully visible. */
+.kf-art{display:block;width:100%;height:auto;max-width:100%}
+.kf-art *{transform-box:fill-box}
+
+@media (prefers-reduced-motion:no-preference){
+  .kf-art .kf-twinkle{animation:kf-twinkle 4.2s ease-in-out infinite}
+  .kf-art .kf-glow{transform-origin:center;animation:kf-glow 7s ease-in-out infinite}
+  .kf-art .kf-sway{transform-origin:50% 100%;animation:kf-sway 9s ease-in-out infinite}
+  .kf-art .kf-glide{animation:kf-glide 12s ease-in-out infinite}
+  .kf-art .kf-steam{animation:kf-steam 5s ease-in-out infinite;opacity:0}
+  .kf-art .kf-trail{animation:kf-trail 3.6s linear infinite;opacity:0}
+  .kf-art .kf-trail-back{animation:kf-trail-back 4.4s linear infinite;opacity:0}
+  .kf-art .kf-bob{animation:kf-bob 3s ease-in-out infinite}
+  .kf-art .kf-beam{animation:kf-flicker 5s ease-in-out infinite}
+  .kf-art .kf-flicker{animation:kf-flicker 6s ease-in-out infinite}
+  .kf-art .kf-float{animation:kf-float 7s ease-in-out infinite;opacity:0}
+  .kf-art .kf-spin{transform-origin:center;animation:kf-spin 12s linear infinite}
+  .kf-art .kf-wobble{transform-origin:50% 100%;animation:kf-wobble 6s ease-in-out infinite}
+  .kf-art .kf-blink{animation:kf-twinkle 3.2s ease-in-out infinite}
+  .kf-art .kf-tilt{transform-origin:center;animation:kf-tilt 8s ease-in-out infinite}
+  .kf-art .kf-rock{transform-origin:center;animation:kf-rock 6s ease-in-out infinite}
+  .kf-art .kf-rays{transform-origin:center;animation:kf-spin 60s linear infinite}
+
+  .kf-art .kf-d1{animation-delay:-.8s}
+  .kf-art .kf-d2{animation-delay:-1.7s}
+  .kf-art .kf-d3{animation-delay:-2.6s}
+  .kf-art .kf-d4{animation-delay:-3.4s}
+}
+
+@keyframes kf-twinkle{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes kf-glow{0%,100%{transform:scale(1);opacity:.35}50%{transform:scale(1.08);opacity:.5}}
+@keyframes kf-sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+@keyframes kf-glide{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-6px)}}
+@keyframes kf-steam{0%{transform:translateY(10px);opacity:0}35%{opacity:.9}100%{transform:translateY(-22px);opacity:0}}
+@keyframes kf-trail{0%{transform:translateX(-120px);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateX(160px);opacity:0}}
+@keyframes kf-trail-back{0%{transform:translateX(140px);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateX(-140px);opacity:0}}
+@keyframes kf-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+@keyframes kf-flicker{0%,100%{opacity:1}45%{opacity:.75}50%{opacity:.95}55%{opacity:.7}}
+@keyframes kf-float{0%{transform:translateY(12px);opacity:0}30%{opacity:1}70%{opacity:1}100%{transform:translateY(-26px);opacity:0}}
+@keyframes kf-spin{to{transform:rotate(360deg)}}
+@keyframes kf-wobble{0%,100%{transform:rotate(0)}40%{transform:rotate(-2.5deg)}60%{transform:rotate(2deg)}}
+@keyframes kf-tilt{0%,100%{transform:rotate(-1deg) translateY(0)}50%{transform:rotate(1deg) translateY(-4px)}}
+@keyframes kf-rock{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
