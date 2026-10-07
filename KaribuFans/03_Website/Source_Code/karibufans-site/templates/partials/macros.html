@@ -44,7 +44,7 @@
 {% set q = v.map_query or (v.name ~ ' ' ~ v.area ~ ' Nairobi') %}
 <article class="card{{ ' is-directory' if unclaimed }}" id="card-{{ v.id }}" data-id="{{ v.id }}" data-type="{{ v.type }}" data-area="{{ v.zone }}" data-near="{{ '1' if v.near_stadium else '' }}" data-vibe="{{ v.vibe or '' }}" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ v.zone ~ ' ' ~ (v.street or '') ~ ' ' ~ ((v.tags or [])|join(' ')) ~ ' ' ~ ((v.amenities or [])|join(' '))) | lower }}"{% if v.hours %} data-open="{{ v.hours.open }}" data-close="{{ v.hours.close }}"{% endif %}>
   <button type="button" class="card-photo place-open" data-id="{{ v.id }}" aria-label="View details for {{ v.name }}">
-    {% if v.photos and v.photos[0] %}<img src="{{ v.photos[0] }}" alt="" loading="lazy">{% else %}{{ area_art(v.zone) }}{% endif %}
+    {% if v.photos and v.photos[0] %}<img src="{{ v.photos[0] }}" alt="" loading="lazy">{% else %}{{ area_art(v.zone, '-' ~ v.id) }}{% endif %}
     <span class="tag-area">{{ v.area }}</span>
   </button>
   {# Save toggle. Hidden until js/account.js switches accounts on. #}

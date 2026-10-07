@@ -523,6 +523,7 @@ body.drawer-open .toast{left:auto;right:16px;bottom:auto;top:76px;transform:none
 @media screen and (prefers-reduced-motion:no-preference){
   .kf-reveal :is(.rv,.rv-each)>*{transition-property:opacity,translate,transform,box-shadow,border-color;transition-duration:.55s,.55s,.15s,.15s,.15s;transition-timing-function:var(--ease-out);transition-delay:calc(var(--i,0)*80ms),calc(var(--i,0)*80ms),0s,0s,0s}
   .kf-reveal .rv:not(.is-in)>*,.kf-reveal .rv-each>:not(.is-in){opacity:0;translate:0 16px}
+  .kf-reveal :is(.rv,.rv-each)>:focus-within{opacity:1;translate:none;transition:none}   /* keyboard focus never lands on an invisible card */
   .rv>:nth-child(2){--i:1}.rv>:nth-child(3){--i:2}.rv>:nth-child(4){--i:3}.rv>:nth-child(5){--i:4}.rv>:nth-child(6){--i:5}.rv>:nth-child(7){--i:6}
   .kf-reveal .stops::before{transform-origin:0 50%;transition:transform .9s var(--ease-out)}
   .kf-reveal .stops:not(.is-in)::before{transform:scaleX(0)}
@@ -544,10 +545,10 @@ body.drawer-open .toast{left:auto;right:16px;bottom:auto;top:76px;transform:none
 @keyframes kf-breathe{from{opacity:0}to{opacity:1}}
 @keyframes kf-arrive{from{opacity:0;transform:scale(.4)}}
 
-/* 7. Hero photos drift very slowly (a Ken Burns move: scale and shift only), so the page feels alive without video.
+/* 7. Hero photos drift very slowly (a Ken Burns move: scale and shift only), so the page feels alive without video. Two passes (about a minute), then it holds still.
       The photo is always larger than its frame, so no edge ever shows. */
 @media (prefers-reduced-motion:no-preference){
-  .hero-img,.route>img{animation:kf-drift 28s ease-in-out infinite alternate;will-change:transform}
+  .hero-img,.route>img{animation:kf-drift 28s ease-in-out 2 alternate both;will-change:transform}
   .route>img{animation-duration:34s;animation-direction:alternate-reverse}
 }
 @keyframes kf-drift{from{transform:scale(1.03)}to{transform:scale(1.1) translate3d(-1.5%,-1%,0)}}

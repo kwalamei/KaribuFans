@@ -6,23 +6,23 @@
 .kf-art *{transform-box:fill-box}
 
 @media (prefers-reduced-motion:no-preference){
-  .kf-art .kf-twinkle{animation:kf-twinkle 4.2s ease-in-out infinite}
-  .kf-art .kf-glow{transform-origin:center;animation:kf-glow 7s ease-in-out infinite}
-  .kf-art .kf-sway{transform-origin:50% 100%;animation:kf-sway 9s ease-in-out infinite}
-  .kf-art .kf-glide{animation:kf-glide 12s ease-in-out infinite}
-  .kf-art .kf-steam{animation:kf-steam 5s ease-in-out infinite;opacity:0}
-  .kf-art .kf-trail{animation:kf-trail 3.6s linear infinite;opacity:0}
-  .kf-art .kf-trail-back{animation:kf-trail-back 4.4s linear infinite;opacity:0}
-  .kf-art .kf-bob{animation:kf-bob 3s ease-in-out infinite}
-  .kf-art .kf-beam{animation:kf-flicker 5s ease-in-out infinite}
-  .kf-art .kf-flicker{animation:kf-flicker 6s ease-in-out infinite}
-  .kf-art .kf-float{animation:kf-float 7s ease-in-out infinite;opacity:0}
-  .kf-art .kf-spin{transform-origin:center;animation:kf-spin 12s linear infinite}
-  .kf-art .kf-wobble{transform-origin:50% 100%;animation:kf-wobble 6s ease-in-out infinite}
-  .kf-art .kf-blink{animation:kf-twinkle 3.2s ease-in-out infinite}
-  .kf-art .kf-tilt{transform-origin:center;animation:kf-tilt 8s ease-in-out infinite}
-  .kf-art .kf-rock{transform-origin:center;animation:kf-rock 6s ease-in-out infinite}
-  .kf-art .kf-rays{transform-origin:center;animation:kf-spin 60s linear infinite}
+  .kf-art .kf-twinkle{animation:kf-twinkle 4.2s ease-in-out 3}
+  .kf-art .kf-glow{transform-origin:center;animation:kf-glow 7s ease-in-out 3}
+  .kf-art .kf-sway{transform-origin:50% 100%;animation:kf-sway 9s ease-in-out 3}
+  .kf-art .kf-glide{animation:kf-glide 12s ease-in-out 3}
+  .kf-art .kf-steam{animation:kf-steam 5s ease-in-out 3;opacity:0}
+  .kf-art .kf-trail{animation:kf-trail 3.6s linear 3;opacity:0}
+  .kf-art .kf-trail-back{animation:kf-trail-back 4.4s linear 3;opacity:0}
+  .kf-art .kf-bob{animation:kf-bob 3s ease-in-out 3}
+  .kf-art .kf-beam{animation:kf-flicker 5s ease-in-out 3}
+  .kf-art .kf-flicker{animation:kf-flicker 6s ease-in-out 3}
+  .kf-art .kf-float{animation:kf-float 7s ease-in-out 3;opacity:0}
+  .kf-art .kf-spin{transform-origin:center;animation:kf-spin 12s linear 3}
+  .kf-art .kf-wobble{transform-origin:50% 100%;animation:kf-wobble 6s ease-in-out 3}
+  .kf-art .kf-blink{animation:kf-twinkle 3.2s ease-in-out 3}
+  .kf-art .kf-tilt{transform-origin:center;animation:kf-tilt 8s ease-in-out 3}
+  .kf-art .kf-rock{transform-origin:center;animation:kf-rock 6s ease-in-out 3}
+  .kf-art .kf-rays{transform-origin:center;animation:kf-spin 60s linear 1}
 
   .kf-art .kf-d1{animation-delay:-.8s}
   .kf-art .kf-d2{animation-delay:-1.7s}
@@ -47,10 +47,10 @@
 
 /* ---------- Where the illustrations sit (wired by the lead) ----------
    Heroes without a photograph: the stop's illustration as a framed picture. On a phone it sits above the eyebrow;
-   from 900px it moves to the right of the text, which gets room so the two never overlap. */
-.hero-art{width:min(300px,78%);margin-top:8px}
-.hero-art .kf-art{border-radius:var(--radius);box-shadow:0 18px 40px rgba(0,0,0,.35);outline:1px solid var(--line-dark)}
-@media (min-width:900px){
+   from 700px it moves to the right of the text, which gets room so the two never overlap. */
+.hero-art{width:min(220px,60%);margin-top:8px}
+.hero-art .kf-art{border-radius:var(--radius);box-shadow:0 18px 40px rgba(var(--kahawa-rgb),.35);outline:1px solid var(--line-dark)}
+@media (min-width:700px){
   .has-art .hero-body{padding-right:calc(min(440px,36vw) + 48px)}
   .hero-art{position:absolute;right:max(var(--gutter),calc((100% - var(--max))/2));top:44%;width:min(440px,36vw);margin:0;translate:0 -50%}
 }
