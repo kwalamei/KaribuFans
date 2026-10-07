@@ -12,7 +12,16 @@
      no mark        saved on this device, nobody has been asked yet
    Places on the device are never added to an account without a yes (the prompt on the account page).
    kf_saved_gone holds, per user id, places removed here that the account has not yet been told about.
-   The Supabase library is fetched only on the account page, or on other pages when this browser holds a sign-in. */
+   The Supabase library is fetched only on the account page, or on other pages when this browser holds a sign-in.
+
+   After signing in the visitor is taken back into the site:
+     - the account page notes the page of this site the visitor came from (kf_return: path and time, used for an hour);
+     - a first sign-in (no display name yet) stays on the account page for the name step, then goes to the first
+       stop of the route (START: Stays; the address comes from data-start on the account page);
+     - a returning sign-in goes straight to the remembered page (the first stop if there is none), unless places on
+       this device are waiting for the "Add them to your account?" question;
+     - a later visit to the account page while signed in never moves the visitor anywhere.
+   The page arrived at shows "Signed in as ..." once (kf_hello in sessionStorage, removed as soon as it is read). */
 (function () {
   'use strict';
   var KF = window.KF, tag = document.getElementById('kfAccount');
@@ -47,7 +56,59 @@
   try { var ru = new URL(ROOT + 'account/', location.href); REDIRECT = ru.origin + ru.pathname; } catch (e) {}
 
   var acct = $('acctOn');                      // present on the account page only
-  var client = null, user = null, known = false, lib = '', remote = '', lastView = '', stayed = 0;
+  var client = null, unsub = null, gen = 0, user = null, known = false, lib = '', remote = '', lastView = '', stayed = 0;
+
+  // ---- The way back into the site after signing in ----
+  var HOME = '/';          // the homepage, as a path
+  try { HOME = new URL(ROOT, location.href).pathname; } catch (e) {}
+  if (HOME.charAt(0) !== '/' || /^\/[\/\\]/.test(HOME)) HOME = '/';
+  // A page of this site as path + query, or '' for anything else: another site, an odd scheme, a path outside the
+  // site, the account page itself. Checked once as written and once more after the browser has normalised it,
+  // because "/.//other.example" is harmless as written and "//other.example" (another site) once normalised.
+  function safePath(v) {
+    var bad = /^\/[\/\\]|[\\\u0000-\u0020\u007f]/, u, out;
+    if (typeof v !== 'string' || v.length > 300 || v.indexOf(HOME) !== 0 || bad.test(v)) return '';
+    try {
+      u = new URL(v, location.origin);
+      if (u.origin !== location.origin || u.pathname.indexOf(HOME) !== 0 || /^account(\/|\.html|$)/i.test(u.pathname.slice(HOME.length))) return '';
+      u.searchParams.delete('preview');
+      out = u.pathname + u.search;
+      if (bad.test(out) || new URL(out, location.origin).origin !== location.origin) return '';
+      return out;
+    } catch (e) { return ''; }
+  }
+  function readReturn() {
+    var r = store.get('return'), now = Date.now();
+    var p = r && typeof r === 'object' && typeof r.t === 'number' && r.t <= now + 60000 && now - r.t <= 3600000 ? safePath(r.p) : '';
+    if (r !== null && !p) store.del('return');   // out of date or not usable: do not keep it
+    return p;
+  }
+  var from = '';           // account page: the page of this site the visitor came from, if any
+  if (acct) { try { var ref = new URL(document.referrer); if (ref.origin === location.origin) from = safePath(ref.pathname + ref.search); } catch (e) {} }
+  // Kept in localStorage, not sessionStorage, because an emailed sign-in link opens in a new tab.
+  function remember() { if (from) store.set('return', { p: from, t: Date.now() }); }
+  if (acct) { readReturn(); remember(); }
+  // Where a signed-in visitor starts when no page is remembered: the first stop of the route. The address is written
+  // into the account page by the template (data-start on #acctOn), so it follows the route if the first stop changes.
+  var START = '';
+  if (acct) { try { START = safePath(new URL(acct.getAttribute('data-start') || '', location.href).pathname); } catch (e) {} }
+  START = START || HOME;
+  function backTo() { return readReturn() || START; }
+  var fresh = false;       // this visit to the account page is a sign-in that has just come back
+  var welcome = false;     // ... a first sign-in: the name step is showing
+  var leaving = false;     // ... a returning sign-in: on the way to the remembered page
+  var departed = false, onSynced = null;
+  var hello = false;       // one-shot: this page is where the visitor landed after signing in
+  try { hello = sessionStorage.getItem('kf_hello') === '1'; if (hello) sessionStorage.removeItem('kf_hello'); } catch (e) {}
+  if (acct) hello = false;
+  function who(u) { var m = (u && u.user_metadata) || {}; return String(m.display_name || (u && u.email) || m.full_name || m.name || 'a visitor').replace(/\s+/g, ' ').trim().slice(0, 80); }
+  function greetNext() { store.del('return'); try { sessionStorage.setItem('kf_hello', '1'); } catch (e) {} }
+  // Leave the account page for a page of this site. The address is always built on this site's own origin.
+  function depart(to, replace) {
+    var url = location.origin + (safePath(to) || START);
+    departed = true; greetNext();
+    if (replace) location.replace(url); else location.href = url;   // replace: the Back button must not land on a page that sends the visitor forward again
+  }
   // Did this visit to the account page come back from Google or an emailed link? Noted before the library can touch the address.
   var cameBack = !!acct && /(^|[#?&])(error|error_code|error_description)=/.test(location.hash + '&' + location.search);
   var returned = !!acct && (cameBack || /(^|[#&])(access_token|refresh_token)=/.test(location.hash) || /(^|[?&])code=/.test(location.search));
@@ -119,13 +180,18 @@
   // ---- The account's copy (Supabase table saved_places) ----
   // Every call goes through one queue, so a save, a removal and a sync can never overtake each other.
   // A call that fails or does not answer in time gives null; nothing on the device is lost because of it.
-  var queue = Promise.resolve(), sent = map(), syncing = false, again = false, told = false;
+  var queue = Promise.resolve(), sent = map(), syncing = false, again = false, told = false, offline = false;
   function chain(fn) { queue = queue.then(fn).then(null, function () {}); }
   function call(run) {
     return new Promise(function (done) {
-      var t = setTimeout(function () { done(null); }, WAIT);
-      function end(r) { clearTimeout(t); done(r && !r.error ? r : null); }
-      try { Promise.resolve(run(client.from(TABLE))).then(end, function () { end(null); }); } catch (e) { end(null); }
+      var t = setTimeout(function () { offline = true; done(null); }, WAIT);
+      function end(r) {
+        clearTimeout(t);
+        // Was the service unreachable (no answer at all), or did it answer with a refusal (table missing, not allowed)?
+        offline = !r || navigator.onLine === false || (!!r.error && !r.status && /fetch|network|load failed|timeout/i.test(String(r.error.message || '')));
+        done(r && !r.error ? r : null);
+      }
+      try { Promise.resolve(run(client.from(TABLE))).then(end, function () { end(null); }); } catch (e) { offline = false; clearTimeout(t); done(null); }
     });
   }
   function mine(uid) { return !!client && !!user && user.id === uid; }
@@ -138,7 +204,7 @@
       return call(function (t) { return t.upsert(rows.map(function (it) { return { user_id: uid, place_id: it.id, page: it.page }; }), UPSERT); }).then(function (r) {
         if (r) { rows.forEach(function (it) { sent[it.id] = 1; }); return; }
         remote = 'fail'; note();
-        if (!told) { told = true; say('Saved on this device. It will be added to your account when the connection is back.'); }
+        if (!told) { told = true; say(offline ? 'Saved on this device. It will be added to your account when the connection is back.' : 'Saved on this device. We could not add it to your account just now.'); }
       });
     });
   }
@@ -209,6 +275,7 @@
       chain(function () {
         syncing = false; paint(); drawSaved(); note();
         if (again) { again = false; sync(); }
+        else if (onSynced) { var f = onSynced; onSynced = null; f(); }
       });
     });
   }
@@ -281,21 +348,84 @@
       // Only the account page is ever a sign-in return address, so only it lets the library read the address.
       // When the address carries an error (an expired link) the library is kept away from it altogether, because it
       // would also throw away a sign-in that is still good; the fixed message below is shown instead.
-      client = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: !!acct && !cameBack } });
+      var g = ++gen;   // answers from a client that has been retired are ignored
+      client = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: !!acct && !cameBack && !known } });
       // The library asks that nothing else is called from inside this callback, hence the timer.
-      client.auth.onAuthStateChange(function (ev, session) { setTimeout(function () { setUser(session ? session.user : null); }, 0); });
-      client.auth.getSession().then(function (r) { setUser(r && r.data && r.data.session ? r.data.session.user : null); }, down);
+      var s = client.auth.onAuthStateChange(function (ev, session) { setTimeout(function () { if (g === gen) setUser(session ? session.user : null); }, 0); });
+      unsub = s && s.data ? s.data.subscription : null;
+      client.auth.getSession().then(function (r) { if (g === gen) setUser(r && r.data && r.data.session ? r.data.session.user : null); }, function () { if (g === gen) down(); });
     } catch (e) { client = null; down(); }
+  }
+  function dropKey() { try { localStorage.removeItem(SESSION_KEY); localStorage.removeItem(SESSION_KEY + '-code-verifier'); } catch (e) {} }
+  // After a sign-out the library could not complete: stop using that client altogether, and for a few seconds make
+  // sure nothing it still had in flight puts the sign-in back. A new client is made if the visitor signs in again.
+  function retire() {
+    var old = client, n = 0;
+    gen++; client = null;
+    try { if (unsub && unsub.unsubscribe) unsub.unsubscribe(); } catch (e) {}
+    unsub = null;
+    try { var r = old && old.auth.stopAutoRefresh ? old.auth.stopAutoRefresh() : null; if (r && r.then) r.then(null, function () {}); } catch (e) {}
+    var t = setInterval(function () { if (hasSession()) { try { localStorage.removeItem(SESSION_KEY); } catch (e) {} } if (++n >= 24) clearInterval(t); }, 250);
+  }
+  function connected() {   // a client to sign in with; made afresh after retire()
+    if (!client && lib === 'ready' && window.supabase) { dropKey(); start(); }
+    return !!client;
+  }
+  // Which sign-in methods the project has switched on. Asked once per page, when the signed-out view is shown, so that
+  // a method that is off can be explained here instead of sending the visitor to the service's own error page.
+  // The answer is null when it cannot be asked (no reply within 4 seconds, an error): sign-in then goes ahead as usual.
+  var settingsP = null, settingsIn = false;
+  function settings() {
+    if (!settingsP) settingsP = new Promise(function (done) {
+      var ctl = null, over = false;
+      try { ctl = new AbortController(); } catch (e) {}
+      var end = function (d) {
+        if (over) return;
+        over = true; settingsIn = true; clearTimeout(t);
+        var x = d && typeof d === 'object' ? d.external : null;
+        done(x && typeof x === 'object' ? { google: x.google !== false, email: x.email !== false } : null);
+      };
+      var t = setTimeout(function () { end(null); try { if (ctl) ctl.abort(); } catch (e) {} }, 4000);
+      try {
+        fetch(SB_URL.replace(/\/+$/, '') + '/auth/v1/settings', { headers: { apikey: SB_KEY }, credentials: 'omit', signal: ctl ? ctl.signal : undefined })
+          .then(function (r) { return r.ok ? r.json() : null; }).then(end, function () { end(null); });
+      } catch (e) { end(null); }
+    });
+    return settingsP;
+  }
+  function named(u) { var m = (u && u.user_metadata) || {}; return typeof m.display_name === 'string' && !!m.display_name.trim(); }
+  function asking() {      // are places on this device waiting for "Add them to your account?"
+    var uid = user && user.id;
+    return !!uid && readSaved().some(function (it) { return onDevice(it) && it.k !== uid && (!idxNow || idxNow[it.id]); });
+  }
+  // A returning sign-in: straight back to where the visitor was. If places on this device might need the question,
+  // wait for the account to be read first (they may already be in it); if they still need it, or the account does
+  // not answer in time, stay on the account page, where "Continue to the site" leads on.
+  function settle() {
+    if (!asking()) { depart(backTo(), true); return; }
+    var over = false, end = function (stay) {
+      if (over) return;
+      over = true; onSynced = null;
+      if (!leaving || !user) return;
+      if (stay || asking()) { leaving = false; view(); } else depart(backTo(), true);
+    };
+    onSynced = function () { end(false); };
+    setTimeout(function () { end(true); }, 6000);
   }
   function setUser(u) {
     var was = user ? user.id : null, first = !known;
     known = true; lib = 'ready';
     user = u && u.id ? u : null;
-    if (first) tidyAddress();
+    if (first) {
+      tidyAddress();
+      // A sign-in has just come back to the account page: name step the first time, otherwise on into the site.
+      if (user && returned && !cameBack) { fresh = true; if (named(user)) leaving = true; else welcome = true; }
+    }
     if (user) evict(user.id);
-    else { remote = ''; if (!hasSession()) stayed = leave(); }   // only once the sign-in is really gone from this browser
+    else { remote = ''; welcome = leaving = false; if (!hasSession()) stayed = leave(); }   // only once the sign-in is really gone from this browser
     header(); view();
-    if (user && user.id !== was) { sent = map(); told = false; paint(); sync(); }
+    if (hello && user) { hello = false; say('Signed in as ' + who(user) + '.'); }
+    if (user && user.id !== was) { sent = map(); told = false; paint(); sync(); if (leaving) settle(); }
     else if (first || was) { paint(); drawSaved(); }              // the library repeats itself (tab refocus): nothing to redo
   }
   function tidyAddress() {   // after a sign-in return, leave the bare address: no tokens, no error, no stray "#"
@@ -314,6 +444,7 @@
     if (/email/i.test(m) && /invalid|valid/i.test(m)) return 'That email address was not accepted. Check it and try again.';
     if (/not allowed|not enabled|disabled|unsupported/i.test(m)) return 'This way of signing in is not open yet.';
     m = m.replace(/\s+/g, ' ').trim();
+    if (/^[{\[]/.test(m)) return 'It did not work. Please try again in a moment.';   // never the service's raw answer
     return 'It did not work: ' + (m.length > 90 ? m.slice(0, 89) + '…' : m);
   }
 
@@ -326,29 +457,44 @@
 
   function view() {
     if (!acct) return;
-    var v = known ? (user ? 'in' : 'out') : (lib === 'down' ? 'down' : 'checking');
-    show($('acctDown'), v === 'down'); show($('acctOut'), v === 'out'); show($('acctIn'), v === 'in'); show($('acctFoot'), v === 'in');
-    text($('acctH'), v === 'in' ? 'Karibu, ' + nameOf(user) : (v === 'out' ? 'Sign in' : 'Your account'));
-    if (v === 'in') text($('acctWho'), user.email || '');
+    var v = known ? (user ? (leaving ? 'leaving' : (welcome ? 'welcome' : 'in')) : 'out') : (lib === 'down' ? 'down' : 'checking');
+    var inn = v === 'in' || v === 'welcome';
+    show($('acctDown'), v === 'down'); show($('acctOut'), v === 'out'); show($('acctIn'), inn); show($('acctFoot'), v === 'in');
+    show($('acctSaved'), v !== 'welcome' && v !== 'leaving');
+    text($('acctH'), v === 'welcome' ? 'Karibu! What should we call you?' : (v === 'in' ? 'Karibu, ' + nameOf(user) : (v === 'out' ? 'Sign in' : 'Your account')));
+    if (inn) text($('acctWho'), user.email || '');
     if (v !== lastView) {
       var msg = '';
       if (v === 'checking') msg = 'Checking your account…';
+      else if (v === 'leaving') msg = asking() ? 'You are signed in. Checking your saved places…' : 'You are signed in. Taking you back to the site…';
       else if (v === 'out' && lastView === 'in' && !hasSession()) msg = 'You are signed out. The places in your account are kept there.' + (stayed ? ' ' + plural(stayed, 'place stays', 'places stay') + ' on this device.' : '');
       else if ((v === 'out' || v === 'in') && cameBack) msg = 'That sign-in did not finish. If you used an emailed link, it may have expired or been used already.' + (v === 'out' ? ' You can ask for a new one below.' : ' You are still signed in.');
       text($('acctStatus'), msg);
       if (v === 'out' || v === 'in') cameBack = false;
-      if (v === 'out') { busy($('acctGoogle'), false); busy($('acctEmailGo'), false); busy($('acctSignOut'), false); }
-      if (v === 'in') { $('acctName').value = nameOf(user); nameMsg('Shown only to you, on this page and in the menu bar.', false); }
+      if (v === 'out') { busy($('acctGoogle'), false); busy($('acctEmailGo'), false); busy($('acctSignOut'), false); settings(); }
+      if (inn) {   // the same name form serves as the welcome step on a first sign-in and as the profile afterwards
+        var w = v === 'welcome', m = user.user_metadata || {}, nGo = $('acctNameGo');
+        $('acctName').value = w ? String(m.full_name || m.name || '').replace(/\s+/g, ' ').trim().slice(0, 60) : nameOf(user);
+        text($('acctNameLabel'), w ? 'Your name' : 'Display name');
+        text(nGo, w ? 'Save and continue' : 'Save name'); nGo.classList.toggle('btn-primary', w); nGo.classList.toggle('btn-ghost', !w);
+        show($('acctSkipP'), w); show($('acctGoP'), !w);
+        $('acctGo').href = backTo(); $('acctSkip').href = START;
+        nameMsg('Shown only to you, on this page and in the menu bar.', false);
+        if (w || lastView === 'welcome' || lastView === 'leaving') $('acctH').focus();
+      }
       lastView = v;
     }
     note();
   }
   function note() {   // one quiet line above the saved list: where the places are kept
     if (!acct) return;
-    var list = readSaved(), uid = user && user.id, inAcct = 0, waiting = 0;
-    list.forEach(function (it) { if (uid && it.u === uid) inAcct++; if (uid && it.p === uid) waiting++; });
+    var list = readSaved(), uid = user && user.id, inAcct = 0, waiting = 0, loose = 0;
+    list.forEach(function (it) {
+      if (idxNow && !idxNow[it.id]) return;   // count what the list shows
+      if (uid && it.u === uid) inAcct++; if (uid && it.p === uid) waiting++; if (uid && onDevice(it)) loose++;
+    });
     var t = '';
-    if (uid && remote === 'ok' && !waiting) t = inAcct ? 'Saved to your account. Sign in on any phone to see them.' : '';
+    if (uid && remote === 'ok' && !waiting) t = inAcct && loose ? inAcct + ' in your account, ' + loose + ' on this device only.' : (inAcct ? 'Saved to your account. Sign in on any phone to see them.' : '');
     else if (list.length) t = 'Saved on this device' + (uid ? ' for now.' : (known ? '. Sign in to keep them on any phone.' : '.'));
     text($('savedNote'), t);
   }
@@ -408,42 +554,58 @@
     text(el, t); el.classList.toggle('field-err', !!bad);
     if (bad) box.setAttribute('aria-invalid', 'true'); else box.removeAttribute('aria-invalid');
   }
-  function emailErr(t) {
+  function emailErr(t, soft) {   // soft: not a mistake in the field
     var el = $('acctEmailErr'), box = $('acctEmail');
     text(el, t); show(el, !!t);
-    if (t) box.setAttribute('aria-invalid', 'true'); else box.removeAttribute('aria-invalid');
+    if (t && !soft) box.setAttribute('aria-invalid', 'true'); else box.removeAttribute('aria-invalid');
   }
 
   if (acct) {
     var google = $('acctGoogle'), eForm = $('acctEmailForm'), nForm = $('acctNameForm');
     if (google) google.addEventListener('click', function () {
-      if (!client || isBusy(google)) return;
+      if (isBusy(google) || !connected()) return;
       var oops = function (err) { busy(google, false); text($('acctStatus'), 'Google sign-in did not start. ' + human(err)); };
-      busy(google, true); text($('acctStatus'), 'Opening Google…');
-      try { client.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: REDIRECT } }).then(function (r) { if (r && r.error) oops(r.error); }, oops); } catch (e) { oops(e); }
+      busy(google, true); text($('acctGoogleMsg'), ''); text($('acctStatus'), settingsIn ? 'Opening Google…' : 'One moment…');
+      settings().then(function (s) {
+        if (s && !s.google) {   // the project has not switched Google on: say so here instead of sending the visitor to an error page
+          busy(google, false); text($('acctStatus'), '');
+          text($('acctGoogleMsg'), 'Google sign-in is not switched on yet.' + (eForm && s.email ? ' Use an email link for now.' : ''));
+          return;
+        }
+        if (!connected()) { busy(google, false); text($('acctStatus'), ''); return; }
+        remember(); text($('acctStatus'), 'Opening Google…');
+        try { client.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: REDIRECT } }).then(function (r) { if (r && r.error) oops(r.error); }, oops); } catch (e) { oops(e); }
+      });
     });
     // Back from Google with the Back button: the page may be shown again exactly as it was left, so make the button usable.
-    window.addEventListener('pageshow', function () {
-      busy(google, false); busy($('acctEmailGo'), false);
-      if ($('acctStatus').textContent === 'Opening Google…') text($('acctStatus'), '');
+    window.addEventListener('pageshow', function (e) {
+      busy(google, false); busy($('acctEmailGo'), false); busy($('acctNameGo'), false);
+      if (/^(Opening Google|One moment)…$/.test($('acctStatus').textContent)) text($('acctStatus'), '');
+      // Back to this page after it sent the visitor on: it is now an ordinary visit, so show the profile and stay put.
+      if (e.persisted && departed) { departed = fresh = welcome = leaving = false; view(); }
     });
     if (eForm) {
       var eBox = $('acctEmail'), eGo = $('acctEmailGo'), sentBox = $('acctSent');
       eBox.addEventListener('input', function () { if (eBox.getAttribute('aria-invalid')) emailErr(''); });
       eForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        if (!client || isBusy(eGo)) return;
+        if (isBusy(eGo) || !connected()) return;
         var email = eBox.value.trim();
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) { emailErr('Enter your email address, for example name@example.com.'); eBox.focus(); return; }
         var oops = function (err) { busy(eGo, false); text($('acctStatus'), ''); emailErr(human(err)); eBox.focus(); };
         emailErr(''); busy(eGo, true); text($('acctStatus'), 'Sending your sign-in link…');
-        try {
-          client.auth.signInWithOtp({ email: email, options: { emailRedirectTo: REDIRECT } }).then(function (r) {
-            if (r && r.error) { oops(r.error); return; }
-            busy(eGo, false); text($('acctStatus'), '');
-            text($('acctSentTo'), email); show(eForm, false); show(sentBox, true); sentBox.focus();
-          }, oops);
-        } catch (x) { oops(x); }
+        settings().then(function (s) {
+          if (s && !s.email) { busy(eGo, false); text($('acctStatus'), ''); emailErr('Email sign-in is not switched on yet.', true); return; }
+          if (!connected()) { busy(eGo, false); text($('acctStatus'), ''); return; }
+          remember();
+          try {
+            client.auth.signInWithOtp({ email: email, options: { emailRedirectTo: REDIRECT } }).then(function (r) {
+              if (r && r.error) { oops(r.error); return; }
+              busy(eGo, false); text($('acctStatus'), '');
+              text($('acctSentTo'), email); show(eForm, false); show(sentBox, true); sentBox.focus();
+            }, oops);
+          } catch (x) { oops(x); }
+        });
       });
       $('acctSentBack').addEventListener('click', function () { show(sentBox, false); show(eForm, true); eBox.focus(); });
     }
@@ -459,6 +621,7 @@
           if (r && r.error) { oops(r.error); return; }
           busy(go, false);
           if (r && r.data && r.data.user && user && r.data.user.id === user.id) user = r.data.user;
+          if (welcome) { header(); nameMsg('Name saved.', false); depart(START, false); return; }   // first sign-in: on to the first stop
           header(); view(); box.value = nameOf(user); nameMsg('Name saved.', false);
         }, oops);
       } catch (x) { oops(x); }
@@ -468,19 +631,26 @@
     $('acctSignOut').addEventListener('click', function () {
       var go = $('acctSignOut'), over = false;
       if (!client || isBusy(go)) return;
-      var finish = function () {
+      // clean: the library said it signed out. Anything else (an error, a rejection, no answer in 4 seconds, or the
+      // sign-in still being in storage) is a forced sign-out: the sign-in is removed here and that client is retired.
+      var finish = function (clean) {
         if (over) return;
         over = true; clearTimeout(timer);
-        if (hasSession()) { try { localStorage.removeItem(SESSION_KEY); localStorage.removeItem(SESSION_KEY + '-code-verifier'); } catch (e) {} }
+        if (!clean || hasSession()) { dropKey(); if (!hasSession()) retire(); }
         if (hasSession()) { busy(go, false); text($('acctStatus'), 'Signing out did not work in this browser. Please try again.'); return; }
+        store.del('return');
         setUser(null);
         var h = $('acctH'); if (h) h.focus();
       };
-      var timer = setTimeout(finish, 4000);
+      var timer = setTimeout(function () { finish(false); }, 4000);
       busy(go, true);
-      try { client.auth.signOut({ scope: 'local' }).then(finish, finish); } catch (e) { finish(); }
+      try { client.auth.signOut({ scope: 'local' }).then(function (r) { finish(!(r && r.error)); }, function () { finish(false); }); } catch (e) { finish(false); }
     });
     $('acctRetry').addEventListener('click', function () { location.reload(); });
+    // First sign-in, no name for now: the link already points at the first stop; this only arranges the greeting there.
+    $('acctSkip').addEventListener('click', function () { if (welcome) { departed = true; greetNext(); } });
+    // "Continue to the site" straight after a sign-in (the visitor stayed to answer about device places): greet there too.
+    $('acctGo').addEventListener('click', function () { if (fresh) { fresh = false; greetNext(); } });
     $('savedGroups').addEventListener('click', function (e) {
       var b = e.target.closest ? e.target.closest('[data-remove]') : null;
       if (!b) return;

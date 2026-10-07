@@ -54,6 +54,12 @@ Three things must be set up once in the Supabase project before sign-in works:
 3. The Google provider: under Authentication, Providers, switch on Google with a client ID and secret from Google Cloud, and give Google the callback address Supabase shows there.
 Until the table exists the site still works: places are saved in the browser only.
 
+After signing in, visitors are taken back into the site (all in `static/js/account.js`):
+- First sign-in (no display name saved yet): the account page asks "Karibu! What should we call you?". "Save and continue" and "Skip for now" both go to the Stays page, the first stop of the route (the address is taken from the first entry in `data/modules.json`).
+- Returning sign-in: straight to the page of this site the visitor opened the account page from, or the Stays page if there is none. That page's address is kept in the browser as `kf_return` for up to an hour; it is only ever used if it is a page of this site. If places saved on the device are waiting for the "Add them to your account?" question, the visitor stays on the account page to answer, and "Continue to the site" leads on.
+- The page arrived on shows "Signed in as …" once. Opening the account page later, while signed in, never moves the visitor.
+- When the signed-out account page opens, it asks the project which sign-in methods are switched on (`/auth/v1/settings`, publishable key only). If Google or email is off in Supabase, the visitor gets a plain message on the page instead of Supabase's error page. If that question gets no answer within 4 seconds, sign-in goes ahead as before.
+
 The Supabase library is not stored in this repository. The browser fetches it from jsDelivr (version pinned in `static/js/account.js`), and only on the account page or when the visitor is already signed in. Account deletion is by email request to `contact_email` for now.
 
 ## Deploy on Vercel (first time)
@@ -76,3 +82,4 @@ The Supabase library is not stored in this repository. The browser fetches it fr
 - Still to fill in: `contact_whatsapp` and `uber_client_id` in `data/site.json`; registered business name in `copyright`; real photos; first joined businesses; official fixtures, fan zones and traffic plan when published.
 - 7 Oct: motion layer ("The Route comes alive"); full rebuild of `dist/`, which also republished six pages that were still on the old theme (Tickets, Nightlife, Movies & Games, Privacy, Search, List your business).
 - 7 Oct (accounts): saved places on every listing, account page with Google and email-link sign-in through Supabase, privacy notice updated. Built and tested against a stand-in for the Supabase library only; hidden behind `accounts.live: false` until the Supabase project is set up and a real sign-in has been tried with `?preview=accounts`.
+- 7 Oct (accounts, flow): after signing in, visitors go back into the site (name step on a first sign-in, then the Stays page; returning visitors to the page they came from, or Stays); "Continue to the site" and "Back to the homepage" on the account page; a plain message when a sign-in method is switched off in Supabase. Tested against a stand-in only; to be confirmed by the owner with `?preview=accounts`.

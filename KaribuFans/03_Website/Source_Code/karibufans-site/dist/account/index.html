@@ -75,19 +75,22 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
       <p><a class="btn btn-ghost" href="../">Back to the homepage</a></p>
     </div>
 
-    <div class="stack" id="acctOn" hidden>
+    
+    
+    <div class="stack" id="acctOn" data-start="../stays/" hidden>
       <p class="hint" id="acctStatus" role="status" aria-live="polite"></p>
 
       <div class="stack" id="acctDown" hidden>
         <p class="lede-dark">Sign-in could not load just now. Your saved places below still work on this device.</p>
-        <p><button type="button" class="btn btn-ghost" id="acctRetry">Try again</button></p>
+        <p class="acct-btns"><button type="button" class="btn btn-ghost" id="acctRetry">Try again</button> <a class="btn btn-ghost" href="../">Back to the homepage</a></p>
       </div>
 
       <div class="stack" id="acctOut" hidden>
         <p class="lede-dark">Keep your saved places on any phone.</p>
         <div class="acct-panel">
           
-          <button type="button" class="btn btn-primary" id="acctGoogle">Continue with Google</button>
+          <button type="button" class="btn btn-primary" id="acctGoogle" aria-describedby="acctGoogleMsg">Continue with Google</button>
+          <p class="hint acct-msg" id="acctGoogleMsg" role="status" aria-live="polite"></p>
           
           <p class="hint acct-or">or</p>
           
@@ -104,20 +107,24 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
           
           <p class="hint">By signing in you agree that your name, your email address, a few sign-in details and the places you add to your account are kept as explained in the <a href="../privacy/#accounts">privacy notice</a>.</p>
         </div>
+        <p><a class="btn btn-ghost" href="../">Back to the homepage</a></p>
       </div>
 
+      
       <div class="stack" id="acctIn" hidden>
         <p class="lede-dark">Signed in as <strong id="acctWho"></strong></p>
+        <p id="acctGoP"><a class="btn btn-primary" id="acctGo" href="../stays/">Continue to the site</a></p>
         <div class="acct-panel">
           <form id="acctNameForm" class="acct-form" novalidate>
-            <label for="acctName">Display name<input class="field" type="text" id="acctName" name="name" autocomplete="name" maxlength="60" aria-describedby="acctNameMsg"></label>
+            <label for="acctName"><span id="acctNameLabel">Display name</span><input class="field" type="text" id="acctName" name="name" autocomplete="name" maxlength="60" aria-describedby="acctNameMsg"></label>
             <p class="hint" id="acctNameMsg" aria-live="polite">Shown only to you, on this page and in the menu bar.</p>
             <button type="submit" class="btn btn-ghost" id="acctNameGo">Save name</button>
+            <p class="hint acct-skip" id="acctSkipP" hidden><a id="acctSkip" href="../stays/">Skip for now</a></p>
           </form>
         </div>
       </div>
 
-      <section class="stack acct-saved" aria-labelledby="savedH">
+      <section class="stack acct-saved" id="acctSaved" aria-labelledby="savedH">
         <h2 id="savedH" tabindex="-1">Your saved places</h2>
         <p class="hint" id="savedNote"></p>
         <p class="hint" id="savedMsg" role="status" aria-live="polite"></p>
