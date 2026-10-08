@@ -20,16 +20,19 @@ The root `.gitignore` ignores `dist`, so a NEW file under `dist/` is skipped by 
 
 It is plain HTML, CSS and JavaScript. No framework, no bundler, no npm. Keep it that way unless Marx decides otherwise.
 
-## Design rules ("Sunset on Ngong Road")
-Colours are tokens at the top of `static/css/site.css`. Use the tokens; never write a new hex value in a component rule.
+## Design rules ("Savanna Dusk")
+Colours are tokens at the top of `static/css/site.css`. Use the tokens; never write a new hex value in a component rule. Illustration fills inside the SVGs in `templates/partials/art.html` and `area_art.html` are the one exception.
 
-- 60% canvas: sand `#F7F4EF`, white cards
-- 30% structure: twilight navy `#0A1128` for header, sticky bars, hero, footer, headings
-- 10% action: amber `#E67E22` for the main button, current step and selected state; gold `#D4AF37` as the highlight on navy only
-- Emerald `#1B4D3E` only for "Verified by the business" and "Open now"
-- Three buttons only: `btn-primary`, `btn-ghost`, `btn-navy`
+- 60% canvas: ivory `#FBF6EE`, white cards, sand `#F3E9DA` for alternate bands
+- 30% structure: kahawa (espresso) `#2A1A12` for header, sticky bars, hero, footer, headings; raised kahawa `#3A271C` for cards on dark
+- 10% action: sunset `#E2672A` with kahawa text for the main button, current step and selected state (hover goes lighter, `#EC7A40`, never darker); gold `#EDB750` as the highlight on dark only
+- Acacia `#2F6B4F` only for "Verified by the business" and "Open now"
+- Dark and light bands meet in a soft arc or wash, never a hard edge
+- Three buttons only: `btn-primary`, `btn-ghost`, `btn-dark` (`btn-navy` is its old name, kept as an alias)
 - Type: Bricolage Grotesque for headings, DM Sans for body, Caveat for the script line in heroes
-- The amber light trail along the route is the signature element. The Maasai bead strip is a small accent only.
+- The sunset light trail along the route is the signature element. The Maasai bead strip is a small accent only.
+- Illustrations are original inline SVGs (`templates/partials/art.html`, styled by `static/css/art.css`): generic and unbranded, never a real business, no prices or dates. They fill the heroes of stops without a photograph.
+- Text over a photo must keep its contrast against the brightest part of the image; the hero shade and the backing on breadcrumbs and eyebrows exist for this.
 
 ## Content rules
 - A listing with `"status": "unclaimed"` is a real business that has not joined. Show only what its own website publishes: name, type, area, street, website link, directions. No photos, prices, phone or WhatsApp. Keep `source_url` and `checked` on every entry.
@@ -42,6 +45,8 @@ Colours are tokens at the top of `static/css/site.css`. Use the tokens; never wr
 - Motion explains where you are on the route; it is not decoration.
 - Animate `transform` and `opacity` only. Nothing that is meant to be read may depend on JavaScript to become visible.
 - Everything is switched off under `prefers-reduced-motion: reduce`.
+- Nothing loops forever: illustration movements play a few times and rest; the hero photo drift stops after about a minute.
+- 3D is CSS only (pointer tilt on cards, mouse or trackpad only). No 3D library and no video files.
 - New browser features are progressive enhancement: the site must work unchanged where they are missing.
 
 ## Accounts
