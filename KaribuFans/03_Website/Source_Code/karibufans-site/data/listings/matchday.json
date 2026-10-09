@@ -18,5 +18,69 @@
     "whatsapp": "",
     "phone": "",
     "sample": false
+  },
+  {
+    "id": "heritage-bar-sportsview-hotel",
+    "status": "unclaimed",
+    "type": "Hotel bar",
+    "name": "Heritage Bar, Sportsview Hotel",
+    "area": "Kasarani",
+    "zone": "Thika Road",
+    "street": "Sportsview Hotel, ICIPE Road, off Thika Road",
+    "near": [
+      "kasarani"
+    ],
+    "near_check": "Business site lists 'Kasarani Stadium 1.2 KM' under nearby attractions (no OSM check possible from this workspace)",
+    "website": "https://www.sportsviewhotel.com/dining/",
+    "source_url": "https://www.sportsviewhotel.com/dining/",
+    "checked": "9 Oct 2026",
+    "map_query": "Sportsview Hotel Kasarani, ICIPE Road, off Thika Road, Nairobi",
+    "tags": [
+      "Live sport on screen"
+    ],
+    "photos": [],
+    "whatsapp": "",
+    "phone": "",
+    "sample": false
+  },
+  {
+    "id": "simba-saloon",
+    "status": "unclaimed",
+    "type": "Bar & restaurant",
+    "name": "Simba Saloon",
+    "area": "Lang'ata",
+    "zone": "Lang'ata",
+    "street": "Carnivore grounds, Lang'ata Road",
+    "website": "https://tamarind.co.ke/locations/simba-saloon",
+    "source_url": "https://tamarind.co.ke/locations/simba-saloon",
+    "checked": "9 Oct 2026",
+    "map_query": "Simba Saloon, Carnivore, Langata Road, Nairobi",
+    "tags": [
+      "Live sport on screen"
+    ],
+    "photos": [],
+    "whatsapp": "",
+    "phone": "",
+    "sample": false
+  },
+  {
+    "id": "kengeles-lavington-green",
+    "status": "unclaimed",
+    "type": "Bar & restaurant",
+    "name": "Kengele's Lavington Green",
+    "area": "Lavington",
+    "zone": "Kilimani",
+    "street": "Lavington Green Mall",
+    "website": "https://tamarind.co.ke/locations/kengeles",
+    "source_url": "https://tamarind.co.ke/locations/kengeles",
+    "checked": "9 Oct 2026",
+    "map_query": "Kengele's, Lavington Green Mall, Nairobi",
+    "tags": [
+      "Live sport on screen"
+    ],
+    "photos": [],
+    "whatsapp": "",
+    "phone": "",
+    "sample": false
   }
 ]

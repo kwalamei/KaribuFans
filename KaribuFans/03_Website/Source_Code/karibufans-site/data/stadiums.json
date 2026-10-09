@@ -1,0 +1,59 @@
+[
+  {
+    "id": "talanta",
+    "name": "Talanta Stadium",
+    "short": "Talanta",
+    "aka": [
+      "Talanta Sports City",
+      "Raila Odinga International Stadium",
+      "Jamhuri"
+    ],
+    "zone": "Ngong Road",
+    "street": "Jamhuri Grounds, Ngong Road",
+    "map_query": "Talanta Stadium, Ngong Road, Nairobi",
+    "lat": -1.30611,
+    "lng": 36.75028,
+    "coords_source": "Wikipedia (Talanta Sports Stadium)",
+    "source_url": "https://www.mod.go.ke/news/president-ruto-inspects-talanta-sports-city-construction-progress/",
+    "checked": "9 Oct 2026",
+    "note": "Still being completed when checked; no opening match has been announced. The government has said it will take the name Raila Odinga International Stadium when it opens."
+  },
+  {
+    "id": "kasarani",
+    "name": "Moi International Sports Centre, Kasarani",
+    "short": "Kasarani",
+    "aka": [
+      "Kasarani Stadium",
+      "MISC Kasarani",
+      "Moi International Sports Complex",
+      "Kasarani"
+    ],
+    "zone": "Thika Road",
+    "street": "Thika Road, Kasarani",
+    "map_query": "Moi International Sports Centre, Kasarani, Nairobi",
+    "lat": -1.22806,
+    "lng": 36.89056,
+    "coords_source": "Wikipedia (Moi International Sports Centre)",
+    "source_url": "https://worldathletics.org/competitions/world-athletics-u20-championships/world-athletics-u20-championships-7136587/the-venue",
+    "checked": "9 Oct 2026",
+    "note": "About 15 km from the city centre on Thika Road. The complex also has an indoor arena and an aquatic centre."
+  },
+  {
+    "id": "nyayo",
+    "name": "Nyayo National Stadium",
+    "short": "Nyayo",
+    "aka": [
+      "Nyayo Stadium",
+      "Nyayo"
+    ],
+    "zone": "CBD",
+    "street": "Lang'ata Road at Mombasa Road",
+    "map_query": "Nyayo National Stadium, Nairobi",
+    "lat": -1.30361,
+    "lng": 36.82417,
+    "coords_source": "Wikipedia (Nyayo National Stadium)",
+    "source_url": "https://www.cafonline.com/caf-african-nations-championship/news/kenya-hands-over-nyayo-stadium-to-chan-loc-as-tournament-nears/",
+    "checked": "9 Oct 2026",
+    "note": "On Lang'ata Road near the city centre, part of a sports complex with an indoor arena and an aquatic centre."
+  }
+]
