@@ -1,5 +1,7 @@
 {
   "name": "KaribuFans",
+  "site_url": "https://karibufans.vercel.app",
+  "site_url_note": "The live address, without a trailing slash. Used for link previews (WhatsApp, Facebook, X) and canonical links. Change it here when a custom domain is added.",
   "name_note": "Working name. Change it here and rebuild; every page picks it up.",
   "mode": "everyday",
   "mode_note": "everyday = Nairobi residents (default). tournament = visiting fans, switch on nearer June 2027.",

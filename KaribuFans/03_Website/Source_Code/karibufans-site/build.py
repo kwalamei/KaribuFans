@@ -107,7 +107,9 @@ def main():
         out.write_text(html, encoding="utf-8")
 
     def page(template, path, root="../", active="", **kw):
-        write(path, env.get_template(template).render(root=root, active=active, **common, **kw))
+        # The page's public address, for link previews and the canonical link: ".../stays/", not ".../stays/index.html"
+        page_url = site["site_url"].rstrip("/") + "/" + (path[:-len("index.html")] if path.endswith("index.html") else path)
+        write(path, env.get_template(template).render(root=root, active=active, page_url=page_url, **common, **kw))
 
     page("index.html", "index.html", root="./")
 
