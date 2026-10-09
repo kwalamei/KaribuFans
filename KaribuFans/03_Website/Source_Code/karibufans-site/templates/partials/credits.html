@@ -1,8 +1,18 @@
 {# Photo credits: every photograph the site shows (build.py collects them from data/photos.json), linked to its
-   page on Unsplash. Included by both privacy notices. #}
+   page on Unsplash (example photos on listing cards: on Unsplash or Pexels). Included by both privacy notices. #}
 <h2 id="credits">Photo credits</h2>
-<p>The photographs on this site come from Unsplash and are used under the Unsplash licence. We credit each photographer here and on every page's main photo. The photos are there to illustrate the city and the kind of place each stop covers; none of them was supplied by, or is meant to represent, a business listed on the site. The small drawings on listing cards and some area tiles are our own.</p>
+{% set city = photo_credits | rejectattr('kind', 'equalto', 'example') | list %}
+{% set ex = photo_credits | selectattr('kind', 'equalto', 'example') | list %}
+<p>The photographs on this site come from Unsplash and are used under the <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash licence<span class="sr-only"> (opens in a new tab)</span></a>{% if ex | selectattr('source', 'equalto', 'Pexels') | list %}, or from Pexels under the <a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels licence<span class="sr-only"> (opens in a new tab)</span></a>{% endif %}. We credit each photographer here and on every page's main photo. The photos are there to illustrate the city and the kind of place each stop covers; none of them was supplied by, or is meant to represent, a business listed on the site. The small drawings on listing cards and some area tiles are our own.</p>
 <ul class="credits">
-  {% for p in photo_credits %}<li><span>{{ p.alt }}</span> <a href="{{ p.credit_url }}" target="_blank" rel="noopener">{{ p.credit }} on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  {% for p in city %}<li><span>{{ p.alt }}</span> <a href="{{ p.credit_url }}" target="_blank" rel="noopener">{{ p.credit }} on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
   {% endfor %}
 </ul>
+{% if ex %}
+<h3 id="credits-examples">Example photos on listing cards</h3>
+<p>Some listing cards show a photo of the same kind of place (a hotel room, an apartment, a guest room, a restaurant table), marked "Example photo, not of this place". These photos were not taken at, and do not show, any business listed on the site.</p>
+<ul class="credits">
+  {% for p in ex %}<li><span>{{ p.type }}: {{ p.alt }}</span> <a href="{{ p.credit_url }}" target="_blank" rel="noopener">{{ p.credit }} on {{ p.source }}<span class="sr-only"> (opens in a new tab)</span></a></li>
+  {% endfor %}
+</ul>
+{% endif %}

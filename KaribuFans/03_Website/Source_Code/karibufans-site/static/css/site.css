@@ -309,6 +309,15 @@ html:has(.filters){scroll-padding-top:184px}
 .card-photo img,.un-art-svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .un-art-svg{transition:transform .6s var(--ease-out)}
 .card:hover .un-art-svg{transform:scale(1.04)}
+/* Example photo on an unclaimed card (trial): a stock photo of the TYPE of place, never of the place itself. The label
+   has its own ink backing (.8), so its white text keeps at least 9:1 even over the brightest white in a photo. */
+.ex-photo{position:absolute;inset:0;display:block;overflow:hidden}
+.ex-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 50%);transition:transform .6s var(--ease-out)}
+.card:hover .ex-img{transform:scale(1.04)}
+.ex-label{position:absolute;left:10px;bottom:10px;max-width:calc(100% - 20px);display:flex;flex-direction:column;gap:1px;padding:5px 10px;border-radius:var(--radius);background:rgba(var(--ink-rgb),.8);color:var(--on-dark);font:500 12px/1.3 var(--body);text-align:left}
+.ex-label b{font-weight:700}
+.ex-label span{color:var(--on-dark-soft)}
+.d-photos .ex-label{left:14px;bottom:14px;font-size:13px}
 .tag-area{position:absolute;left:12px;top:12px;font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:rgba(var(--white-rgb),.94);color:var(--text)}
 .card-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex-grow:1}
 .card-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
@@ -740,4 +749,4 @@ body.drawer-open .toast{left:auto;right:16px;bottom:auto;top:76px;transform:none
 }
 
 /* Reduced motion: no transitions, no view transitions (the rules above sit inside no-preference), no smooth scroll. */
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.drawer,.drawer.in,.drawer-veil,.drawer-veil.in,.card,.btn,.zone,.zone-art img,.un-art-svg,.stop a,.ns,.ns-img,.routebar .dot i,.nav::before,.nav-pill,.nav-links,.nav.open .nav-links,.menu-btn path,.results a{transition:none}.card:hover,.stop a:hover,.zone:hover .zone-art img,.zone:hover .un-art-svg,.card:hover .un-art-svg,.ns:hover .ns-img{transform:none}.hero-img,.routebar .trail,.routebar .trail::after{animation:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.drawer,.drawer.in,.drawer-veil,.drawer-veil.in,.card,.btn,.zone,.zone-art img,.un-art-svg,.ex-photo img,.stop a,.ns,.ns-img,.routebar .dot i,.nav::before,.nav-pill,.nav-links,.nav.open .nav-links,.menu-btn path,.results a{transition:none}.card:hover,.stop a:hover,.zone:hover .zone-art img,.zone:hover .un-art-svg,.card:hover .un-art-svg,.card:hover .ex-img,.ns:hover .ns-img{transform:none}.hero-img,.routebar .trail,.routebar .trail::after{animation:none}}

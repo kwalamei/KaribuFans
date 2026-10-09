@@ -21,6 +21,16 @@
 <img class="{{ cls }}" src="{{ root }}img/photos/{{ p.id }}-{{ ws[0] }}.webp" srcset="{{ srcset(p, root, ws) }}" sizes="{{ sizes }}" width="{{ ws[0] }}" height="{{ (ws[0] * p.rh / p.rw) | round | int }}" alt="{{ p.alt if alt else '' }}" loading="lazy" decoding="async" style="--focus:{{ p.focus or '50% 50%' }}">
 {%- endmacro %}
 
+{#- example_photo: a stock photo of a TYPE of place on an unclaimed listing card (and, cloned by js/site.js, in its
+    details drawer). Trial. The label sits on its own dark backing so it reads on the brightest part of any photo; the
+    credit is under it (the card is a button, so it cannot hold a link: the linked credit is on the privacy page). -#}
+{% macro example_photo(p, root) -%}
+<span class="ex-photo">
+  <img class="ex-img" src="{{ root }}img/photos/{{ p.id }}-{{ p.w[0] }}.webp" srcset="{{ srcset(p, root, p.w) }}" sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 360px" width="{{ p.w[0] }}" height="{{ (p.w[0] * p.rh / p.rw) | round | int }}" alt="{{ p.alt }} (example photo, not of this place)" loading="lazy" decoding="async" style="--focus:{{ p.focus or '50% 50%' }}">
+  <span class="ex-label"><b>Example photo, not of this place</b> <span>Photo: {{ p.credit }} / {{ p.source }}</span></span>
+</span>
+{%- endmacro %}
+
 {% macro credit(p) -%}
 <a class="credit" href="{{ p.credit_url }}" target="_blank" rel="noopener">Photo: {{ p.credit }} / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>
 {%- endmacro %}

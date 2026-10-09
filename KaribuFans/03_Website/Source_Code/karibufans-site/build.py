@@ -8,6 +8,7 @@ templates/ and static/. Never edit dist/ by hand: it is regenerated.
 """
 import json
 import shutil
+import zlib
 from datetime import date
 from pathlib import Path
 
@@ -39,7 +40,7 @@ def load_photos():
     and its ratio as numbers, so every <img> gets a width and height. templates/partials/photo.html does the rest."""
     f = ROOT / "data" / "photos.json"
     if not f.exists():
-        return {"photos": {}, "slots": {}, "galleries": {}}
+        return {"photos": {}, "slots": {}, "galleries": {}, "examples": {}}
     man = json.loads(f.read_text(encoding="utf-8"))
     for pid, ph in man["photos"].items():
         ph["id"] = pid
@@ -50,7 +51,32 @@ def load_photos():
         skip = GALLERY_DROP.get(page, set()) | ({man["slots"].get(page)} if page != "home" else set())
         ids = ids + [i for i in GALLERY_ADD.get(page, []) if i not in ids]
         man["galleries"][page] = [i for i in ids if i in man["photos"] and i not in skip]
+    man.setdefault("examples", {})
     return man
+
+
+def pick_examples(items, examples):
+    """Trial (owner's request): an unclaimed listing with no photos of its own may show a stock photo of its TYPE of
+    place, labelled "Example photo, not of this place" on the card. Types without examples keep the drawing.
+
+    The photo is chosen from the listing id (a stable hash, so a rebuild gives the same page), then moved on to the
+    next photo of that type until it differs from the cards one and two places before it in the grid (side by side,
+    or one above the other in two columns) and, where the type has enough photos, three and four places before it
+    (one above the other in three or four columns). Grid places count the "for businesses" card that module.html puts
+    after the 4th listing."""
+    by_pos = {}
+    for i, v in enumerate(items):
+        ids = examples.get(v.get("type"), [])
+        if v.get("status") != "unclaimed" or v.get("photos") or not ids:
+            continue
+        pos = i + (1 if i >= 4 else 0)
+        n = len(ids)
+        start = zlib.crc32(v.get("id", v["name"]).encode("utf-8")) % n
+        order = [ids[(start + j) % n] for j in range(n)]
+        near = {by_pos.get(pos - d) for d in (1, 2)}
+        above = {by_pos.get(pos - d) for d in (3, 4)}
+        k = next((x for x in order if x not in near | above), None) or next((x for x in order if x not in near), order[0])
+        v["example"] = by_pos[pos] = k
 
 
 def zone_key(z):
@@ -113,6 +139,7 @@ def main():
             v["near"] = near_ids(v, stadium_by_id)
             v["near_shorts"] = [stadium_by_id[i]["short"] for i in v["near"]]
             v["near_label"] = ("Near " + " and ".join(v["near_shorts"])) if v["near"] else ""
+        pick_examples(items, photos["examples"])
         listings[m["slug"]] = items
         m["count"] = len(items)
         m["zones"] = sorted({v["zone"] for v in items if v["zone"]}, key=zone_key)
@@ -142,6 +169,9 @@ def main():
     for pid in list(photos["slots"].values()) + [i for ids in photos["galleries"].values() for i in ids]:
         if pid in photos["photos"] and pid not in used:
             used.append(pid)
+    # Example photos on listing cards (a trial) are credited after them, in manifest order, if any card shows one.
+    shown = {v["example"] for items in listings.values() for v in items if v.get("example")}
+    used += [i for ids in photos["examples"].values() for i in ids if i in shown and i not in used]
     photo_credits = [photos["photos"][i] for i in used]
 
     # Ride destinations linked to a stadium take its coordinates from data/stadiums.json (never typed into rides.json),

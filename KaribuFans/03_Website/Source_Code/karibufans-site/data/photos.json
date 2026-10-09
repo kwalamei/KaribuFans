@@ -553,6 +553,166 @@
       ],
       "ratio": "4:5",
       "focus": "50% 40%"
+    },
+    "ex-apartment-1": {
+      "src": "pexels-artbovich-6265837.jpg",
+      "credit": "Artbovich",
+      "credit_url": "https://www.pexels.com/photo/6265837/",
+      "source": "Pexels",
+      "licence_url": "https://www.pexels.com/license/",
+      "alt": "An open-plan apartment with a white kitchen, wooden bar stools and a wood-panelled wall with a large television",
+      "kind": "example",
+      "type": "Apartment",
+      "w": [
+        400,
+        800
+      ],
+      "ratio": "2:1",
+      "focus": "40% 50%"
+    },
+    "ex-apartment-2": {
+      "src": "pexels-artbovich-6492396.jpg",
+      "credit": "Artbovich",
+      "credit_url": "https://www.pexels.com/photo/6492396/",
+      "source": "Pexels",
+      "licence_url": "https://www.pexels.com/license/",
+      "alt": "A grey velvet sofa in front of a long beige kitchen with brass pendant lights and a vase of green branches",
+      "kind": "example",
+      "type": "Apartment",
+      "w": [
+        400,
+        800
+      ],
+      "ratio": "2:1",
+      "focus": "50% 55%"
+    },
+    "ex-apartment-3": {
+      "src": "pexels-artbovich-6580381.jpg",
+      "credit": "Artbovich",
+      "credit_url": "https://www.pexels.com/photo/6580381/",
+      "source": "Pexels",
+      "licence_url": "https://www.pexels.com/license/",
+      "alt": "A studio flat with a green sofa, tall curtained windows and a small kitchen island against a dark stone wall",
+      "kind": "example",
+      "type": "Apartment",
+      "w": [
+        400,
+        800
+      ],
+      "ratio": "2:1",
+      "focus": "50% 60%"
+    },
+    "ex-apartment-4": {
+      "src": "pexels-athenea-codjambassis-rossitto-472760075-26571206.jpg",
+      "credit": "Athenea Codjambassis Rossitto",
+      "credit_url": "https://www.pexels.com/photo/26571206/",
+      "source": "Pexels",
+      "licence_url": "https://www.pexels.com/license/",
+      "alt": "A bright living room with a grey sofa, a round dining table and a compact kitchen behind it",
+      "kind": "example",
+      "type": "Apartment",
+      "w": [
+        400,
+        800
+      ],
+      "ratio": "2:1",
+      "focus": "50% 55%"
+    },
+    "ex-hotel-1": {
+      "src": "pexels-catscoming-707581.jpg",
+      "credit": "Catscoming",
+      "credit_url": "https://www.pexels.com/photo/707581/",
+      "source": "Pexels",
+      "licence_url": "https://www.pexels.com/license/",
+      "alt": "A neatly made bed with grey linen and a patterned cushion beside a wooden side table and a floor lamp",
+      "kind": "example",
+      "type": "Hotel",
+      "w": [
+        400,
+        800
+      ],
+      "ratio": "2:1",
+      "focus": "50% 60%"
+    },
+    "ex-hotel-2": {
+      "src": "pexels-claudia-schmalz-3928374-13316618.jpg",
+      "credit": "Claudia Schmalz",
+      "credit_url": "https://www.pexels.com/photo/13316618/",
+      "source": "Pexels",
+      "licence_url": "https://www.pexels.com/license/",
+      "alt": "A large bed with crisp white linen between two softly lit bedside lamps",
+      "kind": "example",
+      "type": "Hotel",
+      "w": [
+        400,
+        800
+      ],
+      "ratio": "2:1",
+      "focus": "50% 50%"
+    },
+    "ex-hotel-3": {
+      "src": "pexels-lachlan-ross-6510425.jpg",
+      "credit": "Lachlan Ross",
+      "credit_url": "https://www.pexels.com/photo/6510425/",
+      "source": "Pexels",
+      "licence_url": "https://www.pexels.com/license/",
+      "alt": "A double bed with a flowered quilt and purple pillows in a plain white room with wooden furniture",
+      "kind": "example",
+      "type": "Hotel",
+      "w": [
+        400,
+        800
+      ],
+      "ratio": "2:1",
+      "focus": "60% 50%"
+    },
+    "ex-hotel-4": {
+      "src": "pexels-natthanon-chinnasri-1807966-10660270.jpg",
+      "credit": "Natthanon Chinnasri",
+      "credit_url": "https://www.pexels.com/photo/10660270/",
+      "source": "Pexels",
+      "licence_url": "https://www.pexels.com/license/",
+      "alt": "A bed with white linen against a mustard headboard, a woven lamp above a wooden bedside table with a telephone",
+      "kind": "example",
+      "type": "Hotel",
+      "w": [
+        400,
+        800
+      ],
+      "ratio": "2:1",
+      "focus": "50% 45%"
+    },
+    "ex-guesthouse-1": {
+      "src": "pexels-enock-ojambo-1365731-33613729.jpg",
+      "credit": "Enock Ojambo",
+      "credit_url": "https://www.pexels.com/photo/33613729/",
+      "source": "Pexels",
+      "licence_url": "https://www.pexels.com/license/",
+      "alt": "A sunny guest room with two single beds in patterned orange covers, printed curtains, a mosquito net and a standing fan",
+      "kind": "example",
+      "type": "Guesthouse",
+      "w": [
+        400,
+        800
+      ],
+      "ratio": "2:1",
+      "focus": "50% 55%"
+    },
+    "ex-restaurant-1": {
+      "src": "roman-mLPNw6L5t5o-unsplash.jpg",
+      "credit": "Roman",
+      "credit_url": "https://unsplash.com/photos/mLPNw6L5t5o",
+      "source": "Unsplash",
+      "licence_url": "https://unsplash.com/license",
+      "alt": "A glowing table lamp and water glasses on a wooden table in a dimly lit dining room",
+      "kind": "example",
+      "type": "Restaurant",
+      "w": [
+        400,
+        800
+      ],
+      "ratio": "2:1",
+      "focus": "50% 55%"
     }
   },
   "slots": {
@@ -624,6 +784,26 @@
     "tickets": [
       "stadium-crowd",
       "stadium-fan"
+    ]
+  },
+  "examples": {
+    "Apartment": [
+      "ex-apartment-1",
+      "ex-apartment-2",
+      "ex-apartment-3",
+      "ex-apartment-4"
+    ],
+    "Hotel": [
+      "ex-hotel-1",
+      "ex-hotel-2",
+      "ex-hotel-3",
+      "ex-hotel-4"
+    ],
+    "Guesthouse": [
+      "ex-guesthouse-1"
+    ],
+    "Restaurant": [
+      "ex-restaurant-1"
     ]
   }
 }
