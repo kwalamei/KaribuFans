@@ -16,8 +16,10 @@
 
    After signing in the visitor is taken back into the site:
      - the account page notes the page of this site the visitor came from (kf_return: path and time, used for an hour);
-     - a first sign-in (no display name yet) stays on the account page for the name step, then goes to the first
-       stop of the route (START: Stays; the address comes from data-start on the account page);
+     - a first sign-in (no display name yet) stays on the account page for the name step ("Save and continue" or
+       "Skip for now"), then goes to the first stop of the route (START: Stays; the address comes from data-start on
+       the account page); if places saved on this device are waiting for the "Add them to your account?" question, it
+       stays on the account page for that answer first, and "Continue to the site" leads on to the first stop;
      - a returning sign-in goes straight to the remembered page (the first stop if there is none), unless places on
        this device are waiting for the "Add them to your account?" question;
      - a later visit to the account page while signed in never moves the visitor anywhere.
@@ -95,6 +97,7 @@
   START = START || HOME;
   function backTo() { return readReturn() || START; }
   var fresh = false;       // this visit to the account page is a sign-in that has just come back
+  var firstIn = false;     // ... and it is the first sign-in of this account: it goes on to the first stop
   var welcome = false;     // ... a first sign-in: the name step is showing
   var leaving = false;     // ... a returning sign-in: on the way to the remembered page
   var departed = false, onSynced = null;
@@ -111,6 +114,30 @@
   }
   // Did this visit to the account page come back from Google or an emailed link? Noted before the library can touch the address.
   var cameBack = !!acct && /(^|[#?&])(error|error_code|error_description)=/.test(location.hash + '&' + location.search);
+  // What went wrong, in one word, for the message. Only known codes are matched; the service's own text is never shown.
+  var whyBack = '';
+  if (cameBack) {
+    try {
+      var bq = new URLSearchParams(location.search), bh = new URLSearchParams(location.hash.replace(/^#/, ''));
+      var bget = function (k) { return String(bh.get(k) || bq.get(k) || ''); };
+      var bcode = bget('error_code') + ' ' + bget('error'), bdesc = bget('error_description');
+      // The code first; the description only when no code says more. A Google sign-in that lost its place
+      // (bad_oauth_state, "OAuth state not found or expired") is not an expired email link: it gets the general message.
+      if (/bad_oauth_state|bad_oauth_callback/i.test(bcode)) whyBack = '';
+      else if (/otp_expired|flow_state_expired|flow_state_not_found/i.test(bcode)) whyBack = 'expired';
+      else if (/provider_disabled|signup_disabled/i.test(bcode)) whyBack = 'off';
+      else if (/email link/i.test(bdesc) && /expired|invalid/i.test(bdesc)) whyBack = 'expired';
+      else if (/not enabled|unsupported provider|provider is disabled/i.test(bdesc)) whyBack = 'off';
+      else if (/access_denied/i.test(bcode)) whyBack = 'denied';
+    } catch (e) {}
+  }
+  function backMsg(signedIn) {   // the message for a sign-in that came back with an error
+    var tail = signedIn ? ' You are still signed in.' : ' You can try again below.';
+    if (whyBack === 'expired') return 'That sign-in link has expired or has been used already.' + (signedIn ? tail : ' You can ask for a new one below.');
+    if (whyBack === 'off') return 'That way of signing in is not switched on yet.' + (signedIn ? tail : ' Please use another one below.');
+    if (whyBack === 'denied') return 'That sign-in was cancelled or not allowed, so nothing changed.' + tail;
+    return 'That sign-in did not finish. If you used an emailed link, it may have expired or been used already.' + (signedIn ? tail : ' You can ask for a new one below.');
+  }
   var returned = !!acct && (cameBack || /(^|[#&])(access_token|refresh_token)=/.test(location.hash) || /(^|[?&])code=/.test(location.search));
 
   // One small status line fixed to the bottom of the screen, for feedback on the save toggles.
@@ -393,6 +420,32 @@
     });
     return settingsP;
   }
+  function onward() { return firstIn ? START : backTo(); }   // where "Continue to the site" leads
+  // The name step is done (saved or skipped). On to the first stop, unless places on this device are waiting for the
+  // question: then the account page stays, now showing the saved places and the question, and says why.
+  // As in settle(), a read of the account still under way is waited for first (up to 6 seconds), because places on
+  // this device may turn out to be in the account already, and then there is nothing to ask.
+  var askNote = false;     // the status line is showing "Before you go on: ..."
+  function afterWelcome(msg) {
+    var lead = msg ? msg + ' ' : '', over = false;
+    welcome = false; header();
+    var end = function () {
+      if (over) return;
+      over = true; onSynced = null;
+      if (!user || !leaving) return;
+      leaving = false;
+      if (!asking()) { depart(START, false); return; }
+      view(); askNote = true;
+      text($('acctStatus'), lead + 'Before you go on: what about the places saved on this device?');
+      var h = $('savedH'); if (h) h.focus();
+      drawSaved();
+    };
+    leaving = true;
+    if (!syncing) { end(); return; }
+    view(); text($('acctStatus'), lead + 'Checking your saved places…'); $('acctH').focus();   // the name form has gone: keep focus at the top
+    onSynced = end;
+    setTimeout(end, 6000);
+  }
   function named(u) { var m = (u && u.user_metadata) || {}; return typeof m.display_name === 'string' && !!m.display_name.trim(); }
   function asking() {      // are places on this device waiting for "Add them to your account?"
     var uid = user && user.id;
@@ -419,7 +472,7 @@
     if (first) {
       tidyAddress();
       // A sign-in has just come back to the account page: name step the first time, otherwise on into the site.
-      if (user && returned && !cameBack) { fresh = true; if (named(user)) leaving = true; else welcome = true; }
+      if (user && returned && !cameBack) { fresh = true; if (named(user)) leaving = true; else welcome = firstIn = true; }
     }
     if (user) evict(user.id);
     else { remote = ''; welcome = leaving = false; if (!hasSession()) stayed = leave(); }   // only once the sign-in is really gone from this browser
@@ -464,11 +517,11 @@
     text($('acctH'), v === 'welcome' ? 'Karibu! What should we call you?' : (v === 'in' ? 'Karibu, ' + nameOf(user) : (v === 'out' ? 'Sign in' : 'Your account')));
     if (inn) text($('acctWho'), user.email || '');
     if (v !== lastView) {
-      var msg = '';
+      var msg = ''; askNote = false;
       if (v === 'checking') msg = 'Checking your account…';
       else if (v === 'leaving') msg = asking() ? 'You are signed in. Checking your saved places…' : 'You are signed in. Taking you back to the site…';
       else if (v === 'out' && lastView === 'in' && !hasSession()) msg = 'You are signed out. The places in your account are kept there.' + (stayed ? ' ' + plural(stayed, 'place stays', 'places stay') + ' on this device.' : '');
-      else if ((v === 'out' || v === 'in') && cameBack) msg = 'That sign-in did not finish. If you used an emailed link, it may have expired or been used already.' + (v === 'out' ? ' You can ask for a new one below.' : ' You are still signed in.');
+      else if ((v === 'out' || v === 'in') && cameBack) msg = backMsg(v === 'in');
       text($('acctStatus'), msg);
       if (v === 'out' || v === 'in') cameBack = false;
       if (v === 'out') { busy($('acctGoogle'), false); busy($('acctEmailGo'), false); busy($('acctSignOut'), false); settings(); }
@@ -478,7 +531,7 @@
         text($('acctNameLabel'), w ? 'Your name' : 'Display name');
         text(nGo, w ? 'Save and continue' : 'Save name'); nGo.classList.toggle('btn-primary', w); nGo.classList.toggle('btn-ghost', !w);
         show($('acctSkipP'), w); show($('acctGoP'), !w);
-        $('acctGo').href = backTo(); $('acctSkip').href = START;
+        $('acctGo').href = onward(); $('acctSkip').href = START;
         nameMsg('Shown only to you, on this page and in the menu bar.', false);
         if (w || lastView === 'welcome' || lastView === 'leaving') $('acctH').focus();
       }
@@ -539,6 +592,7 @@
       text($('savedGoneText'), plural(gone, 'saved place is', 'saved places are') + ' no longer listed.');
       // Places on this device that are not in the account: ask once; after a "no", keep a quiet way to change that.
       show($('savedAsk'), unasked > 0); show($('savedLater'), unasked === 0 && loose > 0);
+      if (askNote && unasked === 0) { askNote = false; text($('acctStatus'), ''); }   // nothing is left to ask: drop "Before you go on" 
       text($('savedAskText'), 'You have ' + plural(loose, 'place', 'places') + ' saved on this device. Add ' + (loose === 1 ? 'it' : 'them') + ' to your account?');
       text($('savedLaterText'), plural(loose, 'place is', 'places are') + ' on this device only.');
       note();
@@ -564,7 +618,7 @@
     var google = $('acctGoogle'), eForm = $('acctEmailForm'), nForm = $('acctNameForm');
     if (google) google.addEventListener('click', function () {
       if (isBusy(google) || !connected()) return;
-      var oops = function (err) { busy(google, false); text($('acctStatus'), 'Google sign-in did not start. ' + human(err)); };
+      var oops = function (err) { busy(google, false); text($('acctStatus'), ''); text($('acctGoogleMsg'), 'Google sign-in did not start. ' + human(err)); };
       busy(google, true); text($('acctGoogleMsg'), ''); text($('acctStatus'), settingsIn ? 'Opening Google…' : 'One moment…');
       settings().then(function (s) {
         if (s && !s.google) {   // the project has not switched Google on: say so here instead of sending the visitor to an error page
@@ -582,7 +636,7 @@
       busy(google, false); busy($('acctEmailGo'), false); busy($('acctNameGo'), false);
       if (/^(Opening Google|One moment)…$/.test($('acctStatus').textContent)) text($('acctStatus'), '');
       // Back to this page after it sent the visitor on: it is now an ordinary visit, so show the profile and stay put.
-      if (e.persisted && departed) { departed = fresh = welcome = leaving = false; view(); }
+      if (e.persisted && departed) { departed = fresh = firstIn = welcome = leaving = false; view(); }
     });
     if (eForm) {
       var eBox = $('acctEmail'), eGo = $('acctEmailGo'), sentBox = $('acctSent');
@@ -621,7 +675,7 @@
           if (r && r.error) { oops(r.error); return; }
           busy(go, false);
           if (r && r.data && r.data.user && user && r.data.user.id === user.id) user = r.data.user;
-          if (welcome) { header(); nameMsg('Name saved.', false); depart(START, false); return; }   // first sign-in: on to the first stop
+          if (welcome) { afterWelcome('Name saved.'); return; }   // first sign-in: on to the first stop
           header(); view(); box.value = nameOf(user); nameMsg('Name saved.', false);
         }, oops);
       } catch (x) { oops(x); }
@@ -647,8 +701,11 @@
       try { client.auth.signOut({ scope: 'local' }).then(function (r) { finish(!(r && r.error)); }, function () { finish(false); }); } catch (e) { finish(false); }
     });
     $('acctRetry').addEventListener('click', function () { location.reload(); });
-    // First sign-in, no name for now: the link already points at the first stop; this only arranges the greeting there.
-    $('acctSkip').addEventListener('click', function () { if (welcome) { departed = true; greetNext(); } });
+    // First sign-in, no name for now: on to the first stop (the link's own address), or to the device-places question.
+    $('acctSkip').addEventListener('click', function (e) {
+      if (!welcome || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;   // a new tab or window: let the browser have it
+      e.preventDefault(); afterWelcome('');
+    });
     // "Continue to the site" straight after a sign-in (the visitor stayed to answer about device places): greet there too.
     $('acctGo').addEventListener('click', function () { if (fresh) { fresh = false; greetNext(); } });
     $('savedGroups').addEventListener('click', function (e) {
