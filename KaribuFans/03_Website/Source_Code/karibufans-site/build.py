@@ -57,20 +57,26 @@ def load_photos():
 
 def pick_examples(items, examples):
     """Trial (owner's request): an unclaimed listing with no photos of its own may show a stock photo of its TYPE of
-    place, labelled "Example photo, not of this place" on the card. The photo is chosen from the listing id (a stable
-    hash, so a rebuild gives the same page), then moved on to the next one of that type if one of the two cards
-    before it on the page already shows it, so neighbouring cards vary. Types without examples keep the drawing."""
-    recent = []
-    for v in items:
+    place, labelled "Example photo, not of this place" on the card. Types without examples keep the drawing.
+
+    The photo is chosen from the listing id (a stable hash, so a rebuild gives the same page), then moved on to the
+    next photo of that type until it differs from the cards one and two places before it in the grid (side by side,
+    or one above the other in two columns) and, where the type has enough photos, three and four places before it
+    (one above the other in three or four columns). Grid places count the "for businesses" card that module.html puts
+    after the 4th listing."""
+    by_pos = {}
+    for i, v in enumerate(items):
         ids = examples.get(v.get("type"), [])
         if v.get("status") != "unclaimed" or v.get("photos") or not ids:
             continue
+        pos = i + (1 if i >= 4 else 0)
         n = len(ids)
         start = zlib.crc32(v.get("id", v["name"]).encode("utf-8")) % n
-        avoid = recent[-min(2, n - 1):] if n > 1 else []
-        k = next((ids[(start + j) % n] for j in range(n) if ids[(start + j) % n] not in avoid), ids[start])
-        v["example"] = k
-        recent.append(k)
+        order = [ids[(start + j) % n] for j in range(n)]
+        near = {by_pos.get(pos - d) for d in (1, 2)}
+        above = {by_pos.get(pos - d) for d in (3, 4)}
+        k = next((x for x in order if x not in near | above), None) or next((x for x in order if x not in near), order[0])
+        v["example"] = by_pos[pos] = k
 
 
 def zone_key(z):
