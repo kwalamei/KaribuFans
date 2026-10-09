@@ -144,6 +144,13 @@ def main():
             used.append(pid)
     photo_credits = [photos["photos"][i] for i in used]
 
+    # Ride destinations linked to a stadium take its coordinates from data/stadiums.json (never typed into rides.json),
+    # so the Uber link can carry the drop-off point as well as its name.
+    for d in rides.get("destinations", []):
+        st = stadium_by_id.get(d.get("stadium"))
+        if st and st.get("lat") is not None and st.get("lng") is not None:
+            d["lat"], d["lng"] = st["lat"], st["lng"]
+
     common = dict(site=site, modules=modules, rides=rides, fixtures=fixtures, year=date.today().year, stadiums=guide,
                   route=route, zone_cards=zone_cards, photos=photos["photos"], slots=photos["slots"],
                   galleries=photos["galleries"], photo_credits=photo_credits)
@@ -205,14 +212,13 @@ def main():
     # Vercel serves dist/404.html for any address it cannot find, at any depth, so its links start at the site root.
     page("404.html", "404.html", root="/")
 
-    # robots.txt and sitemap.xml. The sitemap lists the public pages only: not search (noindex), the account page
+    # robots.txt and sitemap.xml (no lastmod, so a rebuild on another day gives the same file). The sitemap lists the public pages only: not search (noindex), the account page
     # or the 404 page.
     base = site["site_url"].rstrip("/")
     public = [""] + [m["slug"] + "/" for m in modules] + ["list-your-business/", "privacy/"]
-    today = date.today().isoformat()
     (DIST / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{base}/{p}</loc><lastmod>{today}</lastmod></url>\n" for p in public)
+        + "".join(f"  <url><loc>{base}/{p}</loc></url>\n" for p in public)
         + "</urlset>\n", encoding="utf-8")
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {base}/sitemap.xml\n", encoding="utf-8")
 
