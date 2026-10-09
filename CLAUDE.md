@@ -62,7 +62,7 @@ Visitors can save places (kept in the browser) and, when accounts are on, sign i
 - This workspace cannot reach Supabase or jsDelivr, so account changes are tested against a stand-in and must be confirmed by Marx on the live site before `live` is switched on.
 
 ## How the team works
-- Lead: holds this brief, splits the work, checks results, and is the only one who commits and pushes.
+- Lead: called **Kiongozi** (Swahili for "leader"; the name Marx gave the lead). Holds this brief, splits the work, checks results, and is the only one who commits and pushes.
 - Builder: changes `templates/`, `static/` and `data/`. One builder at a time per file.
 - Listings researcher: adds venues under the content rules above.
 - Reviewer: did not write the change. Rebuilds, loads every page at desktop and phone width, checks links, keyboard use and reduced motion, and checks the change against this brief.
