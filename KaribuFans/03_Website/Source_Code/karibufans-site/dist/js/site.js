@@ -318,7 +318,7 @@
       var site = $('dSite'); site.hidden = !v.website; if (v.website) site.href = v.website;
       var call = $('dCall'); call.hidden = !v.phone; if (v.phone) call.href = 'tel:' + v.phone;
       $('dMap').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(v.map_query || (v.name + ' ' + v.area + ' Nairobi'));
-      var claim = $('dClaim'); claim.hidden = !un; claim.href = S.root + 'list-your-business/?claim=' + encodeURIComponent(v.name);
+      var claim = $('dClaim'); claim.hidden = !un; claim.href = S.root + 'list-your-business/?claim=' + encodeURIComponent(v.name) + '&stop=' + encodeURIComponent(page);
       routeLinks(v);
       if (!un) message();
       // Tell the save toggle in the drawer head which place is showing; js/account.js does the rest.
@@ -409,6 +409,8 @@
       var cid = uber.getAttribute('data-client');
       if (cid) url += '&client_id=' + encodeURIComponent(cid);
       if (opt.value) url += '&dropoff[nickname]=' + encodeURIComponent(opt.getAttribute('data-name')) + '&dropoff[formatted_address]=' + encodeURIComponent(opt.value);
+      // Coordinates only where data/stadiums.json has them (build.py copies them onto the destination).
+      if (opt.value && opt.getAttribute('data-lat')) url += '&dropoff[latitude]=' + encodeURIComponent(opt.getAttribute('data-lat')) + '&dropoff[longitude]=' + encodeURIComponent(opt.getAttribute('data-lng'));
       uber.href = url;
     };
     rideTo.addEventListener('change', uberHref); uberHref();
@@ -428,12 +430,13 @@
   // WhatsApp-composed forms (list your business, claim a listing, ticket alerts). Nothing is sent to or kept by
   // KaribuFans: the button opens WhatsApp (wa.me) with the message written out, and the visitor presses send.
   // If the browser blocks the new tab, the message under the button carries the same link.
+  // The greeting uses the site name from data/site.json (data-site on the button).
   function waForm(btnId, okId, msgId, build) {
     var btn = $(btnId); if (!btn) return;
     btn.addEventListener('click', function () {
       var msg = $(msgId), wa = btn.getAttribute('data-wa');
       if (!$(okId).checked) { msg.textContent = 'Please tick the consent box first.'; return; }
-      var text = build(); if (!text) return;
+      var text = build('Hi ' + (btn.getAttribute('data-site') || 'there') + ', '); if (!text) return;
       if (!wa) { msg.textContent = 'Our WhatsApp line is being set up. Please try again soon.'; return; }
       var url = 'https://wa.me/' + wa + '?text=' + encodeURIComponent(text);
       window.open(url, '_blank', 'noopener');
@@ -444,15 +447,18 @@
   }
   var claim = params.get('claim');
   if (claim && $('jName')) { $('jName').value = claim.slice(0, 120); if ($('jNote') && !$('jNote').value) $('jNote').value = 'I want to claim (or remove) the existing listing for this business.'; }
-  waForm('joinGo', 'jOk', 'joinMsg', function () {
+  // A claim opened from a listing says which stop it is on (?stop=food); start the Type list there.
+  var fromStop = params.get('stop'), jType = $('jType');
+  if (fromStop && jType) each(jType.options, function (o) { if (o.getAttribute('data-stop') === fromStop) jType.value = o.value; });
+  waForm('joinGo', 'jOk', 'joinMsg', function (hi) {
     var name = $('jName').value.trim();
     if (!name) { $('joinMsg').textContent = 'Please add your business name.'; return ''; }
     var line = function (k, id) { var v = $(id).value.trim(); return v ? '\n' + k + ': ' + v : ''; };
-    return (claim ? 'Hi KaribuFans, I want to claim or remove the directory listing for my business.' : 'Hi KaribuFans, I would like to list my business.') +
+    return hi + (claim ? 'I want to claim or remove the directory listing for my business.' : 'I would like to list my business.') +
       '\nBusiness: ' + name + line('Type', 'jType') + line('Area', 'jArea') + line('My name', 'jContact') + line('WhatsApp', 'jPhone') + line('Notes', 'jNote');
   });
-  waForm('alertGo', 'alertOk', 'alertMsg', function () {
-    return 'Hi KaribuFans, please message me once on WhatsApp when official ticket sales open for: ' + $('alertMatch').value + '.';
+  waForm('alertGo', 'alertOk', 'alertMsg', function (hi) {
+    return hi + 'please message me once on WhatsApp when official ticket sales open for: ' + $('alertMatch').value + '.';
   });
 
   // Homepage: jump to the chosen section, carrying the chosen area

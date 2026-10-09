@@ -50,7 +50,7 @@
     <div class="tips rv-each">
       <div class="tip"><strong>Gates and entry</strong><p>Gate times change from match to match. Check your ticket or the organiser's announcement, and arrive early for big games.</p></div>
       <div class="tip"><strong>Bags and banned items</strong><p>Rules differ by event and stadium. Check the organiser's list before you go, and travel light.</p></div>
-      <div class="tip"><strong>Getting there</strong><p>Leave early: roads near a stadium get busy before and after a match. The <a href="{{ root }}rides/">Rides page</a> opens Uber with your destination filled in.</p></div>
+      <div class="tip"><strong>Getting there</strong><p>Leave early: roads near a stadium get busy before and after a match. The <a href="{{ root }}rides/">Rides page</a> opens Uber ready for your trip; check the destination before you confirm.</p></div>
       <div class="tip"><strong>Accessibility</strong><p>Ask the organiser about accessible entrances, seating and drop-off points before matchday.</p></div>
       <div class="tip"><strong>Weather</strong><p>Nairobi evenings can be cool. Bring a light jacket.</p></div>
     </div>
@@ -87,7 +87,7 @@
         <label for="alertMatch">Match</label>
         <select id="alertMatch"><option>Any match or event in Nairobi</option>{% for f in fixtures.fixtures %}<option>{{ f.home }} vs {{ f.away }}</option>{% endfor %}</select>
         <label class="check"><input type="checkbox" id="alertOk"> <span>I agree to be contacted once on WhatsApp about ticket sales.</span></label>
-        <button type="button" class="btn btn-primary" id="alertGo" data-wa="{{ site.contact_whatsapp }}">Send alert request on WhatsApp</button>
+        <button type="button" class="btn btn-primary" id="alertGo" data-wa="{{ site.contact_whatsapp }}" data-site="{{ site.name }}">Send alert request on WhatsApp</button>
         <p class="hint">This opens WhatsApp with your request written out; you press send. Nothing is stored on this site.</p>
         <p class="hint" id="alertMsg" aria-live="polite"></p>
       </form>

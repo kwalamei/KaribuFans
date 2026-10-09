@@ -107,8 +107,8 @@
     "label": "Rides",
     "script": "Twende!",
     "title": "Get there. Get back.",
-    "sub": "Choose where you are going and Uber opens with the destination filled in. For Bolt or Little, open the app and type the place. You see the fare and pay inside the app.",
-    "card_home": "Uber opens with your destination filled in; for Bolt, type it in the app.",
+    "sub": "Choose where you are going and Uber opens ready for your trip; check the destination before you confirm. For Bolt or Little, open the app and type the place. You see the fare and pay inside the app.",
+    "card_home": "Uber opens ready for your trip; for Bolt or Little, type the place in the app.",
     "cta": "Get a ride",
     "icon": "M3 13l2-5h14l2 5v5h-3v-2H6v2H3zM7 13.5h.01M17 13.5h.01",
     "keywords": [

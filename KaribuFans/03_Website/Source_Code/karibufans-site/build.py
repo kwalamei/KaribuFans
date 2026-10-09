@@ -184,7 +184,7 @@ def main():
                       "meta": m.get("card_home", ""), "text": " ".join(words)})
     index.append({"kind": "page", "href": "list-your-business/", "name": "List your business", "page_label": site["name"],
                   "meta": "Add or claim your business on " + site["name"] + ".",
-                  "text": "list your business add claim remove listing join vendor owner restaurant hotel bar"})
+                  "text": "list your business list listing add claim remove join vendor owner whatsapp contact restaurant hotel bar"})
     for s in guide:
         index.append({"kind": "stadium", "href": "matchday/#stadium-" + s["id"], "name": s["name"], "page_label": "Stadium guide",
                       "meta": "Matchday · " + (s.get("zone") or "Nairobi"),

@@ -70,7 +70,7 @@ After signing in, visitors are taken back into the site (all in `static/js/accou
 The Supabase library is not stored in this repository. The browser fetches it from jsDelivr (version pinned in `static/js/account.js`), and only on the account page or when the visitor is already signed in. Account deletion is by email request to `contact_email` for now.
 
 ## Published extras
-`build.py` also writes `robots.txt`, `sitemap.xml` (public pages, absolute addresses from `site_url`; not search or account) and `404.html` (served by Vercel for any unknown address). `vercel.json` sets security headers, a Content-Security-Policy in report-only mode (violations show in the browser console only) and cache times: 30 days for `/img/photos/`, 5 minutes for CSS and JavaScript.
+`build.py` also writes `robots.txt`, `sitemap.xml` (public pages, absolute addresses from `site_url`; not search or account) and `404.html` (served by Vercel for any unknown address). `vercel.json` sets security headers, a Content-Security-Policy in report-only mode (violations show in the browser console only) and cache times: 7 days for `/img/photos/`, 5 minutes for CSS and JavaScript.
 
 ## Deploy on Vercel (first time)
 1. Push this folder to a new GitHub repository.

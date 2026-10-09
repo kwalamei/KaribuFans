@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://karibufans.vercel.app/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://karibufans.vercel.app/stays/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://karibufans.vercel.app/food/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://karibufans.vercel.app/rides/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://karibufans.vercel.app/matchday/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://karibufans.vercel.app/nightlife/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://karibufans.vercel.app/movies-games/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://karibufans.vercel.app/tickets/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://karibufans.vercel.app/list-your-business/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://karibufans.vercel.app/privacy/</loc><lastmod>2026-10-09</lastmod></url>
+  <url><loc>https://karibufans.vercel.app/</loc></url>
+  <url><loc>https://karibufans.vercel.app/stays/</loc></url>
+  <url><loc>https://karibufans.vercel.app/food/</loc></url>
+  <url><loc>https://karibufans.vercel.app/rides/</loc></url>
+  <url><loc>https://karibufans.vercel.app/matchday/</loc></url>
+  <url><loc>https://karibufans.vercel.app/nightlife/</loc></url>
+  <url><loc>https://karibufans.vercel.app/movies-games/</loc></url>
+  <url><loc>https://karibufans.vercel.app/tickets/</loc></url>
+  <url><loc>https://karibufans.vercel.app/list-your-business/</loc></url>
+  <url><loc>https://karibufans.vercel.app/privacy/</loc></url>
 </urlset>

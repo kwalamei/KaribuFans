@@ -28,13 +28,13 @@
     </div>
     <form class="join-form" id="joinForm" onsubmit="return false" aria-label="Business sign-up">
       <label for="jName">Business name<input id="jName" required></label>
-      <label for="jType">Type of business<select id="jType">{% for m in modules if m.slug not in ['rides','tickets'] %}<option>{{ m.label }}</option>{% endfor %}</select></label>
+      <label for="jType">Type of business<select id="jType">{% for m in modules if m.slug not in ['rides','tickets'] %}<option data-stop="{{ m.slug }}">{{ m.label }}</option>{% endfor %}</select></label>
       <label for="jArea">Area<input id="jArea" placeholder="e.g. Westlands"></label>
       <label for="jContact">Your name<input id="jContact"></label>
       <label for="jPhone">WhatsApp number<input id="jPhone" inputmode="tel" placeholder="07XX XXX XXX"></label>
       <label for="jNote">Anything else?<textarea id="jNote" rows="3" placeholder="Opening hours, prices, what makes you special"></textarea></label>
       <label class="check"><input type="checkbox" id="jOk"> <span>I agree that {{ site.name }} may use these details to set up my listing, as explained in the <a href="{{ root }}privacy/">privacy notice</a>.</span></label>
-      <button type="button" class="btn btn-primary" id="joinGo" data-wa="{{ site.contact_whatsapp }}">Send on WhatsApp</button>
+      <button type="button" class="btn btn-primary" id="joinGo" data-wa="{{ site.contact_whatsapp }}" data-site="{{ site.name }}">Send on WhatsApp</button>
       <p class="hint">This opens WhatsApp with your details written out; you press send. Nothing is stored on this site.</p>
       <p class="hint" id="joinMsg" aria-live="polite"></p>
     </form>
