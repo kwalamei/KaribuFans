@@ -1,15 +1,25 @@
 {% extends "base.html" %}
 {% from "partials/macros.html" import crumbs %}
+{% from "partials/photo.html" import hero_picture, credit %}
 {% block title %}List your business · {{ site.name }}{% endblock %}
+{% set hp = photos.get(slots.get('list-your-business')) %}
+{% block body_class %}{{ 'has-hero' if hp }}{% endblock %}
 {% block main %}
-<section class="band page-plain">
+<section class="hero page-hero join-hero" aria-labelledby="joinH">
+  {% if hp %}{{ hero_picture(hp, root) }}{% endif %}
+  <div class="wrap hero-body">
+    {{ crumbs(site, root, [('List your business', '')]) }}
+    <p class="eyebrow">For Nairobi businesses</p>
+    <h1 id="joinH" class="display">List your <em>business.</em></h1>
+    <p class="lede">No listing fee. You pay a commission only on customers we send you. Customers contact you directly on WhatsApp or by phone and pay you directly.</p>
+    {% if hp %}{{ credit(hp) }}{% endif %}
+  </div>
+</section>
+<section class="band">
   <div class="wrap two-col" style="align-items:start">
     <div class="stack">
-      {{ crumbs(site, root, [('List your business', '')]) }}
-      <div class="eyebrow on-light">For Nairobi businesses</div>
-      <h1 class="h-page">List your business</h1>
-      <p class="lede-dark">No listing fee. You pay a commission only on customers we send you. Customers contact you directly on WhatsApp or by phone and pay you directly.</p>
-      <div class="tips" style="grid-template-columns:1fr">
+      <h2 class="display-3">Three steps to go live</h2>
+      <div class="tips tips-list">
         <div class="tip"><strong>1. Send your details</strong><p>Fill in the form. It opens WhatsApp with your details ready to send to us.</p></div>
         <div class="tip"><strong>2. We check and set up</strong><p>We confirm your details and ask for 3–5 photos.</p></div>
         <div class="tip"><strong>3. You go live</strong><p>Your listing appears with WhatsApp, Call and Directions buttons.</p></div>

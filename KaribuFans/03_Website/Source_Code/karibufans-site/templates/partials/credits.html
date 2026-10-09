@@ -1,0 +1,8 @@
+{# Photo credits: every photograph the site shows (build.py collects them from data/photos.json), linked to its
+   page on Unsplash. Included by both privacy notices. #}
+<h2 id="credits">Photo credits</h2>
+<p>The photographs on this site come from Unsplash and are used under the Unsplash licence. We credit each photographer here and on every page's main photo. The photos are there to illustrate the city and the kind of place each stop covers; none of them was supplied by, or is meant to represent, a business listed on the site. The small drawings on listing cards and some area tiles are our own.</p>
+<ul class="credits">
+  {% for p in photo_credits %}<li><span>{{ p.alt }}</span> <a href="{{ p.credit_url }}" target="_blank" rel="noopener">{{ p.credit }} on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  {% endfor %}
+</ul>

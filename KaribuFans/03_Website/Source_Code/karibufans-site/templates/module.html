@@ -1,31 +1,50 @@
 {% extends "base.html" %}
 {% from "partials/macros.html" import routebar, crumbs, listing_card, vendor_card %}
 {% from "partials/art.html" import module_art %}
+{% from "partials/photo.html" import hero_picture, credit, gallery, tile %}
 {% block title %}{{ m.label }} · {{ site.name }}{% endblock %}
 {% block description %}{{ m.sub }}{% endblock %}
-{% block footer_edge %}{% endblock %}
+{% set hp = photos.get(slots.get(m.slug)) %}
+{% block body_class %}{{ 'has-hero' if hp }}{% endblock %}
+{% block head %}{% if not hp %}
+<link rel="stylesheet" href="{{ root }}css/art.css">{% endif %}{% endblock %}
 {% block main %}
 {% set f = m.filters or {} %}
 {% set near_label = f.near_label or ('Near ' ~ site.tournament.stadium) %}
 {% set has_near = listings | selectattr('near_stadium') | list | length > 0 %}
 {% set vibes_used = listings | map(attribute='vibe') | select | list %}
-<section class="hero page-hero{{ '' if m.image else ' has-art' }}" aria-labelledby="pageH">
-  {% if m.image %}
-  <img class="hero-img" src="{{ root }}img/{{ m.image }}" alt="{{ m.image_alt }}" style="object-position:{{ m.image_pos }}" fetchpriority="high">
-  <span class="credit">Artist's impression</span>
+{# Night photographs are dark already, so their hero uses the lighter shade (site.css .shade-soft). #}
+{% set night = m.slug in ['rides', 'nightlife', 'movies-games'] %}
+<section class="hero page-hero{{ '' if hp else ' has-art' }}{{ ' shade-soft' if night }}" aria-labelledby="pageH">
+  {% if hp %}
+  {{ hero_picture(hp, root) }}
   {% else %}
   <div class="hero-glow" aria-hidden="true"></div>
   {% endif %}
   <div class="wrap hero-body">
     {{ crumbs(site, root, [(m.label, '')]) }}
-    {% if not m.image %}<div class="hero-art">{{ module_art(m.slug) }}</div>{% endif %}
-    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop {{ m.stop }} of {{ modules | length }} · {{ m.label }}</div>
-    <div class="script">{{ m.script }}</div>
-    <h1 id="pageH">{{ m.title }}</h1>
+    {% if not hp %}<div class="hero-art">{{ module_art(m.slug) }}</div>{% endif %}
+    <p class="eyebrow">Stop {{ m.stop }} of {{ modules | length }} · {{ m.label }}</p>
+    <p class="script">{{ m.script }}</p>
+    <h1 id="pageH" class="display">{{ m.title }}</h1>
     <p class="lede">{{ m.sub }}</p>
+    {% if hp %}{{ credit(hp) }}{% endif %}
   </div>
   {{ routebar(modules, m.stop, root) }}
 </section>
+
+{# The stop's photographs lead the page, in their own band straight after the hero and before the filters and the
+   listings, with a caption that says plainly they set the scene and are not of the places listed. Listings that have
+   not joined (unclaimed) never get photos, so no photo may sit where it could be read as one of them. #}
+{% set gal = galleries.get(m.slug) or [] %}
+{% if gal %}
+<section class="band band-paper gallery-band" aria-labelledby="galH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="galH" class="display-3">{{ m.label }} <em>in pictures</em></h2><p class="gallery-note">Around the city. These photos set the scene; they are not of the places listed on this page.</p></div>
+    {{ gallery(gal, photos, root, 'strip') }}
+  </div>
+</section>
+{% endif %}
 
 {% if listings %}
 <div class="filters" id="filters" role="group" aria-label="Filter {{ m.label }}">
@@ -58,7 +77,7 @@
 
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="listH">{{ m.list_title or (m.label ~ ' in Nairobi') }}</h2><p>{{ m.intro }}</p></div>
+    <div class="sec-head"><h2 id="listH" class="display-3">{{ m.list_title or (m.label ~ ' in Nairobi') }}</h2><p>{{ m.intro }}</p></div>
     <p class="notice-soft" id="areaNote" hidden></p>
     <p class="notice-soft"><span class="badge badge-directory">Directory listing</span> means we show only the name and location published on the business's own website. Prices and WhatsApp booking switch on when the business joins.</p>
     <div class="grid-cards rv-each" id="cards" data-page="{{ m.slug }}" data-noun="{{ m.noun or 'places' }}">
@@ -73,13 +92,15 @@
 {% include "partials/drawer.html" %}
 {% endif %}
 
+
 {% if m.slug == 'rides' %}{% include "partials/rides.html" %}{% endif %}
 {% include "partials/extras.html" %}
 
 <nav class="next-stop" aria-label="Continue the route">
   <div class="wrap">
     {% if prev_m %}<a class="ns ns-prev" href="{{ root }}{{ prev_m.slug }}/"><span>← Stop {{ prev_m.stop }}</span><strong>{{ prev_m.label }}</strong></a>{% else %}<a class="ns ns-prev" href="{{ root }}"><span>← Start</span><strong>Home</strong></a>{% endif %}
-    {% if next_m %}<a class="ns ns-next" href="{{ root }}{{ next_m.slug }}/"><span>Next stop {{ next_m.stop }} →</span><strong>{{ next_m.label }}</strong><em>{{ next_m.card_home }}</em></a>{% else %}<a class="ns ns-next" href="{{ root }}"><span>End of the route →</span><strong>Back to the start</strong></a>{% endif %}
+    {% set np = photos.get(slots.get(next_m.slug if next_m else 'home')) %}
+    {% if next_m %}<a class="ns ns-next" href="{{ root }}{{ next_m.slug }}/">{% if np %}{{ tile(np, root, '(max-width: 600px) 100vw, 66vw', 'ns-img', alt=false) }}{% endif %}<span>Next stop {{ next_m.stop }} →</span><strong>{{ next_m.label }}</strong><em>{{ next_m.card_home }}</em></a>{% else %}<a class="ns ns-next" href="{{ root }}">{% if np %}{{ tile(np, root, '(max-width: 600px) 100vw, 66vw', 'ns-img', alt=false) }}{% endif %}<span>End of the route →</span><strong>Back to the start</strong></a>{% endif %}
   </div>
 </nav>
 {% endblock %}

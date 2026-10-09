@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>List your business · KaribuFans</title>
 <meta name="description" content="KaribuFans: stays, food, rides, nightlife and matchday in Nairobi, in one city guide.">
-<meta name="theme-color" content="#2A1A12">
+<meta name="theme-color" content="#0E0E0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
-<link rel="stylesheet" href="../css/art.css">
 
 <script>
 (function(w,d){try{
 var h=d.documentElement,n=+h.getAttribute('data-stop')||0,K='kf_from',P=['.nav','.routebar .trail','.routebar .current .dot i'];
+h.classList.add('kf-js');
+function atTop(){h.classList.toggle('kf-top',(w.pageYOffset||0)<24);}atTop();w.addEventListener('scroll',atTop,{passive:true});d.addEventListener('DOMContentLoaded',atTop);
 if(!w.matchMedia||w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 h.classList.add('kf-draw');
 function parts(trim){for(var i=0,el,r;i<P.length;i++){el=d.querySelector(P[i]);if(!el)continue;
@@ -32,17 +33,19 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 }catch(x){}})(window,document);
 </script>
 </head>
-<body>
+<body class="has-hero">
 
 <a class="skip" href="#main">Skip to content</a>
+
 <header class="nav" id="nav">
-  <div class="wrap">
+  <div class="nav-in">
     <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
     <nav aria-label="Main" class="nav-links" id="navLinks">
-      <a href="../stays/" >Stays</a><a href="../food/" >Food</a><a href="../rides/" >Rides</a><a href="../matchday/" >Matchday</a><a href="../nightlife/" >Nightlife</a><a href="../movies-games/" >Movies &amp; Games</a><a href="../tickets/" >Tickets</a>
+      <span class="nav-pill" aria-hidden="true"></span>
+      <a href="../stays/" ><span class="nav-n" aria-hidden="true">01</span>Stays</a><a href="../food/" ><span class="nav-n" aria-hidden="true">02</span>Food</a><a href="../rides/" ><span class="nav-n" aria-hidden="true">03</span>Rides</a><a href="../matchday/" ><span class="nav-n" aria-hidden="true">04</span>Matchday</a><a href="../nightlife/" ><span class="nav-n" aria-hidden="true">05</span>Nightlife</a><a href="../movies-games/" ><span class="nav-n" aria-hidden="true">06</span>Movies &amp; Games</a><a href="../tickets/" ><span class="nav-n" aria-hidden="true">07</span>Tickets</a>
+      <span class="menu-extra"><a href="../search/">Search</a><a class="btn btn-primary" href="../list-your-business/">List your business</a></span>
     </nav>
     <div class="nav-tools">
       <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
@@ -51,7 +54,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
       <a class="icon-btn acct-link" id="acctLink" href="../account/" aria-label="Account" data-acct hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM4.5 20a7.5 7.5 0 0 1 15 0"/></svg><span id="acctInitial" aria-hidden="true" hidden></span></a>
       <a class="btn btn-primary nav-cta" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path class="mb-1" d="M4 8h16"/><path class="mb-2" d="M4 16h16"/></svg>
       </button>
     </div>
   </div>
@@ -59,18 +62,29 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 <main id="main">
 
-<section class="band page-plain">
-  <div class="wrap two-col" style="align-items:start">
-    <div class="stack">
-      <nav class="crumbs" aria-label="Breadcrumb"><ol>
+<section class="hero page-hero join-hero" aria-labelledby="joinH">
+  
+<picture class="hero-media">
+  <source media="(max-width: 699px)" srcset="../img/photos/plate-hands-m-600.webp 600w, ../img/photos/plate-hands-m-1000.webp 1000w" sizes="100vw" width="1000" height="1250">
+  <img class="hero-img" src="../img/photos/plate-hands-1400.webp" srcset="../img/photos/plate-hands-800.webp 800w, ../img/photos/plate-hands-1400.webp 1400w, ../img/photos/plate-hands-2200.webp 2200w" sizes="100vw" width="2200" height="1238" alt="Hands eating from a plate of ugali and a vegetable stew on a weathered wooden table" fetchpriority="high" decoding="async" style="--focus:45% 55%">
+</picture>
+  <div class="wrap hero-body">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol>
   <li><a href="../">KaribuFans</a></li>
   <li><span aria-current="page">List your business</span></li>
   <li id="crumbArea" hidden></li>
 </ol></nav>
-      <div class="eyebrow on-light">For Nairobi businesses</div>
-      <h1 class="h-page">List your business</h1>
-      <p class="lede-dark">No listing fee. You pay a commission only on customers we send you. Customers contact you directly on WhatsApp or by phone and pay you directly.</p>
-      <div class="tips" style="grid-template-columns:1fr">
+    <p class="eyebrow">For Nairobi businesses</p>
+    <h1 id="joinH" class="display">List your <em>business.</em></h1>
+    <p class="lede">No listing fee. You pay a commission only on customers we send you. Customers contact you directly on WhatsApp or by phone and pay you directly.</p>
+    <a class="credit" href="https://unsplash.com/photos/4J1WZkXde-w" target="_blank" rel="noopener">Photo: Victor Birai / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>
+  </div>
+</section>
+<section class="band">
+  <div class="wrap two-col" style="align-items:start">
+    <div class="stack">
+      <h2 class="display-3">Three steps to go live</h2>
+      <div class="tips tips-list">
         <div class="tip"><strong>1. Send your details</strong><p>Fill in the form. It opens WhatsApp with your details ready to send to us.</p></div>
         <div class="tip"><strong>2. We check and set up</strong><p>We confirm your details and ask for 3–5 photos.</p></div>
         <div class="tip"><strong>3. You go live</strong><p>Your listing appears with WhatsApp, Call and Directions buttons.</p></div>
@@ -92,25 +106,24 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 </main>
 
-
-<footer class="footer rise">
+<footer class="footer">
   <div class="wrap">
+    <p class="footer-big" aria-hidden="true">Karibu <em>Nairobi.</em></p>
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h2>Explore</h2><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li data-acct hidden><a href="../account/">Account</a></li><li><a href="../privacy/">Privacy</a></li></ul></div>
+      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li data-acct hidden><a href="../account/">Account</a></li><li><a href="../privacy/">Privacy</a></li><li><a href="../privacy/#credits">Photo credits</a></li></ul></div>
       <div id="languages"><h2>Language</h2>
         <div class="langs"><button type="button" data-lang="EN" data-name="English" data-live="1" aria-pressed="true">EN</button><button type="button" data-lang="SW" data-name="Kiswahili" data-live="" aria-pressed="false" class="soon">SW<small>soon</small></button><button type="button" data-lang="FR" data-name="French" data-live="" aria-pressed="false" class="soon">FR<small>soon</small></button><button type="button" data-lang="AR" data-name="Arabic" data-live="" aria-pressed="false" class="soon">AR<small>soon</small></button><button type="button" data-lang="PT" data-name="Portuguese" data-live="" aria-pressed="false" class="soon">PT<small>soon</small></button></div>
         <p class="lang-note" id="langNote" aria-live="polite">The site is in English. Kiswahili, French, Arabic and Portuguese follow after launch.</p>
       </div>
     </div>
-    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 KaribuFans.</p>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Photographs are by the photographers credited with each one, via Unsplash, and are for illustration only. © 2026 KaribuFans.</p>
   </div>
 </footer>
 <script src="../js/site.js" defer></script>

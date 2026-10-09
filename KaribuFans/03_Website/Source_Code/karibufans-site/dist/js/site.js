@@ -36,41 +36,92 @@
     } catch (e) { html.classList.remove('kf-reveal'); }
   }
 
-  // Tilt (CSS 3D). With a mouse or trackpad, cards, area tiles and route stops lean up to 5deg towards the pointer.
-  // One requestAnimationFrame per move, passive listeners, and a reset when the pointer leaves. The CSS only acts
-  // on .is-tilt inside the same (hover, fine pointer, no reduced motion) media query, so this is purely an extra.
-  if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !calm() && window.requestAnimationFrame) {
-    var MAX = 5;
-    each(document.querySelectorAll('.card:not(.vendor-card), .zone, .stop a'), function (el) {
-      var frame = 0, px = 0, py = 0;
-      function paint() {
-        frame = 0;
-        var r = el.getBoundingClientRect(); if (!r.width || !r.height) return;
-        var x = (px - r.left) / r.width - 0.5, y = (py - r.top) / r.height - 0.5;   // -0.5 … 0.5 from the centre
-        el.style.setProperty('--ry', (x * 2 * MAX).toFixed(2) + 'deg');
-        el.style.setProperty('--rx', (-y * 2 * MAX).toFixed(2) + 'deg');
-        el.classList.add('is-tilt');
-      }
-      el.addEventListener('pointermove', function (e) {
-        if (e.pointerType === 'touch') return;
-        px = e.clientX; py = e.clientY;
-        if (!frame) frame = requestAnimationFrame(paint);
-      }, { passive: true });
-      el.addEventListener('pointerleave', function () {
-        if (frame) { cancelAnimationFrame(frame); frame = 0; }
-        el.classList.remove('is-tilt'); el.style.removeProperty('--rx'); el.style.removeProperty('--ry');
-      }, { passive: true });
+  // Liquid nav. One glass pill sits behind the main links (wide screens only). It glides to the link under the
+  // pointer or with keyboard focus, stretching a little on the way and settling on a spring, and rests on the
+  // current page when the pointer or focus leaves (or fades out on pages that are not a stop). Only transform and
+  // opacity move: at rest the pill is sized to its link; while it travels it is drawn at its new size and a
+  // transform carries it from the old link (FLIP), so its round ends are true circles whenever it stops.
+  // With reduced motion it jumps without gliding; without this script each link has its own CSS hover.
+  var nav = $('nav'), menuBtn = $('menuBtn'), navLinks = $('navLinks');
+  var pill = navLinks && navLinks.querySelector('.nav-pill');
+  var wide = window.matchMedia ? window.matchMedia('(min-width: 1200px)') : null;
+  if (pill && wide) {
+    var links = navLinks.querySelectorAll(':scope > a'), here = navLinks.querySelector(':scope > a[aria-current="page"]');
+    var at = null, glide = null, leaveT = 0, spring = getComputedStyle(html).getPropertyValue('--spring').trim() || 'ease-out';
+    var linkBox = function (a) { return { x: a.offsetLeft, w: a.offsetWidth }; };
+    var mark = function (a) { each(links, function (l) { l.classList.toggle('is-at', l === a); }); };
+    var place = function (a) {   // put the pill on a link at once
+      var r = linkBox(a); pill.style.width = r.w + 'px'; pill.style.transform = 'translateX(' + r.x + 'px)';
+    };
+    var moveTo = function (a) {
+      clearTimeout(leaveT);
+      if (!a) { pill.classList.remove('on'); at = null; mark(null); return; }
+      if (a === at) return;
+      var from = at; at = a; mark(a);
+      if (!from || !pill.classList.contains('on') || calm() || !pill.animate) { place(a); pill.classList.add('on'); return; }
+      var f = linkBox(from), t = linkBox(a);
+      if (glide) glide.cancel();
+      place(a);
+      var dist = Math.abs(t.x - f.x), stretch = 1 + Math.min(dist / 900, 0.3);
+      var midW = Math.max(f.w, t.w) * stretch, midX = f.x + (t.x - f.x) * 0.5 - (t.x > f.x ? (midW - t.w) * 0.35 : 0);
+      glide = pill.animate([
+        { transform: 'translateX(' + f.x + 'px) scaleX(' + (f.w / t.w) + ')' },
+        { transform: 'translateX(' + midX + 'px) scaleX(' + (midW / t.w) + ')', offset: 0.4 },
+        { transform: 'translateX(' + t.x + 'px) scaleX(1)' }
+      ], { duration: 620, easing: spring });
+      glide.onfinish = function () { glide = null; };
+    };
+    var rest = function () { moveTo(here); };
+    var setUp = function () {
+      if (glide) glide.cancel();
+      at = null; mark(null); pill.classList.remove('on');
+      if (wide.matches) { html.classList.add('kf-pill'); if (here) { place(here); pill.classList.add('on'); at = here; mark(here); } }
+      else html.classList.remove('kf-pill');
+    };
+    each(links, function (a) {
+      a.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch' && wide.matches) moveTo(a); });
+      a.addEventListener('focus', function () { if (wide.matches) moveTo(a); });
     });
+    navLinks.addEventListener('pointerleave', function () { if (!wide.matches) return; clearTimeout(leaveT); leaveT = setTimeout(rest, 160); });
+    navLinks.addEventListener('focusout', function (e) { if (wide.matches && !navLinks.contains(e.relatedTarget)) rest(); });
+    if (wide.addEventListener) wide.addEventListener('change', setUp);
+    window.addEventListener('resize', function () { if (wide.matches && at) place(at); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (wide.matches && at) place(at); });
+    setUp();
   }
 
-  // Mobile menu
-  var nav = $('nav'), menuBtn = $('menuBtn');
+  // Menu (narrow screens): the links open as a full-screen layer. While it is open, the page behind it is inert
+  // (main, footer and the skip link cannot be reached or read), focus starts on the first menu link and Tab cycles
+  // within the header (logo, menu links, search, language, close button). Escape or the button closes it and focus
+  // returns to the button. A same-page link (for example the language button) closes it too.
   if (nav && menuBtn) {
-    menuBtn.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
+    var behind = function () { return document.querySelectorAll('body > main, body > footer, body > .skip'); };
+    var inMenu = function () {
+      return Array.prototype.filter.call(nav.querySelectorAll('a[href], button:not([disabled])'), function (el) {
+        return !el.hidden && !el.closest('[hidden]') && (el.checkVisibility ? el.checkVisibility({ visibilityProperty: true }) : el.offsetParent !== null);
+      });
+    };
+    var isOpen = function () { return nav.classList.contains('open'); };
+    var setMenu = function (open, refocus) {
+      nav.classList.toggle('open', open); html.classList.toggle('menu-open', open);
       menuBtn.setAttribute('aria-expanded', String(open));
       menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      each(behind(), function (el) { el.inert = open; });
+      if (open) { var first = navLinks && navLinks.querySelector(':scope > a'); if (first) first.focus(); }
+      else if (refocus) menuBtn.focus();
+    };
+    menuBtn.addEventListener('click', function () { setMenu(!isOpen(), true); });
+    document.addEventListener('keydown', function (e) {
+      if (!isOpen()) return;
+      if (e.key === 'Escape') { setMenu(false, true); return; }
+      if (e.key !== 'Tab') return;
+      var f = inMenu(); if (!f.length) return;
+      var i = f.indexOf(document.activeElement);
+      if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && (i === -1 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); }
     });
+    if (wide && wide.addEventListener) wide.addEventListener('change', function () { if (wide.matches && isOpen()) setMenu(false); });
+    nav.addEventListener('click', function (e) { var a = e.target.closest('a'); if (isOpen() && a && a.hash && a.pathname === location.pathname) setMenu(false); });
   }
 
   // Languages. Only languages marked live in data/site.json switch; the rest say when they arrive.
@@ -86,7 +137,7 @@
   // It lives in the address (?area=) and in the browser, so it survives a click on any menu link.
   var area = params.has('area') ? params.get('area') : (store.get('area') || '');
   function carryArea() {
-    each(document.querySelectorAll('.nav-links a, .routebar a, .next-stop a, .stop a'), function (a) {
+    each(document.querySelectorAll('.nav-links > a, .routebar a, .next-stop a, .stop a'), function (a) {
       var u = new URL(a.href, location.href);
       if (u.origin !== location.origin || /\/(rides|tickets)\/?$/.test(u.pathname) || u.pathname === new URL(document.querySelector('.brand').href).pathname) return;
       if (area) u.searchParams.set('area', area); else u.searchParams.delete('area');

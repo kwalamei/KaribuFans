@@ -1,0 +1,629 @@
+{
+  "photos": {
+    "home-skyline": {
+      "src": "amani-nation-LTh5pGyvKAM-unsplash.jpg",
+      "credit": "Amani Nation",
+      "credit_url": "https://unsplash.com/photos/LTh5pGyvKAM",
+      "alt": "Nairobi skyline at golden hour, tall towers rising above a band of green trees",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2200
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        1000
+      ],
+      "m_ratio": "4:5",
+      "focus": "50% 55%"
+    },
+    "kicc-rooftops": {
+      "src": "joecalih-1Uwcoo-ttjY-unsplash.jpg",
+      "credit": "Joecalih",
+      "credit_url": "https://unsplash.com/photos/1Uwcoo-ttjY",
+      "alt": "A striped, twin-towered office building with a tall red mast above the rooftops of a sprawling city",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2200
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        1000
+      ],
+      "m_ratio": "4:5",
+      "focus": "55% 60%"
+    },
+    "sunset-rooftops": {
+      "src": "stephen-berenju-UtH04tBFzTo-unsplash.jpg",
+      "credit": "Stephen Berenju",
+      "credit_url": "https://unsplash.com/photos/UtH04tBFzTo",
+      "alt": "An orange sun setting over the silhouetted rooftops and trees of a city suburb",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2200
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        1000
+      ],
+      "m_ratio": "4:5",
+      "focus": "50% 55%"
+    },
+    "shared-table": {
+      "src": "stefan-vladimirov-Q_Moi2xjieU-unsplash.jpg",
+      "credit": "Stefan Vladimirov",
+      "credit_url": "https://unsplash.com/photos/Q_Moi2xjieU",
+      "alt": "Overhead view of a wooden table set with plates of roast meat, potatoes, salads and bread shared by friends",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2200
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        1000
+      ],
+      "m_ratio": "4:5",
+      "focus": "60% 50%"
+    },
+    "light-trails": {
+      "src": "richard-horne-AwkDru_0tQw-unsplash.jpg",
+      "credit": "Richard Horne",
+      "credit_url": "https://unsplash.com/photos/AwkDru_0tQw",
+      "alt": "Long-exposure light trails of traffic curving along a highway towards a city at night",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2200
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        1000
+      ],
+      "m_ratio": "4:5",
+      "focus": "55% 60%"
+    },
+    "fans-flags": {
+      "src": "justin-lagat-7e16OcueiNs-unsplash.jpg",
+      "credit": "Justin Lagat",
+      "credit_url": "https://unsplash.com/photos/7e16OcueiNs",
+      "alt": "Cheering football fans in a stand waving Kenyan flags, one wearing a God Bless Kenya sash",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2200
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        1000
+      ],
+      "m_ratio": "4:5",
+      "focus": "65% 40%"
+    },
+    "kicc-night": {
+      "src": "mustafa-omar-Zkao_QBEjk8-unsplash.jpg",
+      "credit": "Mustafa Omar",
+      "credit_url": "https://unsplash.com/photos/Zkao_QBEjk8",
+      "alt": "The KICC tower lit purple at night behind palm trees, reflected in a still lake in central Nairobi",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2200
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        1000
+      ],
+      "m_ratio": "4:5",
+      "focus": "56% 45%"
+    },
+    "cinema-seats": {
+      "src": "felix-mooneeram-evlkOfkQ5rE-unsplash.jpg",
+      "credit": "Felix Mooneeram",
+      "credit_url": "https://unsplash.com/photos/evlkOfkQ5rE",
+      "alt": "Rows of empty red cinema seats either side of softly lit steps in a dark auditorium",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2200
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        1000
+      ],
+      "m_ratio": "4:5",
+      "focus": "50% 70%"
+    },
+    "stadium-fan": {
+      "src": "salim-jEOqeVcnCE4-unsplash.jpg",
+      "credit": "Salim",
+      "credit_url": "https://unsplash.com/photos/jEOqeVcnCE4",
+      "alt": "A fan silhouetted against a packed, smoky stadium stand, arm raised high",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2200
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        1000
+      ],
+      "m_ratio": "4:5",
+      "focus": "50% 50%"
+    },
+    "plate-hands": {
+      "src": "victor-birai-4J1WZkXde-w-unsplash.jpg",
+      "credit": "Victor Birai",
+      "credit_url": "https://unsplash.com/photos/4J1WZkXde-w",
+      "alt": "Hands eating from a plate of ugali and a vegetable stew on a weathered wooden table",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2200
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        1000
+      ],
+      "m_ratio": "4:5",
+      "focus": "45% 55%"
+    },
+    "kicc-tower": {
+      "src": "stanley-g-mathu-oZGaBqNCm5w-unsplash.jpg",
+      "credit": "Stanley G Mathu",
+      "credit_url": "https://unsplash.com/photos/oZGaBqNCm5w",
+      "alt": "The KICC tower in Nairobi at dusk, its windows lit, framed by trees",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "40% 35%"
+    },
+    "giraffe-skyline": {
+      "src": "grace-nandi-7XA8SJ5ODq4-unsplash.jpg",
+      "credit": "Grace Nandi",
+      "credit_url": "https://unsplash.com/photos/7XA8SJ5ODq4",
+      "alt": "A giraffe in Nairobi National Park with the city skyline on the horizon",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "70% 55%"
+    },
+    "skyline-towers": {
+      "src": "reggie-b-aUKfubmaU4o-unsplash.jpg",
+      "credit": "Reggie B",
+      "credit_url": "https://unsplash.com/photos/aUKfubmaU4o",
+      "alt": "City towers glowing at golden hour above a dark line of trees",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "50% 50%"
+    },
+    "cbd-aerial": {
+      "src": "joecalih-dGUXKJZGDSg-unsplash.jpg",
+      "credit": "Joecalih",
+      "credit_url": "https://unsplash.com/photos/dGUXKJZGDSg",
+      "alt": "Looking down on tightly packed office towers and a street in a city centre",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "1:1",
+      "focus": "50% 50%"
+    },
+    "jacaranda-street": {
+      "src": "justine-Ls2Pxm_3jLI-unsplash.jpg",
+      "credit": "Justine",
+      "credit_url": "https://unsplash.com/photos/Ls2Pxm_3jLI",
+      "alt": "A purple jacaranda in bloom in front of a round, honeycomb-windowed office tower at dusk",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "50% 40%"
+    },
+    "suburb-sunset": {
+      "src": "michael-muli-fmux-h7xg8I-unsplash.jpg",
+      "credit": "Michael Muli",
+      "credit_url": "https://unsplash.com/photos/fmux-h7xg8I",
+      "alt": "Apartment blocks among dense green trees as the sun sets in a hazy sky",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "60% 60%"
+    },
+    "acacia-avenue": {
+      "src": "abhijeet-parmar-dcGNHL8lUdA-unsplash.jpg",
+      "credit": "Abhijeet Parmar",
+      "credit_url": "https://unsplash.com/photos/dcGNHL8lUdA",
+      "alt": "A row of yellow-barked acacia trees along a quiet road under a clear blue sky",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "55% 50%"
+    },
+    "sunset-apartments": {
+      "src": "joseph-ndungu-JXAj1vKla_E-unsplash.jpg",
+      "credit": "Joseph Ndungu",
+      "credit_url": "https://unsplash.com/photos/JXAj1vKla_E",
+      "alt": "The sun setting between apartment buildings against an orange sky",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "50% 50%"
+    },
+    "cbd-minarets": {
+      "src": "dwayne-joe-zbuqEEHJSks-unsplash.jpg",
+      "credit": "Dwayne Joe",
+      "credit_url": "https://unsplash.com/photos/zbuqEEHJSks",
+      "alt": "A white minaret with a green dome in front of a dark glass tower and older office blocks",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "60% 60%"
+    },
+    "football-pitch": {
+      "src": "maingi-mutiso-TqQGHKQtCGs-unsplash.jpg",
+      "credit": "Maingi Mutiso",
+      "credit_url": "https://unsplash.com/photos/TqQGHKQtCGs",
+      "alt": "Players on a grass football pitch in front of new apartment towers",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "16:9",
+      "focus": "50% 70%"
+    },
+    "shared-platter": {
+      "src": "amaan-abid-UbPIijt8A8A-unsplash.jpg",
+      "credit": "Amaan Abid",
+      "credit_url": "https://unsplash.com/photos/UbPIijt8A8A",
+      "alt": "Hands reaching for a large platter of rice and grilled meat on the grass",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "40% 45%"
+    },
+    "skewers-table": {
+      "src": "febrian-zakaria-yLUv5e18CI0-unsplash.jpg",
+      "credit": "Febrian Zakaria",
+      "credit_url": "https://unsplash.com/photos/yLUv5e18CI0",
+      "alt": "Overhead view of a round table with skewers, grilled chicken, rice and colourful drinks",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "50% 50%"
+    },
+    "clay-dishes": {
+      "src": "louis-hansel-W7x1gJtFZwM-unsplash.jpg",
+      "credit": "Louis Hansel",
+      "credit_url": "https://unsplash.com/photos/W7x1gJtFZwM",
+      "alt": "Clay dishes of rice with lamb, a salad and a stew on a wooden board",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "45% 50%"
+    },
+    "roast-spread": {
+      "src": "rumman-amin-LNn6O_Mt730-unsplash.jpg",
+      "credit": "Rumman Amin",
+      "credit_url": "https://unsplash.com/photos/LNn6O_Mt730",
+      "alt": "A roast with rosemary on a board, surrounded by roast chicken, potatoes and vegetables",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "55% 50%"
+    },
+    "ribs-fries": {
+      "src": "thato-bole-0ZTbjBscf8s-unsplash.jpg",
+      "credit": "Thato Bole",
+      "credit_url": "https://unsplash.com/photos/0ZTbjBscf8s",
+      "alt": "Glazed ribs and fries on a wooden board shared between friends outdoors",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "50% 60%"
+    },
+    "pour-over": {
+      "src": "adi-nugroho-ODhgIpUVrls-unsplash.jpg",
+      "credit": "Adi Nugroho",
+      "credit_url": "https://unsplash.com/photos/ODhgIpUVrls",
+      "alt": "Pour-over coffee dripping into a glass jug on a scale beside a barista in a leather apron",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "40% 45%"
+    },
+    "night-street": {
+      "src": "nikolay-dukov-0nxkbdUtZnY-unsplash.jpg",
+      "credit": "Nikolay Dukov",
+      "credit_url": "https://unsplash.com/photos/0nxkbdUtZnY",
+      "alt": "Cars with headlights on a wet tree-lined street at night under orange street lamps",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "40% 60%"
+    },
+    "avenue-traffic": {
+      "src": "ron-john-NMAAZa0guJ4-unsplash.jpg",
+      "credit": "Ron John",
+      "credit_url": "https://unsplash.com/photos/NMAAZa0guJ4",
+      "alt": "Curved balconies, a red-brick apartment block, a glass tower and an ochre dome on an overcast day",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "50% 50%"
+    },
+    "safari-gazelles": {
+      "src": "ron-john-GpqMG6wYdPQ-unsplash.jpg",
+      "credit": "Ron John",
+      "credit_url": "https://unsplash.com/photos/GpqMG6wYdPQ",
+      "alt": "Gazelles grazing on open grassland beside a safari vehicle",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "30% 80%"
+    },
+    "stadium-arms": {
+      "src": "offtoseetheworld-QOUxCvbuci0-unsplash.jpg",
+      "credit": "Offtoseetheworld",
+      "credit_url": "https://unsplash.com/photos/QOUxCvbuci0",
+      "alt": "Fans' raised arms in the foreground as players in red and black move across a football pitch",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "50% 40%"
+    },
+    "stadium-crowd": {
+      "src": "selma-da-silva-YI6yXtYj13g-unsplash.jpg",
+      "credit": "Selma Da Silva",
+      "credit_url": "https://unsplash.com/photos/YI6yXtYj13g",
+      "alt": "A packed stadium stand of fans clapping and cheering",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "50% 50%"
+    },
+    "track-sprint": {
+      "src": "justin-lagat-3bwHCvM2rbE-unsplash.jpg",
+      "credit": "Justin Lagat",
+      "credit_url": "https://unsplash.com/photos/3bwHCvM2rbE",
+      "alt": "A sprinter's legs and pink spikes driving round the bend of a red running track",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "50% 50%"
+    },
+    "flag-dancers": {
+      "src": "justin-lagat-JTpy794orEM-unsplash.jpg",
+      "credit": "Justin Lagat",
+      "credit_url": "https://unsplash.com/photos/JTpy794orEM",
+      "alt": "Dancers in headdresses and skirts in the colours of the Kenyan flag, holding spears",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "50% 50%"
+    },
+    "neon-rooftop": {
+      "src": "aleksandr-popov-poCJoKaymlU-unsplash.jpg",
+      "credit": "Aleksandr Popov",
+      "credit_url": "https://unsplash.com/photos/poCJoKaymlU",
+      "alt": "Silhouettes of people in a bar lit by red neon, city lights behind the windows",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "50% 40%"
+    },
+    "bar-sunset": {
+      "src": "adam-bignell-2lrAn7dY7kI-unsplash.jpg",
+      "credit": "Adam Bignell",
+      "credit_url": "https://unsplash.com/photos/2lrAn7dY7kI",
+      "alt": "Silhouetted bottles along a bar in front of tall windows and a sunset sky",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "50% 60%"
+    },
+    "singer-stage": {
+      "src": "dwayne-joe-Cs2aZkwXM4U-unsplash.jpg",
+      "credit": "Dwayne Joe",
+      "credit_url": "https://unsplash.com/photos/Cs2aZkwXM4U",
+      "alt": "A singer in a wide hat and patterned top performing at a microphone against a gold curtain",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "60% 45%"
+    },
+    "window-dining": {
+      "src": "polina-kuzovkova-40N4F93__Sk-unsplash.jpg",
+      "credit": "Polina Kuzovkova",
+      "credit_url": "https://unsplash.com/photos/40N4F93__Sk",
+      "alt": "Two diners silhouetted at a window table high above a hazy city",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "50% 50%"
+    },
+    "cinema-glow": {
+      "src": "umanoide-4KCwp7ZveWc-unsplash.jpg",
+      "credit": "Umanoide",
+      "credit_url": "https://unsplash.com/photos/4KCwp7ZveWc",
+      "alt": "Red cinema seats and small aisle lights glowing in a dark auditorium",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "4:5",
+      "focus": "50% 40%"
+    }
+  },
+  "slots": {
+    "home": "home-skyline",
+    "route": "kicc-rooftops",
+    "stays": "sunset-rooftops",
+    "food": "shared-table",
+    "rides": "light-trails",
+    "matchday": "fans-flags",
+    "nightlife": "kicc-night",
+    "movies-games": "cinema-seats",
+    "tickets": "stadium-fan",
+    "list-your-business": "plate-hands",
+    "share": "home-skyline",
+    "area:CBD": "kicc-tower",
+    "area:Lang'ata": "giraffe-skyline"
+  },
+  "galleries": {
+    "home": [
+      "giraffe-skyline",
+      "skyline-towers",
+      "cbd-aerial",
+      "kicc-tower",
+      "jacaranda-street",
+      "suburb-sunset",
+      "acacia-avenue",
+      "cbd-minarets",
+      "sunset-apartments",
+      "football-pitch"
+    ],
+    "stays": [
+      "suburb-sunset",
+      "sunset-apartments",
+      "sunset-rooftops",
+      "acacia-avenue"
+    ],
+    "food": [
+      "shared-platter",
+      "skewers-table",
+      "clay-dishes",
+      "roast-spread",
+      "ribs-fries",
+      "plate-hands",
+      "pour-over"
+    ],
+    "rides": [
+      "night-street",
+      "avenue-traffic",
+      "jacaranda-street",
+      "safari-gazelles"
+    ],
+    "matchday": [
+      "stadium-arms",
+      "stadium-crowd",
+      "track-sprint",
+      "flag-dancers",
+      "football-pitch"
+    ],
+    "nightlife": [
+      "neon-rooftop",
+      "bar-sunset",
+      "singer-stage",
+      "window-dining"
+    ],
+    "movies-games": [
+      "cinema-glow",
+      "cinema-seats"
+    ],
+    "tickets": [
+      "stadium-crowd",
+      "stadium-fan"
+    ]
+  }
+}

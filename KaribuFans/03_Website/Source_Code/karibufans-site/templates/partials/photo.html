@@ -1,0 +1,55 @@
+{#- Photographs from data/photos.json (made by tools/photos.py). Every file is a WebP in img/photos/.
+    hero_picture: full-bleed hero. A 4:5 phone crop under 700px, the landscape crop above; the hero is the one image
+                  that loads at once (fetchpriority high), every other photo is lazy.
+    tile:         one photo in a gallery or tile, lazy, with its own width/height so nothing shifts while it loads.
+    credit:       the small linked "Photo: Name / Unsplash" chip that sits on a hero. -#}
+
+{% macro srcset(p, root, widths, m='') -%}
+{% for w in widths %}{{ root }}img/photos/{{ p.id }}-{{ m }}{{ w }}.webp {{ w }}w{{ ', ' if not loop.last }}{% endfor %}
+{%- endmacro %}
+
+{% macro hero_picture(p, root, cls='hero-img') -%}
+{% set big = p.w[-1] %}
+<picture class="hero-media">
+  {% if p.m %}<source media="(max-width: 699px)" srcset="{{ srcset(p, root, p.m, 'm-') }}" sizes="100vw" width="{{ p.m[-1] }}" height="{{ (p.m[-1] * p.mh / p.mw) | round | int }}">{% endif %}
+  <img class="{{ cls }}" src="{{ root }}img/photos/{{ p.id }}-{{ p.w[1] if p.w | length > 1 else p.w[0] }}.webp" srcset="{{ srcset(p, root, p.w) }}" sizes="100vw" width="{{ big }}" height="{{ (big * p.rh / p.rw) | round | int }}" alt="{{ p.alt }}" fetchpriority="high" decoding="async" style="--focus:{{ p.focus or '50% 50%' }}">
+</picture>
+{%- endmacro %}
+
+{% macro tile(p, root, sizes='(max-width: 700px) 100vw, 50vw', cls='', alt=true) -%}
+{% set ws = p.w | select('le', 1400) | list %}
+<img class="{{ cls }}" src="{{ root }}img/photos/{{ p.id }}-{{ ws[0] }}.webp" srcset="{{ srcset(p, root, ws) }}" sizes="{{ sizes }}" width="{{ ws[0] }}" height="{{ (ws[0] * p.rh / p.rw) | round | int }}" alt="{{ p.alt if alt else '' }}" loading="lazy" decoding="async" style="--focus:{{ p.focus or '50% 50%' }}">
+{%- endmacro %}
+
+{% macro credit(p) -%}
+<a class="credit" href="{{ p.credit_url }}" target="_blank" rel="noopener">Photo: {{ p.credit }} / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>
+{%- endmacro %}
+
+{#- An editorial gallery. kind "mosaic" is the homepage pattern; "strip" adapts to how many photos a stop has.
+    Up to 900px wide it is two columns: g-full marks a photo that spans both (the mosaic's 1st, 6th, 11th..., a strip's
+    first, and any photo that would otherwise sit alone at the end), so no cell is left empty. Each photo's sizes
+    attribute follows the width its cell really has at each breakpoint (see the spans in site.css, Galleries), so the
+    browser never upscales a small file. Container: at most 1360px, minus the side gutters. -#}
+{% macro gallery(ids, photos, root, kind='strip') -%}
+{% set n = ids | length %}
+<ul class="{{ kind }} {{ kind }}-{{ n }} rv-each" role="list">
+  {% for pid in ids %}{% set p = photos[pid] %}{% set i = loop.index %}
+  {% if kind == 'mosaic' %}
+    {% set k = (i - 1) % 5 %}
+    {% set full = k == 0 or (i == n and k % 2 == 1) %}
+    {% set big = i in [1, 8, 9] %}
+    {% set desk = 'min(64vw, 880px)' if big else 'min(32vw, 440px)' %}
+  {% else %}
+    {% set full = i == 1 or (i == n and (n - 1) % 2 == 1) %}
+    {% if n == 1 %}{% set desk = 'min(80vw, 1140px)' %}
+    {% elif n == 2 %}{% set desk = 'min(56vw, 790px)' if i == 1 else 'min(40vw, 560px)' %}
+    {% elif i == 1 or (n == 3) or (n == 4 and i == 4) or (n == 7 and i >= 6) %}{% set desk = 'min(48vw, 680px)' %}
+    {% else %}{% set desk = 'min(24vw, 340px)' %}{% endif %}
+  {% endif %}
+  <li{% if full %} class="g-full"{% endif %}><figure class="ph">
+    {{ tile(p, root, '(max-width: 900px) ' ~ ('100vw' if full else '50vw') ~ ', ' ~ desk) }}
+    <figcaption><a href="{{ p.credit_url }}" target="_blank" rel="noopener">{{ p.credit }}<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  {% endfor %}
+</ul>
+{%- endmacro %}

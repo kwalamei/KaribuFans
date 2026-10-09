@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Matchday · KaribuFans</title>
 <meta name="description" content="Places to watch the game in Nairobi, and the stadium guide for 2027 as official details are published.">
-<meta name="theme-color" content="#2A1A12">
+<meta name="theme-color" content="#0E0E0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
-<link rel="stylesheet" href="../css/art.css">
 
 <script>
 (function(w,d){try{
 var h=d.documentElement,n=+h.getAttribute('data-stop')||0,K='kf_from',P=['.nav','.routebar .trail','.routebar .current .dot i'];
+h.classList.add('kf-js');
+function atTop(){h.classList.toggle('kf-top',(w.pageYOffset||0)<24);}atTop();w.addEventListener('scroll',atTop,{passive:true});d.addEventListener('DOMContentLoaded',atTop);
 if(!w.matchMedia||w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 h.classList.add('kf-draw');
 function parts(trim){for(var i=0,el,r;i<P.length;i++){el=d.querySelector(P[i]);if(!el)continue;
@@ -32,17 +33,19 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 }catch(x){}})(window,document);
 </script>
 </head>
-<body>
+<body class="has-hero">
 
 <a class="skip" href="#main">Skip to content</a>
+
 <header class="nav" id="nav">
-  <div class="wrap">
+  <div class="nav-in">
     <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
     <nav aria-label="Main" class="nav-links" id="navLinks">
-      <a href="../stays/" >Stays</a><a href="../food/" >Food</a><a href="../rides/" >Rides</a><a href="../matchday/" aria-current="page">Matchday</a><a href="../nightlife/" >Nightlife</a><a href="../movies-games/" >Movies &amp; Games</a><a href="../tickets/" >Tickets</a>
+      <span class="nav-pill" aria-hidden="true"></span>
+      <a href="../stays/" ><span class="nav-n" aria-hidden="true">01</span>Stays</a><a href="../food/" ><span class="nav-n" aria-hidden="true">02</span>Food</a><a href="../rides/" ><span class="nav-n" aria-hidden="true">03</span>Rides</a><a href="../matchday/" aria-current="page"><span class="nav-n" aria-hidden="true">04</span>Matchday</a><a href="../nightlife/" ><span class="nav-n" aria-hidden="true">05</span>Nightlife</a><a href="../movies-games/" ><span class="nav-n" aria-hidden="true">06</span>Movies &amp; Games</a><a href="../tickets/" ><span class="nav-n" aria-hidden="true">07</span>Tickets</a>
+      <span class="menu-extra"><a href="../search/">Search</a><a class="btn btn-primary" href="../list-your-business/">List your business</a></span>
     </nav>
     <div class="nav-tools">
       <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
@@ -51,7 +54,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
       <a class="icon-btn acct-link" id="acctLink" href="../account/" aria-label="Account" data-acct hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM4.5 20a7.5 7.5 0 0 1 15 0"/></svg><span id="acctInitial" aria-hidden="true" hidden></span></a>
       <a class="btn btn-primary nav-cta" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path class="mb-1" d="M4 8h16"/><path class="mb-2" d="M4 16h16"/></svg>
       </button>
     </div>
   </div>
@@ -63,10 +66,15 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 
 
+
+
 <section class="hero page-hero" aria-labelledby="pageH">
   
-  <img class="hero-img" src="../img/dusk-expressway.webp" alt="Dusk view of the expressway with light trails leading to a floodlit stadium" style="object-position:70% 50%" fetchpriority="high">
-  <span class="credit">Artist's impression</span>
+  
+<picture class="hero-media">
+  <source media="(max-width: 699px)" srcset="../img/photos/fans-flags-m-600.webp 600w, ../img/photos/fans-flags-m-1000.webp 1000w" sizes="100vw" width="1000" height="1250">
+  <img class="hero-img" src="../img/photos/fans-flags-1400.webp" srcset="../img/photos/fans-flags-800.webp 800w, ../img/photos/fans-flags-1400.webp 1400w, ../img/photos/fans-flags-2200.webp 2200w" sizes="100vw" width="2200" height="1238" alt="Cheering football fans in a stand waving Kenyan flags, one wearing a God Bless Kenya sash" fetchpriority="high" decoding="async" style="--focus:65% 40%">
+</picture>
   
   <div class="wrap hero-body">
     <nav class="crumbs" aria-label="Breadcrumb"><ol>
@@ -75,10 +83,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <li id="crumbArea" hidden></li>
 </ol></nav>
     
-    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 4 of 7 · Matchday</div>
-    <div class="script">Siku ya mechi.</div>
-    <h1 id="pageH">Matchday in Nairobi.</h1>
+    <p class="eyebrow">Stop 4 of 7 · Matchday</p>
+    <p class="script">Siku ya mechi.</p>
+    <h1 id="pageH" class="display">Matchday in Nairobi.</h1>
     <p class="lede">Places to watch the game in Nairobi, and the stadium guide for 2027 as official details are published.</p>
+    <a class="credit" href="https://unsplash.com/photos/7e16OcueiNs" target="_blank" rel="noopener">Photo: Justin Lagat / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>
   </div>
   <nav class="routebar" aria-label="The route: seven stops">
   <div class="wrap"><div class="routebar-in">
@@ -119,6 +128,71 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 </section>
 
 
+
+
+<section class="band band-paper gallery-band" aria-labelledby="galH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="galH" class="display-3">Matchday <em>in pictures</em></h2><p class="gallery-note">Around the city. These photos set the scene; they are not of the places listed on this page.</p></div>
+    
+<ul class="strip strip-5 rv-each" role="list">
+  
+  
+    
+    
+    
+  
+  <li class="g-full"><figure class="ph">
+    
+<img class="" src="../img/photos/stadium-arms-600.webp" srcset="../img/photos/stadium-arms-600.webp 600w, ../img/photos/stadium-arms-1200.webp 1200w" sizes="(max-width: 900px) 100vw, min(48vw, 680px)" width="600" height="400" alt="Fans&#39; raised arms in the foreground as players in red and black move across a football pitch" loading="lazy" decoding="async" style="--focus:50% 40%">
+    <figcaption><a href="https://unsplash.com/photos/QOUxCvbuci0" target="_blank" rel="noopener">Offtoseetheworld<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="../img/photos/stadium-crowd-600.webp" srcset="../img/photos/stadium-crowd-600.webp 600w, ../img/photos/stadium-crowd-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(24vw, 340px)" width="600" height="750" alt="A packed stadium stand of fans clapping and cheering" loading="lazy" decoding="async" style="--focus:50% 50%">
+    <figcaption><a href="https://unsplash.com/photos/YI6yXtYj13g" target="_blank" rel="noopener">Selma Da Silva<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="../img/photos/track-sprint-600.webp" srcset="../img/photos/track-sprint-600.webp 600w, ../img/photos/track-sprint-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(24vw, 340px)" width="600" height="750" alt="A sprinter&#39;s legs and pink spikes driving round the bend of a red running track" loading="lazy" decoding="async" style="--focus:50% 50%">
+    <figcaption><a href="https://unsplash.com/photos/3bwHCvM2rbE" target="_blank" rel="noopener">Justin Lagat<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="../img/photos/flag-dancers-600.webp" srcset="../img/photos/flag-dancers-600.webp 600w, ../img/photos/flag-dancers-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(24vw, 340px)" width="600" height="400" alt="Dancers in headdresses and skirts in the colours of the Kenyan flag, holding spears" loading="lazy" decoding="async" style="--focus:50% 50%">
+    <figcaption><a href="https://unsplash.com/photos/JTpy794orEM" target="_blank" rel="noopener">Justin Lagat<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="../img/photos/football-pitch-600.webp" srcset="../img/photos/football-pitch-600.webp 600w, ../img/photos/football-pitch-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(24vw, 340px)" width="600" height="338" alt="Players on a grass football pitch in front of new apartment towers" loading="lazy" decoding="async" style="--focus:50% 70%">
+    <figcaption><a href="https://unsplash.com/photos/TqQGHKQtCGs" target="_blank" rel="noopener">Maingi Mutiso<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+</ul>
+  </div>
+</section>
+
+
+
 <div class="filters" id="filters" role="group" aria-label="Filter Matchday">
   <div class="wrap">
     <label class="sel"><span>Area</span>
@@ -137,7 +211,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="listH">Where to watch</h2><p>We are curating sports bars and screening venues across Nairobi. Official fan zones and stadium shuttle points have not been announced yet; they will appear here only once the organisers publish them.</p></div>
+    <div class="sec-head"><h2 id="listH" class="display-3">Where to watch</h2><p>We are curating sports bars and screening venues across Nairobi. Official fan zones and stadium shuttle points have not been announced yet; they will appear here only once the organisers publish them.</p></div>
     <p class="notice-soft" id="areaNote" hidden></p>
     <p class="notice-soft"><span class="badge badge-directory">Directory listing</span> means we show only the name and location published on the business's own website. Prices and WhatsApp booking switch on when the business joins.</p>
     <div class="grid-cards rv-each" id="cards" data-page="matchday" data-noun="places to watch">
@@ -150,11 +224,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gK-axa-sports-bar-and-grill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gK-axa-sports-bar-and-grill)"/><circle cx="70" cy="46" r="18" fill="#E2672A"/>
-  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#BFC48E"/>
-  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4E8A63"/>
-  <g fill="#2A1A12"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <defs><linearGradient id="kfz-gK-axa-sports-bar-and-grill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEDE8"/><stop offset="1" stop-color="#F7F6F3"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gK-axa-sports-bar-and-grill)"/><circle cx="70" cy="46" r="18" fill="#A8A59F"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#CACAC4"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#A6A6A1"/>
+  <g fill="#141414"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
 </svg>
     <span class="tag-area">Karen</span>
@@ -173,7 +247,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     <div class="tags"><span>Live sport on screen</span></div>
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="axa-sports-bar-and-grill">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="axa-sports-bar-and-grill">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=AXA%20Sports%20Bar%20%26%20Grill%2C%20Bogani%20East%20Road%2C%20Karen%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to AXA Sports Bar &amp; Grill (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -182,7 +256,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <span class="eyebrow">For Nairobi businesses</span>
   <h3>Own a sports bar or screening venue in Nairobi?</h3>
   <p>Get listed before visiting fans arrive for the 2027 tournament. No listing fee: you pay a commission only on customers we send you.</p>
-  <a class="btn btn-dark" href="../list-your-business/">List your business</a>
+  <a class="btn btn-primary" href="../list-your-business/">List your business</a>
 </aside>
       
     </div>
@@ -255,6 +329,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 
 
+
 <section class="band band-dark" aria-labelledby="fxH">
   <div class="wrap">
     <div class="sec-head"><h2 id="fxH">Matches in Nairobi · 2027</h2><p>From the official schedule only.</p></div>
@@ -288,31 +363,32 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 <nav class="next-stop" aria-label="Continue the route">
   <div class="wrap">
     <a class="ns ns-prev" href="../rides/"><span>← Stop 3</span><strong>Rides</strong></a>
-    <a class="ns ns-next" href="../nightlife/"><span>Next stop 5 →</span><strong>Nightlife</strong><em>Bars, lounges and live music, 18+.</em></a>
+    
+    <a class="ns ns-next" href="../nightlife/">
+<img class="ns-img" src="../img/photos/kicc-night-800.webp" srcset="../img/photos/kicc-night-800.webp 800w, ../img/photos/kicc-night-1400.webp 1400w" sizes="(max-width: 600px) 100vw, 66vw" width="800" height="450" alt="" loading="lazy" decoding="async" style="--focus:56% 45%"><span>Next stop 5 →</span><strong>Nightlife</strong><em>Bars, lounges and live music, 18+.</em></a>
   </div>
 </nav>
 
 </main>
 
-
 <footer class="footer">
   <div class="wrap">
+    <p class="footer-big" aria-hidden="true">Karibu <em>Nairobi.</em></p>
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h2>Explore</h2><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li data-acct hidden><a href="../account/">Account</a></li><li><a href="../privacy/">Privacy</a></li></ul></div>
+      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li data-acct hidden><a href="../account/">Account</a></li><li><a href="../privacy/">Privacy</a></li><li><a href="../privacy/#credits">Photo credits</a></li></ul></div>
       <div id="languages"><h2>Language</h2>
         <div class="langs"><button type="button" data-lang="EN" data-name="English" data-live="1" aria-pressed="true">EN</button><button type="button" data-lang="SW" data-name="Kiswahili" data-live="" aria-pressed="false" class="soon">SW<small>soon</small></button><button type="button" data-lang="FR" data-name="French" data-live="" aria-pressed="false" class="soon">FR<small>soon</small></button><button type="button" data-lang="AR" data-name="Arabic" data-live="" aria-pressed="false" class="soon">AR<small>soon</small></button><button type="button" data-lang="PT" data-name="Portuguese" data-live="" aria-pressed="false" class="soon">PT<small>soon</small></button></div>
         <p class="lang-note" id="langNote" aria-live="polite">The site is in English. Kiswahili, French, Arabic and Portuguese follow after launch.</p>
       </div>
     </div>
-    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 KaribuFans.</p>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Photographs are by the photographers credited with each one, via Unsplash, and are for illustration only. © 2026 KaribuFans.</p>
   </div>
 </footer>
 <script src="../js/site.js" defer></script>

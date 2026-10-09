@@ -20,19 +20,23 @@ The root `.gitignore` ignores `dist`, so a NEW file under `dist/` is skipped by 
 
 It is plain HTML, CSS and JavaScript. No framework, no bundler, no npm. Keep it that way unless Marx decides otherwise.
 
-## Design rules ("Savanna Dusk")
+## Design rules (photo-led, "Squarespace" direction)
 Colours are tokens at the top of `static/css/site.css`. Use the tokens; never write a new hex value in a component rule. Illustration fills inside the SVGs in `templates/partials/art.html` and `area_art.html` are the one exception.
 
-- 60% canvas: ivory `#FBF6EE`, white cards, sand `#F3E9DA` for alternate bands
-- 30% structure: kahawa (espresso) `#2A1A12` for header, sticky bars, hero, footer, headings; raised kahawa `#3A271C` for cards on dark
-- 10% action: sunset `#E2672A` with kahawa text for the main button, current step and selected state (hover goes lighter, `#EC7A40`, never darker); gold `#EDB750` as the highlight on dark only
-- Acacia `#2F6B4F` only for "Verified by the business" and "Open now"
-- Dark and light bands meet in a soft arc or wash, never a hard edge
+- The photographs carry the colour. The interface is ink `#0E0E0E`, white and paper `#F4F2EE`, with greys for muted text and lines
+- One accent: sunset `#E2672A`, only for the main button, the route trail and current stop, and selected states. Acacia `#2F6B4F` only for "Verified by the business" and "Open now"
+- Type: Instrument Serif for display headings (very large on heroes), DM Sans for everything else
 - Three buttons only: `btn-primary`, `btn-ghost`, `btn-dark` (`btn-navy` is its old name, kept as an alias)
-- Type: Bricolage Grotesque for headings, DM Sans for body, Caveat for the script line in heroes
-- The sunset light trail along the route is the signature element. The Maasai bead strip is a small accent only.
-- Illustrations are original inline SVGs (`templates/partials/art.html`, styled by `static/css/art.css`): generic and unbranded, never a real business, no prices or dates. They fill the heroes of stops without a photograph.
-- Text over a photo must keep its contrast against the brightest part of the image; the hero shade and the backing on breadcrumbs and eyebrows exist for this.
+- Navigation: up to 1600px wide, 18px labels, a glass pill that glides to the hovered or focused link (transform only; plain CSS hover without JS; no glide under reduced motion). Inline from 1200px; below that a full-screen menu that holds keyboard focus
+- The sunset light trail along the route is the signature element
+
+## Photographs
+- Masters are in `KaribuFans/03_Website/Photos/unsplash/` (Unsplash licence). `tools/photos.py` (in the site folder) makes every crop and size and writes `data/photos.json`; never hand-edit the outputs in `static/img/photos/`. Run it, then `build.py`, and never run both at once.
+- Every photo used is credited on its hero chip or tile and in the Photo credits section of the privacy notices.
+- No logos, brand names, readable signs, number plates or personal names: crop them out, or paint them out in `photos.py` when a crop would spoil the photo.
+- Alt text describes what is visible and never names a business; only say Nairobi when the photo visibly is (skyline, KICC, Nairobi National Park).
+- Stop-page galleries sit in their own band, before the listings, with the caption that the photos are not of the places listed. Unclaimed listing cards never get a photo; they use the drawn area art.
+- Text over a photo must keep its contrast against the brightest part of the image; the hero shade and the backings on small text exist for this.
 
 ## Content rules
 - A listing with `"status": "unclaimed"` is a real business that has not joined. Show only what its own website publishes: name, type, area, street, website link, directions. No photos, prices, phone or WhatsApp. Keep `source_url` and `checked` on every entry.
@@ -69,5 +73,5 @@ Nothing is pushed until the reviewer has passed it. Marx chose commits straight 
 - `contact_whatsapp` in `data/site.json`: empty, so the vendor sign-up and ticket alert forms cannot send yet
 - `uber_client_id` in `data/site.json`
 - Registered business name for the footer
-- Real photographs; hero images are currently labelled as artist's impressions
+- Own photographs from the Nairobi photo walk to replace stock where possible (Karen, Gigiri, Thika Road, Airport and Mombasa Road, Ngong Road and a real hotel room have none yet)
 - Visitor accounts: built, hidden behind `accounts.live`. Before switching on: Supabase table and address settings, Google sign-in credential, an email sending service for sign-in links, and a live test by Marx

@@ -1,50 +1,36 @@
 {% extends "base.html" %}
-{% from "partials/macros.html" import icon %}
-{% from "partials/art.html" import module_art %}
+{% from "partials/photo.html" import hero_picture, tile, credit, gallery %}
+{% from "partials/area_art.html" import area_art %}
 {% block title %}{{ site.name }} · Nairobi city guide{% endblock %}
-{% block footer_edge %}{% endblock %}
+{% block body_class %}has-hero{% endblock %}
 {% block main %}
 {% set tournament = site.mode == 'tournament' %}
+{% set hp = photos[slots.home] %}
 
-<section class="hero" aria-label="Welcome">
-  <img class="hero-img" src="{{ root }}img/hero-day-skyline.webp" alt="Nairobi skyline by day above a green park and the elevated expressway" style="object-position:50% 30%" fetchpriority="high">
-  <span class="credit">Artist's impression</span>
+<section class="hero hero-home" aria-labelledby="homeH">
+  {{ hero_picture(hp, root) }}
   <div class="wrap hero-body">
-    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>{{ 'Nairobi · 2027 football season' if tournament else 'Nairobi · every day, every weekend' }}</div>
-    <div class="script">Karibu Nairobi.</div>
-    <h1>{{ 'From the city to the whistle.' if tournament else 'Eat, stay, ride and celebrate in one city guide.' }}</h1>
+    <p class="eyebrow">{{ 'Nairobi · 2027 football season' if tournament else 'Nairobi · every day, every weekend' }}</p>
+    <h1 id="homeH" class="display">{% if tournament %}From the city to the <em>whistle.</em>{% else %}Eat, stay, ride and <em>celebrate</em> in one city guide.{% endif %}</h1>
     <p class="lede">{{ 'Stays, food, rides, matchday and nightlife in one plan. Book directly with local vendors.' if tournament else 'Find stays, food spots, nightlife, places to watch the game and rides. You book directly with the business.' }}</p>
     <form class="planner" action="#" onsubmit="return false" aria-label="Start here">
       <label for="pWhat">I'm looking for<select id="pWhat">{% for m in modules if m.slug != 'tickets' %}<option value="{{ m.slug }}">{{ m.label }}</option>{% endfor %}</select></label>
       <label for="pArea">Area<select id="pArea"><option value="">Any area</option>{% for z in zone_cards %}<option value="{{ z.name }}">{{ z.name }}</option>{% endfor %}</select></label>
       <button type="submit" class="btn btn-primary" id="plannerGo">Show me</button>
     </form>
+    {{ credit(hp) }}
   </div>
 </section>
 
-{% from "partials/area_art.html" import area_art %}
-<section class="band" aria-labelledby="areaH">
-  <div class="wrap">
-    <div class="sec-head"><h2 id="areaH">Browse by area</h2><p>Pick an area once and it follows you along the route, from stays to food to a night out.</p></div>
-    <ul class="zone-grid rv-each">
-      {% for z in zone_cards %}
-      <li><a class="zone" href="{{ root }}{{ z.counts[0][1] }}/?area={{ z.name | urlencode }}" data-area="{{ z.name }}">
-        <span class="zone-art">{{ area_art(z.name) }}</span>
-        <strong>{{ z.name }}</strong>
-        <span class="zone-counts">{% for label, slug, n in z.counts %}{{ n }} {{ label | lower }}{{ ' · ' if not loop.last }}{% endfor %}</span>
-      </a></li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-
+{% set rp = photos[slots.route] %}
 <section class="route" aria-labelledby="routeH">
-  <img src="{{ root }}img/dusk-expressway.webp" alt="" loading="lazy">
+  <div class="route-media">{{ tile(rp, root, '100vw', 'route-img', alt=false) }}</div>
+  {{ credit(rp) }}
   <div class="wrap band">
-    <div class="sec-head">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div class="eyebrow">The Route</div>
-        <h2 id="routeH">One road, seven stops.</h2>
+    <div class="sec-head sec-head-xl">
+      <div class="stack-sm">
+        <p class="eyebrow">The route</p>
+        <h2 id="routeH" class="display-2">One road, <em>seven stops.</em></h2>
       </div>
       <p>Follow the light from where you sleep to where you celebrate.</p>
     </div>
@@ -52,12 +38,10 @@
       {% for m in modules %}
       <li class="stop{{ ' hl' if m.slug == 'matchday' }}">
         <a href="{{ root }}{{ m.slug }}/">
-          <span class="stop-art">{{ module_art(m.slug) }}</span>
-          {{ icon(m.icon) }}
-          <span class="n">Stop {{ m.stop }}</span>
+          <span class="n">{{ '%02d' % m.stop }}</span>
           <h3>{{ m.label }}</h3>
           <p>{{ m.card_home }}</p>
-          <span class="go">{{ m.cta }} →</span>
+          <span class="go">{{ m.cta }} <span aria-hidden="true">→</span></span>
         </a>
       </li>
       {% endfor %}
@@ -65,11 +49,50 @@
   </div>
 </section>
 
-<section class="band band-sand" id="plan" aria-labelledby="planH">
+<section class="band" aria-labelledby="areaH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="areaH" class="display-3">Browse by area</h2><p>Pick an area once and it follows you along the route, from stays to food to a night out.</p></div>
+    {# Areas with a photograph of the place lead as large tiles; the others follow as a compact index with a small drawing. #}
+    {% set photo_zones = [] %}{% set other_zones = [] %}
+    {% for z in zone_cards %}{% if photos.get(slots.get('area:' ~ z.name)) %}{% set _ = photo_zones.append(z) %}{% else %}{% set _ = other_zones.append(z) %}{% endif %}{% endfor %}
+    {% if photo_zones %}
+    <ul class="zone-feature rv-each">
+      {% for z in photo_zones %}{% set zp = photos[slots['area:' ~ z.name]] %}
+      <li><a class="zone has-photo" href="{{ root }}{{ z.counts[0][1] }}/?area={{ z.name | urlencode }}" data-area="{{ z.name }}">
+        <span class="zone-art">{{ tile(zp, root, '50vw', alt=false) }}</span>
+        <span class="zone-text"><strong>{{ z.name }}</strong>
+        <span class="zone-counts">{% for label, slug, n in z.counts %}{{ n }} {{ label | lower }}{{ ' · ' if not loop.last }}{% endfor %}</span></span>
+      </a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <ul class="zone-index rv-each">
+      {% for z in other_zones %}
+      <li><a class="zone-row" href="{{ root }}{{ z.counts[0][1] }}/?area={{ z.name | urlencode }}" data-area="{{ z.name }}">
+        <span class="zone-thumb">{{ area_art(z.name, '-i' ~ loop.index) }}</span>
+        <span class="zone-text"><strong>{{ z.name }}</strong>
+        <span class="zone-counts">{% for label, slug, n in z.counts %}{{ n }} {{ label | lower }}{{ ' · ' if not loop.last }}{% endfor %}</span></span>
+        <span class="zone-go" aria-hidden="true">→</span>
+      </a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% if galleries.home %}
+<section class="band band-paper" aria-labelledby="picsH">
+  <div class="wrap">
+    <div class="sec-head sec-head-xl"><h2 id="picsH" class="display-2">Nairobi <em>in pictures.</em></h2><p>The city between the stops: skyline, parkland, streets and the people in them.</p></div>
+    {{ gallery(galleries.home, photos, root, 'mosaic') }}
+  </div>
+</section>
+{% endif %}
+
+<section class="band" id="plan" aria-labelledby="planH">
   <div class="wrap two-col">
     <div class="stack">
-      <div class="eyebrow on-light">Plan your day</div>
-      <h2 id="planH" class="h-big">{{ 'Your matchday, sorted around kick-off.' if tournament else 'Your Saturday, sorted.' }}</h2>
+      <p class="eyebrow on-light">Plan your day</p>
+      <h2 id="planH" class="display-3">{{ 'Your matchday, sorted around kick-off.' if tournament else 'Your Saturday, sorted.' }}</h2>
       <p class="lede-dark">Follow the route in order, or jump to the stop you need. Each stop keeps the area you chose.</p>
       <a class="btn btn-primary" href="{{ root }}stays/" style="align-self:flex-start">Start at stop 1: Stays</a>
     </div>
@@ -83,9 +106,9 @@
   </div>
 </section>
 
-<section class="band" id="how" aria-labelledby="howH">
+<section class="band band-paper" id="how" aria-labelledby="howH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="howH">How it works</h2><p>{{ site.name }} connects you to the business. You pay them directly, not us.</p></div>
+    <div class="sec-head"><h2 id="howH" class="display-3">How it works</h2><p>{{ site.name }} connects you to the business. You pay them directly, not us.</p></div>
     <div class="steps rv">
       <div class="step"><span class="num">1</span><h3>Choose</h3><p>Browse local stays, food spots, nightlife and rides in one place.</p></div>
       <div class="step"><span class="num">2</span><h3>Book directly</h3><p>Message the business on WhatsApp or call them, and pay them by M-Pesa.</p></div>
@@ -94,19 +117,17 @@
   </div>
 </section>
 
+{# The business band uses a food photo that is not shown elsewhere on this page, so it does not repeat the list-your-business hero. #}
+{% set vp = photos.get('shared-platter') or photos.get(slots.get('list-your-business')) %}
 <section class="band-dark" id="vendors" aria-labelledby="vendH">
-  <div class="bead-rule" aria-hidden="true"></div>
-  <div class="wrap band">
-    <div class="cta-row">
-      <div>
-        <div class="eyebrow">For Nairobi businesses</div>
-        <h2 id="vendH" style="margin-top:12px">Put your business in front of new customers.</h2>
-        <p>No listing fee. You pay a commission only on customers we send you.</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <a class="btn btn-primary btn-lg" href="{{ root }}list-your-business/">List your business</a>
-      </div>
+  <div class="wrap band two-col vendors">
+    <div class="stack">
+      <p class="eyebrow">For Nairobi businesses</p>
+      <h2 id="vendH" class="display-2">Put your business in front of <em>new customers.</em></h2>
+      <p class="lede-on-dark">No listing fee. You pay a commission only on customers we send you.</p>
+      <a class="btn btn-primary btn-lg" href="{{ root }}list-your-business/" style="align-self:flex-start">List your business</a>
     </div>
+    {% if vp %}<figure class="ph vendor-ph">{{ tile(vp, root, '(max-width: 900px) 100vw, 50vw', alt=false) }}</figure>{% endif %}
   </div>
 </section>
 {% endblock %}

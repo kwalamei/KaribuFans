@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Stays · KaribuFans</title>
 <meta name="description" content="Hotels, B&amp;Bs and apartments across Nairobi. See where each one is, then book with the business directly.">
-<meta name="theme-color" content="#2A1A12">
+<meta name="theme-color" content="#0E0E0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
-<link rel="stylesheet" href="../css/art.css">
 
 <script>
 (function(w,d){try{
 var h=d.documentElement,n=+h.getAttribute('data-stop')||0,K='kf_from',P=['.nav','.routebar .trail','.routebar .current .dot i'];
+h.classList.add('kf-js');
+function atTop(){h.classList.toggle('kf-top',(w.pageYOffset||0)<24);}atTop();w.addEventListener('scroll',atTop,{passive:true});d.addEventListener('DOMContentLoaded',atTop);
 if(!w.matchMedia||w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 h.classList.add('kf-draw');
 function parts(trim){for(var i=0,el,r;i<P.length;i++){el=d.querySelector(P[i]);if(!el)continue;
@@ -32,17 +33,19 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 }catch(x){}})(window,document);
 </script>
 </head>
-<body>
+<body class="has-hero">
 
 <a class="skip" href="#main">Skip to content</a>
+
 <header class="nav" id="nav">
-  <div class="wrap">
+  <div class="nav-in">
     <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
     <nav aria-label="Main" class="nav-links" id="navLinks">
-      <a href="../stays/" aria-current="page">Stays</a><a href="../food/" >Food</a><a href="../rides/" >Rides</a><a href="../matchday/" >Matchday</a><a href="../nightlife/" >Nightlife</a><a href="../movies-games/" >Movies &amp; Games</a><a href="../tickets/" >Tickets</a>
+      <span class="nav-pill" aria-hidden="true"></span>
+      <a href="../stays/" aria-current="page"><span class="nav-n" aria-hidden="true">01</span>Stays</a><a href="../food/" ><span class="nav-n" aria-hidden="true">02</span>Food</a><a href="../rides/" ><span class="nav-n" aria-hidden="true">03</span>Rides</a><a href="../matchday/" ><span class="nav-n" aria-hidden="true">04</span>Matchday</a><a href="../nightlife/" ><span class="nav-n" aria-hidden="true">05</span>Nightlife</a><a href="../movies-games/" ><span class="nav-n" aria-hidden="true">06</span>Movies &amp; Games</a><a href="../tickets/" ><span class="nav-n" aria-hidden="true">07</span>Tickets</a>
+      <span class="menu-extra"><a href="../search/">Search</a><a class="btn btn-primary" href="../list-your-business/">List your business</a></span>
     </nav>
     <div class="nav-tools">
       <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
@@ -51,7 +54,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
       <a class="icon-btn acct-link" id="acctLink" href="../account/" aria-label="Account" data-acct hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM4.5 20a7.5 7.5 0 0 1 15 0"/></svg><span id="acctInitial" aria-hidden="true" hidden></span></a>
       <a class="btn btn-primary nav-cta" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path class="mb-1" d="M4 8h16"/><path class="mb-2" d="M4 16h16"/></svg>
       </button>
     </div>
   </div>
@@ -63,10 +66,15 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 
 
+
+
 <section class="hero page-hero" aria-labelledby="pageH">
   
-  <img class="hero-img" src="../img/window-golden.webp" alt="A guest looking out over Nairobi&#39;s green canopy at golden hour" style="object-position:60% 50%" fetchpriority="high">
-  <span class="credit">Artist's impression</span>
+  
+<picture class="hero-media">
+  <source media="(max-width: 699px)" srcset="../img/photos/sunset-rooftops-m-600.webp 600w, ../img/photos/sunset-rooftops-m-1000.webp 1000w" sizes="100vw" width="1000" height="1250">
+  <img class="hero-img" src="../img/photos/sunset-rooftops-1400.webp" srcset="../img/photos/sunset-rooftops-800.webp 800w, ../img/photos/sunset-rooftops-1400.webp 1400w, ../img/photos/sunset-rooftops-2200.webp 2200w" sizes="100vw" width="2200" height="1238" alt="An orange sun setting over the silhouetted rooftops and trees of a city suburb" fetchpriority="high" decoding="async" style="--focus:50% 55%">
+</picture>
   
   <div class="wrap hero-body">
     <nav class="crumbs" aria-label="Breadcrumb"><ol>
@@ -75,10 +83,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <li id="crumbArea" hidden></li>
 </ol></nav>
     
-    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 1 of 7 · Stays</div>
-    <div class="script">Lala salama.</div>
-    <h1 id="pageH">Wake up to the best views of Nairobi.</h1>
+    <p class="eyebrow">Stop 1 of 7 · Stays</p>
+    <p class="script">Lala salama.</p>
+    <h1 id="pageH" class="display">Wake up to the best views of Nairobi.</h1>
     <p class="lede">Hotels, B&amp;Bs and apartments across Nairobi. See where each one is, then book with the business directly.</p>
+    <a class="credit" href="https://unsplash.com/photos/UtH04tBFzTo" target="_blank" rel="noopener">Photo: Stephen Berenju / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>
   </div>
   <nav class="routebar" aria-label="The route: seven stops">
   <div class="wrap"><div class="routebar-in">
@@ -119,6 +128,62 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 </section>
 
 
+
+
+<section class="band band-paper gallery-band" aria-labelledby="galH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="galH" class="display-3">Stays <em>in pictures</em></h2><p class="gallery-note">Around the city. These photos set the scene; they are not of the places listed on this page.</p></div>
+    
+<ul class="strip strip-4 rv-each" role="list">
+  
+  
+    
+    
+    
+  
+  <li class="g-full"><figure class="ph">
+    
+<img class="" src="../img/photos/suburb-sunset-600.webp" srcset="../img/photos/suburb-sunset-600.webp 600w, ../img/photos/suburb-sunset-1200.webp 1200w" sizes="(max-width: 900px) 100vw, min(48vw, 680px)" width="600" height="750" alt="Apartment blocks among dense green trees as the sun sets in a hazy sky" loading="lazy" decoding="async" style="--focus:60% 60%">
+    <figcaption><a href="https://unsplash.com/photos/fmux-h7xg8I" target="_blank" rel="noopener">Michael Muli<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="../img/photos/sunset-apartments-600.webp" srcset="../img/photos/sunset-apartments-600.webp 600w, ../img/photos/sunset-apartments-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(24vw, 340px)" width="600" height="750" alt="The sun setting between apartment buildings against an orange sky" loading="lazy" decoding="async" style="--focus:50% 50%">
+    <figcaption><a href="https://unsplash.com/photos/JXAj1vKla_E" target="_blank" rel="noopener">Joseph Ndungu<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="../img/photos/acacia-avenue-600.webp" srcset="../img/photos/acacia-avenue-600.webp 600w, ../img/photos/acacia-avenue-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(24vw, 340px)" width="600" height="400" alt="A row of yellow-barked acacia trees along a quiet road under a clear blue sky" loading="lazy" decoding="async" style="--focus:55% 50%">
+    <figcaption><a href="https://unsplash.com/photos/dcGNHL8lUdA" target="_blank" rel="noopener">Abhijeet Parmar<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+  
+  <li class="g-full"><figure class="ph">
+    
+<img class="" src="../img/photos/avenue-traffic-600.webp" srcset="../img/photos/avenue-traffic-600.webp 600w, ../img/photos/avenue-traffic-1200.webp 1200w" sizes="(max-width: 900px) 100vw, min(48vw, 680px)" width="600" height="400" alt="Curved balconies, a red-brick apartment block, a glass tower and an ochre dome on an overcast day" loading="lazy" decoding="async" style="--focus:50% 50%">
+    <figcaption><a href="https://unsplash.com/photos/NMAAZa0guJ4" target="_blank" rel="noopener">Ron John<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+</ul>
+  </div>
+</section>
+
+
+
 <div class="filters" id="filters" role="group" aria-label="Filter Stays">
   <div class="wrap">
     <label class="sel"><span>Area</span>
@@ -143,7 +208,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="listH">Stays in Nairobi</h2><p>We are building the Nairobi stays directory area by area: Kilimani, Westlands, the city centre, Karen, Ngong Road and the airport side.</p></div>
+    <div class="sec-head"><h2 id="listH" class="display-3">Stays in Nairobi</h2><p>We are building the Nairobi stays directory area by area: Kilimani, Westlands, the city centre, Karen, Ngong Road and the airport side.</p></div>
     <p class="notice-soft" id="areaNote" hidden></p>
     <p class="notice-soft"><span class="badge badge-directory">Directory listing</span> means we show only the name and location published on the business's own website. Prices and WhatsApp booking switch on when the business joins.</p>
     <div class="grid-cards rv-each" id="cards" data-page="stays" data-noun="stays">
@@ -156,11 +221,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
-  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/><circle cx="262" cy="34" r="16" fill="#A8A59F"/>
+  <g fill="#CFCCC5"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F6F3" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#A6A6A1"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#7C7C77"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
 </svg>
     <span class="tag-area">Kilimani</span>
@@ -179,7 +244,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="woodmere-grand-hotel-and-serviced-apartments">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="woodmere-grand-hotel-and-serviced-apartments">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Woodmere%20Grand%20Hotel%20and%20Serviced%20Apartments%2C%20Rose%20Avenue%2C%20off%20Lenana%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Woodmere Grand Hotel and Serviced Apartments (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -194,11 +259,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
-  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/><circle cx="262" cy="34" r="16" fill="#A8A59F"/>
+  <g fill="#CFCCC5"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F6F3" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#A6A6A1"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#7C7C77"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
 </svg>
     <span class="tag-area">Kilimani</span>
@@ -217,7 +282,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="royal-canaan-nairobi-hotel">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="royal-canaan-nairobi-hotel">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Royal%20Canaan%20Nairobi%20Hotel%2C%20Tigoni%20Road%20off%20Chakka%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Royal Canaan Nairobi Hotel (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -232,11 +297,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
-  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/><circle cx="262" cy="34" r="16" fill="#A8A59F"/>
+  <g fill="#CFCCC5"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F6F3" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#A6A6A1"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#7C7C77"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
 </svg>
     <span class="tag-area">Kilimani</span>
@@ -255,7 +320,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="roma-courts-serviced-apartments">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="roma-courts-serviced-apartments">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Roma%20Courts%20Serviced%20Apartments%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Roma Courts Serviced Apartments (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -270,11 +335,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
-  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/><circle cx="262" cy="34" r="16" fill="#A8A59F"/>
+  <g fill="#CFCCC5"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F6F3" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#A6A6A1"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#7C7C77"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
 </svg>
     <span class="tag-area">Kilimani</span>
@@ -293,7 +358,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="gemina-court">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="gemina-court">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Gemina%20Court%2C%20George%20Padmore%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Gemina Court (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -302,7 +367,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <span class="eyebrow">For Nairobi businesses</span>
   <h3>Own a hotel, B&amp;B or apartment in Nairobi?</h3>
   <p>Get listed before visiting fans arrive for the 2027 tournament. No listing fee: you pay a commission only on customers we send you.</p>
-  <a class="btn btn-dark" href="../list-your-business/">List your business</a>
+  <a class="btn btn-primary" href="../list-your-business/">List your business</a>
 </aside>
       
       
@@ -313,11 +378,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
-  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/><circle cx="262" cy="34" r="16" fill="#A8A59F"/>
+  <g fill="#CFCCC5"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F6F3" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#A6A6A1"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#7C7C77"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
 </svg>
     <span class="tag-area">Kilimani</span>
@@ -336,7 +401,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="waridi-paradise-hotel-suites">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="waridi-paradise-hotel-suites">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Waridi%20Paradise%20Hotel%20%26%20Suites%2C%20Rose%20Avenue%2C%20off%20Argwings%20Kodhek%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Waridi Paradise Hotel &amp; Suites (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -351,11 +416,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
-  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/><circle cx="262" cy="34" r="16" fill="#A8A59F"/>
+  <g fill="#CFCCC5"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F6F3" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#A6A6A1"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#7C7C77"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
 </svg>
     <span class="tag-area">Kilimani</span>
@@ -374,7 +439,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="the-monarch-hotel-nairobi">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="the-monarch-hotel-nairobi">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Monarch%20Hotel%20Nairobi%2C%20Rose%20Avenue%2C%20off%20Argwings%20Kodhek%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Monarch Hotel Nairobi (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -389,11 +454,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
-  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/><circle cx="262" cy="34" r="16" fill="#A8A59F"/>
+  <g fill="#CFCCC5"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F6F3" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#A6A6A1"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#7C7C77"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
 </svg>
     <span class="tag-area">Kilimani</span>
@@ -412,7 +477,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="ngong-hills-hotel">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="ngong-hills-hotel">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Ngong%20Hills%20Hotel%2C%20off%20Ngong%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Ngong Hills Hotel (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -427,9 +492,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gW-golden-tulip-westlands-nairobi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".7" stop-color="#B8502A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+  <defs><linearGradient id="kfz-gW-golden-tulip-westlands-nairobi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2B2B"/><stop offset=".7" stop-color="#5A5A5A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#kfz-gW-golden-tulip-westlands-nairobi)"/>
-  <g fill="#2A1A12"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#141414"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
   <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
 </svg>
@@ -449,7 +514,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="golden-tulip-westlands-nairobi">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="golden-tulip-westlands-nairobi">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Golden%20Tulip%20Westlands%20Nairobi%2C%2065%20Muthithi%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Golden Tulip Westlands Nairobi (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -464,9 +529,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gW-ibis-styles-nairobi-westlands" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".7" stop-color="#B8502A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+  <defs><linearGradient id="kfz-gW-ibis-styles-nairobi-westlands" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2B2B"/><stop offset=".7" stop-color="#5A5A5A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#kfz-gW-ibis-styles-nairobi-westlands)"/>
-  <g fill="#2A1A12"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#141414"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
   <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
 </svg>
@@ -486,7 +551,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="ibis-styles-nairobi-westlands">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="ibis-styles-nairobi-westlands">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Ibis%20Styles%20Nairobi%20Westlands%2C%20Rhapta%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Ibis Styles Nairobi Westlands (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -501,9 +566,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gW-acacia-furnished-apartments" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".7" stop-color="#B8502A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+  <defs><linearGradient id="kfz-gW-acacia-furnished-apartments" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2B2B"/><stop offset=".7" stop-color="#5A5A5A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#kfz-gW-acacia-furnished-apartments)"/>
-  <g fill="#2A1A12"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#141414"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
   <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
 </svg>
@@ -523,7 +588,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="acacia-furnished-apartments">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="acacia-furnished-apartments">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Acacia%20Furnished%20Apartments%2C%20Stima%20Lane%2C%20off%20Lower%20Kabete%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Acacia Furnished Apartments (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -538,9 +603,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gW-prime-serviced-residence" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".7" stop-color="#B8502A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+  <defs><linearGradient id="kfz-gW-prime-serviced-residence" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2B2B"/><stop offset=".7" stop-color="#5A5A5A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#kfz-gW-prime-serviced-residence)"/>
-  <g fill="#2A1A12"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#141414"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
   <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
 </svg>
@@ -560,7 +625,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="prime-serviced-residence">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="prime-serviced-residence">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Prime%20Serviced%20Residence%2C%20Rhapta%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Prime Serviced Residence (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -575,9 +640,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gW-west-wood-hotel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".7" stop-color="#B8502A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+  <defs><linearGradient id="kfz-gW-west-wood-hotel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2B2B"/><stop offset=".7" stop-color="#5A5A5A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#kfz-gW-west-wood-hotel)"/>
-  <g fill="#2A1A12"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#141414"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
   <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
 </svg>
@@ -597,7 +662,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="west-wood-hotel">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="west-wood-hotel">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=West%20Wood%20Hotel%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to West Wood Hotel (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -612,9 +677,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gW-la-maison-royale-westlands" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".7" stop-color="#B8502A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+  <defs><linearGradient id="kfz-gW-la-maison-royale-westlands" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2B2B"/><stop offset=".7" stop-color="#5A5A5A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#kfz-gW-la-maison-royale-westlands)"/>
-  <g fill="#2A1A12"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#141414"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
   <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
 </svg>
@@ -634,7 +699,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="la-maison-royale-westlands">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="la-maison-royale-westlands">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=La%20Maison%20Royale%20-%20Westlands%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to La Maison Royale - Westlands (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -649,10 +714,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/>
-  <g fill="#E0CBAE"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#3A271C"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#FBF6EE" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/>
+  <g fill="#D6D3CC"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#2B2B2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F6F3" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
 </svg>
     <span class="tag-area">CBD</span>
@@ -671,7 +736,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="sarova-stanley">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="sarova-stanley">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Sarova%20Stanley%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Sarova Stanley (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -686,10 +751,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/>
-  <g fill="#E0CBAE"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#3A271C"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#FBF6EE" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/>
+  <g fill="#D6D3CC"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#2B2B2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F6F3" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
 </svg>
     <span class="tag-area">CBD</span>
@@ -708,7 +773,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="best-western-plus-meridian-hotel">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="best-western-plus-meridian-hotel">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Best%20Western%20Plus%20Meridian%20Hotel%2C%20Murang%27a%20Road%2C%20off%20Moi%20Avenue%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Best Western Plus Meridian Hotel (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -723,10 +788,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/>
-  <g fill="#E0CBAE"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#3A271C"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#FBF6EE" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/>
+  <g fill="#D6D3CC"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#2B2B2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F6F3" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
 </svg>
     <span class="tag-area">CBD</span>
@@ -745,7 +810,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="kenya-comfort-hotel-suites">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="kenya-comfort-hotel-suites">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Kenya%20Comfort%20Hotel%20%26%20Suites%2C%20Junction%20of%20Muindi%20Mbingu%20%26%20Monrovia%20Street%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Kenya Comfort Hotel &amp; Suites (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -760,10 +825,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/>
-  <g fill="#E0CBAE"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#3A271C"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#FBF6EE" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/>
+  <g fill="#D6D3CC"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#2B2B2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F6F3" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
 </svg>
     <span class="tag-area">CBD</span>
@@ -782,7 +847,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="metro-hotel">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="metro-hotel">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Metro%20Hotel%2C%20Koinange%20Street%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Metro Hotel (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -797,10 +862,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/>
-  <g fill="#E0CBAE"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#3A271C"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#FBF6EE" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/>
+  <g fill="#D6D3CC"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#2B2B2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F6F3" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
 </svg>
     <span class="tag-area">CBD</span>
@@ -819,7 +884,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="longonot-place-serviced-apartments">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="longonot-place-serviced-apartments">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Longonot%20Place%20Serviced%20Apartments%2C%20Harry%20Thuku%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Longonot Place Serviced Apartments (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -834,10 +899,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/>
-  <g fill="#E0CBAE"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#3A271C"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#FBF6EE" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/>
+  <g fill="#D6D3CC"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
+  <g fill="#2B2B2B"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
+  <g fill="#F7F6F3" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
 
 </svg>
     <span class="tag-area">CBD</span>
@@ -856,7 +921,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="norfolk-towers">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="norfolk-towers">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Norfolk%20Towers%2C%20Kijabe%20Street%2C%20off%20Harry%20Thuku%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Norfolk Towers (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -871,11 +936,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gK-karen-gables" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gK-karen-gables)"/><circle cx="70" cy="46" r="18" fill="#E2672A"/>
-  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#BFC48E"/>
-  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4E8A63"/>
-  <g fill="#2A1A12"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <defs><linearGradient id="kfz-gK-karen-gables" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEDE8"/><stop offset="1" stop-color="#F7F6F3"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gK-karen-gables)"/><circle cx="70" cy="46" r="18" fill="#A8A59F"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#CACAC4"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#A6A6A1"/>
+  <g fill="#141414"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
 </svg>
     <span class="tag-area">Karen</span>
@@ -894,7 +959,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="karen-gables">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="karen-gables">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Karen%20Gables%2C%20Mbagathi%20Ridge%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Karen Gables (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -909,11 +974,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gK-karen-inn-and-suites" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gK-karen-inn-and-suites)"/><circle cx="70" cy="46" r="18" fill="#E2672A"/>
-  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#BFC48E"/>
-  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4E8A63"/>
-  <g fill="#2A1A12"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <defs><linearGradient id="kfz-gK-karen-inn-and-suites" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEDE8"/><stop offset="1" stop-color="#F7F6F3"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gK-karen-inn-and-suites)"/><circle cx="70" cy="46" r="18" fill="#A8A59F"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#CACAC4"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#A6A6A1"/>
+  <g fill="#141414"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
 </svg>
     <span class="tag-area">Karen</span>
@@ -932,7 +997,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="karen-inn-and-suites">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="karen-inn-and-suites">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Karen%20Inn%20and%20Suites%2C%20Karen%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Karen Inn and Suites (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -947,11 +1012,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gK-house-of-waine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gK-house-of-waine)"/><circle cx="70" cy="46" r="18" fill="#E2672A"/>
-  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#BFC48E"/>
-  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4E8A63"/>
-  <g fill="#2A1A12"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <defs><linearGradient id="kfz-gK-house-of-waine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEDE8"/><stop offset="1" stop-color="#F7F6F3"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gK-house-of-waine)"/><circle cx="70" cy="46" r="18" fill="#A8A59F"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#CACAC4"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#A6A6A1"/>
+  <g fill="#141414"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
 </svg>
     <span class="tag-area">Karen</span>
@@ -970,7 +1035,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="house-of-waine">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="house-of-waine">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=House%20Of%20Waine%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to House Of Waine (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -985,11 +1050,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gK-karen-blixen-coffee-garden-cottages" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gK-karen-blixen-coffee-garden-cottages)"/><circle cx="70" cy="46" r="18" fill="#E2672A"/>
-  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#BFC48E"/>
-  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4E8A63"/>
-  <g fill="#2A1A12"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <defs><linearGradient id="kfz-gK-karen-blixen-coffee-garden-cottages" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEDE8"/><stop offset="1" stop-color="#F7F6F3"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gK-karen-blixen-coffee-garden-cottages)"/><circle cx="70" cy="46" r="18" fill="#A8A59F"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#CACAC4"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#A6A6A1"/>
+  <g fill="#141414"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
 </svg>
     <span class="tag-area">Karen</span>
@@ -1008,7 +1073,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="karen-blixen-coffee-garden-cottages">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="karen-blixen-coffee-garden-cottages">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Karen%20Blixen%20Coffee%20Garden%20%26%20Cottages%2C%20336%20Karen%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Karen Blixen Coffee Garden &amp; Cottages (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1023,11 +1088,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gK-the-margarita-house" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gK-the-margarita-house)"/><circle cx="70" cy="46" r="18" fill="#E2672A"/>
-  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#BFC48E"/>
-  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4E8A63"/>
-  <g fill="#2A1A12"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <defs><linearGradient id="kfz-gK-the-margarita-house" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEDE8"/><stop offset="1" stop-color="#F7F6F3"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gK-the-margarita-house)"/><circle cx="70" cy="46" r="18" fill="#A8A59F"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#CACAC4"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#A6A6A1"/>
+  <g fill="#141414"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
 </svg>
     <span class="tag-area">Karen</span>
@@ -1046,7 +1111,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="the-margarita-house">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="the-margarita-house">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Margarita%20House%2C%2053%20Lower%20Plains%20Road%2C%20off%20Karen%20Rd%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Margarita House (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1061,11 +1126,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gK-the-residences-at-karen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gK-the-residences-at-karen)"/><circle cx="70" cy="46" r="18" fill="#E2672A"/>
-  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#BFC48E"/>
-  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4E8A63"/>
-  <g fill="#2A1A12"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+  <defs><linearGradient id="kfz-gK-the-residences-at-karen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEDE8"/><stop offset="1" stop-color="#F7F6F3"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gK-the-residences-at-karen)"/><circle cx="70" cy="46" r="18" fill="#A8A59F"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#CACAC4"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#A6A6A1"/>
+  <g fill="#141414"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
 
 </svg>
     <span class="tag-area">Karen</span>
@@ -1084,7 +1149,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="the-residences-at-karen">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="the-residences-at-karen">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=The%20Residences%20At%20Karen%2C%20Karen%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to The Residences At Karen (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1099,10 +1164,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F6DDB8"/>
-  <g fill="#FBF6EE" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#3A271C"/>
-  <rect y="112" width="320" height="28" fill="#3A271C"/>
+  <rect width="320" height="140" fill="#E9E7E2"/>
+  <g fill="#F7F6F3" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#2B2B2B"/>
+  <rect y="112" width="320" height="28" fill="#2B2B2B"/>
   <g fill="#EDB750"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
 </svg>
@@ -1122,7 +1187,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="67-airport-hotel">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="67-airport-hotel">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=67%20Airport%20Hotel%2C%20Muthama%20Access%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to 67 Airport Hotel (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1137,10 +1202,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F6DDB8"/>
-  <g fill="#FBF6EE" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#3A271C"/>
-  <rect y="112" width="320" height="28" fill="#3A271C"/>
+  <rect width="320" height="140" fill="#E9E7E2"/>
+  <g fill="#F7F6F3" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#2B2B2B"/>
+  <rect y="112" width="320" height="28" fill="#2B2B2B"/>
   <g fill="#EDB750"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
 </svg>
@@ -1160,7 +1225,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="easy-hotel-kenya">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="easy-hotel-kenya">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Easy%20Hotel%20Kenya%2C%20Chady%20Rd%2C%20off%20Syokimau%20Airport%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Easy Hotel Kenya (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1175,10 +1240,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F6DDB8"/>
-  <g fill="#FBF6EE" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#3A271C"/>
-  <rect y="112" width="320" height="28" fill="#3A271C"/>
+  <rect width="320" height="140" fill="#E9E7E2"/>
+  <g fill="#F7F6F3" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#2B2B2B"/>
+  <rect y="112" width="320" height="28" fill="#2B2B2B"/>
   <g fill="#EDB750"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
 </svg>
@@ -1198,7 +1263,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="four-points-by-sheraton-nairobi-airport">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="four-points-by-sheraton-nairobi-airport">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Four%20Points%20by%20Sheraton%20Nairobi%20Airport%2C%20Tower%20Avenue%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Four Points by Sheraton Nairobi Airport (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1213,10 +1278,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F6DDB8"/>
-  <g fill="#FBF6EE" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#3A271C"/>
-  <rect y="112" width="320" height="28" fill="#3A271C"/>
+  <rect width="320" height="140" fill="#E9E7E2"/>
+  <g fill="#F7F6F3" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#2B2B2B"/>
+  <rect y="112" width="320" height="28" fill="#2B2B2B"/>
   <g fill="#EDB750"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
 </svg>
@@ -1236,7 +1301,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="crowne-plaza-nairobi-airport">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="crowne-plaza-nairobi-airport">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Crowne%20Plaza%20Nairobi%20Airport%2C%20First%20Freight%20Lane%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Crowne Plaza Nairobi Airport (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1251,10 +1316,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F6DDB8"/>
-  <g fill="#FBF6EE" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#3A271C"/>
-  <rect y="112" width="320" height="28" fill="#3A271C"/>
+  <rect width="320" height="140" fill="#E9E7E2"/>
+  <g fill="#F7F6F3" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#2B2B2B"/>
+  <rect y="112" width="320" height="28" fill="#2B2B2B"/>
   <g fill="#EDB750"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
 </svg>
@@ -1274,7 +1339,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="eka-hotel-nairobi">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="eka-hotel-nairobi">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Eka%20Hotel%20Nairobi%2C%20Mombasa%20Road%2C%20at%20the%20Southern%20Bypass%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Eka Hotel Nairobi (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1289,10 +1354,10 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F6DDB8"/>
-  <g fill="#FBF6EE" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#3A271C"/>
-  <rect y="112" width="320" height="28" fill="#3A271C"/>
+  <rect width="320" height="140" fill="#E9E7E2"/>
+  <g fill="#F7F6F3" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#2B2B2B"/>
+  <rect y="112" width="320" height="28" fill="#2B2B2B"/>
   <g fill="#EDB750"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
 
 </svg>
@@ -1312,7 +1377,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="ole-sereni">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="ole-sereni">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Ole%20Sereni%2C%20Mombasa%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Ole Sereni (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1327,14 +1392,14 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#2A1A12"/>
-  <g fill="#FBF6EE" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
-  <g fill="#6B5A4C"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
+  <rect width="320" height="140" fill="#141414"/>
+  <g fill="#F7F6F3" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
+  <g fill="#5E5E5E"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
   <g fill="#EDB750"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
-  <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#3A271C"/>
-  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#E2672A" stroke-width="3"/>
-  <ellipse cx="160" cy="124" rx="86" ry="14" fill="#2F6B4F"/>
-  <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#FBF6EE" stroke-width="1.5" opacity=".6"/>
+  <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#2B2B2B"/>
+  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#F7F6F3" stroke-width="3"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="#7C7C77"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#F7F6F3" stroke-width="1.5" opacity=".6"/>
 
 </svg>
     <span class="tag-area">Ngong Road</span>
@@ -1353,7 +1418,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="shalom-house">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="shalom-house">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Shalom%20House%2C%20St.%20Daniel%20Comboni%20Rd%2C%20off%20Ngong%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Shalom House (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1368,14 +1433,14 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#2A1A12"/>
-  <g fill="#FBF6EE" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
-  <g fill="#6B5A4C"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
+  <rect width="320" height="140" fill="#141414"/>
+  <g fill="#F7F6F3" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
+  <g fill="#5E5E5E"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
   <g fill="#EDB750"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
-  <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#3A271C"/>
-  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#E2672A" stroke-width="3"/>
-  <ellipse cx="160" cy="124" rx="86" ry="14" fill="#2F6B4F"/>
-  <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#FBF6EE" stroke-width="1.5" opacity=".6"/>
+  <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#2B2B2B"/>
+  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#F7F6F3" stroke-width="3"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="#7C7C77"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#F7F6F3" stroke-width="1.5" opacity=".6"/>
 
 </svg>
     <span class="tag-area">Ngong Road</span>
@@ -1394,7 +1459,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="eldon-villas">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="eldon-villas">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Eldon%20Villas%2C%20Ngong%20Road%2C%20next%20to%20The%20Junction%20Mall%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Eldon Villas (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1409,14 +1474,14 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#2A1A12"/>
-  <g fill="#FBF6EE" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
-  <g fill="#6B5A4C"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
+  <rect width="320" height="140" fill="#141414"/>
+  <g fill="#F7F6F3" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
+  <g fill="#5E5E5E"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
   <g fill="#EDB750"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
-  <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#3A271C"/>
-  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#E2672A" stroke-width="3"/>
-  <ellipse cx="160" cy="124" rx="86" ry="14" fill="#2F6B4F"/>
-  <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#FBF6EE" stroke-width="1.5" opacity=".6"/>
+  <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#2B2B2B"/>
+  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#F7F6F3" stroke-width="3"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="#7C7C77"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#F7F6F3" stroke-width="1.5" opacity=".6"/>
 
 </svg>
     <span class="tag-area">Ngong Road</span>
@@ -1435,7 +1500,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="leon-villas-guest-house">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="leon-villas-guest-house">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Leon%20Villas%20Guest%20House%2C%20Ngong%20Road%2C%20near%20Adams%20Arcade%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Leon Villas Guest House (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -1517,34 +1582,36 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 
 
+
 <nav class="next-stop" aria-label="Continue the route">
   <div class="wrap">
     <a class="ns ns-prev" href="../"><span>← Start</span><strong>Home</strong></a>
-    <a class="ns ns-next" href="../food/"><span>Next stop 2 →</span><strong>Food</strong><em>Restaurants and food spots across the city.</em></a>
+    
+    <a class="ns ns-next" href="../food/">
+<img class="ns-img" src="../img/photos/shared-table-800.webp" srcset="../img/photos/shared-table-800.webp 800w, ../img/photos/shared-table-1400.webp 1400w" sizes="(max-width: 600px) 100vw, 66vw" width="800" height="450" alt="" loading="lazy" decoding="async" style="--focus:60% 50%"><span>Next stop 2 →</span><strong>Food</strong><em>Restaurants and food spots across the city.</em></a>
   </div>
 </nav>
 
 </main>
 
-
 <footer class="footer">
   <div class="wrap">
+    <p class="footer-big" aria-hidden="true">Karibu <em>Nairobi.</em></p>
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h2>Explore</h2><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li data-acct hidden><a href="../account/">Account</a></li><li><a href="../privacy/">Privacy</a></li></ul></div>
+      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li data-acct hidden><a href="../account/">Account</a></li><li><a href="../privacy/">Privacy</a></li><li><a href="../privacy/#credits">Photo credits</a></li></ul></div>
       <div id="languages"><h2>Language</h2>
         <div class="langs"><button type="button" data-lang="EN" data-name="English" data-live="1" aria-pressed="true">EN</button><button type="button" data-lang="SW" data-name="Kiswahili" data-live="" aria-pressed="false" class="soon">SW<small>soon</small></button><button type="button" data-lang="FR" data-name="French" data-live="" aria-pressed="false" class="soon">FR<small>soon</small></button><button type="button" data-lang="AR" data-name="Arabic" data-live="" aria-pressed="false" class="soon">AR<small>soon</small></button><button type="button" data-lang="PT" data-name="Portuguese" data-live="" aria-pressed="false" class="soon">PT<small>soon</small></button></div>
         <p class="lang-note" id="langNote" aria-live="polite">The site is in English. Kiswahili, French, Arabic and Portuguese follow after launch.</p>
       </div>
     </div>
-    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 KaribuFans.</p>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Photographs are by the photographers credited with each one, via Unsplash, and are for illustration only. © 2026 KaribuFans.</p>
   </div>
 </footer>
 <script src="../js/site.js" defer></script>

@@ -25,6 +25,34 @@ def load(name):
     return json.loads((ROOT / "data" / name).read_text(encoding="utf-8"))
 
 
+# Gallery photos the design leaves out on a page although the manifest lists them there
+# (the jacaranda street reads weakly among the ride photos; it stays in the homepage gallery).
+# A stop's gallery also skips the photo that is already that page's hero, so no page shows one photo twice.
+GALLERY_DROP = {"rides": {"jacaranda-street", "avenue-traffic"}}
+# Photos the design adds to a page's gallery. avenue-traffic was re-cropped to buildings only (no road), so it sits
+# with the stays photos rather than the rides ones.
+GALLERY_ADD = {"stays": ["avenue-traffic"]}
+
+
+def load_photos():
+    """Read data/photos.json (written by tools/photos.py) and add what the templates need: each photo's id
+    and its ratio as numbers, so every <img> gets a width and height. templates/partials/photo.html does the rest."""
+    f = ROOT / "data" / "photos.json"
+    if not f.exists():
+        return {"photos": {}, "slots": {}, "galleries": {}}
+    man = json.loads(f.read_text(encoding="utf-8"))
+    for pid, ph in man["photos"].items():
+        ph["id"] = pid
+        ph["rw"], ph["rh"] = (int(x) for x in ph["ratio"].split(":"))
+        if ph.get("m"):
+            ph["mw"], ph["mh"] = (int(x) for x in ph.get("m_ratio", "4:5").split(":"))
+    for page, ids in man.get("galleries", {}).items():
+        skip = GALLERY_DROP.get(page, set()) | ({man["slots"].get(page)} if page != "home" else set())
+        ids = ids + [i for i in GALLERY_ADD.get(page, []) if i not in ids]
+        man["galleries"][page] = [i for i in ids if i in man["photos"] and i not in skip]
+    return man
+
+
 def zone_key(z):
     return (ZONE_ORDER.index(z) if z in ZONE_ORDER else len(ZONE_ORDER), z)
 
@@ -35,6 +63,7 @@ def main():
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]))
     rides = load("rides.json")
     fixtures = load("fixtures.json")
+    photos = load_photos()
 
     # Load every listing once, so pages can link to each other by area.
     listings = {}
@@ -57,8 +86,16 @@ def main():
     zones = sorted({z for r in route.values() for z in r}, key=zone_key)
     zone_cards = [{"name": z, "counts": [(m["label"], m["slug"], route[m["slug"]].get(z, 0)) for m in modules if route[m["slug"]].get(z)]} for z in zones]
 
+    # Every photo the site shows, in the order it first appears, for the credits on the privacy page.
+    used = []
+    for pid in list(photos["slots"].values()) + [i for ids in photos["galleries"].values() for i in ids]:
+        if pid in photos["photos"] and pid not in used:
+            used.append(pid)
+    photo_credits = [photos["photos"][i] for i in used]
+
     common = dict(site=site, modules=modules, rides=rides, fixtures=fixtures, year=date.today().year,
-                  route=route, zone_cards=zone_cards)
+                  route=route, zone_cards=zone_cards, photos=photos["photos"], slots=photos["slots"],
+                  galleries=photos["galleries"], photo_credits=photo_credits)
 
     if DIST.exists():
         shutil.rmtree(DIST)

@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nightlife · KaribuFans</title>
 <meta name="description" content="Bars, lounges, clubs and live music across Nairobi. 18+ only.">
-<meta name="theme-color" content="#2A1A12">
+<meta name="theme-color" content="#0E0E0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
-<link rel="stylesheet" href="../css/art.css">
 
 <script>
 (function(w,d){try{
 var h=d.documentElement,n=+h.getAttribute('data-stop')||0,K='kf_from',P=['.nav','.routebar .trail','.routebar .current .dot i'];
+h.classList.add('kf-js');
+function atTop(){h.classList.toggle('kf-top',(w.pageYOffset||0)<24);}atTop();w.addEventListener('scroll',atTop,{passive:true});d.addEventListener('DOMContentLoaded',atTop);
 if(!w.matchMedia||w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 h.classList.add('kf-draw');
 function parts(trim){for(var i=0,el,r;i<P.length;i++){el=d.querySelector(P[i]);if(!el)continue;
@@ -32,17 +33,19 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 }catch(x){}})(window,document);
 </script>
 </head>
-<body>
+<body class="has-hero">
 
 <a class="skip" href="#main">Skip to content</a>
+
 <header class="nav" id="nav">
-  <div class="wrap">
+  <div class="nav-in">
     <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
     <nav aria-label="Main" class="nav-links" id="navLinks">
-      <a href="../stays/" >Stays</a><a href="../food/" >Food</a><a href="../rides/" >Rides</a><a href="../matchday/" >Matchday</a><a href="../nightlife/" aria-current="page">Nightlife</a><a href="../movies-games/" >Movies &amp; Games</a><a href="../tickets/" >Tickets</a>
+      <span class="nav-pill" aria-hidden="true"></span>
+      <a href="../stays/" ><span class="nav-n" aria-hidden="true">01</span>Stays</a><a href="../food/" ><span class="nav-n" aria-hidden="true">02</span>Food</a><a href="../rides/" ><span class="nav-n" aria-hidden="true">03</span>Rides</a><a href="../matchday/" ><span class="nav-n" aria-hidden="true">04</span>Matchday</a><a href="../nightlife/" aria-current="page"><span class="nav-n" aria-hidden="true">05</span>Nightlife</a><a href="../movies-games/" ><span class="nav-n" aria-hidden="true">06</span>Movies &amp; Games</a><a href="../tickets/" ><span class="nav-n" aria-hidden="true">07</span>Tickets</a>
+      <span class="menu-extra"><a href="../search/">Search</a><a class="btn btn-primary" href="../list-your-business/">List your business</a></span>
     </nav>
     <div class="nav-tools">
       <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
@@ -51,7 +54,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
       <a class="icon-btn acct-link" id="acctLink" href="../account/" aria-label="Account" data-acct hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM4.5 20a7.5 7.5 0 0 1 15 0"/></svg><span id="acctInitial" aria-hidden="true" hidden></span></a>
       <a class="btn btn-primary nav-cta" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path class="mb-1" d="M4 8h16"/><path class="mb-2" d="M4 16h16"/></svg>
       </button>
     </div>
   </div>
@@ -63,9 +66,15 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 
 
-<section class="hero page-hero has-art" aria-labelledby="pageH">
+
+
+<section class="hero page-hero shade-soft" aria-labelledby="pageH">
   
-  <div class="hero-glow" aria-hidden="true"></div>
+  
+<picture class="hero-media">
+  <source media="(max-width: 699px)" srcset="../img/photos/kicc-night-m-600.webp 600w, ../img/photos/kicc-night-m-1000.webp 1000w" sizes="100vw" width="1000" height="1250">
+  <img class="hero-img" src="../img/photos/kicc-night-1400.webp" srcset="../img/photos/kicc-night-800.webp 800w, ../img/photos/kicc-night-1400.webp 1400w, ../img/photos/kicc-night-2200.webp 2200w" sizes="100vw" width="2200" height="1238" alt="The KICC tower lit purple at night behind palm trees, reflected in a still lake in central Nairobi" fetchpriority="high" decoding="async" style="--focus:56% 45%">
+</picture>
   
   <div class="wrap hero-body">
     <nav class="crumbs" aria-label="Breadcrumb"><ol>
@@ -73,33 +82,12 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <li><span aria-current="page">Nightlife</span></li>
   <li id="crumbArea" hidden></li>
 </ol></nav>
-    <div class="hero-art"><svg class="kf-art kf-art--nightlife" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-
-<defs>
-<linearGradient id="kfa-nl-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F130D"/><stop offset=".45" stop-color="#4A2A1C"/><stop offset="1" stop-color="#C4521C"/></linearGradient>
-</defs>
-<rect width="480" height="300" fill="url(#kfa-nl-sky)"/>
-<g fill="#FBF6EE"><circle class="kf-twinkle kf-d1" cx="40" cy="40" r="1.6"/><circle class="kf-twinkle kf-d2" cx="98" cy="22" r="1.1"/><circle class="kf-twinkle kf-d3" cx="150" cy="60" r="1.6"/><circle class="kf-twinkle kf-d4" cx="210" cy="30" r="1.1"/><circle class="kf-twinkle kf-d1" cx="268" cy="52" r="1.6"/><circle class="kf-twinkle kf-d3" cx="330" cy="24" r="1.6"/><circle class="kf-twinkle kf-d2" cx="130" cy="100" r="1.1"/><circle class="kf-twinkle kf-d4" cx="300" cy="96" r="1.1"/><circle class="kf-twinkle kf-d2" cx="450" cy="110" r="1.1"/><circle class="kf-twinkle kf-d3" cx="20" cy="120" r="1.6"/></g>
-<path d="M410 34a26 26 0 1 0 22 42 22 22 0 1 1-22-42z" fill="#EDB750"/>
-<g fill="#2A1A12"><rect x="10" y="150" width="40" height="150"/><rect x="54" y="118" width="30" height="182"/><rect x="88" y="168" width="44" height="132"/><path d="M138 300V120l18-20 18 20v180z"/><rect x="180" y="160" width="36" height="140"/><rect x="222" y="132" width="28" height="168"/><rect x="256" y="176" width="46" height="124"/><rect x="306" y="110" width="34" height="190"/><rect x="346" y="150" width="40" height="150"/><rect x="392" y="124" width="30" height="176"/><rect x="428" y="164" width="52" height="136"/></g>
-<g fill="#EDB750"><rect class="kf-twinkle kf-d1" x="20" y="164" width="6" height="8"/><rect x="34" y="186" width="6" height="8"/><rect class="kf-twinkle kf-d2" x="62" y="132" width="6" height="8"/><rect x="62" y="160" width="6" height="8"/><rect class="kf-twinkle kf-d3" x="72" y="196" width="6" height="8"/><rect x="98" y="182" width="6" height="8"/><rect class="kf-twinkle kf-d4" x="116" y="208" width="6" height="8"/><rect class="kf-twinkle kf-d1" x="150" y="134" width="6" height="8"/><rect x="160" y="168" width="6" height="8"/><rect class="kf-twinkle kf-d2" x="188" y="176" width="6" height="8"/><rect x="230" y="148" width="6" height="8"/><rect class="kf-twinkle kf-d3" x="230" y="180" width="6" height="8"/><rect x="268" y="190" width="6" height="8"/><rect class="kf-twinkle kf-d1" x="286" y="214" width="6" height="8"/><rect class="kf-twinkle kf-d4" x="314" y="124" width="6" height="8"/><rect x="326" y="156" width="6" height="8"/><rect class="kf-twinkle kf-d2" x="354" y="166" width="6" height="8"/><rect x="368" y="200" width="6" height="8"/><rect class="kf-twinkle kf-d3" x="400" y="140" width="6" height="8"/><rect x="408" y="176" width="6" height="8"/><rect class="kf-twinkle kf-d1" x="440" y="180" width="6" height="8"/><rect x="458" y="206" width="6" height="8"/></g>
-<rect y="246" width="480" height="54" fill="#3A271C"/><rect y="244" width="480" height="4" fill="#E2672A" opacity=".7"/>
-<g fill="#2A1A12"><rect x="26" y="70" width="5" height="176"/><rect x="449" y="70" width="5" height="176"/></g>
-<path d="M28 74Q240 196 452 74" fill="none" stroke="#D2C3B1" stroke-width="1.5" opacity=".7"/>
-<path d="M28 74Q240 140 452 74" fill="none" stroke="#D2C3B1" stroke-width="1.5" opacity=".5"/>
-<circle class="kf-twinkle kf-d2" cx="56.3" cy="93.2" r="5" fill="#E2672A"/><circle class="kf-twinkle kf-d3" cx="84.5" cy="106.2" r="5" fill="#FBF6EE"/><circle class="kf-twinkle kf-d4" cx="112.8" cy="117.0" r="5" fill="#B8262B"/><circle class="kf-twinkle kf-d1" cx="141.1" cy="125.7" r="5" fill="#2458A6"/><circle class="kf-twinkle kf-d2" cx="169.3" cy="132.2" r="5" fill="#EDB750"/><circle class="kf-twinkle kf-d3" cx="197.6" cy="136.6" r="5" fill="#E2672A"/><circle class="kf-twinkle kf-d4" cx="225.9" cy="138.7" r="5" fill="#FBF6EE"/><circle class="kf-twinkle kf-d1" cx="254.1" cy="138.7" r="5" fill="#B8262B"/><circle class="kf-twinkle kf-d2" cx="282.4" cy="136.6" r="5" fill="#2458A6"/><circle class="kf-twinkle kf-d3" cx="310.7" cy="132.2" r="5" fill="#EDB750"/><circle class="kf-twinkle kf-d4" cx="338.9" cy="125.7" r="5" fill="#E2672A"/><circle class="kf-twinkle kf-d1" cx="367.2" cy="117.0" r="5" fill="#FBF6EE"/><circle class="kf-twinkle kf-d2" cx="395.5" cy="106.2" r="5" fill="#B8262B"/><circle class="kf-twinkle kf-d3" cx="423.7" cy="93.2" r="5" fill="#2458A6"/><circle class="kf-twinkle kf-d2" cx="60.6" cy="87.4" r="4" fill="#E2672A"/><circle class="kf-twinkle kf-d3" cx="93.2" cy="95.2" r="4" fill="#FBF6EE"/><circle class="kf-twinkle kf-d4" cx="125.8" cy="101.4" r="4" fill="#B8262B"/><circle class="kf-twinkle kf-d1" cx="158.5" cy="106.1" r="4" fill="#2458A6"/><circle class="kf-twinkle kf-d2" cx="191.1" cy="109.2" r="4" fill="#EDB750"/><circle class="kf-twinkle kf-d3" cx="223.7" cy="110.8" r="4" fill="#E2672A"/><circle class="kf-twinkle kf-d4" cx="256.3" cy="110.8" r="4" fill="#FBF6EE"/><circle class="kf-twinkle kf-d1" cx="288.9" cy="109.2" r="4" fill="#B8262B"/><circle class="kf-twinkle kf-d2" cx="321.5" cy="106.1" r="4" fill="#2458A6"/><circle class="kf-twinkle kf-d3" cx="354.2" cy="101.4" r="4" fill="#EDB750"/><circle class="kf-twinkle kf-d4" cx="386.8" cy="95.2" r="4" fill="#E2672A"/><circle class="kf-twinkle kf-d1" cx="419.4" cy="87.4" r="4" fill="#FBF6EE"/>
-<g fill="#EDB750">
- <g class="kf-float"><path d="M118 218v-30l18-4v26" fill="none" stroke="#EDB750" stroke-width="3"/><ellipse cx="113" cy="219" rx="6" ry="4.5"/><ellipse cx="131" cy="211" rx="6" ry="4.5"/></g>
- <g class="kf-float kf-d2"><path d="M246 224v-26l10 6" fill="none" stroke="#F6CF7A" stroke-width="3" stroke-linecap="round"/><ellipse cx="241" cy="225" rx="6" ry="4.5"/></g>
- <g class="kf-float kf-d4"><path d="M362 214v-28l18-4v26" fill="none" stroke="#EDB750" stroke-width="3"/><ellipse cx="357" cy="215" rx="6" ry="4.5"/><ellipse cx="375" cy="207" rx="6" ry="4.5"/></g>
-</g>
-<rect y="262" width="480" height="6" fill="#2A1A12"/><path d="M8 284h472" stroke="#2A1A12" stroke-width="32" stroke-dasharray="4 16"/>
-
-</svg></div>
-    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Stop 5 of 7 · Nightlife</div>
-    <div class="script">Sherehe!</div>
-    <h1 id="pageH">The night after the whistle.</h1>
+    
+    <p class="eyebrow">Stop 5 of 7 · Nightlife</p>
+    <p class="script">Sherehe!</p>
+    <h1 id="pageH" class="display">The night after the whistle.</h1>
     <p class="lede">Bars, lounges, clubs and live music across Nairobi. 18+ only.</p>
+    <a class="credit" href="https://unsplash.com/photos/Zkao_QBEjk8" target="_blank" rel="noopener">Photo: Mustafa Omar / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>
   </div>
   <nav class="routebar" aria-label="The route: seven stops">
   <div class="wrap"><div class="routebar-in">
@@ -140,6 +128,62 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 </section>
 
 
+
+
+<section class="band band-paper gallery-band" aria-labelledby="galH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="galH" class="display-3">Nightlife <em>in pictures</em></h2><p class="gallery-note">Around the city. These photos set the scene; they are not of the places listed on this page.</p></div>
+    
+<ul class="strip strip-4 rv-each" role="list">
+  
+  
+    
+    
+    
+  
+  <li class="g-full"><figure class="ph">
+    
+<img class="" src="../img/photos/neon-rooftop-600.webp" srcset="../img/photos/neon-rooftop-600.webp 600w, ../img/photos/neon-rooftop-1200.webp 1200w" sizes="(max-width: 900px) 100vw, min(48vw, 680px)" width="600" height="400" alt="Silhouettes of people in a bar lit by red neon, city lights behind the windows" loading="lazy" decoding="async" style="--focus:50% 40%">
+    <figcaption><a href="https://unsplash.com/photos/poCJoKaymlU" target="_blank" rel="noopener">Aleksandr Popov<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="../img/photos/bar-sunset-600.webp" srcset="../img/photos/bar-sunset-600.webp 600w, ../img/photos/bar-sunset-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(24vw, 340px)" width="600" height="400" alt="Silhouetted bottles along a bar in front of tall windows and a sunset sky" loading="lazy" decoding="async" style="--focus:50% 60%">
+    <figcaption><a href="https://unsplash.com/photos/2lrAn7dY7kI" target="_blank" rel="noopener">Adam Bignell<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="../img/photos/singer-stage-600.webp" srcset="../img/photos/singer-stage-600.webp 600w, ../img/photos/singer-stage-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(24vw, 340px)" width="600" height="750" alt="A singer in a wide hat and patterned top performing at a microphone against a gold curtain" loading="lazy" decoding="async" style="--focus:60% 45%">
+    <figcaption><a href="https://unsplash.com/photos/Cs2aZkwXM4U" target="_blank" rel="noopener">Dwayne Joe<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+  
+  <li class="g-full"><figure class="ph">
+    
+<img class="" src="../img/photos/window-dining-600.webp" srcset="../img/photos/window-dining-600.webp 600w, ../img/photos/window-dining-1200.webp 1200w" sizes="(max-width: 900px) 100vw, min(48vw, 680px)" width="600" height="750" alt="Two diners silhouetted at a window table high above a hazy city" loading="lazy" decoding="async" style="--focus:50% 50%">
+    <figcaption><a href="https://unsplash.com/photos/40N4F93__Sk" target="_blank" rel="noopener">Polina Kuzovkova<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+</ul>
+  </div>
+</section>
+
+
+
 <div class="filters" id="filters" role="group" aria-label="Filter Nightlife">
   <div class="wrap">
     <label class="sel"><span>Area</span>
@@ -164,7 +208,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="listH">Nightlife in Nairobi</h2><p>We are curating bars, lounges, clubs and live music venues across Westlands, Kilimani, Ngong Road and the city centre. 18+ only.</p></div>
+    <div class="sec-head"><h2 id="listH" class="display-3">Nightlife in Nairobi</h2><p>We are curating bars, lounges, clubs and live music venues across Westlands, Kilimani, Ngong Road and the city centre. 18+ only.</p></div>
     <p class="notice-soft" id="areaNote" hidden></p>
     <p class="notice-soft"><span class="badge badge-directory">Directory listing</span> means we show only the name and location published on the business's own website. Prices and WhatsApp booking switch on when the business joins.</p>
     <div class="grid-cards rv-each" id="cards" data-page="nightlife" data-noun="venues">
@@ -177,9 +221,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gW-k1-klub-house" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".7" stop-color="#B8502A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+  <defs><linearGradient id="kfz-gW-k1-klub-house" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2B2B"/><stop offset=".7" stop-color="#5A5A5A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#kfz-gW-k1-klub-house)"/>
-  <g fill="#2A1A12"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#141414"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
   <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
 </svg>
@@ -199,7 +243,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     <div class="tags"><span>Live music</span></div>
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="k1-klub-house">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="k1-klub-house">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=K1%20Klub%20House%2C%20Ojijo%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to K1 Klub House (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -214,9 +258,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <defs><linearGradient id="kfz-gW-nairobi-street-kitchen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".7" stop-color="#B8502A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+  <defs><linearGradient id="kfz-gW-nairobi-street-kitchen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2B2B"/><stop offset=".7" stop-color="#5A5A5A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
   <rect width="320" height="140" fill="url(#kfz-gW-nairobi-street-kitchen)"/>
-  <g fill="#2A1A12"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#141414"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
   <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
 
 </svg>
@@ -236,7 +280,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     <div class="tags"><span>Rooftop bars</span><span>Live music</span></div>
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="nairobi-street-kitchen">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="nairobi-street-kitchen">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Nairobi%20Street%20Kitchen%2C%20Mpaka%20Road%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Nairobi Street Kitchen (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -251,11 +295,11 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
 <svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
 
-  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
-  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+  <rect width="320" height="140" fill="#ECEAE5"/><circle cx="262" cy="34" r="16" fill="#A8A59F"/>
+  <g fill="#CFCCC5"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F6F3" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#A6A6A1"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#7C7C77"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
 
 </svg>
     <span class="tag-area">Kilimani</span>
@@ -274,7 +318,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     
     
     <div class="card-actions">
-      <button type="button" class="btn btn-primary place-open" data-id="quiver-kilimani">View details</button>
+      <button type="button" class="btn btn-dark place-open" data-id="quiver-kilimani">View details</button>
       <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Quiver%20Kilimani%2C%20Nairobi" target="_blank" rel="noopener" aria-label="Directions to Quiver Kilimani (opens Google Maps)">Directions ↗</a>
     </div>
   </div>
@@ -283,7 +327,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   <span class="eyebrow">For Nairobi businesses</span>
   <h3>Own a bar, lounge or club in Nairobi?</h3>
   <p>Get listed before visiting fans arrive for the 2027 tournament. No listing fee: you pay a commission only on customers we send you.</p>
-  <a class="btn btn-dark" href="../list-your-business/">List your business</a>
+  <a class="btn btn-primary" href="../list-your-business/">List your business</a>
 </aside>
       
     </div>
@@ -358,6 +402,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 
 
+
 <section class="band band-dark" aria-labelledby="nsH">
   <div class="wrap">
     <div class="sec-head"><h2 id="nsH">Get home safe</h2><p>18+ only. Carry ID.</p></div>
@@ -377,31 +422,32 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 <nav class="next-stop" aria-label="Continue the route">
   <div class="wrap">
     <a class="ns ns-prev" href="../matchday/"><span>← Stop 4</span><strong>Matchday</strong></a>
-    <a class="ns ns-next" href="../movies-games/"><span>Next stop 6 →</span><strong>Movies &amp; Games</strong><em>Cinemas, bowling and arcades.</em></a>
+    
+    <a class="ns ns-next" href="../movies-games/">
+<img class="ns-img" src="../img/photos/cinema-seats-800.webp" srcset="../img/photos/cinema-seats-800.webp 800w, ../img/photos/cinema-seats-1400.webp 1400w" sizes="(max-width: 600px) 100vw, 66vw" width="800" height="450" alt="" loading="lazy" decoding="async" style="--focus:50% 70%"><span>Next stop 6 →</span><strong>Movies &amp; Games</strong><em>Cinemas, bowling and arcades.</em></a>
   </div>
 </nav>
 
 </main>
 
-
 <footer class="footer">
   <div class="wrap">
+    <p class="footer-big" aria-hidden="true">Karibu <em>Nairobi.</em></p>
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h2>Explore</h2><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li data-acct hidden><a href="../account/">Account</a></li><li><a href="../privacy/">Privacy</a></li></ul></div>
+      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li data-acct hidden><a href="../account/">Account</a></li><li><a href="../privacy/">Privacy</a></li><li><a href="../privacy/#credits">Photo credits</a></li></ul></div>
       <div id="languages"><h2>Language</h2>
         <div class="langs"><button type="button" data-lang="EN" data-name="English" data-live="1" aria-pressed="true">EN</button><button type="button" data-lang="SW" data-name="Kiswahili" data-live="" aria-pressed="false" class="soon">SW<small>soon</small></button><button type="button" data-lang="FR" data-name="French" data-live="" aria-pressed="false" class="soon">FR<small>soon</small></button><button type="button" data-lang="AR" data-name="Arabic" data-live="" aria-pressed="false" class="soon">AR<small>soon</small></button><button type="button" data-lang="PT" data-name="Portuguese" data-live="" aria-pressed="false" class="soon">PT<small>soon</small></button></div>
         <p class="lang-note" id="langNote" aria-live="polite">The site is in English. Kiswahili, French, Arabic and Portuguese follow after launch.</p>
       </div>
     </div>
-    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 KaribuFans.</p>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Photographs are by the photographers credited with each one, via Unsplash, and are for illustration only. © 2026 KaribuFans.</p>
   </div>
 </footer>
 <script src="../js/site.js" defer></script>

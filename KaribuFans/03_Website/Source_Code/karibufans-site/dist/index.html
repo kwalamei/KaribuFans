@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KaribuFans · Nairobi city guide</title>
 <meta name="description" content="KaribuFans: stays, food, rides, nightlife and matchday in Nairobi, in one city guide.">
-<meta name="theme-color" content="#2A1A12">
+<meta name="theme-color" content="#0E0E0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
 <link rel="stylesheet" href="./css/site.css">
-<link rel="stylesheet" href="./css/art.css">
 
 <script>
 (function(w,d){try{
 var h=d.documentElement,n=+h.getAttribute('data-stop')||0,K='kf_from',P=['.nav','.routebar .trail','.routebar .current .dot i'];
+h.classList.add('kf-js');
+function atTop(){h.classList.toggle('kf-top',(w.pageYOffset||0)<24);}atTop();w.addEventListener('scroll',atTop,{passive:true});d.addEventListener('DOMContentLoaded',atTop);
 if(!w.matchMedia||w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 h.classList.add('kf-draw');
 function parts(trim){for(var i=0,el,r;i<P.length;i++){el=d.querySelector(P[i]);if(!el)continue;
@@ -32,17 +33,19 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 }catch(x){}})(window,document);
 </script>
 </head>
-<body>
+<body class="has-hero">
 
 <a class="skip" href="#main">Skip to content</a>
+
 <header class="nav" id="nav">
-  <div class="wrap">
+  <div class="nav-in">
     <a class="brand" href="./" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
     <nav aria-label="Main" class="nav-links" id="navLinks">
-      <a href="./stays/" >Stays</a><a href="./food/" >Food</a><a href="./rides/" >Rides</a><a href="./matchday/" >Matchday</a><a href="./nightlife/" >Nightlife</a><a href="./movies-games/" >Movies &amp; Games</a><a href="./tickets/" >Tickets</a>
+      <span class="nav-pill" aria-hidden="true"></span>
+      <a href="./stays/" ><span class="nav-n" aria-hidden="true">01</span>Stays</a><a href="./food/" ><span class="nav-n" aria-hidden="true">02</span>Food</a><a href="./rides/" ><span class="nav-n" aria-hidden="true">03</span>Rides</a><a href="./matchday/" ><span class="nav-n" aria-hidden="true">04</span>Matchday</a><a href="./nightlife/" ><span class="nav-n" aria-hidden="true">05</span>Nightlife</a><a href="./movies-games/" ><span class="nav-n" aria-hidden="true">06</span>Movies &amp; Games</a><a href="./tickets/" ><span class="nav-n" aria-hidden="true">07</span>Tickets</a>
+      <span class="menu-extra"><a href="./search/">Search</a><a class="btn btn-primary" href="./list-your-business/">List your business</a></span>
     </nav>
     <div class="nav-tools">
       <a class="icon-btn" href="./search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
@@ -51,7 +54,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
       <a class="icon-btn acct-link" id="acctLink" href="./account/" aria-label="Account" data-acct hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM4.5 20a7.5 7.5 0 0 1 15 0"/></svg><span id="acctInitial" aria-hidden="true" hidden></span></a>
       <a class="btn btn-primary nav-cta" href="./list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path class="mb-1" d="M4 8h16"/><path class="mb-2" d="M4 16h16"/></svg>
       </button>
     </div>
   </div>
@@ -61,175 +64,36 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 
 
-<section class="hero" aria-label="Welcome">
-  <img class="hero-img" src="./img/hero-day-skyline.webp" alt="Nairobi skyline by day above a green park and the elevated expressway" style="object-position:50% 30%" fetchpriority="high">
-  <span class="credit">Artist's impression</span>
+
+<section class="hero hero-home" aria-labelledby="homeH">
+  
+<picture class="hero-media">
+  <source media="(max-width: 699px)" srcset="./img/photos/home-skyline-m-600.webp 600w, ./img/photos/home-skyline-m-1000.webp 1000w" sizes="100vw" width="1000" height="1250">
+  <img class="hero-img" src="./img/photos/home-skyline-1400.webp" srcset="./img/photos/home-skyline-800.webp 800w, ./img/photos/home-skyline-1400.webp 1400w, ./img/photos/home-skyline-2200.webp 2200w" sizes="100vw" width="2200" height="1238" alt="Nairobi skyline at golden hour, tall towers rising above a band of green trees" fetchpriority="high" decoding="async" style="--focus:50% 55%">
+</picture>
   <div class="wrap hero-body">
-    <div class="eyebrow"><span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Nairobi · every day, every weekend</div>
-    <div class="script">Karibu Nairobi.</div>
-    <h1>Eat, stay, ride and celebrate in one city guide.</h1>
+    <p class="eyebrow">Nairobi · every day, every weekend</p>
+    <h1 id="homeH" class="display">Eat, stay, ride and <em>celebrate</em> in one city guide.</h1>
     <p class="lede">Find stays, food spots, nightlife, places to watch the game and rides. You book directly with the business.</p>
     <form class="planner" action="#" onsubmit="return false" aria-label="Start here">
       <label for="pWhat">I'm looking for<select id="pWhat"><option value="stays">Stays</option><option value="food">Food</option><option value="rides">Rides</option><option value="matchday">Matchday</option><option value="nightlife">Nightlife</option><option value="movies-games">Movies &amp; Games</option></select></label>
       <label for="pArea">Area<select id="pArea"><option value="">Any area</option><option value="Kilimani">Kilimani</option><option value="Westlands">Westlands</option><option value="CBD">CBD</option><option value="Karen">Karen</option><option value="Ngong Road">Ngong Road</option><option value="Lang&#39;ata">Lang&#39;ata</option><option value="Airport &amp; Mombasa Road">Airport &amp; Mombasa Road</option><option value="Gigiri &amp; Limuru Road">Gigiri &amp; Limuru Road</option><option value="Thika Road">Thika Road</option></select></label>
       <button type="submit" class="btn btn-primary" id="plannerGo">Show me</button>
     </form>
+    <a class="credit" href="https://unsplash.com/photos/LTh5pGyvKAM" target="_blank" rel="noopener">Photo: Amani Nation / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>
   </div>
 </section>
 
-
-<section class="band" aria-labelledby="areaH">
-  <div class="wrap">
-    <div class="sec-head"><h2 id="areaH">Browse by area</h2><p>Pick an area once and it follows you along the route, from stays to food to a night out.</p></div>
-    <ul class="zone-grid rv-each">
-      
-      <li><a class="zone" href="./stays/?area=Kilimani" data-area="Kilimani">
-        <span class="zone-art">
-<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-
-  <rect width="320" height="140" fill="#F3E9DA"/><circle cx="262" cy="34" r="16" fill="#EDB750"/>
-  <g fill="#DCC3A3"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
-  <g fill="#FBF6EE" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
-  <g fill="#4E8A63"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
-  <g fill="#2F6B4F"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
-
-</svg></span>
-        <strong>Kilimani</strong>
-        <span class="zone-counts">7 stays · 2 food · 1 nightlife</span>
-      </a></li>
-      
-      <li><a class="zone" href="./stays/?area=Westlands" data-area="Westlands">
-        <span class="zone-art">
-<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-
-  <defs><linearGradient id="kfz-gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".7" stop-color="#B8502A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gW)"/>
-  <g fill="#2A1A12"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
-  <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
-
-</svg></span>
-        <strong>Westlands</strong>
-        <span class="zone-counts">6 stays · 1 food · 2 nightlife · 3 movies &amp; games</span>
-      </a></li>
-      
-      <li><a class="zone" href="./stays/?area=CBD" data-area="CBD">
-        <span class="zone-art">
-<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-
-  <rect width="320" height="140" fill="#F3E9DA"/>
-  <g fill="#E0CBAE"><rect x="10" y="70" width="40" height="70"/><rect x="250" y="60" width="50" height="80"/><rect x="186" y="78" width="30" height="62"/></g>
-  <g fill="#3A271C"><rect x="42" y="48" width="36" height="92"/><rect x="88" y="28" width="30" height="112"/><rect x="128" y="62" width="44" height="78"/><path d="M196 140V40l14-12 14 12v100z"/><rect x="236" y="72" width="34" height="68"/><rect x="282" y="52" width="26" height="88"/></g>
-  <g fill="#FBF6EE" opacity=".55"><rect x="94" y="38" width="4" height="96"/><rect x="104" y="38" width="4" height="96"/><rect x="48" y="58" width="24" height="3"/><rect x="48" y="70" width="24" height="3"/><rect x="48" y="82" width="24" height="3"/><rect x="134" y="72" width="32" height="3"/><rect x="134" y="86" width="32" height="3"/><rect x="204" y="52" width="12" height="3"/><rect x="204" y="66" width="12" height="3"/></g>
-
-</svg></span>
-        <strong>CBD</strong>
-        <span class="zone-counts">6 stays · 1 food</span>
-      </a></li>
-      
-      <li><a class="zone" href="./stays/?area=Karen" data-area="Karen">
-        <span class="zone-art">
-<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-
-  <defs><linearGradient id="kfz-gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gK)"/><circle cx="70" cy="46" r="18" fill="#E2672A"/>
-  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#BFC48E"/>
-  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#4E8A63"/>
-  <g fill="#2A1A12"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
-
-</svg></span>
-        <strong>Karen</strong>
-        <span class="zone-counts">6 stays · 1 food · 1 matchday</span>
-      </a></li>
-      
-      <li><a class="zone" href="./stays/?area=Ngong%20Road" data-area="Ngong Road">
-        <span class="zone-art">
-<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-
-  <rect width="320" height="140" fill="#2A1A12"/>
-  <g fill="#FBF6EE" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
-  <g fill="#6B5A4C"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
-  <g fill="#EDB750"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
-  <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#3A271C"/>
-  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#E2672A" stroke-width="3"/>
-  <ellipse cx="160" cy="124" rx="86" ry="14" fill="#2F6B4F"/>
-  <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#FBF6EE" stroke-width="1.5" opacity=".6"/>
-
-</svg></span>
-        <strong>Ngong Road</strong>
-        <span class="zone-counts">3 stays · 1 movies &amp; games</span>
-      </a></li>
-      
-      <li><a class="zone" href="./food/?area=Lang%27ata" data-area="Lang&#39;ata">
-        <span class="zone-art">
-<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-
-  <defs><linearGradient id="kfz-gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gG)"/><circle cx="250" cy="44" r="18" fill="#E2672A" opacity=".85"/>
-  <g fill="#DCC3A3"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
-  <g fill="#3A271C" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
-  <g fill="#FBF6EE" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
-
-</svg></span>
-        <strong>Lang&#39;ata</strong>
-        <span class="zone-counts">1 food</span>
-      </a></li>
-      
-      <li><a class="zone" href="./stays/?area=Airport%20%26%20Mombasa%20Road" data-area="Airport &amp; Mombasa Road">
-        <span class="zone-art">
-<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-
-  <rect width="320" height="140" fill="#F6DDB8"/>
-  <g fill="#FBF6EE" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
-  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#3A271C"/>
-  <rect y="112" width="320" height="28" fill="#3A271C"/>
-  <g fill="#EDB750"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
-
-</svg></span>
-        <strong>Airport &amp; Mombasa Road</strong>
-        <span class="zone-counts">6 stays · 1 movies &amp; games</span>
-      </a></li>
-      
-      <li><a class="zone" href="./movies-games/?area=Gigiri%20%26%20Limuru%20Road" data-area="Gigiri &amp; Limuru Road">
-        <span class="zone-art">
-<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-
-  <defs><linearGradient id="kfz-gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gG)"/><circle cx="250" cy="44" r="18" fill="#E2672A" opacity=".85"/>
-  <g fill="#DCC3A3"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
-  <g fill="#3A271C" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
-  <g fill="#FBF6EE" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
-
-</svg></span>
-        <strong>Gigiri &amp; Limuru Road</strong>
-        <span class="zone-counts">2 movies &amp; games</span>
-      </a></li>
-      
-      <li><a class="zone" href="./movies-games/?area=Thika%20Road" data-area="Thika Road">
-        <span class="zone-art">
-<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-
-  <defs><linearGradient id="kfz-gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D9A8"/><stop offset="1" stop-color="#FBF6EE"/></linearGradient></defs>
-  <rect width="320" height="140" fill="url(#kfz-gG)"/><circle cx="250" cy="44" r="18" fill="#E2672A" opacity=".85"/>
-  <g fill="#DCC3A3"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
-  <g fill="#3A271C" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
-  <g fill="#FBF6EE" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
-
-</svg></span>
-        <strong>Thika Road</strong>
-        <span class="zone-counts">1 movies &amp; games</span>
-      </a></li>
-      
-    </ul>
-  </div>
-</section>
 
 <section class="route" aria-labelledby="routeH">
-  <img src="./img/dusk-expressway.webp" alt="" loading="lazy">
+  <div class="route-media">
+<img class="route-img" src="./img/photos/kicc-rooftops-800.webp" srcset="./img/photos/kicc-rooftops-800.webp 800w, ./img/photos/kicc-rooftops-1400.webp 1400w" sizes="100vw" width="800" height="450" alt="" loading="lazy" decoding="async" style="--focus:55% 60%"></div>
+  <a class="credit" href="https://unsplash.com/photos/1Uwcoo-ttjY" target="_blank" rel="noopener">Photo: Joecalih / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>
   <div class="wrap band">
-    <div class="sec-head">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div class="eyebrow">The Route</div>
-        <h2 id="routeH">One road, seven stops.</h2>
+    <div class="sec-head sec-head-xl">
+      <div class="stack-sm">
+        <p class="eyebrow">The route</p>
+        <h2 id="routeH" class="display-2">One road, <em>seven stops.</em></h2>
       </div>
       <p>Follow the light from where you sleep to where you celebrate.</p>
     </div>
@@ -237,289 +101,64 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
       
       <li class="stop">
         <a href="./stays/">
-          <span class="stop-art"><svg class="kf-art kf-art--stays" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-
-<defs>
-<linearGradient id="kfa-st-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271C"/><stop offset=".42" stop-color="#A9472A"/><stop offset=".72" stop-color="#E2672A"/><stop offset="1" stop-color="#EDB750"/></linearGradient>
-<clipPath id="kfa-st-win"><path d="M70 270V112a170 82 0 0 1 340 0v158z"/></clipPath>
-</defs>
-<rect width="480" height="300" fill="#2A1A12"/>
-<path d="M70 270V112a170 82 0 0 1 340 0v158z" fill="url(#kfa-st-sky)"/>
-<g clip-path="url(#kfa-st-win)">
- <g fill="#FBF6EE"><circle class="kf-twinkle" cx="170" cy="62" r="1.6"/><circle class="kf-twinkle kf-d2" cx="252" cy="48" r="1.3"/><circle class="kf-twinkle kf-d3" cx="320" cy="70" r="1.5"/></g>
- <circle class="kf-glow" cx="292" cy="198" r="58" fill="#EDB750" opacity=".35"/>
- <circle cx="292" cy="198" r="34" fill="#F6CF7A"/>
- <path d="M70 214c40-14 58-30 92-18 20-18 40-20 58-2 18-18 40-18 56 0 18-12 42-8 66 10 30-8 50 0 68 6v60H70z" fill="#3A271C" opacity=".5"/>
- <g fill="#3A271C"><rect x="88" y="196" width="28" height="74"/><rect x="120" y="186" width="22" height="84"/><rect x="146" y="204" width="30" height="66"/><path d="M182 270V182h8v-12h4v12h8v88z"/><rect x="206" y="188" width="34" height="82"/><rect x="314" y="182" width="26" height="88"/><rect x="344" y="202" width="32" height="68"/><rect x="380" y="170" width="26" height="100"/></g>
- <g fill="#EDB750"><rect class="kf-twinkle" x="94" y="206" width="5" height="6"/><rect class="kf-twinkle kf-d2" x="126" y="196" width="5" height="6"/><rect x="126" y="210" width="5" height="6"/><rect class="kf-twinkle kf-d3" x="188" y="192" width="4" height="6"/><rect x="214" y="198" width="5" height="6"/><rect class="kf-twinkle kf-d1" x="226" y="212" width="5" height="6"/><rect x="320" y="194" width="5" height="6"/><rect class="kf-twinkle kf-d4" x="386" y="182" width="5" height="6"/><rect x="396" y="198" width="5" height="6"/></g>
- <g class="kf-sway"><path d="M154 268l-2-82-24-30m26 30 10-26m-10 26 28-30" fill="none" stroke="#2A1A12" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M76 160c18-22 62-32 86-26 30-8 76 0 96 20-46-8-140-8-182 6z" fill="#2A1A12"/><path d="M98 144c18-8 50-12 64-9 22-3 50 2 64 10-38-3-92-4-128-1z" fill="#2A1A12"/></g>
- <g class="kf-glide" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round"><path d="M150 112l7 5 7-5"/><path d="M172 98l5 4 5-4"/></g>
-</g>
-<path d="M70 270V112a170 82 0 0 1 340 0v158" fill="none" stroke="#3A271C" stroke-width="10"/>
-<rect x="66" y="226" width="348" height="8" rx="2" fill="#2A1A12"/>
-<path d="M86 252h324" stroke="#2A1A12" stroke-width="36" stroke-dasharray="4 18"/>
-<rect y="268" width="480" height="32" fill="#3A271C"/><rect x="40" y="266" width="400" height="4" fill="#EDB750" opacity=".55"/>
-<rect x="18" y="14" width="444" height="5" rx="2.5" fill="#EDB750"/>
-<path d="M24 18h70c-8 74-4 160 16 250H24z" fill="#C4521C"/><path d="M50 18c-2 80 2 170 12 250" fill="none" stroke="#2A1A12" stroke-width="3" opacity=".25"/>
-<path d="M456 18h-64c8 74 4 160-14 250h78z" fill="#C4521C"/><path d="M430 18c2 80-2 170-12 250" fill="none" stroke="#2A1A12" stroke-width="3" opacity=".25"/>
-<g fill="#B8262B"><rect x="24" y="22" width="70" height="5"/><rect x="392" y="22" width="64" height="5"/></g>
-<g fill="#2458A6"><rect x="24" y="27" width="70" height="3"/><rect x="392" y="27" width="64" height="3"/></g>
-<path d="M336 268l-6-26h40l-6 26z" fill="#E2672A"/><g class="kf-sway kf-d2" fill="#2F6B4F"><path d="M350 242c-14-10-20-26-14-38 10 10 14 24 14 38z"/><path d="M350 242c8-14 22-22 34-20-6 12-18 20-34 20z"/><path d="M350 242c-2-16 4-30 14-36 2 14-4 28-14 36z"/></g>
-
-</svg></span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 13h18v5M21 18v-5a3 3 0 0 0-3-3h-7v3M7 9.5a1.5 1.5 0 1 0 0 .01"/></svg>
-          <span class="n">Stop 1</span>
+          <span class="n">01</span>
           <h3>Stays</h3>
           <p>Hotels, B&amp;Bs and apartments across the city.</p>
-          <span class="go">Find a stay →</span>
+          <span class="go">Find a stay <span aria-hidden="true">→</span></span>
         </a>
       </li>
       
       <li class="stop">
         <a href="./food/">
-          <span class="stop-art"><svg class="kf-art kf-art--food" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-
-<rect width="480" height="300" fill="#FBF6EE"/>
-<circle cx="240" cy="150" r="136" fill="#F3E9DA"/>
-<circle cx="240" cy="150" r="96" fill="#EDB750" opacity=".28"/>
-<g fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity=".95">
- <path class="kf-steam" d="M168 150c-10-14 10-24 0-38s10-24 0-36"/>
- <path class="kf-steam kf-d2" d="M246 140c-10-14 10-24 0-38s10-24 0-36"/>
- <path class="kf-steam kf-d4" d="M318 146c-10-14 10-24 0-38s10-24 0-36"/>
-</g>
-<rect y="234" width="480" height="66" fill="#3A271C"/>
-<g><rect y="252" width="480" height="6" fill="#B8262B"/><rect y="258" width="480" height="3" fill="#EDB750"/><rect y="261" width="480" height="6" fill="#2458A6"/><rect y="230" width="480" height="6" fill="#2A1A12"/></g>
-<ellipse cx="240" cy="236" rx="168" ry="34" fill="#2A1A12" opacity=".35"/>
-<ellipse cx="240" cy="226" rx="164" ry="38" fill="#FFFFFF"/>
-<ellipse cx="240" cy="224" rx="130" ry="28" fill="#FBF6EE" stroke="#E4D8C6" stroke-width="2"/>
-<g>
- <ellipse cx="170" cy="222" rx="62" ry="17" fill="#C98A3A"/>
- <ellipse cx="170" cy="216" rx="62" ry="17" fill="#EDB750"/>
- <ellipse cx="166" cy="210" rx="62" ry="17" fill="#C98A3A"/>
- <ellipse cx="166" cy="204" rx="62" ry="17" fill="#F2C46A"/>
- <g fill="#C4521C" opacity=".55"><ellipse cx="142" cy="200" rx="7" ry="3"/><ellipse cx="170" cy="208" rx="5" ry="2"/><ellipse cx="190" cy="198" rx="8" ry="3"/><ellipse cx="158" cy="196" rx="3" ry="1.5"/><ellipse cx="206" cy="206" rx="4" ry="2"/><ellipse cx="128" cy="208" rx="4" ry="1.6"/></g>
-</g>
-<g>
- <path d="M246 210c-4-12 6-20 20-20s24 4 26 14-6 18-22 18-22-4-24-12z" fill="#7A3A1C"/>
- <path d="M282 216c-2-14 10-22 26-20s24 8 24 18-10 16-26 16-22-4-24-14z" fill="#8E4524"/>
- <path d="M318 206c0-12 12-18 26-16s20 10 18 18-12 14-26 12-18-6-18-14z" fill="#7A3A1C"/>
- <path d="M266 226c0-10 10-16 22-14s20 8 18 16-12 12-24 10-16-4-16-12z" fill="#6A3016"/>
- <g fill="none" stroke="#2A1A12" stroke-width="2.4" stroke-linecap="round" opacity=".7"><path d="M256 202l8 10m4-14 8 10"/><path d="M294 206l8 12m4-14 8 10"/><path d="M332 198l6 10m6-12 6 9"/><path d="M278 218l6 8m6-10 6 8"/></g>
- <g fill="#E2672A" opacity=".8"><ellipse cx="262" cy="198" rx="6" ry="2"/><ellipse cx="300" cy="204" rx="7" ry="2"/><ellipse cx="338" cy="196" rx="6" ry="2"/></g>
-</g>
-<path d="M352 230l14-14 6 6c-4 8-12 12-20 8z" fill="#2F6B4F"/><path d="M356 228l10-10 3 3c-3 5-8 8-13 7z" fill="#9CC48A"/>
-<g>
- <path d="M370 254a44 13 0 0 0 88 0l-6 22c-4 8-18 12-38 12s-34-4-38-12z" fill="#E2672A"/>
- <ellipse cx="414" cy="254" rx="44" ry="12" fill="#FBF6EE"/>
- <g fill="#B8262B"><circle cx="396" cy="252" r="5"/><circle cx="420" cy="250" r="5"/><circle cx="434" cy="256" r="4.5"/><circle cx="408" cy="258" r="4"/></g>
- <g fill="#2F6B4F"><circle cx="410" cy="248" r="2.4"/><circle cx="428" cy="252" r="2.2"/><circle cx="390" cy="258" r="2"/><circle cx="444" cy="252" r="2"/></g>
- <g fill="none" stroke="#E4D8C6" stroke-width="2"><path d="M402 246a6 4 0 0 1 10 2"/><path d="M424 258a6 4 0 0 1 10 0"/></g>
-</g>
-
-</svg></span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2 1-3 3-3 6v3h3M17 3v18"/></svg>
-          <span class="n">Stop 2</span>
+          <span class="n">02</span>
           <h3>Food</h3>
           <p>Restaurants and food spots across the city.</p>
-          <span class="go">Find food →</span>
+          <span class="go">Find food <span aria-hidden="true">→</span></span>
         </a>
       </li>
       
       <li class="stop">
         <a href="./rides/">
-          <span class="stop-art"><svg class="kf-art kf-art--rides" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-
-<defs>
-<linearGradient id="kfa-rd-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A1A12"/><stop offset=".35" stop-color="#5A2C1A"/><stop offset=".7" stop-color="#E2672A"/><stop offset="1" stop-color="#EDB750"/></linearGradient>
-<linearGradient id="kfa-rd-g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#EDB750" stop-opacity="0"/><stop offset="1" stop-color="#F6CF7A"/></linearGradient>
-<linearGradient id="kfa-rd-r" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E2672A"/><stop offset="1" stop-color="#B8262B" stop-opacity="0"/></linearGradient>
-</defs>
-<rect width="480" height="300" fill="url(#kfa-rd-sky)"/>
-<g fill="#FBF6EE"><circle class="kf-twinkle" cx="60" cy="30" r="1.5"/><circle class="kf-twinkle kf-d2" cx="180" cy="22" r="1.2"/><circle class="kf-twinkle kf-d3" cx="300" cy="40" r="1.4"/><circle class="kf-twinkle kf-d1" cx="430" cy="26" r="1.3"/></g>
-<circle class="kf-glow" cx="384" cy="168" r="50" fill="#EDB750" opacity=".35"/><circle cx="384" cy="168" r="28" fill="#F6CF7A"/>
-<g fill="#3A271C" opacity=".85"><rect x="14" y="120" width="30" height="80"/><rect x="48" y="96" width="22" height="104"/><rect x="74" y="132" width="36" height="68"/><path d="M118 200V84l12-12 12 12v116z"/><rect x="150" y="116" width="28" height="84"/><rect x="290" y="128" width="32" height="72"/><rect x="326" y="108" width="20" height="92"/><rect x="420" y="118" width="30" height="82"/><rect x="452" y="140" width="28" height="60"/></g>
-<g fill="#EDB750" opacity=".9"><rect class="kf-twinkle" x="54" y="110" width="4" height="5"/><rect x="24" y="134" width="4" height="5"/><rect class="kf-twinkle kf-d3" x="126" y="98" width="4" height="5"/><rect x="158" y="130" width="4" height="5"/><rect class="kf-twinkle kf-d2" x="332" y="122" width="4" height="5"/><rect x="428" y="132" width="4" height="5"/></g>
-<rect y="244" width="480" height="56" fill="#2A1A12"/>
-<g fill="#2A1A12"><path d="M70 196h40l-8 14v38H78v-38z"/><path d="M290 196h40l-8 14v38h-24v-38z"/></g>
-<g fill="#EDB750"><rect x="34" y="118" width="3" height="56" fill="#2A1A12"/><rect x="28" y="116" width="16" height="4" rx="2" fill="#2A1A12"/><circle class="kf-twinkle" cx="40" cy="122" r="3"/><rect x="236" y="118" width="3" height="56" fill="#2A1A12"/><rect x="230" y="116" width="16" height="4" rx="2" fill="#2A1A12"/><circle class="kf-twinkle kf-d2" cx="242" cy="122" r="3"/><rect x="438" y="118" width="3" height="56" fill="#2A1A12"/><rect x="432" y="116" width="16" height="4" rx="2" fill="#2A1A12"/><circle class="kf-twinkle kf-d3" cx="444" cy="122" r="3"/></g>
-<g class="kf-bob">
- <path class="kf-beam" d="M340 160l120-14v40z" fill="#F6CF7A" opacity=".45"/>
- <path d="M168 176v-34c0-12 8-20 20-20h112c12 0 20 6 26 16l14 22v16z" fill="#FBF6EE"/>
- <path d="M168 164h172v12H168z" fill="#E2672A"/><path d="M168 160h172v4H168z" fill="#EDB750"/>
- <rect x="182" y="114" width="108" height="8" rx="3" fill="#3A271C"/>
- <g fill="#3A271C"><rect x="180" y="130" width="28" height="22" rx="3"/><rect x="214" y="130" width="28" height="22" rx="3"/><rect x="248" y="130" width="28" height="22" rx="3"/><path d="M284 130h18c6 0 10 4 14 10l8 12h-40z"/></g>
- <g fill="#EDB750" opacity=".35"><path d="M184 150l14-18h6l-14 18z"/><path d="M218 150l14-18h6l-14 18z"/><path d="M252 150l14-18h6l-14 18z"/></g>
- <rect x="334" y="158" width="8" height="6" rx="2" fill="#F6CF7A"/><rect x="164" y="156" width="6" height="6" rx="2" fill="#B8262B"/>
- <g fill="#2A1A12"><circle cx="200" cy="178" r="12"/><circle cx="306" cy="178" r="12"/></g><g fill="#D2C3B1"><circle cx="200" cy="178" r="4"/><circle cx="306" cy="178" r="4"/></g>
-</g>
-<rect y="180" width="480" height="18" fill="#2A1A12"/><rect y="176" width="480" height="5" fill="#3A271C"/><rect y="190" width="480" height="2" fill="#E2672A" opacity=".6"/>
-<g>
- <rect class="kf-trail" x="-20" y="184" width="140" height="3" rx="1.5" fill="url(#kfa-rd-g)"/>
- <rect class="kf-trail kf-d2" x="120" y="186" width="110" height="2.5" rx="1.25" fill="url(#kfa-rd-g)"/>
- <rect class="kf-trail kf-d4" x="300" y="184" width="130" height="3" rx="1.5" fill="url(#kfa-rd-g)"/>
- <rect class="kf-trail kf-d1" x="10" y="266" width="170" height="4" rx="2" fill="url(#kfa-rd-g)"/>
- <rect class="kf-trail kf-d3" x="250" y="270" width="150" height="4" rx="2" fill="url(#kfa-rd-g)"/>
- <rect class="kf-trail-back" x="60" y="282" width="160" height="4" rx="2" fill="url(#kfa-rd-r)"/>
- <rect class="kf-trail-back kf-d3" x="300" y="284" width="140" height="4" rx="2" fill="url(#kfa-rd-r)"/>
-</g>
-<g fill="#3A271C"><rect x="0" y="276" width="480" height="2"/></g>
-
-</svg></span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l2-5h14l2 5v5h-3v-2H6v2H3zM7 13.5h.01M17 13.5h.01"/></svg>
-          <span class="n">Stop 3</span>
+          <span class="n">03</span>
           <h3>Rides</h3>
           <p>Open Uber or Bolt with your destination set.</p>
-          <span class="go">Get a ride →</span>
+          <span class="go">Get a ride <span aria-hidden="true">→</span></span>
         </a>
       </li>
       
       <li class="stop hl">
         <a href="./matchday/">
-          <span class="stop-art"><svg class="kf-art kf-art--matchday" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-
-<defs>
-<linearGradient id="kfa-md-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A1A12"/><stop offset="1" stop-color="#5A2C1A"/></linearGradient>
-<pattern id="kfa-md-crowd" width="16" height="10" patternUnits="userSpaceOnUse"><circle cx="4" cy="3" r="2.2" fill="#E2672A"/><circle cx="12" cy="3" r="2.2" fill="#FBF6EE"/><circle cx="0" cy="8" r="2.2" fill="#EDB750"/><circle cx="16" cy="8" r="2.2" fill="#EDB750"/><circle cx="8" cy="8" r="2.2" fill="#B8262B"/></pattern>
-<pattern id="kfa-md-crowd2" width="16" height="10" patternUnits="userSpaceOnUse"><circle cx="4" cy="3" r="2.2" fill="#2458A6"/><circle cx="8" cy="8" r="2.2" fill="#FBF6EE"/></pattern>
-<linearGradient id="kfa-md-beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6CF7A" stop-opacity=".55"/><stop offset="1" stop-color="#F6CF7A" stop-opacity="0"/></linearGradient>
-</defs>
-<rect width="480" height="300" fill="url(#kfa-md-sky)"/>
-<g fill="#FBF6EE"><circle class="kf-twinkle" cx="120" cy="30" r="1.4"/><circle class="kf-twinkle kf-d2" cx="240" cy="18" r="1.6"/><circle class="kf-twinkle kf-d3" cx="350" cy="36" r="1.3"/><circle class="kf-twinkle kf-d1" cx="200" cy="56" r="1.2"/></g>
-<path class="kf-flicker" d="M44 46h52l120 150H-20z" fill="url(#kfa-md-beam)"/>
-<path class="kf-flicker kf-d3" d="M384 46h52l64 150H264z" fill="url(#kfa-md-beam)"/>
-<g fill="#3A271C"><path d="M66 60h8l6 140H60z"/><path d="M406 60h8l6 140h-20z"/></g>
-<g><rect x="42" y="32" width="56" height="28" rx="3" fill="#3A271C"/><rect x="382" y="32" width="56" height="28" rx="3" fill="#3A271C"/>
-<g class="kf-flicker" fill="#F6CF7A"><rect x="49" y="37" width="10" height="7" rx="1.5"/><rect x="49" y="48" width="10" height="7" rx="1.5"/><rect x="63" y="37" width="10" height="7" rx="1.5"/><rect x="63" y="48" width="10" height="7" rx="1.5"/><rect x="77" y="37" width="10" height="7" rx="1.5"/><rect x="77" y="48" width="10" height="7" rx="1.5"/><rect x="389" y="37" width="10" height="7" rx="1.5"/><rect x="389" y="48" width="10" height="7" rx="1.5"/><rect x="403" y="37" width="10" height="7" rx="1.5"/><rect x="403" y="48" width="10" height="7" rx="1.5"/><rect x="417" y="37" width="10" height="7" rx="1.5"/><rect x="417" y="48" width="10" height="7" rx="1.5"/></g></g>
-<path d="M28 196v44a212 70 0 0 0 424 0v-44z" fill="#2A1A12"/>
-<g fill="#3A271C"><rect x="70" y="236" width="18" height="30" rx="9"/><rect x="130" y="236" width="18" height="30" rx="9"/><rect x="196" y="236" width="18" height="30" rx="9"/><rect x="264" y="236" width="18" height="30" rx="9"/><rect x="330" y="236" width="18" height="30" rx="9"/><rect x="392" y="236" width="18" height="30" rx="9"/></g>
-<ellipse cx="240" cy="196" rx="212" ry="70" fill="#3A271C"/>
-<ellipse cx="240" cy="196" rx="200" ry="62" fill="url(#kfa-md-crowd)"/>
-<ellipse class="kf-twinkle" cx="240" cy="196" rx="200" ry="62" fill="url(#kfa-md-crowd2)"/>
-<ellipse cx="240" cy="200" rx="136" ry="38" fill="#2A1A12"/>
-<ellipse cx="240" cy="202" rx="128" ry="34" fill="#2F6B4F"/>
-<clipPath id="kfa-md-pitch"><ellipse cx="240" cy="202" rx="128" ry="34"/></clipPath><path clip-path="url(#kfa-md-pitch)" d="M136 160h26v84h-26zM188 160h26v84h-26zM240 160h26v84h-26zM292 160h26v84h-26z" fill="#3B7A5B"/>
-<ellipse cx="240" cy="202" rx="128" ry="34" fill="none" stroke="#2A1A12" stroke-width="10" opacity=".4"/>
-<g fill="none" stroke="#FBF6EE" stroke-width="2" opacity=".85"><ellipse cx="240" cy="202" rx="110" ry="26"/><path d="M240 176v52"/><ellipse cx="240" cy="202" rx="20" ry="6"/></g>
-<circle class="kf-bob" cx="262" cy="210" r="3.5" fill="#FBF6EE"/>
-<ellipse cx="240" cy="196" rx="212" ry="70" fill="none" stroke="#E2672A" stroke-width="4"/>
-<g><path d="M52 250l8 12 8-12z" fill="#B8262B"/><path d="M78 250l8 12 8-12z" fill="#EDB750"/><path d="M104 262l8 12 8-12z" fill="#2458A6"/><path d="M130 262l8 12 8-12z" fill="#FBF6EE"/><path d="M156 262l8 12 8-12z" fill="#2F6B4F"/><path d="M182 262l8 12 8-12z" fill="#B8262B"/><path d="M208 262l8 12 8-12z" fill="#EDB750"/><path d="M234 262l8 12 8-12z" fill="#2458A6"/><path d="M260 262l8 12 8-12z" fill="#FBF6EE"/><path d="M286 262l8 12 8-12z" fill="#2F6B4F"/><path d="M312 262l8 12 8-12z" fill="#B8262B"/><path d="M338 262l8 12 8-12z" fill="#EDB750"/><path d="M364 262l8 12 8-12z" fill="#2458A6"/><path d="M390 250l8 12 8-12z" fill="#FBF6EE"/><path d="M416 250l8 12 8-12z" fill="#2F6B4F"/></g>
-
-</svg></span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-18 0a9 9 0 1 1 18 0M12 7l4 3-1.5 4.5h-5L8 10z"/></svg>
-          <span class="n">Stop 4</span>
+          <span class="n">04</span>
           <h3>Matchday</h3>
           <p>Places to watch and the stadium guide.</p>
-          <span class="go">Matchday guide →</span>
+          <span class="go">Matchday guide <span aria-hidden="true">→</span></span>
         </a>
       </li>
       
       <li class="stop">
         <a href="./nightlife/">
-          <span class="stop-art"><svg class="kf-art kf-art--nightlife" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-
-<defs>
-<linearGradient id="kfa-nl-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F130D"/><stop offset=".45" stop-color="#4A2A1C"/><stop offset="1" stop-color="#C4521C"/></linearGradient>
-</defs>
-<rect width="480" height="300" fill="url(#kfa-nl-sky)"/>
-<g fill="#FBF6EE"><circle class="kf-twinkle kf-d1" cx="40" cy="40" r="1.6"/><circle class="kf-twinkle kf-d2" cx="98" cy="22" r="1.1"/><circle class="kf-twinkle kf-d3" cx="150" cy="60" r="1.6"/><circle class="kf-twinkle kf-d4" cx="210" cy="30" r="1.1"/><circle class="kf-twinkle kf-d1" cx="268" cy="52" r="1.6"/><circle class="kf-twinkle kf-d3" cx="330" cy="24" r="1.6"/><circle class="kf-twinkle kf-d2" cx="130" cy="100" r="1.1"/><circle class="kf-twinkle kf-d4" cx="300" cy="96" r="1.1"/><circle class="kf-twinkle kf-d2" cx="450" cy="110" r="1.1"/><circle class="kf-twinkle kf-d3" cx="20" cy="120" r="1.6"/></g>
-<path d="M410 34a26 26 0 1 0 22 42 22 22 0 1 1-22-42z" fill="#EDB750"/>
-<g fill="#2A1A12"><rect x="10" y="150" width="40" height="150"/><rect x="54" y="118" width="30" height="182"/><rect x="88" y="168" width="44" height="132"/><path d="M138 300V120l18-20 18 20v180z"/><rect x="180" y="160" width="36" height="140"/><rect x="222" y="132" width="28" height="168"/><rect x="256" y="176" width="46" height="124"/><rect x="306" y="110" width="34" height="190"/><rect x="346" y="150" width="40" height="150"/><rect x="392" y="124" width="30" height="176"/><rect x="428" y="164" width="52" height="136"/></g>
-<g fill="#EDB750"><rect class="kf-twinkle kf-d1" x="20" y="164" width="6" height="8"/><rect x="34" y="186" width="6" height="8"/><rect class="kf-twinkle kf-d2" x="62" y="132" width="6" height="8"/><rect x="62" y="160" width="6" height="8"/><rect class="kf-twinkle kf-d3" x="72" y="196" width="6" height="8"/><rect x="98" y="182" width="6" height="8"/><rect class="kf-twinkle kf-d4" x="116" y="208" width="6" height="8"/><rect class="kf-twinkle kf-d1" x="150" y="134" width="6" height="8"/><rect x="160" y="168" width="6" height="8"/><rect class="kf-twinkle kf-d2" x="188" y="176" width="6" height="8"/><rect x="230" y="148" width="6" height="8"/><rect class="kf-twinkle kf-d3" x="230" y="180" width="6" height="8"/><rect x="268" y="190" width="6" height="8"/><rect class="kf-twinkle kf-d1" x="286" y="214" width="6" height="8"/><rect class="kf-twinkle kf-d4" x="314" y="124" width="6" height="8"/><rect x="326" y="156" width="6" height="8"/><rect class="kf-twinkle kf-d2" x="354" y="166" width="6" height="8"/><rect x="368" y="200" width="6" height="8"/><rect class="kf-twinkle kf-d3" x="400" y="140" width="6" height="8"/><rect x="408" y="176" width="6" height="8"/><rect class="kf-twinkle kf-d1" x="440" y="180" width="6" height="8"/><rect x="458" y="206" width="6" height="8"/></g>
-<rect y="246" width="480" height="54" fill="#3A271C"/><rect y="244" width="480" height="4" fill="#E2672A" opacity=".7"/>
-<g fill="#2A1A12"><rect x="26" y="70" width="5" height="176"/><rect x="449" y="70" width="5" height="176"/></g>
-<path d="M28 74Q240 196 452 74" fill="none" stroke="#D2C3B1" stroke-width="1.5" opacity=".7"/>
-<path d="M28 74Q240 140 452 74" fill="none" stroke="#D2C3B1" stroke-width="1.5" opacity=".5"/>
-<circle class="kf-twinkle kf-d2" cx="56.3" cy="93.2" r="5" fill="#E2672A"/><circle class="kf-twinkle kf-d3" cx="84.5" cy="106.2" r="5" fill="#FBF6EE"/><circle class="kf-twinkle kf-d4" cx="112.8" cy="117.0" r="5" fill="#B8262B"/><circle class="kf-twinkle kf-d1" cx="141.1" cy="125.7" r="5" fill="#2458A6"/><circle class="kf-twinkle kf-d2" cx="169.3" cy="132.2" r="5" fill="#EDB750"/><circle class="kf-twinkle kf-d3" cx="197.6" cy="136.6" r="5" fill="#E2672A"/><circle class="kf-twinkle kf-d4" cx="225.9" cy="138.7" r="5" fill="#FBF6EE"/><circle class="kf-twinkle kf-d1" cx="254.1" cy="138.7" r="5" fill="#B8262B"/><circle class="kf-twinkle kf-d2" cx="282.4" cy="136.6" r="5" fill="#2458A6"/><circle class="kf-twinkle kf-d3" cx="310.7" cy="132.2" r="5" fill="#EDB750"/><circle class="kf-twinkle kf-d4" cx="338.9" cy="125.7" r="5" fill="#E2672A"/><circle class="kf-twinkle kf-d1" cx="367.2" cy="117.0" r="5" fill="#FBF6EE"/><circle class="kf-twinkle kf-d2" cx="395.5" cy="106.2" r="5" fill="#B8262B"/><circle class="kf-twinkle kf-d3" cx="423.7" cy="93.2" r="5" fill="#2458A6"/><circle class="kf-twinkle kf-d2" cx="60.6" cy="87.4" r="4" fill="#E2672A"/><circle class="kf-twinkle kf-d3" cx="93.2" cy="95.2" r="4" fill="#FBF6EE"/><circle class="kf-twinkle kf-d4" cx="125.8" cy="101.4" r="4" fill="#B8262B"/><circle class="kf-twinkle kf-d1" cx="158.5" cy="106.1" r="4" fill="#2458A6"/><circle class="kf-twinkle kf-d2" cx="191.1" cy="109.2" r="4" fill="#EDB750"/><circle class="kf-twinkle kf-d3" cx="223.7" cy="110.8" r="4" fill="#E2672A"/><circle class="kf-twinkle kf-d4" cx="256.3" cy="110.8" r="4" fill="#FBF6EE"/><circle class="kf-twinkle kf-d1" cx="288.9" cy="109.2" r="4" fill="#B8262B"/><circle class="kf-twinkle kf-d2" cx="321.5" cy="106.1" r="4" fill="#2458A6"/><circle class="kf-twinkle kf-d3" cx="354.2" cy="101.4" r="4" fill="#EDB750"/><circle class="kf-twinkle kf-d4" cx="386.8" cy="95.2" r="4" fill="#E2672A"/><circle class="kf-twinkle kf-d1" cx="419.4" cy="87.4" r="4" fill="#FBF6EE"/>
-<g fill="#EDB750">
- <g class="kf-float"><path d="M118 218v-30l18-4v26" fill="none" stroke="#EDB750" stroke-width="3"/><ellipse cx="113" cy="219" rx="6" ry="4.5"/><ellipse cx="131" cy="211" rx="6" ry="4.5"/></g>
- <g class="kf-float kf-d2"><path d="M246 224v-26l10 6" fill="none" stroke="#F6CF7A" stroke-width="3" stroke-linecap="round"/><ellipse cx="241" cy="225" rx="6" ry="4.5"/></g>
- <g class="kf-float kf-d4"><path d="M362 214v-28l18-4v26" fill="none" stroke="#EDB750" stroke-width="3"/><ellipse cx="357" cy="215" rx="6" ry="4.5"/><ellipse cx="375" cy="207" rx="6" ry="4.5"/></g>
-</g>
-<rect y="262" width="480" height="6" fill="#2A1A12"/><path d="M8 284h472" stroke="#2A1A12" stroke-width="32" stroke-dasharray="4 16"/>
-
-</svg></span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 18a3 3 0 1 1-6 0a3 3 0 1 1 6 0M20 16a3 3 0 1 1-6 0a3 3 0 1 1 6 0"/></svg>
-          <span class="n">Stop 5</span>
+          <span class="n">05</span>
           <h3>Nightlife</h3>
           <p>Bars, lounges and live music, 18+.</p>
-          <span class="go">Nightlife →</span>
+          <span class="go">Nightlife <span aria-hidden="true">→</span></span>
         </a>
       </li>
       
       <li class="stop">
         <a href="./movies-games/">
-          <span class="stop-art"><svg class="kf-art kf-art--movies-games" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-
-<rect width="480" height="300" fill="#F3E9DA"/>
-<rect x="148" y="28" width="306" height="166" rx="10" fill="#2A1A12"/>
-<defs><linearGradient id="kfa-mg-scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2672A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
-<rect x="162" y="40" width="278" height="142" rx="4" fill="url(#kfa-mg-scr)"/>
-<circle cx="300" cy="120" r="26" fill="#F6CF7A"/>
-<path d="M162 150c40-24 70-22 100-6 30-24 70-30 110-4 26-10 50-8 68 2v40H162z" fill="#3A271C"/>
-<path d="M162 168c60-12 120-10 180-2 40 4 70 2 98-2v18H162z" fill="#2A1A12"/>
-<g fill="#B8262B"><path d="M148 30h34c-8 50-6 110 6 164h-40z"/><path d="M454 30h-34c8 50 6 110-6 164h40z"/></g>
-<rect x="140" y="20" width="322" height="12" rx="4" fill="#B8262B"/><rect x="140" y="30" width="322" height="3" fill="#2A1A12" opacity=".3"/>
-<path class="kf-flicker" d="M112 152L250 70v80z" fill="#FBF6EE" opacity=".45"/>
-<path d="M100 228c40 10 50 40 110 46s120-6 150 10" fill="none" stroke="#3A271C" stroke-width="22"/>
-<path d="M100 228c40 10 50 40 110 46s120-6 150 10" fill="none" stroke="#F3E9DA" stroke-width="5" stroke-dasharray="5 8"/>
-<g class="kf-spin">
- <circle cx="104" cy="168" r="66" fill="#2A1A12"/>
- <circle cx="104" cy="168" r="58" fill="none" stroke="#3A271C" stroke-width="6"/>
- <g fill="#F3E9DA"><circle cx="104" cy="132" r="15"/><circle cx="138" cy="157" r="15"/><circle cx="125" cy="197" r="15"/><circle cx="83" cy="197" r="15"/><circle cx="70" cy="157" r="15"/></g>
- <circle cx="104" cy="168" r="9" fill="#E2672A"/><circle cx="104" cy="168" r="3.5" fill="#2A1A12"/>
-</g>
-<g class="kf-wobble">
- <path d="M248 292c-16 0-20-14-18-34 2-18 12-30 10-46-1-10-6-14-6-26 0-12 6-20 14-20s14 8 14 20c0 12-5 16-6 26-2 16 8 28 10 46 2 20-2 34-18 34z" fill="#FFFFFF"/>
- <path d="M236 202h24l-1 6h-22zM234 214h28l-1 5h-26z" fill="#B8262B"/>
-</g>
-<circle cx="200" cy="268" r="26" fill="#2458A6"/><g fill="#2A1A12" opacity=".7"><circle cx="192" cy="258" r="3.5"/><circle cx="203" cy="255" r="3.5"/><circle cx="196" cy="268" r="3.5"/></g>
-<path d="M330 236c0-18 10-26 28-26h64c18 0 28 8 28 26l8 34c4 16-4 26-16 26-10 0-16-8-22-18l-6-10h-48l-6 10c-6 10-12 18-22 18-12 0-20-10-16-26z" fill="#3A271C"/>
-<g fill="#FBF6EE"><rect x="350" y="232" width="18" height="6" rx="2"/><rect x="356" y="226" width="6" height="18" rx="2"/></g>
-<circle class="kf-blink" cx="424" cy="226" r="5" fill="#E2672A"/><circle class="kf-blink kf-d2" cx="434" cy="236" r="5" fill="#EDB750"/><circle class="kf-blink kf-d3" cx="414" cy="236" r="5" fill="#2F6B4F"/><circle class="kf-blink kf-d4" cx="424" cy="246" r="5" fill="#B8262B"/>
-<g fill="#2A1A12"><circle cx="374" cy="256" r="8"/><circle cx="404" cy="256" r="8"/></g><rect x="384" y="226" width="12" height="4" rx="2" fill="#D2C3B1"/>
-
-</svg></span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zM3 9h18M7 5v4M12 5v4M17 5v4M10 12.5v4l4-2z"/></svg>
-          <span class="n">Stop 6</span>
+          <span class="n">06</span>
           <h3>Movies &amp; Games</h3>
           <p>Cinemas, bowling and arcades.</p>
-          <span class="go">See what&#39;s on →</span>
+          <span class="go">See what&#39;s on <span aria-hidden="true">→</span></span>
         </a>
       </li>
       
       <li class="stop">
         <a href="./tickets/">
-          <span class="stop-art"><svg class="kf-art kf-art--tickets" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-
-<rect width="480" height="300" fill="#FBF6EE"/>
-<circle class="kf-rays" cx="240" cy="150" r="110" fill="none" stroke="#F3E9DA" stroke-width="220" stroke-dasharray="21.6 21.6"/>
-<circle cx="240" cy="150" r="104" fill="#EDB750" opacity=".18"/>
-<g transform="translate(112 66) rotate(-9 120 55)">
- <path d="M0 0h240v40a15 15 0 0 0 0 30v40H0V70a15 15 0 0 0 0-30z" fill="#EDB750"/>
- <path d="M178 6v98" stroke="#2A1A12" stroke-width="2" stroke-dasharray="4 5" opacity=".4"/>
- <g fill="#2A1A12" opacity=".2"><rect x="24" y="26" width="120" height="10" rx="5"/><rect x="24" y="46" width="80" height="8" rx="4"/></g>
-</g>
-<g class="kf-tilt">
-<g transform="translate(118 112) rotate(5 125 60)">
- <path d="M4 10h250v44a16 16 0 0 0 0 32v44H4V86a16 16 0 0 0 0-32z" fill="#2A1A12" opacity=".18"/>
- <path d="M0 0h250v44a16 16 0 0 0 0 32v44H0V76a16 16 0 0 0 0-32z" fill="#E2672A"/>
- <path d="M10 10h230v34a26 26 0 0 0 0 32v34H10V76a26 26 0 0 0 0-32z" fill="none" stroke="#FBF6EE" stroke-width="1.5" opacity=".55"/>
- <path d="M184 8v104" stroke="#2A1A12" stroke-width="2.5" stroke-dasharray="5 6" opacity=".55"/>
- <text x="28" y="52" fill="#2A1A12" font-family="'Bricolage Grotesque',Georgia,serif" font-weight="800" font-size="21" letter-spacing=".5">ADMIT ONE</text>
- <g fill="#2A1A12" opacity=".35"><rect x="28" y="68" width="124" height="8" rx="4"/><rect x="28" y="84" width="84" height="8" rx="4"/></g>
- <g fill="#B8262B"><rect x="28" y="100" width="18" height="5"/></g><rect x="46" y="100" width="18" height="5" fill="#FBF6EE"/><rect x="64" y="100" width="18" height="5" fill="#2458A6"/><rect x="82" y="100" width="18" height="5" fill="#EDB750"/>
- <g transform="translate(217 60)"><path class="kf-rock" d="M0-24L5.8-8 22.8-7.4 9.4 3 14.1 19.4 0 9.8-14.1 19.4-9.4 3-22.8-7.4-5.8-8Z" fill="#EDB750" stroke="#2A1A12" stroke-width="2.5" stroke-linejoin="round"/></g>
-</g>
-</g>
-<g fill="#E2672A"><path class="kf-twinkle" d="M74 70q0 12 12 12-12 0-12 12 0-12-12-12 12 0 12-12z"/><path class="kf-twinkle kf-d2" d="M412 54q0 10 10 10-10 0-10 10 0-10-10-10 10 0 10-10z" fill="#EDB750"/><path class="kf-twinkle kf-d3" d="M418 236q0 14 14 14-14 0-14 14 0-14-14-14 14 0 14-14z"/><path class="kf-twinkle kf-d4" d="M60 226q0 9 9 9-9 0-9 9 0-9-9-9 9 0 9-9z" fill="#EDB750"/></g>
-<g><circle cx="100" cy="140" r="4" fill="#B8262B"/><circle cx="388" cy="120" r="4" fill="#2458A6"/><circle cx="378" cy="270" r="3.5" fill="#2F6B4F"/><circle cx="120" cy="270" r="3.5" fill="#E2672A"/><rect x="430" y="160" width="8" height="4" rx="2" fill="#B8262B" transform="rotate(30 434 162)"/><rect x="40" y="160" width="8" height="4" rx="2" fill="#2458A6" transform="rotate(-30 44 162)"/></g>
-
-</svg></span>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8a2 2 0 0 0 0 4v4h18v-4a2 2 0 0 1 0-4V4H3zM14 4v12"/></svg>
-          <span class="n">Stop 7</span>
+          <span class="n">07</span>
           <h3>Tickets</h3>
           <p>Official ticket links and sale alerts.</p>
-          <span class="go">Ticket guide →</span>
+          <span class="go">Ticket guide <span aria-hidden="true">→</span></span>
         </a>
       </li>
       
@@ -527,11 +166,288 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   </div>
 </section>
 
-<section class="band band-sand" id="plan" aria-labelledby="planH">
+<section class="band" aria-labelledby="areaH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="areaH" class="display-3">Browse by area</h2><p>Pick an area once and it follows you along the route, from stays to food to a night out.</p></div>
+    
+    
+    
+    
+    <ul class="zone-feature rv-each">
+      
+      <li><a class="zone has-photo" href="./stays/?area=CBD" data-area="CBD">
+        <span class="zone-art">
+<img class="" src="./img/photos/kicc-tower-600.webp" srcset="./img/photos/kicc-tower-600.webp 600w, ./img/photos/kicc-tower-1200.webp 1200w" sizes="50vw" width="600" height="750" alt="" loading="lazy" decoding="async" style="--focus:40% 35%"></span>
+        <span class="zone-text"><strong>CBD</strong>
+        <span class="zone-counts">6 stays · 1 food</span></span>
+      </a></li>
+      
+      <li><a class="zone has-photo" href="./food/?area=Lang%27ata" data-area="Lang&#39;ata">
+        <span class="zone-art">
+<img class="" src="./img/photos/giraffe-skyline-600.webp" srcset="./img/photos/giraffe-skyline-600.webp 600w, ./img/photos/giraffe-skyline-1200.webp 1200w" sizes="50vw" width="600" height="400" alt="" loading="lazy" decoding="async" style="--focus:70% 55%"></span>
+        <span class="zone-text"><strong>Lang&#39;ata</strong>
+        <span class="zone-counts">1 food</span></span>
+      </a></li>
+      
+    </ul>
+    
+    <ul class="zone-index rv-each">
+      
+      <li><a class="zone-row" href="./stays/?area=Kilimani" data-area="Kilimani">
+        <span class="zone-thumb">
+<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#ECEAE5"/><circle cx="262" cy="34" r="16" fill="#A8A59F"/>
+  <g fill="#CFCCC5"><rect x="34" y="52" width="38" height="88"/><rect x="196" y="40" width="44" height="100"/><rect x="118" y="64" width="34" height="76"/></g>
+  <g fill="#F7F6F3" opacity=".7"><rect x="40" y="60" width="6" height="8"/><rect x="52" y="60" width="6" height="8"/><rect x="40" y="76" width="6" height="8"/><rect x="204" y="50" width="7" height="9"/><rect x="218" y="50" width="7" height="9"/><rect x="204" y="68" width="7" height="9"/><rect x="218" y="68" width="7" height="9"/></g>
+  <g fill="#A6A6A1"><circle cx="20" cy="112" r="30"/><circle cx="92" cy="118" r="34"/><circle cx="170" cy="114" r="30"/><circle cx="262" cy="118" r="36"/><circle cx="312" cy="110" r="24"/></g>
+  <g fill="#7C7C77"><circle cx="54" cy="130" r="28"/><circle cx="132" cy="134" r="30"/><circle cx="216" cy="134" r="30"/><circle cx="296" cy="136" r="26"/></g>
+
+</svg></span>
+        <span class="zone-text"><strong>Kilimani</strong>
+        <span class="zone-counts">7 stays · 2 food · 1 nightlife</span></span>
+        <span class="zone-go" aria-hidden="true">→</span>
+      </a></li>
+      
+      <li><a class="zone-row" href="./stays/?area=Westlands" data-area="Westlands">
+        <span class="zone-thumb">
+<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="kfz-gW-i2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2B2B"/><stop offset=".7" stop-color="#5A5A5A"/><stop offset="1" stop-color="#EDB750"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gW-i2)"/>
+  <g fill="#141414"><rect x="18" y="62" width="34" height="78"/><rect x="60" y="34" width="30" height="106"/><rect x="98" y="74" width="40" height="66"/><rect x="150" y="22" width="36" height="118"/><rect x="194" y="58" width="30" height="82"/><rect x="232" y="42" width="38" height="98"/><rect x="278" y="80" width="30" height="60"/></g>
+  <g fill="#EDB750"><rect x="66" y="44" width="5" height="6"/><rect x="78" y="58" width="5" height="6"/><rect x="66" y="78" width="5" height="6"/><rect x="157" y="34" width="5" height="6"/><rect x="170" y="34" width="5" height="6"/><rect x="157" y="54" width="5" height="6"/><rect x="170" y="74" width="5" height="6"/><rect x="240" y="54" width="5" height="6"/><rect x="254" y="70" width="5" height="6"/><rect x="26" y="74" width="5" height="6"/><rect x="108" y="86" width="5" height="6"/><rect x="202" y="70" width="5" height="6"/></g>
+
+</svg></span>
+        <span class="zone-text"><strong>Westlands</strong>
+        <span class="zone-counts">6 stays · 1 food · 2 nightlife · 3 movies &amp; games</span></span>
+        <span class="zone-go" aria-hidden="true">→</span>
+      </a></li>
+      
+      <li><a class="zone-row" href="./stays/?area=Karen" data-area="Karen">
+        <span class="zone-thumb">
+<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="kfz-gK-i3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEDE8"/><stop offset="1" stop-color="#F7F6F3"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gK-i3)"/><circle cx="70" cy="46" r="18" fill="#A8A59F"/>
+  <path d="M0 96c30-20 52-8 76-22s40-10 62 0 36-18 60-10 34 16 58 6 40-6 64 8v62H0z" fill="#CACAC4"/>
+  <path d="M0 118c40-12 80-6 120-10s90 6 130 2 50-8 70-4v34H0z" fill="#A6A6A1"/>
+  <g fill="#141414"><rect x="232" y="78" width="4" height="46"/><path d="M196 80c10-14 30-18 40-16 14-4 34 2 44 14-20-4-64-4-84 2z"/><path d="M222 82l12 10 10-10z"/></g>
+
+</svg></span>
+        <span class="zone-text"><strong>Karen</strong>
+        <span class="zone-counts">6 stays · 1 food · 1 matchday</span></span>
+        <span class="zone-go" aria-hidden="true">→</span>
+      </a></li>
+      
+      <li><a class="zone-row" href="./stays/?area=Ngong%20Road" data-area="Ngong Road">
+        <span class="zone-thumb">
+<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#141414"/>
+  <g fill="#F7F6F3" opacity=".12"><path d="M52 18l-52 122h70z"/><path d="M268 18l52 122h-70z"/></g>
+  <g fill="#5E5E5E"><rect x="50" y="18" width="4" height="80"/><rect x="266" y="18" width="4" height="80"/></g>
+  <g fill="#EDB750"><rect x="40" y="10" width="24" height="10" rx="2"/><rect x="256" y="10" width="24" height="10" rx="2"/></g>
+  <path d="M40 104c40-34 200-34 240 0v36H40z" fill="#2B2B2B"/>
+  <path d="M40 104c40-34 200-34 240 0" fill="none" stroke="#F7F6F3" stroke-width="3"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="#7C7C77"/>
+  <ellipse cx="160" cy="124" rx="86" ry="14" fill="none" stroke="#F7F6F3" stroke-width="1.5" opacity=".6"/>
+
+</svg></span>
+        <span class="zone-text"><strong>Ngong Road</strong>
+        <span class="zone-counts">3 stays · 1 movies &amp; games</span></span>
+        <span class="zone-go" aria-hidden="true">→</span>
+      </a></li>
+      
+      <li><a class="zone-row" href="./stays/?area=Airport%20%26%20Mombasa%20Road" data-area="Airport &amp; Mombasa Road">
+        <span class="zone-thumb">
+<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <rect width="320" height="140" fill="#E9E7E2"/>
+  <g fill="#F7F6F3" opacity=".8"><ellipse cx="60" cy="40" rx="34" ry="10"/><ellipse cx="250" cy="62" rx="40" ry="9"/></g>
+  <path d="M118 62l70-22c10-3 20 4 8 10l-34 16 8 30-10 4-18-24-22 8-4 12-8 2-2-16-12-8 6-4 14 2 14-8-30-20 8-4z" fill="#2B2B2B"/>
+  <rect y="112" width="320" height="28" fill="#2B2B2B"/>
+  <g fill="#EDB750"><rect x="14" y="124" width="34" height="4"/><rect x="74" y="124" width="34" height="4"/><rect x="134" y="124" width="34" height="4"/><rect x="194" y="124" width="34" height="4"/><rect x="254" y="124" width="34" height="4"/></g>
+
+</svg></span>
+        <span class="zone-text"><strong>Airport &amp; Mombasa Road</strong>
+        <span class="zone-counts">6 stays · 1 movies &amp; games</span></span>
+        <span class="zone-go" aria-hidden="true">→</span>
+      </a></li>
+      
+      <li><a class="zone-row" href="./movies-games/?area=Gigiri%20%26%20Limuru%20Road" data-area="Gigiri &amp; Limuru Road">
+        <span class="zone-thumb">
+<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="kfz-gG-i6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEDE8"/><stop offset="1" stop-color="#F7F6F3"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gG-i6)"/><circle cx="250" cy="44" r="18" fill="#A8A59F" opacity=".85"/>
+  <g fill="#CFCCC5"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
+  <g fill="#2B2B2B" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
+  <g fill="#F7F6F3" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
+
+</svg></span>
+        <span class="zone-text"><strong>Gigiri &amp; Limuru Road</strong>
+        <span class="zone-counts">2 movies &amp; games</span></span>
+        <span class="zone-go" aria-hidden="true">→</span>
+      </a></li>
+      
+      <li><a class="zone-row" href="./movies-games/?area=Thika%20Road" data-area="Thika Road">
+        <span class="zone-thumb">
+<svg class="un-art-svg" viewBox="0 0 320 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+
+  <defs><linearGradient id="kfz-gG-i7" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEDE8"/><stop offset="1" stop-color="#F7F6F3"/></linearGradient></defs>
+  <rect width="320" height="140" fill="url(#kfz-gG-i7)"/><circle cx="250" cy="44" r="18" fill="#A8A59F" opacity=".85"/>
+  <g fill="#CFCCC5"><rect x="20" y="78" width="36" height="62"/><rect x="118" y="66" width="40" height="74"/><rect x="226" y="84" width="44" height="56"/></g>
+  <g fill="#2B2B2B" opacity=".82"><rect x="60" y="56" width="34" height="84"/><rect x="164" y="44" width="30" height="96"/><rect x="200" y="72" width="22" height="68"/><rect x="278" y="62" width="28" height="78"/></g>
+  <g fill="#F7F6F3" opacity=".6"><rect x="66" y="66" width="22" height="3"/><rect x="66" y="78" width="22" height="3"/><rect x="66" y="90" width="22" height="3"/><rect x="170" y="54" width="18" height="3"/><rect x="170" y="66" width="18" height="3"/><rect x="170" y="78" width="18" height="3"/><rect x="284" y="72" width="16" height="3"/><rect x="284" y="84" width="16" height="3"/></g>
+
+</svg></span>
+        <span class="zone-text"><strong>Thika Road</strong>
+        <span class="zone-counts">1 movies &amp; games</span></span>
+        <span class="zone-go" aria-hidden="true">→</span>
+      </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+
+<section class="band band-paper" aria-labelledby="picsH">
+  <div class="wrap">
+    <div class="sec-head sec-head-xl"><h2 id="picsH" class="display-2">Nairobi <em>in pictures.</em></h2><p>The city between the stops: skyline, parkland, streets and the people in them.</p></div>
+    
+<ul class="mosaic mosaic-10 rv-each" role="list">
+  
+  
+    
+    
+    
+    
+  
+  <li class="g-full"><figure class="ph">
+    
+<img class="" src="./img/photos/giraffe-skyline-600.webp" srcset="./img/photos/giraffe-skyline-600.webp 600w, ./img/photos/giraffe-skyline-1200.webp 1200w" sizes="(max-width: 900px) 100vw, min(64vw, 880px)" width="600" height="400" alt="A giraffe in Nairobi National Park with the city skyline on the horizon" loading="lazy" decoding="async" style="--focus:70% 55%">
+    <figcaption><a href="https://unsplash.com/photos/7XA8SJ5ODq4" target="_blank" rel="noopener">Grace Nandi<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="./img/photos/skyline-towers-600.webp" srcset="./img/photos/skyline-towers-600.webp 600w, ./img/photos/skyline-towers-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(32vw, 440px)" width="600" height="400" alt="City towers glowing at golden hour above a dark line of trees" loading="lazy" decoding="async" style="--focus:50% 50%">
+    <figcaption><a href="https://unsplash.com/photos/aUKfubmaU4o" target="_blank" rel="noopener">Reggie B<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="./img/photos/cbd-aerial-600.webp" srcset="./img/photos/cbd-aerial-600.webp 600w, ./img/photos/cbd-aerial-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(32vw, 440px)" width="600" height="600" alt="Looking down on tightly packed office towers and a street in a city centre" loading="lazy" decoding="async" style="--focus:50% 50%">
+    <figcaption><a href="https://unsplash.com/photos/dGUXKJZGDSg" target="_blank" rel="noopener">Joecalih<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="./img/photos/kicc-tower-600.webp" srcset="./img/photos/kicc-tower-600.webp 600w, ./img/photos/kicc-tower-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(32vw, 440px)" width="600" height="750" alt="The KICC tower in Nairobi at dusk, its windows lit, framed by trees" loading="lazy" decoding="async" style="--focus:40% 35%">
+    <figcaption><a href="https://unsplash.com/photos/oZGaBqNCm5w" target="_blank" rel="noopener">Stanley G Mathu<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="./img/photos/jacaranda-street-600.webp" srcset="./img/photos/jacaranda-street-600.webp 600w, ./img/photos/jacaranda-street-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(32vw, 440px)" width="600" height="750" alt="A purple jacaranda in bloom in front of a round, honeycomb-windowed office tower at dusk" loading="lazy" decoding="async" style="--focus:50% 40%">
+    <figcaption><a href="https://unsplash.com/photos/Ls2Pxm_3jLI" target="_blank" rel="noopener">Justine<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+    
+  
+  <li class="g-full"><figure class="ph">
+    
+<img class="" src="./img/photos/suburb-sunset-600.webp" srcset="./img/photos/suburb-sunset-600.webp 600w, ./img/photos/suburb-sunset-1200.webp 1200w" sizes="(max-width: 900px) 100vw, min(32vw, 440px)" width="600" height="750" alt="Apartment blocks among dense green trees as the sun sets in a hazy sky" loading="lazy" decoding="async" style="--focus:60% 60%">
+    <figcaption><a href="https://unsplash.com/photos/fmux-h7xg8I" target="_blank" rel="noopener">Michael Muli<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="./img/photos/acacia-avenue-600.webp" srcset="./img/photos/acacia-avenue-600.webp 600w, ./img/photos/acacia-avenue-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(32vw, 440px)" width="600" height="400" alt="A row of yellow-barked acacia trees along a quiet road under a clear blue sky" loading="lazy" decoding="async" style="--focus:55% 50%">
+    <figcaption><a href="https://unsplash.com/photos/dcGNHL8lUdA" target="_blank" rel="noopener">Abhijeet Parmar<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="./img/photos/cbd-minarets-600.webp" srcset="./img/photos/cbd-minarets-600.webp 600w, ./img/photos/cbd-minarets-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(64vw, 880px)" width="600" height="750" alt="A white minaret with a green dome in front of a dark glass tower and older office blocks" loading="lazy" decoding="async" style="--focus:60% 60%">
+    <figcaption><a href="https://unsplash.com/photos/zbuqEEHJSks" target="_blank" rel="noopener">Dwayne Joe<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="./img/photos/sunset-apartments-600.webp" srcset="./img/photos/sunset-apartments-600.webp 600w, ./img/photos/sunset-apartments-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(64vw, 880px)" width="600" height="750" alt="The sun setting between apartment buildings against an orange sky" loading="lazy" decoding="async" style="--focus:50% 50%">
+    <figcaption><a href="https://unsplash.com/photos/JXAj1vKla_E" target="_blank" rel="noopener">Joseph Ndungu<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+  
+    
+    
+    
+    
+  
+  <li><figure class="ph">
+    
+<img class="" src="./img/photos/football-pitch-600.webp" srcset="./img/photos/football-pitch-600.webp 600w, ./img/photos/football-pitch-1200.webp 1200w" sizes="(max-width: 900px) 50vw, min(32vw, 440px)" width="600" height="338" alt="Players on a grass football pitch in front of new apartment towers" loading="lazy" decoding="async" style="--focus:50% 70%">
+    <figcaption><a href="https://unsplash.com/photos/TqQGHKQtCGs" target="_blank" rel="noopener">Maingi Mutiso<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+  </figure></li>
+  
+</ul>
+  </div>
+</section>
+
+
+<section class="band" id="plan" aria-labelledby="planH">
   <div class="wrap two-col">
     <div class="stack">
-      <div class="eyebrow on-light">Plan your day</div>
-      <h2 id="planH" class="h-big">Your Saturday, sorted.</h2>
+      <p class="eyebrow on-light">Plan your day</p>
+      <h2 id="planH" class="display-3">Your Saturday, sorted.</h2>
       <p class="lede-dark">Follow the route in order, or jump to the stop you need. Each stop keeps the area you chose.</p>
       <a class="btn btn-primary" href="./stays/" style="align-self:flex-start">Start at stop 1: Stays</a>
     </div>
@@ -553,9 +469,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   </div>
 </section>
 
-<section class="band" id="how" aria-labelledby="howH">
+<section class="band band-paper" id="how" aria-labelledby="howH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="howH">How it works</h2><p>KaribuFans connects you to the business. You pay them directly, not us.</p></div>
+    <div class="sec-head"><h2 id="howH" class="display-3">How it works</h2><p>KaribuFans connects you to the business. You pay them directly, not us.</p></div>
     <div class="steps rv">
       <div class="step"><span class="num">1</span><h3>Choose</h3><p>Browse local stays, food spots, nightlife and rides in one place.</p></div>
       <div class="step"><span class="num">2</span><h3>Book directly</h3><p>Message the business on WhatsApp or call them, and pay them by M-Pesa.</p></div>
@@ -564,43 +480,41 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
   </div>
 </section>
 
+
+
 <section class="band-dark" id="vendors" aria-labelledby="vendH">
-  <div class="bead-rule" aria-hidden="true"></div>
-  <div class="wrap band">
-    <div class="cta-row">
-      <div>
-        <div class="eyebrow">For Nairobi businesses</div>
-        <h2 id="vendH" style="margin-top:12px">Put your business in front of new customers.</h2>
-        <p>No listing fee. You pay a commission only on customers we send you.</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <a class="btn btn-primary btn-lg" href="./list-your-business/">List your business</a>
-      </div>
+  <div class="wrap band two-col vendors">
+    <div class="stack">
+      <p class="eyebrow">For Nairobi businesses</p>
+      <h2 id="vendH" class="display-2">Put your business in front of <em>new customers.</em></h2>
+      <p class="lede-on-dark">No listing fee. You pay a commission only on customers we send you.</p>
+      <a class="btn btn-primary btn-lg" href="./list-your-business/" style="align-self:flex-start">List your business</a>
     </div>
+    <figure class="ph vendor-ph">
+<img class="" src="./img/photos/shared-platter-600.webp" srcset="./img/photos/shared-platter-600.webp 600w, ./img/photos/shared-platter-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 50vw" width="600" height="400" alt="" loading="lazy" decoding="async" style="--focus:40% 45%"></figure>
   </div>
 </section>
 
 </main>
 
-
 <footer class="footer">
   <div class="wrap">
+    <p class="footer-big" aria-hidden="true">Karibu <em>Nairobi.</em></p>
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="./" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h2>Explore</h2><ul><li><a href="./stays/">Stays</a></li><li><a href="./food/">Food</a></li><li><a href="./rides/">Rides</a></li><li><a href="./matchday/">Matchday</a></li><li><a href="./nightlife/">Nightlife</a></li><li><a href="./movies-games/">Movies &amp; Games</a></li><li><a href="./tickets/">Tickets</a></li></ul></div>
-      <div><h2>KaribuFans</h2><ul><li><a href="./#how">How it works</a></li><li><a href="./list-your-business/">List your business</a></li><li><a href="./search/">Search</a></li><li data-acct hidden><a href="./account/">Account</a></li><li><a href="./privacy/">Privacy</a></li></ul></div>
+      <div><h2>KaribuFans</h2><ul><li><a href="./#how">How it works</a></li><li><a href="./list-your-business/">List your business</a></li><li><a href="./search/">Search</a></li><li data-acct hidden><a href="./account/">Account</a></li><li><a href="./privacy/">Privacy</a></li><li><a href="./privacy/#credits">Photo credits</a></li></ul></div>
       <div id="languages"><h2>Language</h2>
         <div class="langs"><button type="button" data-lang="EN" data-name="English" data-live="1" aria-pressed="true">EN</button><button type="button" data-lang="SW" data-name="Kiswahili" data-live="" aria-pressed="false" class="soon">SW<small>soon</small></button><button type="button" data-lang="FR" data-name="French" data-live="" aria-pressed="false" class="soon">FR<small>soon</small></button><button type="button" data-lang="AR" data-name="Arabic" data-live="" aria-pressed="false" class="soon">AR<small>soon</small></button><button type="button" data-lang="PT" data-name="Portuguese" data-live="" aria-pressed="false" class="soon">PT<small>soon</small></button></div>
         <p class="lang-note" id="langNote" aria-live="polite">The site is in English. Kiswahili, French, Arabic and Portuguese follow after launch.</p>
       </div>
     </div>
-    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 KaribuFans.</p>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Photographs are by the photographers credited with each one, via Unsplash, and are for illustration only. © 2026 KaribuFans.</p>
   </div>
 </footer>
 <script src="./js/site.js" defer></script>

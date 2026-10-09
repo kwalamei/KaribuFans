@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Privacy notice · KaribuFans</title>
 <meta name="description" content="What KaribuFans collects, what stays on your device, and your rights under Kenya's Data Protection Act, 2019.">
-<meta name="theme-color" content="#2A1A12">
+<meta name="theme-color" content="#0E0E0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Caveat:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
 <link rel="stylesheet" href="../css/site.css">
-<link rel="stylesheet" href="../css/art.css">
 
 <script>
 (function(w,d){try{
 var h=d.documentElement,n=+h.getAttribute('data-stop')||0,K='kf_from',P=['.nav','.routebar .trail','.routebar .current .dot i'];
+h.classList.add('kf-js');
+function atTop(){h.classList.toggle('kf-top',(w.pageYOffset||0)<24);}atTop();w.addEventListener('scroll',atTop,{passive:true});d.addEventListener('DOMContentLoaded',atTop);
 if(!w.matchMedia||w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 h.classList.add('kf-draw');
 function parts(trim){for(var i=0,el,r;i<P.length;i++){el=d.querySelector(P[i]);if(!el)continue;
@@ -35,14 +36,16 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
+
 <header class="nav" id="nav">
-  <div class="wrap">
+  <div class="nav-in">
     <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
     <nav aria-label="Main" class="nav-links" id="navLinks">
-      <a href="../stays/" >Stays</a><a href="../food/" >Food</a><a href="../rides/" >Rides</a><a href="../matchday/" >Matchday</a><a href="../nightlife/" >Nightlife</a><a href="../movies-games/" >Movies &amp; Games</a><a href="../tickets/" >Tickets</a>
+      <span class="nav-pill" aria-hidden="true"></span>
+      <a href="../stays/" ><span class="nav-n" aria-hidden="true">01</span>Stays</a><a href="../food/" ><span class="nav-n" aria-hidden="true">02</span>Food</a><a href="../rides/" ><span class="nav-n" aria-hidden="true">03</span>Rides</a><a href="../matchday/" ><span class="nav-n" aria-hidden="true">04</span>Matchday</a><a href="../nightlife/" ><span class="nav-n" aria-hidden="true">05</span>Nightlife</a><a href="../movies-games/" ><span class="nav-n" aria-hidden="true">06</span>Movies &amp; Games</a><a href="../tickets/" ><span class="nav-n" aria-hidden="true">07</span>Tickets</a>
+      <span class="menu-extra"><a href="../search/">Search</a><a class="btn btn-primary" href="../list-your-business/">List your business</a></span>
     </nav>
     <div class="nav-tools">
       <a class="icon-btn" href="../search/" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg></a>
@@ -51,7 +54,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
       <a class="icon-btn acct-link" id="acctLink" href="../account/" aria-label="Account" data-acct hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM4.5 20a7.5 7.5 0 0 1 15 0"/></svg><span id="acctInitial" aria-hidden="true" hidden></span></a>
       <a class="btn btn-primary nav-cta" href="../list-your-business/">List your business</a>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path class="mb-1" d="M4 8h16"/><path class="mb-2" d="M4 16h16"/></svg>
       </button>
     </div>
   </div>
@@ -96,31 +99,75 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
     <h2>Changes</h2>
     <p>If the site starts to collect anything more, for example when accounts or online booking are added, we will update this notice first and change the date at the top.</p>
+
+    
+<h2 id="credits">Photo credits</h2>
+<p>The photographs on this site come from Unsplash and are used under the Unsplash licence. We credit each photographer here and on every page's main photo. The photos are there to illustrate the city and the kind of place each stop covers; none of them was supplied by, or is meant to represent, a business listed on the site. The small drawings on listing cards and some area tiles are our own.</p>
+<ul class="credits">
+  <li><span>Nairobi skyline at golden hour, tall towers rising above a band of green trees</span> <a href="https://unsplash.com/photos/LTh5pGyvKAM" target="_blank" rel="noopener">Amani Nation on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>A striped, twin-towered office building with a tall red mast above the rooftops of a sprawling city</span> <a href="https://unsplash.com/photos/1Uwcoo-ttjY" target="_blank" rel="noopener">Joecalih on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>An orange sun setting over the silhouetted rooftops and trees of a city suburb</span> <a href="https://unsplash.com/photos/UtH04tBFzTo" target="_blank" rel="noopener">Stephen Berenju on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Overhead view of a wooden table set with plates of roast meat, potatoes, salads and bread shared by friends</span> <a href="https://unsplash.com/photos/Q_Moi2xjieU" target="_blank" rel="noopener">Stefan Vladimirov on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Long-exposure light trails of traffic curving along a highway towards a city at night</span> <a href="https://unsplash.com/photos/AwkDru_0tQw" target="_blank" rel="noopener">Richard Horne on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Cheering football fans in a stand waving Kenyan flags, one wearing a God Bless Kenya sash</span> <a href="https://unsplash.com/photos/7e16OcueiNs" target="_blank" rel="noopener">Justin Lagat on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>The KICC tower lit purple at night behind palm trees, reflected in a still lake in central Nairobi</span> <a href="https://unsplash.com/photos/Zkao_QBEjk8" target="_blank" rel="noopener">Mustafa Omar on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Rows of empty red cinema seats either side of softly lit steps in a dark auditorium</span> <a href="https://unsplash.com/photos/evlkOfkQ5rE" target="_blank" rel="noopener">Felix Mooneeram on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>A fan silhouetted against a packed, smoky stadium stand, arm raised high</span> <a href="https://unsplash.com/photos/jEOqeVcnCE4" target="_blank" rel="noopener">Salim on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Hands eating from a plate of ugali and a vegetable stew on a weathered wooden table</span> <a href="https://unsplash.com/photos/4J1WZkXde-w" target="_blank" rel="noopener">Victor Birai on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>The KICC tower in Nairobi at dusk, its windows lit, framed by trees</span> <a href="https://unsplash.com/photos/oZGaBqNCm5w" target="_blank" rel="noopener">Stanley G Mathu on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>A giraffe in Nairobi National Park with the city skyline on the horizon</span> <a href="https://unsplash.com/photos/7XA8SJ5ODq4" target="_blank" rel="noopener">Grace Nandi on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>City towers glowing at golden hour above a dark line of trees</span> <a href="https://unsplash.com/photos/aUKfubmaU4o" target="_blank" rel="noopener">Reggie B on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Looking down on tightly packed office towers and a street in a city centre</span> <a href="https://unsplash.com/photos/dGUXKJZGDSg" target="_blank" rel="noopener">Joecalih on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>A purple jacaranda in bloom in front of a round, honeycomb-windowed office tower at dusk</span> <a href="https://unsplash.com/photos/Ls2Pxm_3jLI" target="_blank" rel="noopener">Justine on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Apartment blocks among dense green trees as the sun sets in a hazy sky</span> <a href="https://unsplash.com/photos/fmux-h7xg8I" target="_blank" rel="noopener">Michael Muli on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>A row of yellow-barked acacia trees along a quiet road under a clear blue sky</span> <a href="https://unsplash.com/photos/dcGNHL8lUdA" target="_blank" rel="noopener">Abhijeet Parmar on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>A white minaret with a green dome in front of a dark glass tower and older office blocks</span> <a href="https://unsplash.com/photos/zbuqEEHJSks" target="_blank" rel="noopener">Dwayne Joe on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>The sun setting between apartment buildings against an orange sky</span> <a href="https://unsplash.com/photos/JXAj1vKla_E" target="_blank" rel="noopener">Joseph Ndungu on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Players on a grass football pitch in front of new apartment towers</span> <a href="https://unsplash.com/photos/TqQGHKQtCGs" target="_blank" rel="noopener">Maingi Mutiso on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Curved balconies, a red-brick apartment block, a glass tower and an ochre dome on an overcast day</span> <a href="https://unsplash.com/photos/NMAAZa0guJ4" target="_blank" rel="noopener">Ron John on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Hands reaching for a large platter of rice and grilled meat on the grass</span> <a href="https://unsplash.com/photos/UbPIijt8A8A" target="_blank" rel="noopener">Amaan Abid on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Overhead view of a round table with skewers, grilled chicken, rice and colourful drinks</span> <a href="https://unsplash.com/photos/yLUv5e18CI0" target="_blank" rel="noopener">Febrian Zakaria on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Clay dishes of rice with lamb, a salad and a stew on a wooden board</span> <a href="https://unsplash.com/photos/W7x1gJtFZwM" target="_blank" rel="noopener">Louis Hansel on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>A roast with rosemary on a board, surrounded by roast chicken, potatoes and vegetables</span> <a href="https://unsplash.com/photos/LNn6O_Mt730" target="_blank" rel="noopener">Rumman Amin on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Glazed ribs and fries on a wooden board shared between friends outdoors</span> <a href="https://unsplash.com/photos/0ZTbjBscf8s" target="_blank" rel="noopener">Thato Bole on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Pour-over coffee dripping into a glass jug on a scale beside a barista in a leather apron</span> <a href="https://unsplash.com/photos/ODhgIpUVrls" target="_blank" rel="noopener">Adi Nugroho on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Cars with headlights on a wet tree-lined street at night under orange street lamps</span> <a href="https://unsplash.com/photos/0nxkbdUtZnY" target="_blank" rel="noopener">Nikolay Dukov on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Gazelles grazing on open grassland beside a safari vehicle</span> <a href="https://unsplash.com/photos/GpqMG6wYdPQ" target="_blank" rel="noopener">Ron John on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Fans&#39; raised arms in the foreground as players in red and black move across a football pitch</span> <a href="https://unsplash.com/photos/QOUxCvbuci0" target="_blank" rel="noopener">Offtoseetheworld on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>A packed stadium stand of fans clapping and cheering</span> <a href="https://unsplash.com/photos/YI6yXtYj13g" target="_blank" rel="noopener">Selma Da Silva on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>A sprinter&#39;s legs and pink spikes driving round the bend of a red running track</span> <a href="https://unsplash.com/photos/3bwHCvM2rbE" target="_blank" rel="noopener">Justin Lagat on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Dancers in headdresses and skirts in the colours of the Kenyan flag, holding spears</span> <a href="https://unsplash.com/photos/JTpy794orEM" target="_blank" rel="noopener">Justin Lagat on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Silhouettes of people in a bar lit by red neon, city lights behind the windows</span> <a href="https://unsplash.com/photos/poCJoKaymlU" target="_blank" rel="noopener">Aleksandr Popov on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Silhouetted bottles along a bar in front of tall windows and a sunset sky</span> <a href="https://unsplash.com/photos/2lrAn7dY7kI" target="_blank" rel="noopener">Adam Bignell on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>A singer in a wide hat and patterned top performing at a microphone against a gold curtain</span> <a href="https://unsplash.com/photos/Cs2aZkwXM4U" target="_blank" rel="noopener">Dwayne Joe on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Two diners silhouetted at a window table high above a hazy city</span> <a href="https://unsplash.com/photos/40N4F93__Sk" target="_blank" rel="noopener">Polina Kuzovkova on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  <li><span>Red cinema seats and small aisle lights glowing in a dark auditorium</span> <a href="https://unsplash.com/photos/4KCwp7ZveWc" target="_blank" rel="noopener">Umanoide on Unsplash<span class="sr-only"> (opens in a new tab)</span></a></li>
+  
+</ul>
     <p><a class="btn btn-ghost" href="../">Back to the homepage</a></p>
   </div>
 </section>
 
 </main>
 
-
-<footer class="footer rise">
+<footer class="footer">
   <div class="wrap">
+    <p class="footer-big" aria-hidden="true">Karibu <em>Nairobi.</em></p>
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="../" aria-label="KaribuFans home">
   <b>Karibu<span>Fans</span></b>
-  <span class="beads" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
 </a>
         <p>Your Nairobi city guide, from your stay to the final whistle.</p>
       </div>
       <div><h2>Explore</h2><ul><li><a href="../stays/">Stays</a></li><li><a href="../food/">Food</a></li><li><a href="../rides/">Rides</a></li><li><a href="../matchday/">Matchday</a></li><li><a href="../nightlife/">Nightlife</a></li><li><a href="../movies-games/">Movies &amp; Games</a></li><li><a href="../tickets/">Tickets</a></li></ul></div>
-      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li data-acct hidden><a href="../account/">Account</a></li><li><a href="../privacy/">Privacy</a></li></ul></div>
+      <div><h2>KaribuFans</h2><ul><li><a href="../#how">How it works</a></li><li><a href="../list-your-business/">List your business</a></li><li><a href="../search/">Search</a></li><li data-acct hidden><a href="../account/">Account</a></li><li><a href="../privacy/">Privacy</a></li><li><a href="../privacy/#credits">Photo credits</a></li></ul></div>
       <div id="languages"><h2>Language</h2>
         <div class="langs"><button type="button" data-lang="EN" data-name="English" data-live="1" aria-pressed="true">EN</button><button type="button" data-lang="SW" data-name="Kiswahili" data-live="" aria-pressed="false" class="soon">SW<small>soon</small></button><button type="button" data-lang="FR" data-name="French" data-live="" aria-pressed="false" class="soon">FR<small>soon</small></button><button type="button" data-lang="AR" data-name="Arabic" data-live="" aria-pressed="false" class="soon">AR<small>soon</small></button><button type="button" data-lang="PT" data-name="Portuguese" data-live="" aria-pressed="false" class="soon">PT<small>soon</small></button></div>
         <p class="lang-note" id="langNote" aria-live="polite">The site is in English. Kiswahili, French, Arabic and Portuguese follow after launch.</p>
       </div>
     </div>
-    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Stadium images are artist&#39;s impressions. © 2026 KaribuFans.</p>
+    <p class="legal">KaribuFans is an independent city guide. It is not affiliated with CAF, the tournament organisers, Uber or Bolt. Photographs are by the photographers credited with each one, via Unsplash, and are for illustration only. © 2026 KaribuFans.</p>
   </div>
 </footer>
 <script src="../js/site.js" defer></script>
