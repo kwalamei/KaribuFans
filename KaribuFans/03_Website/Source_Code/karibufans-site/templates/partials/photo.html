@@ -27,7 +27,7 @@
 {% macro example_photo(p, root) -%}
 <span class="ex-photo">
   <img class="ex-img" src="{{ root }}img/photos/{{ p.id }}-{{ p.w[0] }}.webp" srcset="{{ srcset(p, root, p.w) }}" sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 360px" width="{{ p.w[0] }}" height="{{ (p.w[0] * p.rh / p.rw) | round | int }}" alt="{{ p.alt }} (example photo, not of this place)" loading="lazy" decoding="async" style="--focus:{{ p.focus or '50% 50%' }}">
-  <span class="ex-label"><b>Example photo, not of this place</b><span>Photo: {{ p.credit }} / {{ p.source }}</span></span>
+  <span class="ex-label"><b>Example photo, not of this place</b> <span>Photo: {{ p.credit }} / {{ p.source }}</span></span>
 </span>
 {%- endmacro %}
 
