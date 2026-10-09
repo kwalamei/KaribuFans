@@ -7,7 +7,14 @@ according to the CROPS table below, and writes:
   static/img/photos/<id>-<w>.webp       landscape / tile crop
   static/img/photos/<id>-m-<w>.webp     4:5 phone crop (heroes only)
   static/img/photos/share-1200x630.jpg  social share card
+  static/img/photos/ex-<type>-<n>-<w>.webp  example photos of a TYPE of place
+                                        (2:1, the listing card's drawing band)
   data/photos.json                      manifest used by the templates
+
+Example photos (EXAMPLES below, masters in Photos/examples/) are a trial the
+owner asked for: an unclaimed listing card may show a stock photo of its type
+of place, always labelled "Example photo, not of this place". They are
+credited by hand (Pexels or Unsplash), never Nairobi unless they visibly are.
 
 Run from anywhere:  python3 tools/photos.py
 Needs Pillow (with WebP). Output is deterministic: the same masters and the
@@ -36,17 +43,19 @@ Image.MAX_IMAGE_PIXELS = None
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(HERE)
 MASTERS = os.path.normpath(os.path.join(SITE, "..", "..", "Photos", "unsplash"))
+EX_MASTERS = os.path.normpath(os.path.join(SITE, "..", "..", "Photos", "examples"))
 OUT_DIR = os.path.join(SITE, "static", "img", "photos")
 MANIFEST = os.path.join(SITE, "data", "photos.json")
 
 HERO_W = [800, 1400, 2200]
 HERO_M_W = [600, 1000]
 TILE_W = [600, 1200]
+EX_W = [400, 800]
 HERO_Q = 78
 TILE_Q = 74
 BUDGET = {"hero": 450 * 1024, "tile": 250 * 1024}
 
-RATIOS = {"16:9": 16 / 9, "3:2": 3 / 2, "4:5": 4 / 5, "1:1": 1.0}
+RATIOS = {"16:9": 16 / 9, "3:2": 3 / 2, "4:5": 4 / 5, "1:1": 1.0, "2:1": 2.0}
 
 # id: master, kind, ratio + crop (landscape/tile), m crop (hero phone 4:5),
 #     focus (object-position for the main crop), alt, optional q / m_q / redact.
@@ -259,6 +268,91 @@ CROPS = {
         alt="Red cinema seats and small aisle lights glowing in a dark auditorium"),
 }
 
+# Example photos, one entry per photo, by listing type. Shown only on the cards
+# (and in the details drawer) of unclaimed listings of that exact type, with the
+# label "Example photo, not of this place". Same crop and redact notation as
+# CROPS; ratio is always 2:1 (the .card-photo band). Credit and page are given
+# by hand because Pexels file names do not follow the Unsplash pattern.
+PEXELS = ("Pexels", "https://www.pexels.com/license/")
+UNSPLASH = ("Unsplash", "https://unsplash.com/license")
+EXAMPLES = {
+    "Apartment": [
+        dict(id="ex-apartment-1", src="pexels-artbovich-6265837.jpg",
+             credit="Artbovich", page="https://www.pexels.com/photo/6265837/", site=PEXELS,
+             # the TV maker's logo and model label, and the oven maker's logo
+             crop=("fit", 0.5, 0.52),
+             redact=[(0.757, 0.603, 0.775, 0.620), (0.935, 0.634, 0.975, 0.650),
+                     (0.290, 0.410, 0.315, 0.428)],
+             focus="40% 50%",
+             alt="An open-plan apartment with a white kitchen, wooden bar stools and a wood-panelled wall with a large television"),
+        dict(id="ex-apartment-2", src="pexels-artbovich-6492396.jpg",
+             credit="Artbovich", page="https://www.pexels.com/photo/6492396/", site=PEXELS,
+             # right of the television (its screen shows a picture)
+             crop=("box", 0.35, 0.25, 1.0),
+             focus="50% 55%",
+             alt="A grey velvet sofa in front of a long beige kitchen with brass pendant lights and a vase of green branches"),
+        dict(id="ex-apartment-3", src="pexels-artbovich-6580381.jpg",
+             credit="Artbovich", page="https://www.pexels.com/photo/6580381/", site=PEXELS,
+             crop=("fit", 0.5, 0.55),
+             focus="50% 60%",
+             alt="A studio flat with a green sofa, tall curtained windows and a small kitchen island against a dark stone wall"),
+        dict(id="ex-apartment-4", src="pexels-athenea-codjambassis-rossitto-472760075-26571206.jpg",
+             credit="Athenea Codjambassis Rossitto", page="https://www.pexels.com/photo/26571206/", site=PEXELS,
+             # the microwave maker's logo
+             crop=("fit", 0.5, 0.56),
+             redact=[(0.466, 0.382, 0.480, 0.398)],
+             focus="50% 55%",
+             alt="A bright living room with a grey sofa, a round dining table and a compact kitchen behind it"),
+    ],
+    "Hotel": [
+        dict(id="ex-hotel-1", src="pexels-catscoming-707581.jpg",
+             credit="Catscoming", page="https://www.pexels.com/photo/707581/", site=PEXELS,
+             # bottom-aligned and zoomed so the two round wall prints stay out
+             crop=("fit", 0.55, 1.0, 1.15),
+             focus="50% 60%",
+             alt="A neatly made bed with grey linen and a patterned cushion beside a wooden side table and a floor lamp"),
+        dict(id="ex-hotel-2", src="pexels-claudia-schmalz-3928374-13316618.jpg",
+             credit="Claudia Schmalz", page="https://www.pexels.com/photo/13316618/", site=PEXELS,
+             crop=("fit", 0.5, 0.55),
+             focus="50% 50%",
+             alt="A large bed with crisp white linen between two softly lit bedside lamps"),
+        dict(id="ex-hotel-3", src="pexels-lachlan-ross-6510425.jpg",
+             credit="Lachlan Ross", page="https://www.pexels.com/photo/6510425/", site=PEXELS,
+             crop=("fit", 0.62, 0.52, 1.3),
+             focus="60% 50%",
+             alt="A double bed with a flowered quilt and purple pillows in a plain white room with wooden furniture"),
+        dict(id="ex-hotel-4", src="pexels-natthanon-chinnasri-1807966-10660270.jpg",
+             credit="Natthanon Chinnasri", page="https://www.pexels.com/photo/10660270/", site=PEXELS,
+             # the printed face plate of the telephone (it may carry the hotel's
+             # name); the booklet and box on the bed are too small to read
+             crop=("fit", 0.5, 0.45),
+             redact=[(0.649, 0.556, 0.676, 0.650, "light")],
+             focus="50% 45%",
+             alt="A bed with white linen against a mustard headboard, a woven lamp above a wooden bedside table with a telephone"),
+    ],
+    "Guesthouse": [
+        dict(id="ex-guesthouse-1", src="pexels-enock-ojambo-1365731-33613729.jpg",
+             credit="Enock Ojambo", page="https://www.pexels.com/photo/33613729/", site=PEXELS,
+             # the fabric maker's name printed along the hem of the bed cover; the fan's badge
+             crop=("fit", 0.5, 0.52),
+             redact=[(0.330, 0.664, 0.380, 0.676, "light"), (0.393, 0.664, 0.427, 0.675, "light"),
+                     (0.512, 0.665, 0.598, 0.678, "light"), (0.636, 0.664, 0.700, 0.676, "light"),
+                     (0.828, 0.400, 0.845, 0.420, "light")],
+             focus="50% 55%",
+             # Taken in Kampala: the alt text never says Nairobi.
+             alt="A sunny guest room with two single beds in patterned orange covers, printed curtains, a mosquito net and a standing fan"),
+    ],
+    "Restaurant": [
+        dict(id="ex-restaurant-1", src="roman-mLPNw6L5t5o-unsplash.jpg",
+             credit="Roman", page="https://unsplash.com/photos/mLPNw6L5t5o", site=UNSPLASH,
+             # portrait master: a band round the lamp and the glasses, above the
+             # printed napkin
+             crop=("box", 0.0, 0.295, 1.0),
+             focus="50% 55%",
+             alt="A glowing table lamp and water glasses on a wooden table in a dimly lit dining room"),
+    ],
+}
+
 SHARE = dict(id="home-skyline", crop=("fit", 0.5, 0.45), size=(1200, 630))
 
 SLOTS = {
@@ -303,8 +397,8 @@ def credit_for(src):
     return " ".join(p.capitalize() for p in name.split("-")), uid
 
 
-def load(src):
-    im = Image.open(os.path.join(MASTERS, src))
+def load(src, folder=MASTERS):
+    im = Image.open(os.path.join(folder, src))
     im = ImageOps.exif_transpose(im)
     icc = im.info.get("icc_profile")
     if icc:
@@ -448,6 +542,33 @@ def main():
         entry["focus"] = c["focus"]
         photos[pid] = entry
 
+    examples = {}
+    for kind, items in EXAMPLES.items():
+        examples[kind] = []
+        for c in items:
+            pid = c["id"]
+            print(pid)
+            im = load(c["src"], EX_MASTERS)
+            if c.get("redact"):
+                im = redact(im, c["redact"])
+            widths = render(im, box_for(im.size, RATIOS["2:1"], c["crop"]), EX_W, RATIOS["2:1"],
+                            pid, c.get("q", TILE_Q), BUDGET["tile"], c.get("denoise"))
+            assert widths == EX_W, f"{pid}: master too small for {EX_W}"
+            photos[pid] = {
+                "src": c["src"],
+                "credit": c["credit"],
+                "credit_url": c["page"],
+                "source": c["site"][0],
+                "licence_url": c["site"][1],
+                "alt": c["alt"],
+                "kind": "example",
+                "type": kind,
+                "w": widths,
+                "ratio": "2:1",
+                "focus": c["focus"],
+            }
+            examples[kind].append(pid)
+
     # Share card (JPEG, exactly 1200x630, no metadata).
     im = load(CROPS[SHARE["id"]]["src"])
     if CROPS[SHARE["id"]].get("redact"):
@@ -465,7 +586,7 @@ def main():
         for pid in ids:
             assert pid in photos, f"gallery {g} -> unknown id {pid}"
 
-    manifest = {"photos": photos, "slots": SLOTS, "galleries": GALLERIES}
+    manifest = {"photos": photos, "slots": SLOTS, "galleries": GALLERIES, "examples": examples}
     with open(MANIFEST, "w", encoding="utf-8") as fh:
         json.dump(manifest, fh, ensure_ascii=False, indent=2)
         fh.write("\n")

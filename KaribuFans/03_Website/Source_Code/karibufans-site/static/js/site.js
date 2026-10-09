@@ -295,7 +295,8 @@
           var im = document.createElement('img'); im.src = src; im.alt = v.name + ', photo ' + (i + 1); im.loading = 'lazy'; b.appendChild(im); ph.appendChild(b);
         });
       } else {
-        var art = document.querySelector('#card-' + CSS.escape(v.id) + ' .un-art-svg');
+        // The card's example photo (a trial: labelled "Example photo, not of this place") or its drawing.
+        var art = document.querySelector('#card-' + CSS.escape(v.id) + ' .ex-photo, #card-' + CSS.escape(v.id) + ' .un-art-svg');
         if (art) ph.appendChild(art.cloneNode(true));
       }
       var badge = $('dBadge'); badge.className = 'badge ' + (un ? 'badge-directory' : 'badge-verified'); badge.textContent = un ? 'Directory listing' : 'Verified by the business';

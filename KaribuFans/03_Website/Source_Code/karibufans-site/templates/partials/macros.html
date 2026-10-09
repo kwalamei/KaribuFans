@@ -36,14 +36,16 @@
 </ol></nav>
 {%- endmacro %}
 
-{# One card for every listing on every page. #}
-{% macro listing_card(v, m, root) -%}
+{# One card for every listing on every page. ex: the example photo build.py picked for an unclaimed listing of a type
+   that has one (a trial the owner asked for), or none. It is always labelled as not being of the place. #}
+{% macro listing_card(v, m, root, ex=none) -%}
 {% from "partials/area_art.html" import area_art %}
+{% from "partials/photo.html" import example_photo %}
 {% set unclaimed = v.status == 'unclaimed' %}
 {% set q = v.map_query or (v.name ~ ' ' ~ v.area ~ ' Nairobi') %}
 <article class="card{{ ' is-directory' if unclaimed }}" id="card-{{ v.id }}" data-id="{{ v.id }}" data-type="{{ v.type }}" data-area="{{ v.zone }}" data-near="{{ (v.near or []) | join(' ') }}" data-vibe="{{ v.vibe or '' }}" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ v.zone ~ ' ' ~ (v.street or '') ~ ' ' ~ ((v.tags or [])|join(' ')) ~ ' ' ~ ((v.amenities or [])|join(' ')) ~ ' ' ~ (v.near_label or '')) | lower }}"{% if v.hours %} data-open="{{ v.hours.open }}" data-close="{{ v.hours.close }}"{% endif %}>
   <button type="button" class="card-photo place-open" data-id="{{ v.id }}" aria-label="View details for {{ v.name }}">
-    {% if v.photos and v.photos[0] %}<img src="{{ v.photos[0] }}" alt="" loading="lazy">{% else %}{{ area_art(v.zone, '-' ~ v.id) }}{% endif %}
+    {% if v.photos and v.photos[0] %}<img src="{{ v.photos[0] }}" alt="" loading="lazy">{% elif ex %}{{ example_photo(ex, root) }}{% else %}{{ area_art(v.zone, '-' ~ v.id) }}{% endif %}
     <span class="tag-area">{{ v.area }}</span>
   </button>
   {# Save toggle. Hidden until js/account.js switches accounts on. #}
