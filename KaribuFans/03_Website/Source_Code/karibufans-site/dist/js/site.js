@@ -9,6 +9,8 @@
   function $(id) { return document.getElementById(id); }
   function each(list, fn) { Array.prototype.forEach.call(list, fn); }
   var params = new URLSearchParams(location.search);
+  // Lower case without accents, so "artcaffe" finds "Artcaffé".
+  function fold(t) { t = String(t || '').toLowerCase(); return t.normalize ? t.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : t; }
 
   // Motion. Everything here is an extra: without it the page simply updates at once.
   var html = document.documentElement;
@@ -178,12 +180,12 @@
     function apply() {
       var near = st.near && has(fA, 'near:' + st.near) ? st.near : '';   // a stadium chosen in the Area filter
       var here = near ? 'near:' + near : (has(fA, area) ? area : '');   // otherwise the area, if this page has listings there
-      var q = (st.q || '').trim().toLowerCase(), shown = 0;
+      var q = fold((st.q || '').trim()), shown = 0;
       each(cards, function (c) {
         var ok = (!here || (near ? nearOf(c).indexOf(near) !== -1 : c.getAttribute('data-area') === here)) &&
           (!st.t || c.getAttribute('data-type') === st.t) &&
           (!st.v || c.getAttribute('data-vibe') === st.v) &&
-          (!q || (c.getAttribute('data-search') || '').indexOf(q) !== -1);
+          (!q || fold(c.getAttribute('data-search')).indexOf(q) !== -1);
         c.hidden = !ok; if (ok) shown++;
       });
       if (fA) fA.value = here; if (fT) fT.value = st.t; if (fV) fV.value = st.v;
@@ -376,7 +378,6 @@
   var gs = $('globalSearch');
   if (gs) {
     var root = window.KF_ROOT || '../', index = [], out = $('results'), count = $('searchCount'), hint = count.textContent;
-    var fold = function (t) { t = String(t || '').toLowerCase(); return t.normalize ? t.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : t; };
     fetch(root + 'search-index.json').then(function (r) { return r.json(); }).then(function (d) {
       index = d.map(function (v) { v.hay = fold(v.name + ' ' + v.text); return v; }); run();
     }).catch(function () { count.textContent = 'Search could not load. Please refresh the page.'; });

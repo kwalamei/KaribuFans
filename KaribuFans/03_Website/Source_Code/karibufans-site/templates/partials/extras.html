@@ -13,12 +13,13 @@
         <div class="stadium-body">
           <p class="stadium-zone">{{ s.zone or 'Nairobi' }}</p>
           <h3>{{ s.name }}</h3>
-          {% if s.aka %}<p class="stadium-aka">Also called {{ s.aka[:-1] | join(', ') }}{{ ' or ' if s.aka | length > 1 }}{{ s.aka[-1] }}</p>{% endif %}
+          {% set aka = [] %}{% for x in s.aka if x | lower != s.short | lower and x | lower != s.name | lower %}{% set _ = aka.append(x) %}{% endfor %}
+          {% if aka %}<p class="stadium-aka">Also called {{ aka[:-1] | join(', ') }}{{ ' or ' if aka | length > 1 }}{{ aka[-1] }}</p>{% endif %}
           {% if s.street %}<p class="stadium-street">{{ s.street }}</p>{% endif %}
           {% if s.note %}<p class="stadium-note">{{ s.note }}</p>{% endif %}
           {% if s.pages %}
           <ul class="stadium-near" aria-label="On {{ site.name }} near {{ s.short }}">
-            {% for pg in s.pages %}<li><a href="{{ root }}{{ pg.slug }}/?near={{ s.id }}">{{ pg.label }} near {{ s.short }}<span>{{ pg.count }} →</span></a></li>{% endfor %}
+            {% for pg in s.pages %}<li><a href="{{ root }}{{ pg.slug }}/?near={{ s.id }}">{{ pg.noun | capitalize }} near {{ s.short }}<span>{{ pg.count }} →</span></a></li>{% endfor %}
           </ul>
           {% else %}
           <p class="stadium-none">Nothing on {{ site.name }} is listed near this stadium yet.</p>
@@ -77,7 +78,7 @@
   <div class="wrap" style="display:flex;flex-direction:column;gap:32px">
     <div class="notice"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3zM12 10v4M12 17h.01"/></svg><div><strong>{{ site.name }} does not sell or resell tickets, and never takes payment.</strong><br>Buy only from the seller the club, league or event organiser names. {% if fixtures.official_ticket_url %}Official ticket page: <a href="{{ fixtures.official_ticket_url }}" target="_blank" rel="noopener">{{ fixtures.official_ticket_url }}</a>.{% else %}No official ticket page is linked here yet; we add one only once its organiser announces it.{% endif %}</div></div>
     <div>
-      <div class="sec-head"><h2 id="tkH">Matches in Nairobi</h2><p>Status labels: On sale · Opens soon · Sold out · Official resale (only if the organisers run one).</p></div>
+      <div class="sec-head"><h2 id="tkH">Matches and events in Nairobi</h2><p>Status labels: On sale · Opens soon · Sold out · Official resale (only if the organisers run one).</p></div>
       {% set mode = 'tickets' %}{% include "partials/fixtures.html" %}
     </div>
     <div class="ride-grid rv">

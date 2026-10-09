@@ -16,16 +16,17 @@ Static site generated from templates and data. Working name: KaribuFans.
 ## Switch the homepage to tournament mode
 In `data/site.json` set `"mode": "tournament"` and rebuild. Default is `"everyday"` (Nairobi residents).
 
-## Colours ("Sunset on Ngong Road")
-Every colour is a named token at the top of `static/css/site.css`. Change a value there and all pages follow. The rule is 60 / 30 / 10:
-- 60% canvas: sand `#F7F4EF` with white cards.
-- 30% structure: twilight navy `#0A1128` for the header, filter bar, hero, footer and headings.
-- 10% action: amber `#E67E22` for the main button, the current step and selected filters. Gold `#D4AF37` is the highlight on navy.
-- Emerald `#1B4D3E` is reserved for "Verified by the business" and "Open now".
-There are three buttons only: `btn-primary` (amber), `btn-ghost` (outline) and `btn-navy`. Do not add page-specific colours.
+## Design (photo-led)
+Every colour is a named token at the top of `static/css/site.css`; component rules use the tokens, never a new hex value (the drawings in `templates/partials/art.html` and `area_art.html` are the one exception).
+- The photographs carry the colour. The interface is ink `#0E0E0E`, white and paper `#F4F2EE`, with greys for muted text and lines.
+- One accent, sunset `#E2672A`: the main button, the route trail and current stop, and selected states. Acacia `#2F6B4F` only for "Verified by the business" and "Open now".
+- Type: Instrument Serif for display headings, DM Sans for everything else.
+- Three buttons only: `btn-primary`, `btn-ghost`, `btn-dark` (`btn-navy` is its old name, kept as an alias).
+- Photographs: masters in `KaribuFans/03_Website/Photos/unsplash/`; `tools/photos.py` makes every crop and writes `data/photos.json`. Run it, then `build.py`, never both at once. Every photo is credited on its page and in the privacy notice.
+- Favicon: `static/favicon.svg`, `favicon.ico` and `apple-touch-icon.png` (180 px), a white K with a sunset route dot on ink.
 
-## Motion ("The Route comes alive")
-All motion lives in the "Motion" section at the end of `static/css/site.css`, with a small script at the top of `templates/base.html`. Moving between stops slides the page a short way in the direction of travel while the amber trail in the route bar grows or retracts; filters re-flow the cards; the details drawer slides in and out; the homepage route draws itself when scrolled into view. All of it is an extra: browsers without view transitions load pages as before, and visitors who ask for reduced motion get none.
+## Motion
+All motion lives in the "Motion" section at the end of `static/css/site.css`, with a small script at the top of `templates/base.html` and the rest in `static/js/site.js`. Moving between stops slides the page in the direction of travel while the sunset trail in the route bar grows or retracts; filters re-flow the cards; the details drawer slides; the navigation pill glides to the hovered or focused link. Only `transform` and `opacity` move, nothing loops forever, nothing readable waits on JavaScript, and `prefers-reduced-motion: reduce` switches all of it off.
 
 ## Directory listings (any page)
 An entry with `"status": "unclaimed"` in `data/listings/<page>.json` is a real business that has not joined yet. It shows a "Directory listing" badge and only: name, type, area, street, a link to the business's own website, Directions and a claim/remove link. No photos, price, phone or WhatsApp.
@@ -33,8 +34,14 @@ Fields: `id` (short, unique, no spaces; it becomes the share link), `name`, `typ
 Rule: add a business only if its name and location are on its own website. Keep `source_url` and `checked` so every entry can be traced. Remove an entry straight away if the business asks.
 The Area and Type filters, the homepage "Browse by area" tiles and the "Continue your route" links are all generated from these files; nothing else needs editing.
 
+## Stadiums and "near"
+`data/stadiums.json` lists Nairobi's football stadiums (id, name, short, aka, zone, street, map_query, source_url, checked, note). It drives the Stadium guide on Matchday and the search. A listing on any page can carry `"near": ["kasarani"]` (ids from that file; checked within about 2 km, recorded in `near_check`). The card then says "Near Kasarani", and the Area filter on that page offers "Near Kasarani" (only for stadiums that have listings on that page). `?near=kasarani` on a page address opens it with that filter. The old `near_stadium: true` still works and means Talanta.
+
+## Search
+`build.py` writes `dist/search-index.json`: the seven stops (with the `keywords` in `modules.json`), the stadiums and every listing. Every word typed must match; accents and capitals are ignored.
+
 ## When a business joins
-Change `status` to `"joined"` and add: `price`, `price_checked`, `about`, `photos` (up to three paths, first one is the card photo), `whatsapp` (international format without `+`, e.g. `2547XXXXXXXX`), `phone`, and optionally `hours` (`{"open": "11:00", "close": "23:00"}`) and `amenities`. Stays can also take `near_stadium` (true/false), `vibe` (Party Base, Chill & Green, Transit Fast) and `badge`. The card then shows "Verified by the business" and the drawer shows the WhatsApp booking button. The Vibe filter appears on Stays automatically once at least one stay has a vibe.
+Change `status` to `"joined"` and add: `price`, `price_checked`, `about`, `photos` (up to three paths, first one is the card photo), `whatsapp` (international format without `+`, e.g. `2547XXXXXXXX`), `phone`, and optionally `hours` (`{"open": "11:00", "close": "23:00"}`) and `amenities`. Stays can also take `vibe` (Party Base, Chill & Green, Transit Fast) and `badge`. The card then shows "Verified by the business" and the drawer shows the WhatsApp booking button. The Vibe filter appears on Stays automatically once at least one stay has a vibe.
 
 ## Languages
 `data/site.json`, `languages`: set `"live": true` for a language only when its translation is published. Until then its button shows "soon".
@@ -62,6 +69,9 @@ After signing in, visitors are taken back into the site (all in `static/js/accou
 
 The Supabase library is not stored in this repository. The browser fetches it from jsDelivr (version pinned in `static/js/account.js`), and only on the account page or when the visitor is already signed in. Account deletion is by email request to `contact_email` for now.
 
+## Published extras
+`build.py` also writes `robots.txt`, `sitemap.xml` (public pages, absolute addresses from `site_url`; not search or account) and `404.html` (served by Vercel for any unknown address). `vercel.json` sets security headers, a Content-Security-Policy in report-only mode (violations show in the browser console only) and cache times: 30 days for `/img/photos/`, 5 minutes for CSS and JavaScript.
+
 ## Deploy on Vercel (first time)
 1. Push this folder to a new GitHub repository.
 2. In Vercel: Add New → Project → import the repository.
@@ -69,9 +79,8 @@ The Supabase library is not stored in this repository. The browser fetches it fr
 4. Deploy. Vercel gives a free preview address; connect the domain later.
 
 ## Settings to fill in (data/site.json)
-- `contact_whatsapp`: the KaribuFans business WhatsApp number. Vendor sign-up and ticket alerts send to it.
+- `contact_whatsapp`: the KaribuFans business WhatsApp number (set: 254792637085). The list-your-business, claim and ticket alert forms open WhatsApp with a message to it; nothing is stored on the site.
 - `uber_client_id`: Uber's docs list it as required for ride links. Register free at developer.uber.com.
-- `stadiums`: only officially confirmed Nairobi venues.
 - Fixtures go in `data/fixtures.json` once officially published; they then show on Matchday (with Add to calendar) and Tickets (with sale status).
 
 ## Status
@@ -84,3 +93,4 @@ The Supabase library is not stored in this repository. The browser fetches it fr
 - 7 Oct (accounts): saved places on every listing, account page with Google and email-link sign-in through Supabase, privacy notice updated. Built and tested against a stand-in for the Supabase library only; hidden behind `accounts.live: false` until the Supabase project is set up and a real sign-in has been tried with `?preview=accounts`.
 - 7 Oct (accounts, flow): after signing in, visitors go back into the site (name step on a first sign-in, then the Stays page; returning visitors to the page they came from, or Stays); "Continue to the site" and "Back to the homepage" on the account page; a plain message when a sign-in method is switched off in Supabase. Tested against a stand-in only; to be confirmed by the owner with `?preview=accounts`.
 - 9 Oct (accounts, sign-in feedback): a first sign-in with places saved on the device now asks about them after the name step, before going on to the Stays page; a plain message when a sign-in comes back cancelled, with an expired link, or with a method switched off; a failed Google start is reported beside the Google button. Tested against a stand-in only; accounts stay hidden.
+- 9 Oct (launch prep): WhatsApp number set, so the three forms work; copy reworded to match what the site does today and to cover Kenya Premier League and other events; stadium guide on Matchday and "near" labels and filters for Kasarani, Nyayo and Talanta; search covers the stops, stadiums and keywords; robots.txt, sitemap.xml, 404 page, favicon, security headers; legacy images and dead CSS removed.

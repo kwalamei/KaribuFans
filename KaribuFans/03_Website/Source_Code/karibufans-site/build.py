@@ -144,12 +144,6 @@ def main():
             used.append(pid)
     photo_credits = [photos["photos"][i] for i in used]
 
-    # Ride destinations: the ones in data/rides.json, then every stadium in the guide that is not there yet.
-    have = {d["name"].lower() for d in rides.get("destinations", [])}
-    for s in guide:
-        if s["name"].lower() not in have and s["short"].lower() not in have:
-            rides.setdefault("destinations", []).append({"name": s["name"], "address": s["map_query"]})
-
     common = dict(site=site, modules=modules, rides=rides, fixtures=fixtures, year=date.today().year, stadiums=guide,
                   route=route, zone_cards=zone_cards, photos=photos["photos"], slots=photos["slots"],
                   galleries=photos["galleries"], photo_credits=photo_credits)
