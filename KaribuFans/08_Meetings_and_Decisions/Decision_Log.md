@@ -11,8 +11,8 @@
 | 2026-09-26 | Theme v2 "Day to Floodlight": day look (canopy green, sun gold, ivory) for planning pages; floodlight look (night indigo, trail amber) for Matchday, Nightlife, Rides and dark mode; light trail as signature navigation line; shuka beads as small accents only | Superseded (2026-10-09, photo-led design) |
 | 2026-09-26 | Current hero photos are AI mood images: label as artist's impression; need clean, higher-resolution exports and real Talanta imagery before launch | Superseded (2026-10-08: credited Unsplash photos; own photos from the photo walk later) |
 | 2026-09-27 | Site v3 pages in route order: Stays, Food, Rides, Matchday, Nightlife (clubs and bars), Movies & Games (cinemas, gaming lounges), Tickets last | Agreed |
-| 2026-09-27 | Rides page offers both Uber and Bolt (open in their app with trip prefilled); in-app booking still deferred; Bolt link method to be confirmed | Agreed |
-| 2026-09-27 | Tickets: KaribuFans does not sell or resell tickets; link to the official ticketing platform only, plus sale alerts with consent | Agreed (2026-10-09, Marx) |
+| 2026-09-27 | Rides page offers both Uber and Bolt (open in their app with trip prefilled); in-app booking still deferred; Bolt link method to be confirmed | Partly done: Uber link only; Bolt and Little open their own app (see 2026-10-09) |
+| 2026-09-27 | Tickets: KaribuFans does not sell or resell tickets; link to the official ticketing platform only, plus sale alerts with consent | Agreed (2026-10-09, Marx); see the 2026-10-09 row on partner ticket pages |
 | 2026-09-27 | Homepage hero headline set in Caveat (amber) by Marx; other headings stay Bricolage Grotesque | Superseded (2026-10-09, Instrument Serif + DM Sans) |
 | 2026-10-05 | Tech stack: plain HTML, CSS and JavaScript built with Jinja (`build.py`); `dist/` committed and served by Vercel with no build step (recorded 2026-10-09; replaces the Astro + Tailwind recommendation in the hosting plan) | Agreed |
 | 2026-10-07 | Every push to `main` is a release; an independent reviewer must pass each change first | Agreed |
@@ -25,5 +25,5 @@
 | 2026-10-09 | KaribuFans WhatsApp line for sign-up, claim and ticket-alert forms: 0792637085 | Agreed (Marx) |
 | 2026-10-09 | Photos are not copied from businesses' websites; unclaimed listings keep drawn art until a business joins and supplies its own photos | Agreed |
 | 2026-10-09 | Creators section (photographers, videographers) with a booking button and a referral commission | Planned, after launch |
-| 2026-10-09 | Languages: English at launch; Kiswahili, French, Arabic and Portuguese after launch | Agreed |
+| 2026-10-09 | Languages: English at launch; Kiswahili, French, Arabic and Portuguese after launch | Current plan (Marx to confirm) |
 | 2026-10-09 | The lead agent is called Kiongozi | Agreed (Marx) |
