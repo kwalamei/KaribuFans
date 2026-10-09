@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% from "partials/macros.html" import crumbs %}
 {% block title %}Search · {{ site.name }}{% endblock %}
+{% block description %}Search {{ site.name }}: places, areas, stadiums and the seven stops of the Nairobi city guide.{% endblock %}
+{% block head %}
+<meta name="robots" content="noindex">{% endblock %}
 {% block main %}
 <section class="band page-plain">
   <div class="wrap stack">
     {{ crumbs(site, root, [('Search', '')]) }}
     <h1 class="h-page">Find a place, area or venue</h1>
-    <label class="find find-big"><span class="sr-only">Search everything</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="globalSearch" placeholder="Try: Kilimani, cinema, Ngong Road, bowling" autocomplete="off"></label>
-    <p class="hint" id="searchCount" aria-live="polite">Type to search stays, food, matchday, nightlife and movies &amp; games.</p>
+    <label class="find find-big"><span class="sr-only">Search everything</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14zM21 21l-5-5"/></svg><input type="search" id="globalSearch" placeholder="Try: Kasarani, Kilimani, cinema, tickets" autocomplete="off"></label>
+    <p class="hint" id="searchCount" aria-live="polite">Search places, areas, stadiums and the seven stops, from stays to tickets.</p>
     <ul class="results" id="results"></ul>
   </div>
 </section>

@@ -59,4 +59,4 @@
   </div>
 </aside>
 {% set stops = [] %}{% for x in modules %}{% set _ = stops.append({'slug': x.slug, 'label': x.label, 'stop': x.stop}) %}{% endfor %}
-<script type="application/json" id="placeData">{{ {'site': site.name, 'page': m.slug, 'label': m.label, 'root': root, 'listings': listings, 'vibes': (m.filters or {}).vibes or [], 'icons': (m.filters or {}).amenity_icons or {}, 'route': route, 'stops': stops, 'nearLabel': (m.filters or {}).near_label or ''} | tojson }}</script>
+<script type="application/json" id="placeData">{{ {'site': site.name, 'page': m.slug, 'label': m.label, 'root': root, 'listings': listings, 'vibes': (m.filters or {}).vibes or [], 'icons': (m.filters or {}).amenity_icons or {}, 'route': route, 'stops': stops, 'near': m.near} | tojson }}</script>

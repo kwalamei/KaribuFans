@@ -8,7 +8,10 @@
 <meta name="theme-color" content="#0E0E0E">
 {# Link previews (WhatsApp, Facebook, X, Slack). Addresses must be absolute, so they use site.site_url from data/site.json. #}
 {% set share = photos[slots.share] %}
-<link rel="canonical" href="{{ page_url }}">
+{% block canonical %}<link rel="canonical" href="{{ page_url }}">{% endblock %}
+<link rel="icon" href="{{ root }}favicon.ico" sizes="32x32">
+<link rel="icon" href="{{ root }}favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ root }}apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.name }}">
 <meta property="og:title" content="{{ self.title() }}">

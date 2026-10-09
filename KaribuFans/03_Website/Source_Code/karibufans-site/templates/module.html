@@ -10,8 +10,6 @@
 <link rel="stylesheet" href="{{ root }}css/art.css">{% endif %}{% endblock %}
 {% block main %}
 {% set f = m.filters or {} %}
-{% set near_label = f.near_label or ('Near ' ~ site.tournament.stadium) %}
-{% set has_near = listings | selectattr('near_stadium') | list | length > 0 %}
 {% set vibes_used = listings | map(attribute='vibe') | select | list %}
 {# Night photographs are dark already, so their hero uses the lighter shade (site.css .shade-soft). #}
 {% set night = m.slug in ['rides', 'nightlife', 'movies-games'] %}
@@ -53,7 +51,7 @@
       <select id="fArea">
         <option value="">Any area</option>
         {% for a in m.zones %}<option value="{{ a }}">{{ a }}</option>{% endfor %}
-        {% if has_near %}<option value="__near">{{ near_label }}</option>{% endif %}
+        {% if m.near %}<optgroup label="Near a stadium">{% for s in m.near %}<option value="near:{{ s.id }}">Near {{ s.short }}</option>{% endfor %}</optgroup>{% endif %}
       </select></label>
     {% if m.types | length > 1 %}
     <label class="sel"><span>Type</span>
@@ -77,12 +75,12 @@
 
 <section class="band" aria-labelledby="listH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="listH" class="display-3">{{ m.list_title or (m.label ~ ' in Nairobi') }}</h2><p>{{ m.intro }}</p></div>
+    <div class="sec-head"><h2 id="listH" class="display-3">{{ m.list_title or (m.label ~ ' in Nairobi') }}</h2><p>{{ m.intro }}{% if m.zones %} Listed so far: {{ m.zones[:-1] | join(', ') }}{{ ' and ' if m.zones | length > 1 }}{{ m.zones[-1] }}.{% endif %}</p></div>
     <p class="notice-soft" id="areaNote" hidden></p>
     <p class="notice-soft"><span class="badge badge-directory">Directory listing</span> means we show only the name and location published on the business's own website. Prices and WhatsApp booking switch on when the business joins.</p>
     <div class="grid-cards rv-each" id="cards" data-page="{{ m.slug }}" data-noun="{{ m.noun or 'places' }}">
       {% for v in listings %}
-      {{ listing_card(v, m, root, near_label) }}
+      {{ listing_card(v, m, root) }}
       {% if loop.index == 4 or (loop.last and loop.length < 4) %}{{ vendor_card(m, root) }}{% endif %}
       {% endfor %}
     </div>

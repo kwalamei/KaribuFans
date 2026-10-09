@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{# Vercel serves dist/404.html for every address it cannot find, at any depth, so build.py renders this page with
+   root="/" and every link starts at the site root. #}
+{% block title %}Page not found · {{ site.name }}{% endblock %}
+{% block description %}This page is not on the {{ site.name }} route. Pick a stop or search the Nairobi city guide.{% endblock %}
+{% block canonical %}{% endblock %}
+{% block head %}
+<meta name="robots" content="noindex">{% endblock %}
+{% block main %}
+<section class="band page-plain">
+  <div class="wrap stack nf">
+    <p class="eyebrow on-light">Page not found</p>
+    <h1 class="h-page">This stop is not on <em>the route.</em></h1>
+    <p class="lede-dark">The address may be mistyped, or the page has moved. Pick up the route at any of the seven stops, or search for a place.</p>
+    <ol class="nf-stops">
+      {% for m in modules %}<li><a href="{{ root }}{{ m.slug }}/"><span class="n">{{ '%02d' % m.stop }}</span><strong>{{ m.label }}</strong><span class="nf-go" aria-hidden="true">→</span></a></li>{% endfor %}
+    </ol>
+    <p class="nf-actions"><a class="btn btn-primary" href="{{ root }}">Back to the homepage</a> <a class="btn btn-ghost" href="{{ root }}search/">Search</a></p>
+  </div>
+</section>
+{% endblock %}

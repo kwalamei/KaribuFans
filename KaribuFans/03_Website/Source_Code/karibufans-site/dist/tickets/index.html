@@ -4,15 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tickets · KaribuFans</title>
-<meta name="description" content="KaribuFans does not sell tickets. We show when sales open and send you straight to the official site.">
+<meta name="description" content="KaribuFans does not sell tickets. When a club, league or organiser announces sales for a match or event in Nairobi, we link you to its official ticket page.">
 <meta name="theme-color" content="#0E0E0E">
 
 
 <link rel="canonical" href="https://karibufans.vercel.app/tickets/">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KaribuFans">
 <meta property="og:title" content="Tickets · KaribuFans">
-<meta property="og:description" content="KaribuFans does not sell tickets. We show when sales open and send you straight to the official site.">
+<meta property="og:description" content="KaribuFans does not sell tickets. When a club, league or organiser announces sales for a match or event in Nairobi, we link you to its official ticket page.">
 <meta property="og:url" content="https://karibufans.vercel.app/tickets/">
 <meta property="og:image" content="https://karibufans.vercel.app/img/photos/share-1200x630.jpg">
 <meta property="og:image:width" content="1200">
@@ -79,8 +82,6 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 
 
-
-
 <section class="hero page-hero" aria-labelledby="pageH">
   
   
@@ -99,7 +100,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
     <p class="eyebrow">Stop 7 of 7 · Tickets</p>
     <p class="script">Tiketi yako.</p>
     <h1 id="pageH" class="display">Your ticket, the official way.</h1>
-    <p class="lede">KaribuFans does not sell tickets. We show when sales open and send you straight to the official site.</p>
+    <p class="lede">KaribuFans does not sell tickets. When a club, league or organiser announces sales for a match or event in Nairobi, we link you to its official ticket page.</p>
     <a class="credit" href="https://unsplash.com/photos/jEOqeVcnCE4" target="_blank" rel="noopener">Photo: Salim / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>
   </div>
   <nav class="routebar" aria-label="The route: seven stops">
@@ -176,7 +177,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
 
 <section class="band" aria-labelledby="tkH">
   <div class="wrap" style="display:flex;flex-direction:column;gap:32px">
-    <div class="notice"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3zM12 10v4M12 17h.01"/></svg><div><strong>KaribuFans does not sell or resell match tickets.</strong><br>Buy only from the official ticketing platform: the organisers have not announced it yet, and we will link it here when they do.</div></div>
+    <div class="notice"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3zM12 10v4M12 17h.01"/></svg><div><strong>KaribuFans does not sell or resell tickets, and never takes payment.</strong><br>Buy only from the seller the club, league or event organiser names. No official ticket page is linked here yet; we add one only once its organiser announces it.</div></div>
     <div>
       <div class="sec-head"><h2 id="tkH">Matches in Nairobi</h2><p>Status labels: On sale · Opens soon · Sold out · Official resale (only if the organisers run one).</p></div>
       
@@ -190,17 +191,18 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
       <form class="ride-card" id="alertForm" onsubmit="return false" aria-label="Ticket sale alert">
         <h3>Get told when sales open</h3>
         <label for="alertMatch">Match</label>
-        <select id="alertMatch"><option>All Nairobi matches</option></select>
+        <select id="alertMatch"><option>Any match or event in Nairobi</option></select>
         <label class="check"><input type="checkbox" id="alertOk"> <span>I agree to be contacted once on WhatsApp about ticket sales.</span></label>
-        <button type="button" class="btn btn-primary" id="alertGo" data-wa="">Send alert request on WhatsApp</button>
+        <button type="button" class="btn btn-primary" id="alertGo" data-wa="254792637085">Send alert request on WhatsApp</button>
+        <p class="hint">This opens WhatsApp with your request written out; you press send. Nothing is stored on this site.</p>
         <p class="hint" id="alertMsg" aria-live="polite"></p>
       </form>
       <div class="ride-card">
         <h3>Avoid fake tickets</h3>
         <ul class="trip-list">
-          <li><strong>Buy only from the official site</strong><span>Ignore sellers on social media and WhatsApp groups.</span></li>
+          <li><strong>Buy only from the official seller</strong><span>Ignore sellers on social media and WhatsApp groups.</span></li>
           <li><strong>Never pay a person by M-Pesa for a ticket</strong><span>Official sales do not ask you to send money to a personal number.</span></li>
-          <li><strong>Check the ticket rules</strong><span>ID and name-on-ticket rules will be added once the organisers publish them.</span></li>
+          <li><strong>Check the ticket rules</strong><span>ID and name-on-ticket rules are set by each organiser. Read them before you buy.</span></li>
         </ul>
       </div>
     </div>

@@ -158,12 +158,17 @@
     var page = S.page, noun = grid.getAttribute('data-noun') || 'places';
     var cards = grid.querySelectorAll('.card[data-id]');
     var fA = $('fArea'), fT = $('fType'), fV = $('fVibe'), box = $('pageSearch');
-    var st = store.get('f_' + page) || { t: '', v: '', q: '', near: false };
+    var st = store.get('f_' + page) || { t: '', v: '', q: '', near: '' };
+    // st.near is the id of a stadium from data/stadiums.json ("kasarani"); older saved filters had true/false here.
+    if (typeof st.near !== 'string') st.near = '';
+    if (params.has('near')) st.near = params.get('near') || '';
     var bar = $('filters');
     function setTop() { if (bar && nav) bar.style.top = (getComputedStyle(nav).position === 'sticky' ? nav.offsetHeight : 0) + 'px'; }
     setTop(); window.addEventListener('resize', setTop);
     function has(sel, val) { return !!sel && Array.prototype.some.call(sel.options, function (o) { return o.value === val; }); }
-    if (!has(fT, st.t)) st.t = ''; if (!has(fV, st.v)) st.v = '';
+    if (!has(fT, st.t)) st.t = ''; if (!has(fV, st.v)) st.v = ''; if (!has(fA, 'near:' + st.near)) st.near = '';
+    function nearOf(c) { return (c.getAttribute('data-near') || '').split(' '); }
+    function optText(sel, val) { var o = Array.prototype.filter.call(sel ? sel.options : [], function (x) { return x.value === val; })[0]; return o ? o.textContent : ''; }
 
     each(cards, function (c) {
       var o = c.getAttribute('data-open'), cl = c.getAttribute('data-close'), el = c.querySelector('.open-state');
@@ -171,10 +176,11 @@
     });
 
     function apply() {
-      var here = st.near && has(fA, '__near') ? '__near' : (has(fA, area) ? area : '');   // the area, if this page has listings there
+      var near = st.near && has(fA, 'near:' + st.near) ? st.near : '';   // a stadium chosen in the Area filter
+      var here = near ? 'near:' + near : (has(fA, area) ? area : '');   // otherwise the area, if this page has listings there
       var q = (st.q || '').trim().toLowerCase(), shown = 0;
       each(cards, function (c) {
-        var ok = (!here || (here === '__near' ? c.getAttribute('data-near') === '1' : c.getAttribute('data-area') === here)) &&
+        var ok = (!here || (near ? nearOf(c).indexOf(near) !== -1 : c.getAttribute('data-area') === here)) &&
           (!st.t || c.getAttribute('data-type') === st.t) &&
           (!st.v || c.getAttribute('data-vibe') === st.v) &&
           (!q || (c.getAttribute('data-search') || '').indexOf(q) !== -1);
@@ -182,9 +188,9 @@
       });
       if (fA) fA.value = here; if (fT) fT.value = st.t; if (fV) fV.value = st.v;
       [fA, fT, fV].forEach(function (s) { if (s) s.parentNode.classList.toggle('on', !!s.value); });
-      var label = here === '__near' ? S.nearLabel : here;
+      var label = near ? optText(fA, here) : here;
       $('fClear').hidden = !(here || st.t || st.v || q);
-      $('listCount').textContent = shown + ' ' + (shown === 1 ? noun.replace(/s$/, '').replace('places to', 'place to') : noun) + (label ? (here === '__near' ? ' ' + label.charAt(0).toLowerCase() + label.slice(1) : ' in ' + label) : '');
+      $('listCount').textContent = shown + ' ' + (shown === 1 ? noun.replace(/s$/, '').replace('places to', 'place to') : noun) + (label ? (near ? ' ' + label.charAt(0).toLowerCase() + label.slice(1) : ' in ' + label) : '');
       $('noMatch').hidden = shown !== 0;
       var crumb = $('crumbArea'); if (crumb) { crumb.hidden = !label; crumb.textContent = label || ''; }
       var note = $('areaNote');
@@ -192,6 +198,7 @@
       store.set('f_' + page, st); store.set('area', area);
       var u = new URL(location.href);
       if (area) u.searchParams.set('area', area); else u.searchParams.delete('area');
+      if (near) u.searchParams.set('near', near); else u.searchParams.delete('near');
       history.replaceState(history.state, '', u.pathname + u.search + u.hash);
       carryArea();
     }
@@ -216,8 +223,12 @@
       try { t = flow = document.startViewTransition(apply); } catch (e) { flow = null; html.classList.remove('kf-filtering'); apply(); return; }
       t.ready.then(null, function () {}); t.finished.then(done, done);
     }
-    function clearAll() { area = ''; st = { t: '', v: '', q: '', near: false }; if (box) box.value = ''; update(); }
-    if (fA) fA.addEventListener('change', function () { st.near = fA.value === '__near'; if (!st.near) area = fA.value; update(); });
+    function clearAll() { area = ''; st = { t: '', v: '', q: '', near: '' }; if (box) box.value = ''; update(); }
+    if (fA) fA.addEventListener('change', function () {
+      var v = fA.value;
+      if (v.indexOf('near:') === 0) st.near = v.slice(5); else { st.near = ''; area = v; }
+      update();
+    });
     if (fT) fT.addEventListener('change', function () { st.t = fT.value; update(); });
     if (fV) fV.addEventListener('change', function () { st.v = fV.value; update(); });
     // Typing: wait for a short pause, so there is one transition per word and not one per keystroke.
@@ -296,7 +307,7 @@
       $('dAbout').textContent = v.about || ''; $('dAbout').hidden = !v.about;
       var ul = $('dAmen'); ul.textContent = '';
       (v.amenities || v.tags || []).forEach(function (a) { var li = document.createElement('li'); li.textContent = (S.icons[a] ? S.icons[a] + ' ' : '') + a; ul.appendChild(li); });
-      var dist = v.near_stadium ? S.nearLabel : (v.dist || '');
+      var dist = v.near_label || v.dist || '';
       $('dDist').hidden = !dist; $('dDist').textContent = dist;
       $('dUnclaimed').hidden = !un;
       if (un) $('dSource').textContent = 'Name and location from the business’s own website, checked ' + v.checked + '.';
@@ -360,23 +371,28 @@
     carryArea();
   }
 
-  // Site-wide search page: each result opens that place's details
+  // Site-wide search page. The index (search-index.json, written by build.py) holds the seven stops, the stadiums
+  // in the Matchday guide and every listing. Every word typed must appear; accents and case are ignored.
   var gs = $('globalSearch');
   if (gs) {
-    var root = window.KF_ROOT || '../', index = [], out = $('results'), count = $('searchCount');
-    fetch(root + 'search-index.json').then(function (r) { return r.json(); }).then(function (d) { index = d; run(); }).catch(function () { count.textContent = 'Search could not load. Please refresh the page.'; });
+    var root = window.KF_ROOT || '../', index = [], out = $('results'), count = $('searchCount'), hint = count.textContent;
+    var fold = function (t) { t = String(t || '').toLowerCase(); return t.normalize ? t.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : t; };
+    fetch(root + 'search-index.json').then(function (r) { return r.json(); }).then(function (d) {
+      index = d.map(function (v) { v.hay = fold(v.name + ' ' + v.text); return v; }); run();
+    }).catch(function () { count.textContent = 'Search could not load. Please refresh the page.'; });
     if (params.get('q')) gs.value = params.get('q');
     function run() {
-      var q = gs.value.trim().toLowerCase();
+      var words = fold(gs.value).split(/\s+/).filter(Boolean);
       out.textContent = '';
-      if (!q) { count.textContent = 'Type to search stays, food, matchday, nightlife and movies & games.'; return; }
-      var hits = index.filter(function (v) { return (v.name + ' ' + v.type + ' ' + v.area + ' ' + v.street + ' ' + v.page_label + ' ' + v.tags.join(' ')).toLowerCase().indexOf(q) !== -1; });
+      if (!words.length) { count.textContent = hint; return; }
+      var hits = index.filter(function (v) { return words.every(function (w) { return v.hay.indexOf(w) !== -1; }); });
       count.textContent = hits.length ? hits.length + (hits.length === 1 ? ' result' : ' results') : 'No results yet. Try another word, or browse a section from the menu.';
       hits.forEach(function (v) {
         var li = document.createElement('li'), a = document.createElement('a');
-        a.href = root + v.page + '/' + (v.id ? '#place-' + v.id : '');
+        a.href = root + v.href;
+        if (v.kind !== 'place') a.className = 'res-' + v.kind;
         var t = document.createElement('strong'); t.textContent = v.name;
-        var s = document.createElement('span'); s.textContent = v.page_label + ' · ' + v.type + ' · ' + v.area;
+        var s = document.createElement('span'); s.textContent = v.kind === 'place' ? v.meta : v.page_label + ' · ' + v.meta;
         a.appendChild(t); a.appendChild(s); li.appendChild(a); out.appendChild(li);
       });
     }
@@ -401,14 +417,16 @@
   each(document.querySelectorAll('.add-cal'), function (btn) {
     btn.addEventListener('click', function () {
       var fx = btn.closest('.fx'), d = fx.getAttribute('data-date').replace(/-/g, ''), t = (fx.getAttribute('data-time') || '00:00').replace(':', '');
-      var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//KaribuFans//EN', 'BEGIN:VEVENT', 'UID:' + d + t + '@karibufans', 'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z', 'DTSTART;TZID=Africa/Nairobi:' + d + 'T' + t + '00', 'DURATION:PT2H', 'SUMMARY:' + fx.getAttribute('data-title'), 'LOCATION:Talanta Stadium, Nairobi', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+      var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//KaribuFans//EN', 'BEGIN:VEVENT', 'UID:' + d + t + '@karibufans', 'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z', 'DTSTART;TZID=Africa/Nairobi:' + d + 'T' + t + '00', 'DURATION:PT2H', 'SUMMARY:' + fx.getAttribute('data-title'), 'LOCATION:' + (fx.getAttribute('data-venue') || 'Nairobi'), 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
       var a = document.createElement('a');
       a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
       a.download = 'match.ics'; document.body.appendChild(a); a.click(); a.remove();
     });
   });
 
-  // WhatsApp-composed forms (vendor sign-up, ticket alerts)
+  // WhatsApp-composed forms (list your business, claim a listing, ticket alerts). Nothing is sent to or kept by
+  // KaribuFans: the button opens WhatsApp (wa.me) with the message written out, and the visitor presses send.
+  // If the browser blocks the new tab, the message under the button carries the same link.
   function waForm(btnId, okId, msgId, build) {
     var btn = $(btnId); if (!btn) return;
     btn.addEventListener('click', function () {
@@ -416,8 +434,11 @@
       if (!$(okId).checked) { msg.textContent = 'Please tick the consent box first.'; return; }
       var text = build(); if (!text) return;
       if (!wa) { msg.textContent = 'Our WhatsApp line is being set up. Please try again soon.'; return; }
-      window.open('https://wa.me/' + wa + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
-      msg.textContent = 'WhatsApp opened with your message. Press send to finish.';
+      var url = 'https://wa.me/' + wa + '?text=' + encodeURIComponent(text);
+      window.open(url, '_blank', 'noopener');
+      msg.textContent = 'WhatsApp opened with your message. Press send in WhatsApp to finish. Nothing opened? ';
+      var a = document.createElement('a'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Open WhatsApp';
+      msg.appendChild(a);
     });
   }
   var claim = params.get('claim');
@@ -425,9 +446,13 @@
   waForm('joinGo', 'jOk', 'joinMsg', function () {
     var name = $('jName').value.trim();
     if (!name) { $('joinMsg').textContent = 'Please add your business name.'; return ''; }
-    return 'New listing request\nBusiness: ' + name + '\nType: ' + $('jType').value + '\nArea: ' + $('jArea').value + '\nContact: ' + $('jContact').value + '\nWhatsApp: ' + $('jPhone').value + '\nNotes: ' + $('jNote').value;
+    var line = function (k, id) { var v = $(id).value.trim(); return v ? '\n' + k + ': ' + v : ''; };
+    return (claim ? 'Hi KaribuFans, I want to claim or remove the directory listing for my business.' : 'Hi KaribuFans, I would like to list my business.') +
+      '\nBusiness: ' + name + line('Type', 'jType') + line('Area', 'jArea') + line('My name', 'jContact') + line('WhatsApp', 'jPhone') + line('Notes', 'jNote');
   });
-  waForm('alertGo', 'alertOk', 'alertMsg', function () { return 'Ticket alert please: ' + $('alertMatch').value; });
+  waForm('alertGo', 'alertOk', 'alertMsg', function () {
+    return 'Hi KaribuFans, please message me once on WhatsApp when official ticket sales open for: ' + $('alertMatch').value + '.';
+  });
 
   // Homepage: jump to the chosen section, carrying the chosen area
   var go = $('plannerGo'), what = $('pWhat'), pArea = $('pArea');

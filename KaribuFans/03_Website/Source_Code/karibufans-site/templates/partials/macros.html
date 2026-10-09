@@ -37,11 +37,11 @@
 {%- endmacro %}
 
 {# One card for every listing on every page. #}
-{% macro listing_card(v, m, root, near_label) -%}
+{% macro listing_card(v, m, root) -%}
 {% from "partials/area_art.html" import area_art %}
 {% set unclaimed = v.status == 'unclaimed' %}
 {% set q = v.map_query or (v.name ~ ' ' ~ v.area ~ ' Nairobi') %}
-<article class="card{{ ' is-directory' if unclaimed }}" id="card-{{ v.id }}" data-id="{{ v.id }}" data-type="{{ v.type }}" data-area="{{ v.zone }}" data-near="{{ '1' if v.near_stadium else '' }}" data-vibe="{{ v.vibe or '' }}" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ v.zone ~ ' ' ~ (v.street or '') ~ ' ' ~ ((v.tags or [])|join(' ')) ~ ' ' ~ ((v.amenities or [])|join(' '))) | lower }}"{% if v.hours %} data-open="{{ v.hours.open }}" data-close="{{ v.hours.close }}"{% endif %}>
+<article class="card{{ ' is-directory' if unclaimed }}" id="card-{{ v.id }}" data-id="{{ v.id }}" data-type="{{ v.type }}" data-area="{{ v.zone }}" data-near="{{ (v.near or []) | join(' ') }}" data-vibe="{{ v.vibe or '' }}" data-search="{{ (v.name ~ ' ' ~ v.type ~ ' ' ~ v.area ~ ' ' ~ v.zone ~ ' ' ~ (v.street or '') ~ ' ' ~ ((v.tags or [])|join(' ')) ~ ' ' ~ ((v.amenities or [])|join(' '))) | lower }}"{% if v.hours %} data-open="{{ v.hours.open }}" data-close="{{ v.hours.close }}"{% endif %}>
   <button type="button" class="card-photo place-open" data-id="{{ v.id }}" aria-label="View details for {{ v.name }}">
     {% if v.photos and v.photos[0] %}<img src="{{ v.photos[0] }}" alt="" loading="lazy">{% else %}{{ area_art(v.zone, '-' ~ v.id) }}{% endif %}
     <span class="tag-area">{{ v.area }}</span>
@@ -56,7 +56,7 @@
     <h3>{{ v.name }}</h3>
     <div class="card-meta">{{ v.type }}{% if v.street %} · {{ v.street }}{% endif %}</div>
     {% if v.price %}<div class="card-price">{{ v.price }}</div>{% endif %}
-    {% if v.near_stadium %}<div class="dist">{{ pin() }}{{ near_label }}</div>{% elif v.dist %}<div class="dist">{{ pin() }}{{ v.dist }}</div>{% endif %}
+    {% if v.near_label %}<div class="dist">{{ pin() }}{{ v.near_label }}</div>{% elif v.dist %}<div class="dist">{{ pin() }}{{ v.dist }}</div>{% endif %}
     {% set chips = (v.tags or []) if unclaimed else ((v.amenities or v.tags or [])[:3]) %}
     {% if chips %}<div class="tags">{% for t in chips %}<span>{{ t }}</span>{% endfor %}</div>{% endif %}
     <div class="card-actions">
@@ -71,7 +71,7 @@
 <aside class="card vendor-card" aria-label="For Nairobi businesses">
   <span class="eyebrow">For Nairobi businesses</span>
   <h3>Own {{ m.own or 'a business' }} in Nairobi?</h3>
-  <p>Get listed before visiting fans arrive for the 2027 tournament. No listing fee: you pay a commission only on customers we send you.</p>
+  <p>Get found by people planning a day out in Nairobi, from locals to visiting football fans. No listing fee: you pay a commission only on customers we send you.</p>
   <a class="btn btn-primary" href="{{ root }}list-your-business/">List your business</a>
 </aside>
 {%- endmacro %}
