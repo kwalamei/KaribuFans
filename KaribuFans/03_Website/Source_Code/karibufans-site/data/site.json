@@ -56,10 +56,7 @@
     "live": false,
     "supabase_url": "https://bhyhqmboihkdbvvnshbp.supabase.co",
     "supabase_key": "sb_publishable_yU_YgNOToEn9oJzLhCZzMQ_Ks64Zf-w",
-    "methods": [
-      "google",
-      "email"
-    ]
+    "methods": ["google"]
   },
-  "accounts_note": "Visitor accounts (sign in, saved places). live: false keeps them hidden from the public; open any page with ?preview=accounts to switch them on in your own browser, and ?preview=off to hide them again. Set live to true to open them to everyone. supabase_url and supabase_key are the project address and the publishable key from Supabase; both are meant to be public. Never paste a secret or service_role key here. methods lists the sign-in options shown on the account page: google, email, or both."
+  "accounts_note": "Visitor accounts (sign in, saved places). live: false keeps them hidden from the public; open any page with ?preview=accounts to switch them on in your own browser, and ?preview=off to hide them again. Set live to true to open them to everyone. supabase_url and supabase_key are the project address and the publishable key from Supabase; both are meant to be public. Never paste a secret or service_role key here. methods lists the sign-in options shown on the account page: google, email, or both. Email is left out for now (9 Oct 2026) because the Supabase project has no custom email sending (SMTP) set up and can send only two sign-in emails an hour; add \"email\" back once custom SMTP is on, and update templates/privacy_accounts.html to match."
 }

@@ -114,20 +114,9 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
           <button type="button" class="btn btn-primary" id="acctGoogle" aria-describedby="acctGoogleMsg">Continue with Google</button>
           <p class="hint acct-msg" id="acctGoogleMsg" role="status" aria-live="polite"></p>
           
-          <p class="hint acct-or">or</p>
           
-          <form id="acctEmailForm" class="acct-form" novalidate>
-            <label for="acctEmail">Email address<input class="field" type="email" id="acctEmail" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" required aria-describedby="acctEmailErr"></label>
-            <p class="hint field-err" id="acctEmailErr" role="alert" hidden></p>
-            <button type="submit" class="btn btn-ghost" id="acctEmailGo">Email me a sign-in link</button>
-          </form>
-          <div class="acct-sent" id="acctSent" tabindex="-1" hidden>
-            <h2>Check your inbox</h2>
-            <p>We sent a sign-in link to <strong id="acctSentTo"></strong>. Open it on the phone or computer you want to use.</p>
-            <p><button type="button" class="linklike" id="acctSentBack">Use a different email address</button></p>
-          </div>
           
-          <p class="hint">By signing in you agree that your name, your email address, a few sign-in details and the places you add to your account are kept as explained in the <a href="../privacy/#accounts">privacy notice</a>.</p>
+          <p class="hint">By signing in you agree that your name, your email address (as Google shares them), a few sign-in details and the places you add to your account are kept as explained in the <a href="../privacy/#accounts">privacy notice</a>.</p>
         </div>
         <p><a class="btn btn-ghost" href="../">Back to the homepage</a></p>
       </div>
@@ -163,7 +152,7 @@ if(f&&n&&f!==n)h.setAttribute('data-go',n>f?'fwd':'back');
       <div class="stack" id="acctFoot" hidden>
         <p><button type="button" class="btn btn-navy" id="acctSignOut">Sign out</button></p>
         <h2>Delete my account</h2>
-        <p class="acct-del">To delete your account and the places saved in it, email <strong class="acct-mail">maxkobaai@gmail.com</strong> from the address you sign in with. For now, deletion is done by request. <a href="mailto:maxkobaai@gmail.com?subject=Delete%20my%20KaribuFans%20account">Open your email app</a></p>
+        <p class="acct-del">To delete your account and the places saved in it, email <strong class="acct-mail">maxkobaai@gmail.com</strong> from the address you sign in with (the email address of your Google account). For now, deletion is done by request. <a href="mailto:maxkobaai@gmail.com?subject=Delete%20my%20KaribuFans%20account">Open your email app</a></p>
       </div>
     </div>
   </div>

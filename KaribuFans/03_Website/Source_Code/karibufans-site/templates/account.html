@@ -52,7 +52,7 @@
             <p><button type="button" class="linklike" id="acctSentBack">Use a different email address</button></p>
           </div>
           {% endif %}
-          <p class="hint">By signing in you agree that your name, your email address, a few sign-in details and the places you add to your account are kept as explained in the <a href="{{ root }}privacy/#accounts">privacy notice</a>.</p>
+          <p class="hint">By signing in you agree that your name, your email address{{ ' (as Google shares them)' if 'email' not in methods }}, a few sign-in details and the places you add to your account are kept as explained in the <a href="{{ root }}privacy/#accounts">privacy notice</a>.</p>
         </div>
         <p><a class="btn btn-ghost" href="{{ root }}">Back to the homepage</a></p>
       </div>
@@ -90,7 +90,7 @@
       <div class="stack" id="acctFoot" hidden>
         <p><button type="button" class="btn btn-navy" id="acctSignOut">Sign out</button></p>
         <h2>Delete my account</h2>
-        <p class="acct-del">To delete your account and the places saved in it, email <strong class="acct-mail">{{ site.contact_email }}</strong> from the address you sign in with. For now, deletion is done by request. <a href="mailto:{{ site.contact_email }}?subject={{ ('Delete my ' ~ site.name ~ ' account') | urlencode }}">Open your email app</a></p>
+        <p class="acct-del">To delete your account and the places saved in it, email <strong class="acct-mail">{{ site.contact_email }}</strong> from the address you sign in with{{ ' (the email address of your Google account)' if 'email' not in methods }}. For now, deletion is done by request. <a href="mailto:{{ site.contact_email }}?subject={{ ('Delete my ' ~ site.name ~ ' account') | urlencode }}">Open your email app</a></p>
       </div>
     </div>
   </div>
