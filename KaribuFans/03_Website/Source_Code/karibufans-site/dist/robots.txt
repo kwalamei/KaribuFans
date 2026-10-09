@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://karibufans.vercel.app/sitemap.xml

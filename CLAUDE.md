@@ -3,7 +3,7 @@
 Read this first. It applies to every agent and every session that works on this repository.
 
 ## What this is
-KaribuFans is a Nairobi city guide: stays, food, rides, matchday, nightlife, movies and games, and tickets, presented as one route of seven stops. Visitors book directly with the business. The owner is Marx. Launch date: 15 October 2026. "KaribuFans" is a working name; it is set once in `data/site.json`.
+KaribuFans is a Nairobi city guide: stays, food, rides, matchday, nightlife, movies and games, and tickets, presented as one route of seven stops. It serves everyday Nairobi, Kenya Premier League matches and other events, not only AFCON 2027. Visitors book directly with the business. The owner is Marx. Launch date: 15 October 2026. "KaribuFans" is a working name; it is set once in `data/site.json`.
 
 ## Where the code is
 The live site is `KaribuFans/03_Website/Source_Code/karibufans-site/`. Everything else in the repository is planning material.
@@ -12,7 +12,6 @@ The live site is `KaribuFans/03_Website/Source_Code/karibufans-site/`. Everythin
 - `templates/` Jinja2 page layouts
 - `static/` CSS, JavaScript, images
 - `dist/` the published site that Vercel serves. Generated. Never edit it by hand.
-- `karibufans-site/karibufans-site/` is an old copy from before the current theme. Do not edit it and do not copy from it.
 
 Build: `python3 build.py` (needs `pip install jinja2`). Always rebuild and commit `dist/` together with the source change, because Vercel serves `dist/` as committed and runs no build step.
 
@@ -42,7 +41,8 @@ Colours are tokens at the top of `static/css/site.css`. Use the tokens; never wr
 - A listing with `"status": "unclaimed"` is a real business that has not joined. Show only what its own website publishes: name, type, area, street, website link, directions. No photos, prices, phone or WhatsApp. Keep `source_url` and `checked` on every entry.
 - Never invent a fact about a business, a fixture, a price or a date. If it is not confirmed, leave it out.
 - KaribuFans is independent. Do not use CAF, tournament, Uber or Bolt logos or imply affiliation. Tournament dates are not shown until confirmed.
-- KaribuFans does not sell tickets and never handles payment.
+- KaribuFans does not sell tickets and never handles payment (Marx confirmed, 9 Oct). Tickets link to official or partner event pages, with a referral code where the partner offers one.
+- Never copy photos from a business's website. A business's own photos appear only once it joins and supplies them.
 - The language switcher stays visible even before translations exist.
 
 ## Motion rules
@@ -70,7 +70,7 @@ Visitors can save places (kept in the browser) and, when accounts are on, sign i
 Nothing is pushed until the reviewer has passed it. Marx chose commits straight to `main`, which is the live site, so a push is a release.
 
 ## Open items (Marx to supply)
-- `contact_whatsapp` in `data/site.json`: empty, so the vendor sign-up and ticket alert forms cannot send yet
+- Commission terms for businesses (rate, what counts as a referral) before the first one joins
 - `uber_client_id` in `data/site.json`
 - Registered business name for the footer
 - Own photographs from the Nairobi photo walk to replace stock where possible (Karen, Gigiri, Thika Road, Airport and Mombasa Road, Ngong Road and a real hotel room have none yet)

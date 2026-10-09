@@ -1,8 +1,14 @@
 {
   "destinations": [
     {
-      "name": "Talanta Stadium",
-      "address": "Talanta Stadium, Nairobi"
+      "name": "Kasarani stadium (Moi International Sports Centre)",
+      "address": "Moi International Sports Centre, Kasarani, Nairobi",
+      "stadium": "kasarani"
+    },
+    {
+      "name": "Nyayo National Stadium",
+      "address": "Nyayo National Stadium, Nairobi",
+      "stadium": "nyayo"
     },
     {
       "name": "JKIA airport",
@@ -19,11 +25,11 @@
       "when": "Arrival day"
     },
     {
-      "route": "Your stay → Talanta Stadium",
+      "route": "Your stay → the stadium",
       "when": "Matchday · leave early"
     },
     {
-      "route": "Talanta Stadium → city centre",
+      "route": "The stadium → city centre",
       "when": "After the match · expect high demand"
     },
     {
@@ -62,5 +68,6 @@
       "Ask a local",
       "Your host or hotel can tell you the right route and stage for where you are going."
     ]
-  ]
+  ],
+  "destinations_note": "A destination with \"stadium\" (an id from data/stadiums.json) gets that stadium's coordinates in the Uber link. Do not type coordinates here."
 }

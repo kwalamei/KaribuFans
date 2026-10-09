@@ -57,6 +57,41 @@ def zone_key(z):
     return (ZONE_ORDER.index(z) if z in ZONE_ORDER else len(ZONE_ORDER), z)
 
 
+def load_stadiums(site):
+    """Read data/stadiums.json (the stadium guide on Matchday, and the "Near ..." labels and filters).
+    The file is optional. Without it, a listing marked with the old near_stadium flag still gets a label
+    from site.json tournament.stadium, so nothing breaks while the file is missing."""
+    f = ROOT / "data" / "stadiums.json"
+    items = json.loads(f.read_text(encoding="utf-8")) if f.exists() else []
+    items = [s for s in items if s.get("id") and s.get("name")]
+    for s in items:
+        s.setdefault("short", s["name"])
+        s.setdefault("aka", [])
+        s.setdefault("map_query", s["name"] + ", Nairobi")
+    if not any(s["id"] == "talanta" for s in items):
+        name = site.get("tournament", {}).get("stadium") or "Talanta Stadium"
+        # Not shown in the stadium guide (no source); used only to label listings that still carry near_stadium.
+        items.append({"id": "talanta", "name": name, "short": name, "aka": [], "map_query": name + ", Nairobi",
+                      "fallback": True})
+    return items
+
+
+def near_ids(v, known):
+    """The stadiums a listing is near: the new "near" list, or the old near_stadium flag (which meant Talanta)."""
+    ids = v.get("near")
+    if isinstance(ids, str):
+        ids = [ids]
+    if not ids and v.get("near_stadium") is True:
+        ids = ["talanta"]
+    out = []
+    for i in ids or []:
+        if i in known and i not in out:
+            out.append(i)
+        elif i not in known:
+            print(f"  warning: {v.get('id')}: near '{i}' is not in data/stadiums.json; ignored")
+    return out
+
+
 def main():
     site = load("site.json")
     modules = load("modules.json")
@@ -64,6 +99,8 @@ def main():
     rides = load("rides.json")
     fixtures = load("fixtures.json")
     photos = load_photos()
+    stadiums = load_stadiums(site)
+    stadium_by_id = {s["id"]: s for s in stadiums}
 
     # Load every listing once, so pages can link to each other by area.
     listings = {}
@@ -73,10 +110,24 @@ def main():
         for v in items:
             v.setdefault("zone", v.get("area", ""))
             v.setdefault("status", "joined")
+            v["near"] = near_ids(v, stadium_by_id)
+            v["near_shorts"] = [stadium_by_id[i]["short"] for i in v["near"]]
+            v["near_label"] = ("Near " + " and ".join(v["near_shorts"])) if v["near"] else ""
         listings[m["slug"]] = items
         m["count"] = len(items)
         m["zones"] = sorted({v["zone"] for v in items if v["zone"]}, key=zone_key)
         m["types"] = sorted({v["type"] for v in items if v.get("type")})
+        # Stadiums that have at least one listing on this page, in the order of data/stadiums.json.
+        m["near"] = [{"id": s["id"], "short": s["short"], "count": sum(1 for v in items if s["id"] in v["near"])}
+                     for s in stadiums if any(s["id"] in v["near"] for v in items)]
+
+    # The stadium guide on Matchday lists only stadiums from data/stadiums.json (never the fallback), each with
+    # the pages that have listings near it.
+    for s in stadiums:
+        s["pages"] = [{"slug": m["slug"], "label": m["label"], "noun": m.get("noun") or "places",
+                       "count": sum(1 for v in listings[m["slug"]] if s["id"] in v["near"])}
+                      for m in modules if any(s["id"] in v["near"] for v in listings[m["slug"]])]
+    guide = [s for s in stadiums if not s.get("fallback")]
 
     # route[slug][zone] = number of listings; used for "continue your route" links.
     route = {slug: {} for slug in listings}
@@ -93,7 +144,14 @@ def main():
             used.append(pid)
     photo_credits = [photos["photos"][i] for i in used]
 
-    common = dict(site=site, modules=modules, rides=rides, fixtures=fixtures, year=date.today().year,
+    # Ride destinations linked to a stadium take its coordinates from data/stadiums.json (never typed into rides.json),
+    # so the Uber link can carry the drop-off point as well as its name.
+    for d in rides.get("destinations", []):
+        st = stadium_by_id.get(d.get("stadium"))
+        if st and st.get("lat") is not None and st.get("lng") is not None:
+            d["lat"], d["lng"] = st["lat"], st["lng"]
+
+    common = dict(site=site, modules=modules, rides=rides, fixtures=fixtures, year=date.today().year, stadiums=guide,
                   route=route, zone_cards=zone_cards, photos=photos["photos"], slots=photos["slots"],
                   galleries=photos["galleries"], photo_credits=photo_credits)
 
@@ -113,12 +171,34 @@ def main():
 
     page("index.html", "index.html", root="./")
 
+    # Search index (search/ page). Three kinds of entry: the stop pages (with keywords from modules.json),
+    # the stadiums in the guide, and every listing (with the names of the stadiums it is near).
+    # js/account.js reads the listing entries too (by id: page, name, type, area); pages and stadiums have no id.
     index = []
+    stadium_words = " ".join(w for s in guide for w in [s["name"], s["short"]] + s["aka"])
+    for m in modules:
+        words = [m["label"], m["slug"], m.get("card_home", ""), m.get("sub", ""), " ".join(m.get("keywords", []))]
+        if m["slug"] == "matchday":
+            words.append(stadium_words)   # the stadium guide is on this page
+        index.append({"kind": "page", "href": m["slug"] + "/", "name": m["label"], "page_label": "Stop " + str(m["stop"]),
+                      "meta": m.get("card_home", ""), "text": " ".join(words)})
+    index.append({"kind": "page", "href": "list-your-business/", "name": "List your business", "page_label": site["name"],
+                  "meta": "Add or claim your business on " + site["name"] + ".",
+                  "text": "list your business list listing add claim remove join vendor owner whatsapp contact restaurant hotel bar"})
+    for s in guide:
+        index.append({"kind": "stadium", "href": "matchday/#stadium-" + s["id"], "name": s["name"], "page_label": "Stadium guide",
+                      "meta": "Matchday · " + (s.get("zone") or "Nairobi"),
+                      "text": " ".join([s["name"], s["short"], " ".join(s["aka"]), s.get("zone", ""), s.get("street", ""),
+                                        "stadium football matchday"])})
     for i, m in enumerate(modules):
         items = listings[m["slug"]]
         for v in items:
-            index.append({"id": v.get("id", ""), "page": m["slug"], "page_label": m["label"], "name": v["name"],
-                          "type": v["type"], "area": v["area"], "street": v.get("street", ""), "tags": v.get("tags", [])})
+            near_names = [n for sid in v["near"] for n in [stadium_by_id[sid]["name"], stadium_by_id[sid]["short"]] + stadium_by_id[sid]["aka"]]
+            index.append({"kind": "place", "id": v.get("id", ""), "href": m["slug"] + "/#place-" + v.get("id", ""),
+                          "page": m["slug"], "page_label": m["label"], "name": v["name"], "type": v["type"], "area": v["area"],
+                          "meta": m["label"] + " · " + v["type"] + " · " + v["area"] + (" · " + v["near_label"] if v["near"] else ""),
+                          "text": " ".join([v["name"], v["type"], v["area"], v["zone"], v.get("street", ""), m["label"],
+                                            " ".join(v.get("tags", [])), v["near_label"], " ".join(near_names)])})
         prev_m = modules[i - 1] if i > 0 else None
         next_m = modules[i + 1] if i + 1 < len(modules) else None
         page("module.html", f"{m['slug']}/index.html", active=m["slug"], m=m, listings=items, prev_m=prev_m, next_m=next_m)
@@ -129,6 +209,18 @@ def main():
     # The notice that describes accounts is published only once accounts are open to everyone.
     page("privacy_accounts.html" if site.get("accounts", {}).get("live") else "privacy.html", "privacy/index.html")
     page("account.html", "account/index.html")
+    # Vercel serves dist/404.html for any address it cannot find, at any depth, so its links start at the site root.
+    page("404.html", "404.html", root="/")
+
+    # robots.txt and sitemap.xml (no lastmod, so a rebuild on another day gives the same file). The sitemap lists the public pages only: not search (noindex), the account page
+    # or the 404 page.
+    base = site["site_url"].rstrip("/")
+    public = [""] + [m["slug"] + "/" for m in modules] + ["list-your-business/", "privacy/"]
+    (DIST / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "".join(f"  <url><loc>{base}/{p}</loc></url>\n" for p in public)
+        + "</urlset>\n", encoding="utf-8")
+    (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {base}/sitemap.xml\n", encoding="utf-8")
 
     print("Built", sum(1 for _ in DIST.rglob("*.html")), "pages into", DIST)
 

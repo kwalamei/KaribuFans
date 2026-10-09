@@ -43,19 +43,15 @@
     "first": "Karibu",
     "second": "Fans"
   },
-  "contact_whatsapp": "",
-  "contact_whatsapp_note": "KaribuFans business WhatsApp number, international format without + (e.g. 2547XXXXXXXX). Used by the vendor sign-up and ticket alert forms.",
+  "contact_whatsapp": "254792637085",
+  "contact_whatsapp_note": "KaribuFans business WhatsApp number (0792 637085), international format without + . The list-your-business, claim-a-listing and ticket alert forms open WhatsApp with a message to this number.",
   "uber_client_id": "",
   "uber_client_id_note": "Uber's developer docs list client_id as required for ride links. Register free at developer.uber.com and paste it here.",
-  "stadiums": [
-    "Talanta Stadium"
-  ],
-  "stadiums_note": "Only list stadiums officially confirmed as Nairobi venues.",
   "copyright_note": "Shown in the footer. Replace with the registered business name once the registrar issues it.",
   "contact_email": "maxkobaai@gmail.com",
   "contact_email_note": "Shown on the privacy page as the contact for data questions and listing removals.",
   "languages_note": "Set live to true for a language only when its translation is published.",
-  "privacy_updated": "5 October 2026",
+  "privacy_updated": "9 October 2026",
   "accounts": {
     "live": false,
     "supabase_url": "https://bhyhqmboihkdbvvnshbp.supabase.co",

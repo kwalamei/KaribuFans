@@ -1,5 +1,5 @@
 {
-  "_note": "Add fixtures only once officially published. date = YYYY-MM-DD, time = HH:MM Nairobi time. status: on_sale | opens_soon | sold_out | official_resale",
+  "_note": "Add fixtures only once officially published (Kenya Premier League, national team, tournament or other events in Nairobi). date = YYYY-MM-DD, time = HH:MM Nairobi time. status: on_sale | opens_soon | sold_out | official_resale. Optional venue = the stadium name, used in the calendar entry.",
   "official_ticket_url": "",
   "fixtures": []
 }

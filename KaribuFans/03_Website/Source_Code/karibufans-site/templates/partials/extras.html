@@ -1,20 +1,58 @@
 {% if m.slug == 'matchday' %}
+{% from "partials/area_art.html" import area_art %}
+{# Stadium guide: the stadiums in data/stadiums.json (facts only, each with its source), with directions and links to
+   the listings marked as near it (listing field "near"). Nothing about fixtures or tournament venues is shown here. #}
+<section class="band band-paper" id="stadiums" aria-labelledby="stH">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="stH" class="display-3">Stadium guide</h2><p>Where Nairobi's football stadiums are, with directions and the places on {{ site.name }} near each one. The organiser of each match decides where it is played, so check their announcement.</p></div>
+    {% if stadiums %}
+    <ul class="stadiums rv-each">
+      {% for s in stadiums %}
+      <li class="stadium" id="stadium-{{ s.id }}">
+        <div class="stadium-art">{{ area_art(s.zone, '-st-' ~ s.id) }}</div>
+        <div class="stadium-body">
+          <p class="stadium-zone">{{ s.zone or 'Nairobi' }}</p>
+          <h3>{{ s.name }}</h3>
+          {% set aka = [] %}{% for x in s.aka if x | lower != s.short | lower and x | lower != s.name | lower %}{% set _ = aka.append(x) %}{% endfor %}
+          {% if aka %}<p class="stadium-aka">Also called {{ aka[:-1] | join(', ') }}{{ ' or ' if aka | length > 1 }}{{ aka[-1] }}</p>{% endif %}
+          {% if s.street %}<p class="stadium-street">{{ s.street }}</p>{% endif %}
+          {% if s.note %}<p class="stadium-note">{{ s.note }}</p>{% endif %}
+          {% if s.pages %}
+          <ul class="stadium-near" aria-label="On {{ site.name }} near {{ s.short }}">
+            {% for pg in s.pages %}<li><a href="{{ root }}{{ pg.slug }}/?near={{ s.id }}">{{ pg.noun | capitalize }} near {{ s.short }}<span>{{ pg.count }} →</span></a></li>{% endfor %}
+          </ul>
+          {% else %}
+          <p class="stadium-none">Nothing on {{ site.name }} is listed near this stadium yet.</p>
+          {% endif %}
+          <div class="stadium-actions">
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query={{ s.map_query | urlencode }}" target="_blank" rel="noopener" aria-label="Directions to {{ s.name }} (opens Google Maps)">Directions ↗</a>
+            <a class="btn btn-ghost" href="{{ root }}rides/">Get a ride</a>
+          </div>
+          {% if s.source_url %}<p class="hint stadium-src">Location from <a href="{{ s.source_url }}" target="_blank" rel="noopener nofollow">this source<span class="sr-only"> for {{ s.name }} (opens in a new tab)</span></a>{% if s.checked %}, checked {{ s.checked }}{% endif %}.</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="coming">The stadium guide is being checked and will appear here soon.</p>
+    {% endif %}
+  </div>
+</section>
 <section class="band band-dark" aria-labelledby="fxH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="fxH">Matches in Nairobi · 2027</h2><p>From the official schedule only.</p></div>
+    <div class="sec-head"><h2 id="fxH">Matches in Nairobi</h2><p>Kenya Premier League, national team and tournament matches, added only once they are officially announced.</p></div>
     {% set mode = 'matchday' %}{% include "partials/fixtures.html" %}
   </div>
 </section>
 <section class="band" aria-labelledby="essH">
   <div class="wrap">
-    <div class="sec-head"><h2 id="essH">Stadium essentials</h2><p>Filled in from the organisers' guidance as it is published.</p></div>
+    <div class="sec-head"><h2 id="essH">Stadium essentials</h2><p>Gate times, bag rules and seating are set for each match by its organiser. These are the basics; your ticket and the organiser's announcement have the rest.</p></div>
     <div class="tips rv-each">
-      <div class="tip"><strong>Gates and entry</strong><p>Gate times and entry gates will be added from the official guide once it is published.</p></div>
-      <div class="tip"><strong>Bags and banned items</strong><p>The official list has not been published yet. We will add it here when it is.</p></div>
-      <div class="tip"><strong>Getting there</strong><p>Leave early and use the pickup zones on the <a href="{{ root }}rides/">Rides page</a>.</p></div>
-      <div class="tip"><strong>Accessibility</strong><p>Accessible entrances, seating and drop-off points will be added from the official guide.</p></div>
+      <div class="tip"><strong>Gates and entry</strong><p>Gate times change from match to match. Check your ticket or the organiser's announcement, and arrive early for big games.</p></div>
+      <div class="tip"><strong>Bags and banned items</strong><p>Rules differ by event and stadium. Check the organiser's list before you go, and travel light.</p></div>
+      <div class="tip"><strong>Getting there</strong><p>Leave early: roads near a stadium get busy before and after a match. The <a href="{{ root }}rides/">Rides page</a> opens Uber ready for your trip; check the destination before you confirm.</p></div>
+      <div class="tip"><strong>Accessibility</strong><p>Ask the organiser about accessible entrances, seating and drop-off points before matchday.</p></div>
       <div class="tip"><strong>Weather</strong><p>Nairobi evenings can be cool. Bring a light jacket.</p></div>
-      <div class="tip"><strong>Directions</strong><p><a href="https://www.google.com/maps/search/?api=1&amp;query={{ 'Talanta Stadium Nairobi' | urlencode }}" target="_blank" rel="noopener">Open Talanta Stadium in Google Maps ↗</a></p></div>
     </div>
   </div>
 </section>
@@ -38,26 +76,27 @@
 {% if m.slug == 'tickets' %}
 <section class="band" aria-labelledby="tkH">
   <div class="wrap" style="display:flex;flex-direction:column;gap:32px">
-    <div class="notice"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3zM12 10v4M12 17h.01"/></svg><div><strong>{{ site.name }} does not sell or resell match tickets.</strong><br>Buy only from the official ticketing platform: {% if fixtures.official_ticket_url %}<a href="{{ fixtures.official_ticket_url }}" target="_blank" rel="noopener">{{ fixtures.official_ticket_url }}</a>{% else %}the organisers have not announced it yet, and we will link it here when they do{% endif %}.</div></div>
+    <div class="notice"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3zM12 10v4M12 17h.01"/></svg><div><strong>{{ site.name }} does not sell or resell tickets, and never takes payment.</strong><br>Buy only from the seller the club, league or event organiser names. {% if fixtures.official_ticket_url %}Official ticket page: <a href="{{ fixtures.official_ticket_url }}" target="_blank" rel="noopener">{{ fixtures.official_ticket_url }}</a>.{% else %}No official ticket page is linked here yet; we add one only once its organiser announces it.{% endif %}</div></div>
     <div>
-      <div class="sec-head"><h2 id="tkH">Matches in Nairobi</h2><p>Status labels: On sale · Opens soon · Sold out · Official resale (only if the organisers run one).</p></div>
+      <div class="sec-head"><h2 id="tkH">Matches and events in Nairobi</h2><p>Status labels: On sale · Opens soon · Sold out · Official resale (only if the organisers run one).</p></div>
       {% set mode = 'tickets' %}{% include "partials/fixtures.html" %}
     </div>
     <div class="ride-grid rv">
       <form class="ride-card" id="alertForm" onsubmit="return false" aria-label="Ticket sale alert">
         <h3>Get told when sales open</h3>
         <label for="alertMatch">Match</label>
-        <select id="alertMatch"><option>All Nairobi matches</option>{% for f in fixtures.fixtures %}<option>{{ f.home }} vs {{ f.away }}</option>{% endfor %}</select>
+        <select id="alertMatch"><option>Any match or event in Nairobi</option>{% for f in fixtures.fixtures %}<option>{{ f.home }} vs {{ f.away }}</option>{% endfor %}</select>
         <label class="check"><input type="checkbox" id="alertOk"> <span>I agree to be contacted once on WhatsApp about ticket sales.</span></label>
-        <button type="button" class="btn btn-primary" id="alertGo" data-wa="{{ site.contact_whatsapp }}">Send alert request on WhatsApp</button>
+        <button type="button" class="btn btn-primary" id="alertGo" data-wa="{{ site.contact_whatsapp }}" data-site="{{ site.name }}">Send alert request on WhatsApp</button>
+        <p class="hint">This opens WhatsApp with your request written out; you press send. Nothing is stored on this site.</p>
         <p class="hint" id="alertMsg" aria-live="polite"></p>
       </form>
       <div class="ride-card">
         <h3>Avoid fake tickets</h3>
         <ul class="trip-list">
-          <li><strong>Buy only from the official site</strong><span>Ignore sellers on social media and WhatsApp groups.</span></li>
+          <li><strong>Buy only from the official seller</strong><span>Ignore sellers on social media and WhatsApp groups.</span></li>
           <li><strong>Never pay a person by M-Pesa for a ticket</strong><span>Official sales do not ask you to send money to a personal number.</span></li>
-          <li><strong>Check the ticket rules</strong><span>ID and name-on-ticket rules will be added once the organisers publish them.</span></li>
+          <li><strong>Check the ticket rules</strong><span>ID and name-on-ticket rules are set by each organiser. Read them before you buy.</span></li>
         </ul>
       </div>
     </div>
