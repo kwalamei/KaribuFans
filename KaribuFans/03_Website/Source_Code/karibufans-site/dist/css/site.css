@@ -44,6 +44,11 @@
   --gutter:clamp(16px,4vw,64px); --max:1360px; --nav-max:1600px; --nav-h:88px;
   --radius:6px; --radius-lg:12px;
   --shadow:0 1px 2px rgba(var(--ink-rgb),.05),0 12px 32px -16px rgba(var(--ink-rgb),.18);
+  /* Dark glass on a photograph (homepage planner): ink fill, blurred backdrop, hairline light edge.
+     --glass-solid is the fill where backdrop-filter is missing or reduced transparency is asked for. */
+  --glass:rgba(var(--ink-rgb),.35); --glass-solid:rgba(var(--ink-rgb),.88); --glass-line:rgba(var(--white-rgb),.2);
+  --glass-field:rgba(var(--white-rgb),.12); --glass-field-hover:rgba(var(--white-rgb),.18); --glass-field-line:rgba(var(--white-rgb),.4);
+  --chev-light:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   /* motion: arrive by slowing down, leave by speeding up; the nav pill settles on a spring */
   --ease-out:cubic-bezier(.22,1,.36,1); --ease-in:cubic-bezier(.4,0,1,1); --spring:cubic-bezier(.34,1.45,.64,1);
 }
@@ -239,8 +244,19 @@ html.menu-open{overflow:hidden}
 .field,.planner select,.planner input,.join-form input:not([type=checkbox]),.join-form select,.join-form textarea,.d-row input,.d-row select,.ride-card select{min-height:48px;border:1.5px solid var(--field-line);border-radius:8px;padding:10px 12px;font:500 16px var(--body);background:var(--white);color:var(--text);width:100%;min-width:0}
 .planner select:hover,.join-form input:hover,.join-form select:hover,.join-form textarea:hover,.d-row input:hover,.d-row select:hover,.ride-card select:hover{border-color:var(--ink)}
 label{font-size:13px;font-weight:700;color:var(--text)}
-.planner{background:var(--white);color:var(--text);border-radius:var(--radius-lg);padding:14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr)) auto;gap:12px;align-items:end;box-shadow:0 30px 60px -20px rgba(var(--ink-rgb),.6);margin-top:12px;width:100%;max-width:760px}
-.planner label{display:flex;flex-direction:column;gap:6px}
+/* Homepage planner: a dark glass panel, so the skyline shows through. Text is white on ink glass over the hero shade;
+   white labels keep 4.5:1 or better even over the brightest pixel behind the panel (see the contrast note at the top). */
+.planner{background:var(--glass);color:var(--on-dark);border:1px solid var(--glass-line);border-radius:var(--radius-lg);padding:14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr)) auto;gap:12px;align-items:end;
+  box-shadow:inset 0 1px 0 rgba(var(--white-rgb),.14),0 30px 60px -20px rgba(var(--ink-rgb),.6);
+  -webkit-backdrop-filter:blur(12px) saturate(1.5);backdrop-filter:blur(12px) saturate(1.5);margin-top:12px;width:100%;max-width:760px}
+.planner label{display:flex;flex-direction:column;gap:6px;color:var(--on-dark)}
+.planner select{appearance:none;-webkit-appearance:none;padding-right:40px;cursor:pointer;color:var(--on-dark);border-color:var(--glass-field-line);background:var(--chev-light) right 14px center/14px no-repeat,var(--glass-field)}
+.planner select:hover{border-color:var(--on-dark);background-color:var(--glass-field-hover)}
+/* The open list is drawn by the system; give it its own solid colours so it never inherits white-on-white */
+.planner option{background:var(--ink);color:var(--on-dark)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.planner{background:var(--glass-solid)}}
+@media (prefers-reduced-transparency:reduce){.planner{background:var(--glass-solid);-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media (forced-colors:active){.planner select{appearance:auto;-webkit-appearance:auto;background:Field;color:FieldText}}
 @media (max-width:640px){.planner{grid-template-columns:1fr}}
 .find{display:flex;align-items:center;gap:8px;min-height:48px;padding:0 14px;border-radius:999px;border:1.5px solid var(--field-line);background:var(--white);color:var(--text);flex:1 1 220px;max-width:360px;font-weight:500}
 .find input{border:none;outline:none;background:transparent;color:inherit;font:500 15px var(--body);width:100%;min-height:44px;box-shadow:none}
