@@ -22,9 +22,9 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{{ share.alt }}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+{# Fonts are served from this site (static/fonts/, @font-face at the top of site.css). They are deliberately not
+   preloaded: measured on a throttled phone (9 Oct), a preload competed with site.css and the hero photo and made the
+   first paint and the largest paint about 70 ms later on every page tried. #}
 <link rel="stylesheet" href="{{ root }}css/site.css">{% block head %}{% endblock %}
 {# Motion bootstrap. Runs before first paint, so it stays small and guarded; with reduced motion it does nothing.
    Page-to-page view transitions: on the way out (pageswap) remember this page's stop number; on the way in

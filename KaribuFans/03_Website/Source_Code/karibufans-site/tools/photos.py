@@ -48,7 +48,7 @@ OUT_DIR = os.path.join(SITE, "static", "img", "photos")
 MANIFEST = os.path.join(SITE, "data", "photos.json")
 
 HERO_W = [800, 1400, 2200]
-HERO_M_W = [600, 1000]
+HERO_M_W = [600, 800, 1000]  # 800: a 360-400px phone at 2x gets 800, not 1000 (about 30% less to download)
 TILE_W = [600, 1200]
 EX_W = [400, 800]
 HERO_Q = 78

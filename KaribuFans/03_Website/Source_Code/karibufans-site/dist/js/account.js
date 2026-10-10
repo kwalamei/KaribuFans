@@ -131,8 +131,17 @@
       else if (/access_denied/i.test(bcode)) whyBack = 'denied';
     } catch (e) {}
   }
+  // Email sign-in is offered only when the account page has the email form (methods in data/site.json lists "email");
+  // without it, nothing here mentions emailed links.
+  var emailOn = !!$('acctEmailForm');
   function backMsg(signedIn) {   // the message for a sign-in that came back with an error
     var tail = signedIn ? ' You are still signed in.' : ' You can try again below.';
+    if (!emailOn) {
+      if (whyBack === 'expired') return 'That sign-in took too long or has been used already.' + tail;
+      if (whyBack === 'off') return 'That way of signing in is not switched on yet.' + (signedIn ? tail : ' Please try again later.');
+      if (whyBack === 'denied') return 'That sign-in was cancelled or not allowed, so nothing changed.' + tail;
+      return 'That sign-in did not finish.' + tail;
+    }
     if (whyBack === 'expired') return 'That sign-in link has expired or has been used already.' + (signedIn ? tail : ' You can ask for a new one below.');
     if (whyBack === 'off') return 'That way of signing in is not switched on yet.' + (signedIn ? tail : ' Please use another one below.');
     if (whyBack === 'denied') return 'That sign-in was cancelled or not allowed, so nothing changed.' + tail;
