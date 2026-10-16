@@ -11,6 +11,10 @@ according to the CROPS table below, and writes:
                                         (2:1, the listing card's drawing band)
   data/photos.json                      manifest used by the templates
 
+Own photographs (own=True in CROPS, masters in Photos/own/) were taken by the
+KaribuFans team. They are credited with the site's name from data/site.json,
+with no link and no "/ Unsplash"; their manifest entries carry "own": true.
+
 Example photos (EXAMPLES below, masters in Photos/examples/) are a trial the
 owner asked for: an unclaimed listing card may show a stock photo of its type
 of place, always labelled "Example photo, not of this place". They are
@@ -27,6 +31,8 @@ Crop notation (all values are fractions of the master's width/height):
   ("fit", cx, cy)       the largest crop of the output ratio, centred as near
                         to (cx, cy) as the frame allows.
   ("fit", cx, cy, z)    as above, zoomed in by z (z=1.25 keeps 80% of the size).
+Optional "w" / "m_w": the widths to make, where the crop is narrower than the
+standard set (a master is never scaled up).
 Optional "redact": list of (x0, y0, x1, y1) boxes blurred before cropping
 (small signs, logos and number plates that a crop cannot avoid). The blur
 is feathered so it reads as soft focus rather than a box.
@@ -44,6 +50,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(HERE)
 MASTERS = os.path.normpath(os.path.join(SITE, "..", "..", "Photos", "unsplash"))
 EX_MASTERS = os.path.normpath(os.path.join(SITE, "..", "..", "Photos", "examples"))
+OWN_MASTERS = os.path.normpath(os.path.join(SITE, "..", "..", "Photos", "own"))
 OUT_DIR = os.path.join(SITE, "static", "img", "photos")
 MANIFEST = os.path.join(SITE, "data", "photos.json")
 
@@ -55,11 +62,96 @@ HERO_Q = 78
 TILE_Q = 74
 BUDGET = {"hero": 450 * 1024, "tile": 250 * 1024}
 
-RATIOS = {"16:9": 16 / 9, "3:2": 3 / 2, "4:5": 4 / 5, "1:1": 1.0, "2:1": 2.0}
+RATIOS = {"16:9": 16 / 9, "3:2": 3 / 2, "4:3": 4 / 3, "4:5": 4 / 5, "1:1": 1.0, "2:1": 2.0}
 
 # id: master, kind, ratio + crop (landscape/tile), m crop (hero phone 4:5),
 #     focus (object-position for the main crop), alt, optional q / m_q / redact.
 CROPS = {
+    # --------------------------------------------- own photographs (Photos/own/)
+    # Nyayo National Stadium, Nairobi. Crops given in master pixels (as fractions of
+    # the master's size). The stadium's own name sign may stay (owner, 16 Oct);
+    # brand and sponsor signs, boards and banners are painted out.
+    "nyayo-stands-skyline": dict(
+        src="nyayo-stands-skyline.jpg", own=True, kind="hero",
+        # everything above the crowd in the foreground (brand names, a name on a
+        # jersey, faces): y < 1133 in both crops. Phone crop: the right of the main
+        # stand, the city towers and the tall tower on the right.
+        ratio="16:9", crop=("box", 300 / 2576, 0.0, 2314 / 2576), w=[800, 1400, 2000],
+        m=("box", 1370 / 2576, 0.0, 2276 / 2576), m_w=[600, 800, 900],
+        # painted out: the slogan on the pitch-side boards, the sponsor banner on the
+        # main stand, the umbrella's print and the small signs along the stand roofs
+        # ("dark": each sign becomes a plain panel of its own colour)
+        redact=[(340 / 2576, 986 / 1932, 408 / 2576, 1005 / 1932, "dark"),
+                (540 / 2576, 954 / 1932, 584 / 2576, 971 / 1932, "dark"),
+                (670 / 2576, 932 / 1932, 704 / 2576, 947 / 1932, "dark"),
+                (762 / 2576, 917 / 1932, 788 / 2576, 929 / 1932, "dark"),
+                (1950 / 2576, 909 / 1932, 1968 / 2576, 919 / 1932, "dark"),
+                (2050 / 2576, 924 / 1932, 2088 / 2576, 937 / 1932, "dark"),
+                (2193 / 2576, 944 / 1932, 2245 / 2576, 960 / 1932, "dark"),
+                (1266 / 2576, 832 / 1932, 1416 / 2576, 850 / 1932, "dark"),
+                (1249 / 2576, 1021 / 1932, 1296 / 2576, 1032 / 1932, "dark"),
+                (335 / 2576, 818 / 1932, 402 / 2576, 833 / 1932, "dark"),
+                (483 / 2576, 818 / 1932, 519 / 2576, 833 / 1932, "dark"),
+                (591 / 2576, 818 / 1932, 645 / 2576, 833 / 1932, "dark"),
+                (726 / 2576, 818 / 1932, 805 / 2576, 830 / 1932, "dark"),
+                (1662 / 2576, 805 / 1932, 1683 / 2576, 818 / 1932, "dark"),
+                (1813 / 2576, 805 / 1932, 1840 / 2576, 818 / 1932, "dark"),
+                (1915 / 2576, 803 / 1932, 1944 / 2576, 815 / 1932, "dark"),
+                (2024 / 2576, 801 / 1932, 2058 / 2576, 814 / 1932, "dark"),
+                (2250 / 2576, 797 / 1932, 2288 / 2576, 811 / 1932, "dark")],
+        focus="50% 70%",
+        alt="Nyayo National Stadium in Nairobi on a match day, the main stand and the city skyline under a big cloudy sky"),
+    "nyayo-golden-crowd-sign": dict(
+        src="nyayo-golden-crowd-sign.jpg", own=True, kind="tile",
+        # the sky, a lit floodlight and the stadium's name sign over a distant crowd;
+        # painted out: a sign at the foot of the stand and a logo on a far building
+        ratio="4:3", crop=("box", 1003 / 2016, 0.0, 1.0), w=[600, 1000],
+        redact=[(1104 / 2016, 745 / 1512, 1160 / 2016, 762 / 1512, "dark"),
+                (1885 / 2016, 680 / 1512, 1918 / 2016, 699 / 1512, "dark")],
+        focus="50% 88%",
+        alt="The Nyayo National Stadium name sign above a packed stand in Nairobi at golden hour, a floodlight shining against a blue sky"),
+    "nyayo-sky-crowd-track": dict(
+        src="nyayo-sky-crowd-track.jpg", own=True, kind="tile",
+        # sky, stands and the fans at the trackside; painted out: the sponsor banner
+        # on the main stand and the slogan on two pitch-side boards
+        ratio="3:2", crop=("box", 0.0, 0.0, 1.0),
+        redact=[(1127 / 1512, 818 / 2016, 1271 / 1512, 835 / 2016, "dark"),
+                (459 / 1512, 881 / 2016, 491 / 1512, 891 / 2016, "dark"),
+                (554 / 1512, 877 / 2016, 581 / 1512, 887 / 2016, "dark")],
+        focus="50% 60%",
+        alt="Storm clouds over Nyayo National Stadium in Nairobi, fans gathered at the trackside beside the pitch"),
+    "nyayo-main-stand-skyline": dict(
+        src="nyayo-main-stand-skyline.jpg", own=True, kind="tile",
+        # painted out: the sponsor banner on the main stand, the umbrella's print, the
+        # boards along the stand roofs, a screen, a sponsor's flag and trailer lettering
+        ratio="16:9", crop=("box", 80 / 2016, 0.0, 1929 / 2016),
+        redact=[(1024 / 2016, 586 / 1512, 1250 / 2016, 606 / 1512, "dark"),
+                (919 / 2016, 861 / 1512, 937 / 2016, 876 / 1512, "dark"),
+                (939 / 2016, 866 / 1512, 962 / 2016, 879 / 1512, "dark"),
+                (963 / 2016, 861 / 1512, 988 / 2016, 876 / 1512, "dark"),
+                (983 / 2016, 853 / 1512, 996 / 2016, 868 / 1512, "dark"),
+                (100 / 2016, 577 / 1512, 322 / 2016, 593 / 1512, "dark"),
+                (468 / 2016, 572 / 1512, 507 / 2016, 585 / 1512, "dark"),
+                (560 / 2016, 570 / 1512, 587 / 2016, 585 / 1512, "dark"),
+                (640 / 2016, 613 / 1512, 665 / 2016, 622 / 1512, "dark"),
+                (650 / 2016, 640 / 1512, 680 / 2016, 657 / 1512, "dark"),
+                (1871 / 2016, 533 / 1512, 1912 / 2016, 549 / 1512, "dark"),
+                (1631 / 2016, 591 / 1512, 1659 / 2016, 601 / 1512, "dark"),
+                (1661 / 2016, 618 / 1512, 1677 / 2016, 654 / 1512, "dark"),
+                (1703 / 2016, 573 / 1512, 1735 / 2016, 630 / 1512, "dark"),
+                (1742 / 2016, 622 / 1512, 1765 / 2016, 632 / 1512, "dark"),
+                (1893 / 2016, 645 / 1512, 1909 / 2016, 659 / 1512, "dark")],
+        focus="50% 60%",
+        alt="The main stand of Nyayo National Stadium with the Nairobi skyline and a round water tower behind it, players on the pitch"),
+    "nyayo-pitch-match": dict(
+        src="nyayo-pitch-match.jpg", own=True, kind="tile",
+        # players on the pitch and the running track; painted out: the badge and back
+        # lettering on the officials' shirts
+        ratio="2:1", crop=("box", 464 / 2576, 824 / 1932, 2344 / 2576),
+        redact=[(466 / 2576, 1250 / 1932, 477 / 2576, 1270 / 1932, "light"),
+                (1876 / 2576, 871 / 1932, 1899 / 2576, 882 / 1932, "light")],
+        focus="50% 40%",
+        alt="Players spread out across a grass pitch during a match, with the running track in the foreground"),
     # ---------------------------------------------------------------- heroes
     "home-skyline": dict(
         src="amani-nation-LTh5pGyvKAM-unsplash.jpg", kind="hero",
@@ -361,7 +453,7 @@ SLOTS = {
     "stays": "sunset-rooftops",
     "food": "shared-table",
     "rides": "light-trails",
-    "matchday": "fans-flags",
+    "matchday": "nyayo-stands-skyline",
     "nightlife": "kicc-night",
     "movies-games": "cinema-seats",
     "tickets": "stadium-fan",
@@ -379,7 +471,9 @@ GALLERIES = {
     "food": ["shared-platter", "skewers-table", "clay-dishes", "roast-spread",
              "ribs-fries", "plate-hands", "pour-over"],
     "rides": ["night-street", "avenue-traffic", "jacaranda-street", "safari-gazelles"],
-    "matchday": ["stadium-arms", "stadium-crowd", "track-sprint", "flag-dancers",
+    # own photos first (nine in all: the strip has a layout for nine)
+    "matchday": ["nyayo-golden-crowd-sign", "nyayo-main-stand-skyline", "nyayo-sky-crowd-track",
+                 "nyayo-pitch-match", "stadium-arms", "stadium-crowd", "track-sprint", "flag-dancers",
                  "football-pitch"],
     "nightlife": ["neon-rooftop", "bar-sunset", "singer-stage", "window-dining"],
     "movies-games": ["cinema-glow", "cinema-seats"],
@@ -387,6 +481,11 @@ GALLERIES = {
 }
 
 SRGB = ImageCms.createProfile("sRGB")
+
+
+def site_name():
+    with open(os.path.join(SITE, "data", "site.json"), encoding="utf-8") as fh:
+        return json.load(fh)["name"]
 
 
 def credit_for(src):
@@ -515,27 +614,30 @@ def main():
     photos = {}
     for pid, c in CROPS.items():
         print(pid)
-        im = load(c["src"])
+        own = c.get("own", False)
+        im = load(c["src"], OWN_MASTERS if own else MASTERS)
         if c.get("redact"):
             im = redact(im, c["redact"])
-        name, uid = credit_for(c["src"])
         ratio = RATIOS[c["ratio"]]
         hero = c["kind"] == "hero"
         q = c.get("q", HERO_Q if hero else TILE_Q)
         widths = render(im, box_for(im.size, ratio, c["crop"]),
-                        HERO_W if hero else TILE_W, ratio, pid, q, BUDGET[c["kind"]],
+                        c.get("w", HERO_W if hero else TILE_W), ratio, pid, q, BUDGET[c["kind"]],
                         c.get("denoise"))
-        entry = {
-            "src": c["src"],
-            "credit": name,
-            "credit_url": f"https://unsplash.com/photos/{uid}",
+        entry = {"src": c["src"]}
+        if own:
+            entry.update(credit=site_name(), own=True)
+        else:
+            name, uid = credit_for(c["src"])
+            entry.update(credit=name, credit_url=f"https://unsplash.com/photos/{uid}")
+        entry.update({
             "alt": c["alt"],
             "kind": c["kind"],
             "w": widths,
             "ratio": c["ratio"],
-        }
+        })
         if hero:
-            mw = render(im, box_for(im.size, RATIOS["4:5"], c["m"]), HERO_M_W,
+            mw = render(im, box_for(im.size, RATIOS["4:5"], c["m"]), c.get("m_w", HERO_M_W),
                         RATIOS["4:5"], f"{pid}-m", c.get("m_q", HERO_Q), BUDGET["tile"])
             entry["m"] = mw
             entry["m_ratio"] = "4:5"

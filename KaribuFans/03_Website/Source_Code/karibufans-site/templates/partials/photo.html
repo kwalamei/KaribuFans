@@ -2,7 +2,8 @@
     hero_picture: full-bleed hero. A 4:5 phone crop under 700px, the landscape crop above; the hero is the one image
                   that loads at once (fetchpriority high), every other photo is lazy.
     tile:         one photo in a gallery or tile, lazy, with its own width/height so nothing shifts while it loads.
-    credit:       the small linked "Photo: Name / Unsplash" chip that sits on a hero. -#}
+    credit:       the small linked "Photo: Name / Unsplash" chip that sits on a hero. Our own photographs ("own" in
+                  data/photos.json) read "Photo: <site name>", with no link. -#}
 
 {% macro srcset(p, root, widths, m='') -%}
 {% for w in widths %}{{ root }}img/photos/{{ p.id }}-{{ m }}{{ w }}.webp {{ w }}w{{ ', ' if not loop.last }}{% endfor %}
@@ -32,7 +33,8 @@
 {%- endmacro %}
 
 {% macro credit(p) -%}
-<a class="credit" href="{{ p.credit_url }}" target="_blank" rel="noopener">Photo: {{ p.credit }} / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>
+{% if p.own %}<span class="credit">Photo: {{ p.credit }}</span>{% else -%}
+<a class="credit" href="{{ p.credit_url }}" target="_blank" rel="noopener">Photo: {{ p.credit }} / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>{% endif %}
 {%- endmacro %}
 
 {#- An editorial gallery. kind "mosaic" is the homepage pattern; "strip" adapts to how many photos a stop has.
@@ -58,7 +60,7 @@
   {% endif %}
   <li{% if full %} class="g-full"{% endif %}><figure class="ph">
     {{ tile(p, root, '(max-width: 900px) ' ~ ('100vw' if full else '50vw') ~ ', ' ~ desk) }}
-    <figcaption><a href="{{ p.credit_url }}" target="_blank" rel="noopener">{{ p.credit }}<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a></figcaption>
+    <figcaption>{% if p.own %}<span>Photo: {{ p.credit }}</span>{% else %}<a href="{{ p.credit_url }}" target="_blank" rel="noopener">{{ p.credit }}<span class="sr-only">, photo on Unsplash (opens in a new tab)</span></a>{% endif %}</figcaption>
   </figure></li>
   {% endfor %}
 </ul>

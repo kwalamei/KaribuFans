@@ -125,6 +125,10 @@ def main():
     rides = load("rides.json")
     fixtures = load("fixtures.json")
     photos = load_photos()
+    # Our own photographs are credited with the site's name (set once in data/site.json).
+    for ph in photos["photos"].values():
+        if ph.get("own"):
+            ph["credit"] = site["name"]
     stadiums = load_stadiums(site)
     stadium_by_id = {s["id"]: s for s in stadiums}
 
@@ -166,7 +170,8 @@ def main():
 
     # Every photo the site shows, in the order it first appears, for the credits on the privacy page.
     used = []
-    for pid in list(photos["slots"].values()) + [i for ids in photos["galleries"].values() for i in ids]:
+    for pid in (list(photos["slots"].values()) + [i for ids in photos["galleries"].values() for i in ids]
+                + [s["photo"] for s in guide if s.get("photo")]):
         if pid in photos["photos"] and pid not in used:
             used.append(pid)
     # Example photos on listing cards (a trial) are credited after them, in manifest order, if any card shows one.

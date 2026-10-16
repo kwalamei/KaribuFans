@@ -1,7 +1,10 @@
 {% if m.slug == 'matchday' %}
 {% from "partials/area_art.html" import area_art %}
+{% from "partials/photo.html" import tile %}
 {# Stadium guide: the stadiums in data/stadiums.json (facts only, each with its source), with directions and links to
-   the listings marked as near it (listing field "near"). Nothing about fixtures or tournament venues is shown here. #}
+   the listings marked as near it (listing field "near"). A stadium with "photo" (an id in data/photos.json; only
+   our own photographs of the stadium itself) shows it in place of the drawn area art, credited on the photo.
+   Nothing about fixtures or tournament venues is shown here. #}
 <section class="band band-paper" id="stadiums" aria-labelledby="stH">
   <div class="wrap">
     <div class="sec-head"><h2 id="stH" class="display-3">Stadium guide</h2><p>Where Nairobi's football stadiums are, with directions and the places on {{ site.name }} near each one. The organiser of each match decides where it is played, so check their announcement.</p></div>
@@ -9,7 +12,9 @@
     <ul class="stadiums rv-each">
       {% for s in stadiums %}
       <li class="stadium" id="stadium-{{ s.id }}">
-        <div class="stadium-art">{{ area_art(s.zone, '-st-' ~ s.id) }}</div>
+        {% set sp = photos.get(s.photo) if s.photo else none %}
+        {% if sp %}<figure class="stadium-art stadium-photo">{{ tile(sp, root, '(max-width: 700px) 100vw, 420px') }}<figcaption>Photo: {{ sp.credit }}</figcaption></figure>
+        {% else %}<div class="stadium-art">{{ area_art(s.zone, '-st-' ~ s.id) }}</div>{% endif %}
         <div class="stadium-body">
           <p class="stadium-zone">{{ s.zone or 'Nairobi' }}</p>
           <h3>{{ s.name }}</h3>
