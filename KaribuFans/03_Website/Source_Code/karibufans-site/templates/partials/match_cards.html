@@ -1,0 +1,50 @@
+{#- Match cards on Matchday, "Upcoming in Nairobi" (build.py load_fixtures, data/fixtures.json).
+    fx_band.mode "live":    real fixtures from the official lists (fixtures.json live true), visible without JavaScript.
+    fx_band.mode "preview": the FAKE examples in data/fixtures_sample.json, rendered only by a build with
+                            KF_FIXTURES_PREVIEW=1 (private preview copies only, never the committed dist/).
+    Each card: the stadium's own photograph where data/stadiums.json has one (credited on the card), otherwise the drawn
+    stadium. Team names are plain text, never badges. A bottom-weighted ink shade under the text keeps it readable on
+    the brightest part of any photo (site.css, "Match cards"). The All / Men / Women chips are switched on by
+    js/site.js; without it every match is shown. -#}
+{% from "partials/area_art.html" import area_art %}
+{% from "partials/photo.html" import tile, credit %}
+{% set preview = fx_band.mode == 'preview' %}
+<section class="band band-dark matches-band" id="upcoming" aria-labelledby="upH"{% if fx_band.hidden %} hidden{% endif %}{% if preview %} data-preview="fixtures"{% endif %}>
+  <div class="wrap">
+    <div class="sec-head"><h2 id="upH" class="display-3">Upcoming in <em>Nairobi</em></h2><p>FKF Premier League and FKF Women's Premier League matches at Nairobi stadiums in the next two weeks, from the official fixture lists. {{ site.name }} does not sell tickets.</p></div>
+    {% if preview %}<p class="matches-preview"><strong>Preview.</strong> These are example cards to show the layout. None of them is a real fixture.</p>{% endif %}
+    {% if fx_band.genders | length > 1 %}
+    <div class="matches-filter" id="matchFilter" role="group" aria-label="Show matches" hidden>
+      <button type="button" class="chip" data-g="" aria-pressed="true">All</button>
+      <button type="button" class="chip" data-g="men" aria-pressed="false">Men</button>
+      <button type="button" class="chip" data-g="women" aria-pressed="false">Women</button>
+      <span class="count" id="matchCount" aria-live="polite"></span>
+    </div>
+    {% endif %}
+    {% for day in fx_band.days %}
+    <div class="match-day">
+      <h3 class="match-day-h"><time datetime="{{ day.date }}">{{ day.label }}</time></h3>
+      <ul class="matches" role="list">
+        {% for f in day.cards %}{% set s = f.stadium %}{% set sp = photos.get(s.photo) if s.photo else none %}
+        <li class="match{{ ' is-postponed' if f.status == 'postponed' }}{{ ' has-photo' if sp }}" data-gender="{{ f.gender }}"{% if not f.example %} data-end="{{ f.end_iso }}"{% endif %}>
+          <div class="match-media" aria-hidden="true">{% if sp %}{{ tile(sp, root, '(max-width: 899px) 100vw, 640px', alt=false) }}{% else %}{{ area_art('Ngong Road', '-mc-' ~ f.id) }}{% endif %}</div>
+          {% if sp %}{{ credit(sp) }}{% endif %}
+          <div class="match-body">
+            <p class="match-tags">{% if f.example %}<span class="match-example">Example, not a real fixture</span>{% endif %}<span class="match-tag">{{ f.comp_label }}</span>{% if f.status == 'postponed' %}<span class="match-tag match-state">Postponed</span>{% endif %}</p>
+            <h4 class="match-teams">{{ f.home }} <span class="match-v">v</span> {{ f.away }}</h4>
+            <p class="match-when">{% if f.status == 'postponed' %}Postponed. It was due on <time datetime="{{ f.start_iso }}">{{ f.when }}</time>; check the official page for the new date.{% else %}<time datetime="{{ f.start_iso }}">{{ f.when }}</time>{% if not f.kickoff %} · Time to be confirmed{% endif %}{% endif %}</p>
+            <p class="match-venue"><strong>{{ s.name }}</strong>{% if s.street %} · {{ s.street }}{% endif %}</p>
+            <div class="match-actions">
+              {% if f.ticket_url and f.status != 'postponed' %}<a class="btn btn-primary" href="{{ f.ticket_url }}"{% if f.ticket_url != '#' %} target="_blank" rel="noopener"{% endif %}>Official tickets{% if f.ticket_url != '#' %} ↗<span class="sr-only"> (opens in a new tab)</span>{% endif %}</a>{% endif %}
+              <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query={{ s.map_query | urlencode }}" target="_blank" rel="noopener" aria-label="Directions to {{ s.name }} (opens Google Maps)">Directions ↗</a>
+              {% if s.pages %}<a class="btn btn-ghost" href="{{ root }}{{ s.pages[0].slug }}/?near={{ s.id }}">Places near {{ s.short }}</a>{% endif %}
+            </div>
+            <p class="match-src">From the <a href="{{ f.source_url }}"{% if f.source_url != '#' %} target="_blank" rel="noopener nofollow"{% endif %}>official fixture list<span class="sr-only"> for {{ f.home }} v {{ f.away }}{{ ' (opens in a new tab)' if f.source_url != '#' }}</span></a> · checked {{ f.checked }}. Fixtures can move; check the official page before you travel.</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>

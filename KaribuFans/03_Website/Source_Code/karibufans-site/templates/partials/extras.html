@@ -43,12 +43,15 @@
     {% endif %}
   </div>
 </section>
-<section class="band band-dark" aria-labelledby="fxH">
+{# The older "Matches in Nairobi" list makes way for the match cards once they show (live fixtures, or a preview). #}
+{% if not fx_band or (fx_band.mode == 'preview' and fx_band.hidden) %}
+<section class="band band-dark"{% if fx_band %} data-fx-old{% endif %} aria-labelledby="fxH">
   <div class="wrap">
     <div class="sec-head"><h2 id="fxH">Matches in Nairobi</h2><p>Kenya Premier League, national team and tournament matches, added only once they are officially announced.</p></div>
     {% set mode = 'matchday' %}{% include "partials/fixtures.html" %}
   </div>
 </section>
+{% endif %}
 <section class="band" aria-labelledby="essH">
   <div class="wrap">
     <div class="sec-head"><h2 id="essH">Stadium essentials</h2><p>Gate times, bag rules and seating are set for each match by its organiser. These are the basics; your ticket and the organiser's announcement have the rest.</p></div>

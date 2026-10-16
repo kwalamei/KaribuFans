@@ -1,14 +1,16 @@
-{# Shared fixtures list. mode = 'matchday' or 'tickets' #}
+{# Shared fixtures list. mode = 'matchday' or 'tickets'. fixtures.fixtures holds only real upcoming matches, and only
+   while data/fixtures.json is live (build.py load_fixtures); on Matchday the match cards replace this list then. #}
 <div class="fixtures">
   {% if fixtures.fixtures %}
   {% for f in fixtures.fixtures %}
-  <div class="fx" data-date="{{ f.date }}" data-time="{{ f.time }}" data-title="{{ f.home }} vs {{ f.away }}" data-venue="{{ f.venue or '' }}">
-    <div><strong class="fx-date">{{ f.date }}</strong><span>{{ f.stage }}</span></div>
-    <span class="fx-teams">{{ f.home }} vs {{ f.away }}</span>
-    <span class="fx-meta">Kick-off {{ f.time }}{% if f.gates %} · Gates {{ f.gates }}{% endif %}</span>
+  <div class="fx" data-date="{{ f.date }}" data-time="{{ f.kickoff or '' }}" data-title="{{ f.home }} v {{ f.away }}" data-venue="{{ f.stadium.name }}">
+    <div><strong class="fx-date">{{ f.when }}</strong><span>{{ f.comp_label }}</span></div>
+    <span class="fx-teams">{{ f.home }} v {{ f.away }}</span>
+    <span class="fx-meta">{{ f.stadium.name }}{% if not f.kickoff %} · Time to be confirmed{% endif %}</span>
     {% if mode == 'tickets' %}
-    <span class="status status-{{ f.status or 'opens_soon' }}">{{ {'on_sale':'On sale','opens_soon':'Opens soon','sold_out':'Sold out','official_resale':'Official resale'}[f.status or 'opens_soon'] }}</span>
-    {% if fixtures.official_ticket_url %}<a class="btn btn-primary" href="{{ fixtures.official_ticket_url }}" target="_blank" rel="noopener">Official site ↗</a>{% endif %}
+    <span class="status">{{ 'Postponed' if f.status == 'postponed' else 'Scheduled' }}</span>
+    {% set tu = f.ticket_url or fixtures.official_ticket_url %}
+    {% if tu and f.status != 'postponed' %}<a class="btn btn-primary" href="{{ tu }}" target="_blank" rel="noopener">Official tickets ↗</a>{% endif %}
     {% else %}
     <button type="button" class="btn btn-ghost add-cal">Add to calendar</button>
     {% endif %}

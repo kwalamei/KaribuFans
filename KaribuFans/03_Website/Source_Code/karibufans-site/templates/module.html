@@ -45,6 +45,11 @@
 </section>
 {% endif %}
 
+{# Matchday: the match cards come straight after the photographs, before the listings and the stadium guide, because
+   "what is on" is the first question on this stop; each card then links on to the places near its stadium. While
+   data/fixtures.json is not live, the band holds only the hidden example cards (partials/match_cards.html). -#}
+{%- if m.slug == 'matchday' and fx_band %}{% include "partials/match_cards.html" %}{% endif -%}
+
 {% if listings %}
 <div class="filters" id="filters" role="group" aria-label="Filter {{ m.label }}">
   <div class="wrap">
