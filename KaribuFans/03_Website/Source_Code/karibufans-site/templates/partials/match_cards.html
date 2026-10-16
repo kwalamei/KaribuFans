@@ -1,8 +1,7 @@
 {#- Match cards on Matchday, "Upcoming in Nairobi" (build.py load_fixtures, data/fixtures.json).
     fx_band.mode "live":    real fixtures from the official lists (fixtures.json live true), visible without JavaScript.
-    fx_band.mode "preview": the FAKE examples in data/fixtures_sample.json. The band is rendered hidden, and only
-                            ?preview=fixtures (js/site.js) shows it, in that browser; KF_FIXTURES_PREVIEW=1 at build time
-                            renders it visible (private preview copies only, never the committed dist/).
+    fx_band.mode "preview": the FAKE examples in data/fixtures_sample.json, rendered only by a build with
+                            KF_FIXTURES_PREVIEW=1 (private preview copies only, never the committed dist/).
     Each card: the stadium's own photograph where data/stadiums.json has one (credited on the card), otherwise the drawn
     stadium. Team names are plain text, never badges. A bottom-weighted ink shade under the text keeps it readable on
     the brightest part of any photo (site.css, "Match cards"). The All / Men / Women chips are switched on by

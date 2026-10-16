@@ -189,9 +189,8 @@ def load_fixtures(stadium_by_id, today_now):
                 otherwise none (so nothing real is public before live is switched on).
       band      the match-card band, or None:
                 - live true with upcoming matches: the real cards, visible without JavaScript;
-                - otherwise the example cards, rendered with the band hidden; ?preview=fixtures (js/site.js) shows
-                  them in one browser. With KF_FIXTURES_PREVIEW=1 at build time they are visible without JavaScript
-                  (private preview copies only, never the committed dist/)."""
+                - otherwise, only with KF_FIXTURES_PREVIEW=1 at build time, the example cards, visible without
+                  JavaScript (private preview copies only, never the committed dist/). A public build has no band."""
     data = load("fixtures.json")
     comps = data.get("competitions") or {}
     venues = {k: s for k, s in stadium_by_id.items() if not s.get("fallback")}
@@ -244,7 +243,8 @@ def load_fixtures(stadium_by_id, today_now):
         upcoming.sort(key=lambda c: c["_sort"])
     if upcoming:
         cards, mode = upcoming, "live"
-    elif sample:
+    elif sample and os.environ.get("KF_FIXTURES_PREVIEW") == "1":
+        # Examples are never put in the public build, not even hidden (search engines and reader views would see them).
         cards, mode = [card(f) for f in sample], "preview"
     else:
         cards, mode = [], ""
@@ -252,7 +252,7 @@ def load_fixtures(stadium_by_id, today_now):
     if cards:
         band = {"mode": mode, "days": days(cards), "count": len(cards),
                 "genders": sorted({c["gender"] for c in cards}),
-                "hidden": mode == "preview" and os.environ.get("KF_FIXTURES_PREVIEW") != "1"}
+                "hidden": False}
     public = dict(data, fixtures=upcoming)
     return public, band
 

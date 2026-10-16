@@ -417,9 +417,9 @@
     rideTo.addEventListener('change', uberHref); uberHref();
   }
 
-  // Matchday match cards (partials/match_cards.html). While data/fixtures.json is not live, the band holds only the
-  // example cards and is hidden: ?preview=fixtures shows it in this browser (remembered as kf_preview_fixtures, like
-  // the accounts preview) and ?preview=off hides it again. The switch is then taken out of the address.
+  // Matchday match cards (partials/match_cards.html). The public build has no band until data/fixtures.json is live;
+  // the example band exists only in private preview builds (KF_FIXTURES_PREVIEW=1). If a band is ever rendered
+  // hidden, ?preview=fixtures shows it in this browser (remembered as kf_preview_fixtures) and ?preview=off hides it.
   // Real cards (live) are visible without this script; it only adds the All / Men / Women chips and hides a match
   // two hours after kick-off (data-end), in case the page was built before the match was played.
   var fxBand = $('upcoming');
