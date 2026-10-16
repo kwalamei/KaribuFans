@@ -1,0 +1,62 @@
+{
+  "_note": "FAKE fixtures, used ONLY to preview the match cards on Matchday (?preview=fixtures, or a private build with KF_FIXTURES_PREVIEW=1). They are not real matches: the teams, dates and times are made up, and every card says 'Example, not a real fixture'. Never copy them into data/fixtures.json. build.py checks them with the same rules as real fixtures (example: true allows '#' as a link).",
+  "fixtures": [
+    {
+      "id": "example-men-nyayo",
+      "example": true,
+      "competition": "fkf-premier-league",
+      "gender": "men",
+      "home": "Home team",
+      "away": "Away team",
+      "date": "2026-10-17",
+      "kickoff": "16:15",
+      "venue": "nyayo",
+      "status": "scheduled",
+      "source_url": "#",
+      "checked": "16 Oct 2026",
+      "ticket_url": "#"
+    },
+    {
+      "id": "example-women-kasarani",
+      "example": true,
+      "competition": "fkf-womens-premier-league",
+      "gender": "women",
+      "home": "Women's home side",
+      "away": "Women's away side",
+      "date": "2026-10-17",
+      "kickoff": null,
+      "venue": "kasarani",
+      "status": "scheduled",
+      "source_url": "#",
+      "checked": "16 Oct 2026"
+    },
+    {
+      "id": "example-women-nyayo",
+      "example": true,
+      "competition": "fkf-womens-premier-league",
+      "gender": "women",
+      "home": "Women's home side",
+      "away": "Women's away side",
+      "date": "2026-10-18",
+      "kickoff": "13:00",
+      "venue": "nyayo",
+      "status": "scheduled",
+      "source_url": "#",
+      "checked": "16 Oct 2026"
+    },
+    {
+      "id": "example-men-kasarani",
+      "example": true,
+      "competition": "fkf-premier-league",
+      "gender": "men",
+      "home": "Home team",
+      "away": "Away team",
+      "date": "2026-10-21",
+      "kickoff": "19:00",
+      "venue": "kasarani",
+      "status": "postponed",
+      "source_url": "#",
+      "checked": "16 Oct 2026"
+    }
+  ]
+}

@@ -5,11 +5,20 @@ Needs:  Python 3 with Jinja2 (pip install jinja2)
 
 Edit content in data/ (site settings, modules, listings) and design in
 templates/ and static/. Never edit dist/ by hand: it is regenerated.
+
+Match cards on Matchday (data/fixtures.json, see load_fixtures below):
+    KF_FIXTURES_PREVIEW=1 python3 build.py
+renders the band of EXAMPLE cards from data/fixtures_sample.json visible without JavaScript. It is only for
+Kiongozi's private preview copy (build it in a scratch copy of this folder). Never commit a dist/ built with it:
+always run a plain `python3 build.py` before committing.
 """
 import json
+import os
+import re
 import shutil
+import sys
 import zlib
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -118,12 +127,141 @@ def near_ids(v, known):
     return out
 
 
+# Match cards (Matchday, "Upcoming in Nairobi"). Times are East Africa Time (UTC+3, no daylight saving).
+EAT = timezone(timedelta(hours=3))
+FIXTURE_DAYS = 14          # with live on, only matches in the next 14 days are shown
+FIXTURE_HIDE_AFTER = timedelta(hours=2)   # a match leaves the page two hours after kick-off
+
+
+def check_fixtures(items, comps, venues, fname):
+    """Every fixture must carry its source and a venue from data/stadiums.json; anything missing stops the build,
+    so nothing unconfirmed can reach the page. Returns the list of problems (empty when all is well)."""
+    errs, seen = [], set()
+    for n, f in enumerate(items, 1):
+        fid = f.get("id") or f"#{n}"
+        bad = lambda msg: errs.append(f"{fname}: fixture {fid}: {msg}")
+        if not f.get("id") or not re.fullmatch(r"[a-z0-9-]+", str(f.get("id"))):
+            bad("id is missing or not lower-case letters, digits and hyphens")
+        elif f["id"] in seen:
+            bad("id is used twice")
+        seen.add(f.get("id"))
+        comp = comps.get(f.get("competition"))
+        if not comp:
+            bad(f"competition '{f.get('competition')}' is not one of {', '.join(comps)}")
+        if f.get("gender") not in ("men", "women"):
+            bad("gender must be 'men' or 'women'")
+        elif comp and comp.get("gender") and comp["gender"] != f["gender"]:
+            bad(f"gender '{f['gender']}' does not match {comp['label']}")
+        for k in ("home", "away"):
+            if not str(f.get(k) or "").strip():
+                bad(f"{k} team is missing")
+        try:
+            date.fromisoformat(str(f.get("date")))
+            if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(f.get("date"))):
+                raise ValueError
+        except ValueError:
+            bad("date must be YYYY-MM-DD")
+        if f.get("kickoff") is not None and not re.fullmatch(r"([01]\d|2[0-3]):[0-5]\d", str(f.get("kickoff"))):
+            bad("kickoff must be 'HH:MM' (East Africa Time) or null for 'Time to be confirmed'")
+        v = str(f.get("venue") or "").strip()
+        if not v or v.lower() in ("tbc", "tba", "tbd"):
+            bad("venue is missing or TBC; a match is added only once its venue is confirmed")
+        elif v not in venues:
+            bad(f"venue '{v}' is not in data/stadiums.json; add the stadium (with its source) first")
+        if f.get("status") not in ("scheduled", "postponed"):
+            bad("status must be 'scheduled' or 'postponed'")
+        for k in ("source_url", "checked"):
+            if not str(f.get(k) or "").strip():
+                bad(f"{k} is missing (every fixture says where it was read and when)")
+        # Links: real fixtures link to https pages only; the fake examples may use '#'.
+        for k in ("source_url", "ticket_url"):
+            u = f.get(k)
+            if u and not (str(u).startswith("https://") or (f.get("example") and u == "#")):
+                bad(f"{k} must be an https:// address")
+    return errs
+
+
+def load_fixtures(stadium_by_id, today_now):
+    """Read data/fixtures.json (real fixtures) and data/fixtures_sample.json (fake examples for the preview).
+
+    Returns (fixtures, band):
+      fixtures  what the older lists on Matchday and Tickets may show: the real upcoming matches when live is true,
+                otherwise none (so nothing real is public before live is switched on).
+      band      the match-card band, or None:
+                - live true with upcoming matches: the real cards, visible without JavaScript;
+                - otherwise the example cards, rendered with the band hidden; ?preview=fixtures (js/site.js) shows
+                  them in one browser. With KF_FIXTURES_PREVIEW=1 at build time they are visible without JavaScript
+                  (private preview copies only, never the committed dist/)."""
+    data = load("fixtures.json")
+    comps = data.get("competitions") or {}
+    venues = {k: s for k, s in stadium_by_id.items() if not s.get("fallback")}
+    real = data.get("fixtures") or []
+    sf = ROOT / "data" / "fixtures_sample.json"
+    sample = json.loads(sf.read_text(encoding="utf-8")).get("fixtures", []) if sf.exists() else []
+    errs = check_fixtures(real, comps, venues, "data/fixtures.json")
+    errs += check_fixtures(sample, comps, venues, "data/fixtures_sample.json")
+    errs += [f"data/fixtures.json: fixture {f.get('id')}: marked example; examples belong in fixtures_sample.json"
+             for f in real if f.get("example")]
+    errs += [f"data/fixtures_sample.json: fixture {f.get('id')}: every sample needs \"example\": true"
+             for f in sample if not f.get("example")]
+    if errs:
+        sys.exit("Fixtures check failed:\n  " + "\n  ".join(errs))
+
+    def card(f):
+        f = dict(f)
+        d = date.fromisoformat(f["date"])
+        s = venues[f["venue"]]
+        f["comp_label"] = comps[f["competition"]]["label"]
+        f["stadium"] = s
+        f["day_label"] = d.strftime("%A ") + str(d.day) + d.strftime(" %B")
+        f["when"] = d.strftime("%a ") + str(d.day) + d.strftime(" %b") + (f" · {f['kickoff']} EAT" if f.get("kickoff") else "")
+        if f.get("kickoff"):
+            h, mi = (int(x) for x in f["kickoff"].split(":"))
+            start = datetime(d.year, d.month, d.day, h, mi, tzinfo=EAT)
+            f["start_iso"] = start.isoformat(timespec="minutes")
+            end = start + FIXTURE_HIDE_AFTER
+        else:   # no time yet: it stays up for the whole day
+            f["start_iso"] = d.isoformat()
+            end = datetime(d.year, d.month, d.day, tzinfo=EAT) + timedelta(days=1)
+        f["end_iso"] = end.isoformat(timespec="minutes")
+        f["_end"] = end
+        f["_sort"] = (f["date"], f.get("kickoff") or "99:99", f["competition"], f["id"])
+        return f
+
+    def days(cards):
+        out = []
+        for c in sorted(cards, key=lambda c: c["_sort"]):
+            if not out or out[-1]["date"] != c["date"]:
+                out.append({"date": c["date"], "label": c["day_label"], "cards": []})
+            out[-1]["cards"].append(c)
+        return out
+
+    upcoming = []
+    if data.get("live"):
+        now = today_now
+        last = now.date() + timedelta(days=FIXTURE_DAYS)
+        upcoming = [c for c in map(card, real) if c["_end"] > now and date.fromisoformat(c["date"]) <= last]
+        upcoming.sort(key=lambda c: c["_sort"])
+    if upcoming:
+        cards, mode = upcoming, "live"
+    elif sample:
+        cards, mode = [card(f) for f in sample], "preview"
+    else:
+        cards, mode = [], ""
+    band = None
+    if cards:
+        band = {"mode": mode, "days": days(cards), "count": len(cards),
+                "genders": sorted({c["gender"] for c in cards}),
+                "hidden": mode == "preview" and os.environ.get("KF_FIXTURES_PREVIEW") != "1"}
+    public = dict(data, fixtures=upcoming)
+    return public, band
+
+
 def main():
     site = load("site.json")
     modules = load("modules.json")
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]))
     rides = load("rides.json")
-    fixtures = load("fixtures.json")
     photos = load_photos()
     # Our own photographs are credited with the site's name (set once in data/site.json).
     for ph in photos["photos"].values():
@@ -159,6 +297,8 @@ def main():
                        "count": sum(1 for v in listings[m["slug"]] if s["id"] in v["near"])}
                       for m in modules if any(s["id"] in v["near"] for v in listings[m["slug"]])]
     guide = [s for s in stadiums if not s.get("fallback")]
+    # Match cards: checked against data/stadiums.json; past matches are dropped by the build time in Nairobi.
+    fixtures, fx_band = load_fixtures(stadium_by_id, datetime.now(EAT))
 
     # route[slug][zone] = number of listings; used for "continue your route" links.
     route = {slug: {} for slug in listings}
@@ -186,7 +326,7 @@ def main():
         if st and st.get("lat") is not None and st.get("lng") is not None:
             d["lat"], d["lng"] = st["lat"], st["lng"]
 
-    common = dict(site=site, modules=modules, rides=rides, fixtures=fixtures, year=date.today().year, stadiums=guide,
+    common = dict(site=site, modules=modules, rides=rides, fixtures=fixtures, fx_band=fx_band, year=date.today().year, stadiums=guide,
                   route=route, zone_cards=zone_cards, photos=photos["photos"], slots=photos["slots"],
                   galleries=photos["galleries"], photo_credits=photo_credits)
 

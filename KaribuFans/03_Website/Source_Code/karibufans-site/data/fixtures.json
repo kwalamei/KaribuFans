@@ -1,5 +1,10 @@
 {
-  "_note": "Add fixtures only once officially published (Kenya Premier League, national team, tournament or other events in Nairobi). date = YYYY-MM-DD, time = HH:MM Nairobi time. status: on_sale | opens_soon | sold_out | official_resale. Optional venue = the stadium name, used in the calendar entry.",
+  "live": false,
+  "note": "Match cards on Matchday ('Upcoming in Nairobi'). Nothing in this file is shown to the public while live is false; switch live to true only once Kiongozi has permission to use the official fixture data, then rebuild. Add a match only once it is on the official fixture list of its competition, and copy only what that list says: never guess a kick-off time, a venue or a date. Fields: id (short, unique, no spaces); competition (a key of competitions below); gender ('men' or 'women', must match the competition); home and away (team names as plain text, never badges or logos); date (YYYY-MM-DD); kickoff ('HH:MM' East Africa Time, or null when the list has no time yet, and the card then says 'Time to be confirmed'); venue (an id from data/stadiums.json: a match whose venue is TBC, or at a stadium not in that file, is not added until the venue is confirmed and the stadium is in the guide); status ('scheduled' or 'postponed'); source_url (the official page you read it on); checked (the day you read it, e.g. '16 Oct 2026'); ticket_url (optional: the official or partner ticket page only, KaribuFans never sells tickets); note (optional, internal, not shown). build.py stops with an error if a required field is missing or wrong, or the venue is unknown. When live is true only matches in the next 14 days are shown, matches already played are left out at build time (East Africa Time), and the page also hides a match two hours after kick-off. official_ticket_url is the one general ticket page shown on Tickets; leave it empty until an organiser announces one.",
+  "competitions": {
+    "fkf-premier-league": {"label": "FKF Premier League", "gender": "men"},
+    "fkf-womens-premier-league": {"label": "FKF Women's Premier League", "gender": "women"}
+  },
   "official_ticket_url": "",
   "fixtures": []
 }

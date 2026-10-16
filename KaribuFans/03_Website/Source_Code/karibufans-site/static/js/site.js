@@ -417,6 +417,48 @@
     rideTo.addEventListener('change', uberHref); uberHref();
   }
 
+  // Matchday match cards (partials/match_cards.html). While data/fixtures.json is not live, the band holds only the
+  // example cards and is hidden: ?preview=fixtures shows it in this browser (remembered as kf_preview_fixtures, like
+  // the accounts preview) and ?preview=off hides it again. The switch is then taken out of the address.
+  // Real cards (live) are visible without this script; it only adds the All / Men / Women chips and hides a match
+  // two hours after kick-off (data-end), in case the page was built before the match was played.
+  var fxBand = $('upcoming');
+  if (fxBand) {
+    var fxPv = params.get('preview');
+    if (fxPv === 'fixtures' || fxPv === 'off') {
+      if (fxPv === 'fixtures') store.set('preview_fixtures', true); else store.del('preview_fixtures');
+      if (fxPv === 'fixtures') try {
+        var fxQs = new URLSearchParams(location.search); fxQs.delete('preview'); fxQs = fxQs.toString();
+        history.replaceState(history.state, '', location.pathname + (fxQs ? '?' + fxQs : '') + location.hash);
+      } catch (e) {}
+    }
+    if (fxBand.hasAttribute('data-preview') && fxBand.hidden && store.get('preview_fixtures') === true) {
+      fxBand.hidden = false;
+      each(document.querySelectorAll('[data-fx-old]'), function (el) { el.hidden = true; });
+    }
+    var fxNow = Date.now();
+    each(fxBand.querySelectorAll('.match[data-end]'), function (li) {
+      var end = Date.parse(li.getAttribute('data-end'));
+      if (end && end < fxNow) { li.hidden = true; li.setAttribute('data-past', ''); }
+    });
+    var fxG = '', fxChips = fxBand.querySelectorAll('#matchFilter .chip'), fxCount = $('matchCount');
+    var fxApply = function () {
+      var n = 0;
+      each(fxBand.querySelectorAll('.match'), function (li) {
+        var show = !li.hasAttribute('data-past') && (!fxG || li.getAttribute('data-gender') === fxG);
+        li.hidden = !show; if (show) n++;
+      });
+      each(fxBand.querySelectorAll('.match-day'), function (d) { d.hidden = !d.querySelector('.match:not([hidden])'); });
+      each(fxChips, function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-g') === fxG ? 'true' : 'false'); });
+      if (fxCount) fxCount.textContent = n === 1 ? '1 match' : n + ' matches';
+      return n;
+    };
+    each(fxChips, function (c) { c.addEventListener('click', function () { fxG = c.getAttribute('data-g') || ''; fxApply(); }); });
+    if (fxChips.length) $('matchFilter').hidden = false;
+    // Every real match already played: the band goes, rather than standing empty.
+    if (!fxApply() && !fxBand.hasAttribute('data-preview')) fxBand.hidden = true;
+  }
+
   // Matchday: add a fixture to the calendar (.ics)
   each(document.querySelectorAll('.add-cal'), function (btn) {
     btn.addEventListener('click', function () {

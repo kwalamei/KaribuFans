@@ -81,7 +81,15 @@ The Supabase library is not stored in this repository. The browser fetches it fr
 ## Settings to fill in (data/site.json)
 - `contact_whatsapp`: the KaribuFans business WhatsApp number (set: 254792637085). The list-your-business, claim and ticket alert forms open WhatsApp with a message to it; nothing is stored on the site.
 - `uber_client_id`: Uber's docs list it as required for ride links. Register free at developer.uber.com.
-- Fixtures go in `data/fixtures.json` once officially published; they then show on Matchday (with Add to calendar) and Tickets (with sale status).
+- Fixtures go in `data/fixtures.json` (see "Match cards" below).
+
+## Match cards (Matchday, "Upcoming in Nairobi")
+FKF Premier League and FKF Women's Premier League matches at Nairobi stadiums, one card each, grouped by day, with All / Men / Women chips. Switched off for now: `"live": false` in `data/fixtures.json`.
+- Field rules are in the `note` at the top of `data/fixtures.json`. Every match needs `source_url`, `checked` and a `venue` that is an id in `data/stadiums.json`; a TBC or unknown venue, a missing field or a wrong format stops `build.py` with a message naming the fixture. Copy only what the official list says.
+- `"live": false`: nothing new is visible to the public. The page carries the EXAMPLE cards from `data/fixtures_sample.json` (fake teams, each labelled "Example, not a real fixture") in a hidden band. `?preview=fixtures` on the Matchday address shows them in that browser (remembered), `?preview=off` hides them.
+- `KF_FIXTURES_PREVIEW=1 python3 build.py` renders the example band visible without JavaScript. Only for a private preview copy built in a scratch folder: never commit a `dist/` built with it.
+- `"live": true`: the real matches of the next 14 days show without JavaScript, replacing the older "Matches in Nairobi" list; matches already played are left out at build time (East Africa Time) and the page hides a match two hours after kick-off. Rebuild at least daily while live. With no upcoming match nothing new shows.
+- A card uses the stadium's own `photo` from `data/stadiums.json` (credited on the card), otherwise the drawn stadium. Team names are plain text, never badges. Tickets link only to the official page (`ticket_url`).
 
 ## Status
 - 29 Sep (Day 1): homepage, shared header and footer, page hero with route bar, seven module pages, mobile layout.
