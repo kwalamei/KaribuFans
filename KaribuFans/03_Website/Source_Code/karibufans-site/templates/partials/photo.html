@@ -33,7 +33,7 @@
 {%- endmacro %}
 
 {% macro credit(p) -%}
-{% if p.own %}<span class="credit">Photo: {{ p.credit }}</span>{% else %}
+{% if p.own %}<span class="credit">Photo: {{ p.credit }}</span>{% else -%}
 <a class="credit" href="{{ p.credit_url }}" target="_blank" rel="noopener">Photo: {{ p.credit }} / Unsplash<span class="sr-only"> (opens Unsplash in a new tab)</span></a>{% endif %}
 {%- endmacro %}
 
