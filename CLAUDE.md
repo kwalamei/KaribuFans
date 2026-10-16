@@ -30,9 +30,9 @@ Colours are tokens at the top of `static/css/site.css`. Use the tokens; never wr
 - The sunset light trail along the route is the signature element
 
 ## Photographs
-- Masters are in `KaribuFans/03_Website/Photos/unsplash/` (Unsplash licence) and, for the listing-card examples, `KaribuFans/03_Website/Photos/examples/` (Pexels or Unsplash licence). `tools/photos.py` (in the site folder) makes every crop and size and writes `data/photos.json`; never hand-edit the outputs in `static/img/photos/`. Run it, then `build.py`, and never run both at once.
+- Masters are in `KaribuFans/03_Website/Photos/unsplash/` (Unsplash licence), for the listing-card examples `KaribuFans/03_Website/Photos/examples/` (Pexels or Unsplash licence), and for our own photographs `KaribuFans/03_Website/Photos/own/` (metadata removed; `own=True` in `photos.py`, credited "Photo: KaribuFans" with the site name and no link). `tools/photos.py` (in the site folder) makes every crop and size and writes `data/photos.json`; never hand-edit the outputs in `static/img/photos/`. Run it, then `build.py`, and never run both at once.
 - Every photo used is credited on its hero chip or tile and in the Photo credits section of the privacy notices.
-- No logos, brand names, readable signs, number plates or personal names: crop them out, or paint them out in `photos.py` when a crop would spoil the photo.
+- No logos, brand names, readable signs, number plates or personal names: crop them out, or paint them out in `photos.py` when a crop would spoil the photo. One exception: a public venue's own name sign (e.g. "Nyayo National Stadium") may stay (Marx, 16 Oct); brand and sponsor signs may not.
 - Alt text describes what is visible and never names a business; only say Nairobi when the photo visibly is (skyline, KICC, Nairobi National Park).
 - Stop-page galleries sit in their own band, before the listings, with the caption that the photos are not of the places listed. Unclaimed listing cards for a hotel, apartment, guesthouse or restaurant may carry a stock example photo of that type of place (Marx approved, 9 Oct), always labelled "Example photo, not of this place" and credited; made by the `EXAMPLES` list in `photos.py`. Every other unclaimed card uses the drawn area art. A business's own photos replace the example only once it joins.
 - Text over a photo must keep its contrast against the brightest part of the image; the hero shade and the backings on small text exist for this.
@@ -73,5 +73,5 @@ Nothing is pushed until the reviewer has passed it. Marx chose commits straight 
 - Commission terms for businesses (rate, what counts as a referral) before the first one joins
 - `uber_client_id` in `data/site.json`
 - Registered business name for the footer
-- Own photographs from the Nairobi photo walk to replace stock where possible (Karen, Gigiri, Thika Road, Airport and Mombasa Road, Ngong Road and a real hotel room have none yet)
+- Own photographs from the Nairobi photo walk to replace stock where possible (Matchday now has its own, from Nyayo National Stadium; Karen, Gigiri, Thika Road, Airport and Mombasa Road, Ngong Road and a real hotel room have none yet)
 - Visitor accounts: built, hidden behind `accounts.live`. Before switching on: Supabase table and address settings, Google sign-in credential, an email sending service for sign-in links, and a live test by Marx

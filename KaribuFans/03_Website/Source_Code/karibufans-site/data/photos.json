@@ -1,5 +1,77 @@
 {
   "photos": {
+    "nyayo-stands-skyline": {
+      "src": "nyayo-stands-skyline.jpg",
+      "credit": "KaribuFans",
+      "own": true,
+      "alt": "Nyayo National Stadium in Nairobi on a match day, the main stand and the city skyline under a big cloudy sky",
+      "kind": "hero",
+      "w": [
+        800,
+        1400,
+        2000
+      ],
+      "ratio": "16:9",
+      "m": [
+        600,
+        800,
+        900
+      ],
+      "m_ratio": "4:5",
+      "focus": "50% 70%"
+    },
+    "nyayo-golden-crowd-sign": {
+      "src": "nyayo-golden-crowd-sign.jpg",
+      "credit": "KaribuFans",
+      "own": true,
+      "alt": "The Nyayo National Stadium name sign above a packed stand in Nairobi at golden hour, a floodlight shining against a blue sky",
+      "kind": "tile",
+      "w": [
+        600,
+        1000
+      ],
+      "ratio": "4:3",
+      "focus": "50% 88%"
+    },
+    "nyayo-sky-crowd-track": {
+      "src": "nyayo-sky-crowd-track.jpg",
+      "credit": "KaribuFans",
+      "own": true,
+      "alt": "Storm clouds over Nyayo National Stadium in Nairobi, fans gathered at the trackside beside the pitch",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "3:2",
+      "focus": "50% 60%"
+    },
+    "nyayo-main-stand-skyline": {
+      "src": "nyayo-main-stand-skyline.jpg",
+      "credit": "KaribuFans",
+      "own": true,
+      "alt": "The main stand of Nyayo National Stadium with the Nairobi skyline and a round water tower behind it, players on the pitch",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "16:9",
+      "focus": "50% 60%"
+    },
+    "nyayo-pitch-match": {
+      "src": "nyayo-pitch-match.jpg",
+      "credit": "KaribuFans",
+      "own": true,
+      "alt": "Players spread out across a grass pitch during a match, with the running track in the foreground",
+      "kind": "tile",
+      "w": [
+        600,
+        1200
+      ],
+      "ratio": "2:1",
+      "focus": "50% 40%"
+    },
     "home-skyline": {
       "src": "amani-nation-LTh5pGyvKAM-unsplash.jpg",
       "credit": "Amani Nation",
@@ -731,7 +803,7 @@
     "stays": "sunset-rooftops",
     "food": "shared-table",
     "rides": "light-trails",
-    "matchday": "fans-flags",
+    "matchday": "nyayo-stands-skyline",
     "nightlife": "kicc-night",
     "movies-games": "cinema-seats",
     "tickets": "stadium-fan",
@@ -775,6 +847,10 @@
       "safari-gazelles"
     ],
     "matchday": [
+      "nyayo-golden-crowd-sign",
+      "nyayo-main-stand-skyline",
+      "nyayo-sky-crowd-track",
+      "nyayo-pitch-match",
       "stadium-arms",
       "stadium-crowd",
       "track-sprint",

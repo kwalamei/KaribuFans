@@ -237,6 +237,7 @@ html.menu-open{overflow:hidden}
 /* Photo credit: a small linked chip, bottom right of the hero (in the text column on narrow screens) */
 .credit{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;font:500 12px var(--body);letter-spacing:.01em;color:var(--on-dark);background:rgba(var(--ink-rgb),.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);text-decoration:none;white-space:nowrap}
 .credit:hover{text-decoration:underline}
+span.credit:hover{text-decoration:none}   /* our own photographs: a plain credit, not a link */
 .hero-body>.credit{order:99;margin-top:4px}
 @media (min-width:900px){.hero-body>.credit{position:absolute;right:var(--gutter);bottom:clamp(32px,4vw,56px);margin:0}}
 .route>.credit{position:absolute;right:var(--gutter);bottom:24px;z-index:2}
@@ -453,7 +454,7 @@ html:has(.filters){scroll-padding-top:184px}
 .ph{position:relative;margin:0;height:100%;overflow:hidden;border-radius:var(--radius);background:var(--paper-2)}
 .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 50%)}
 .ph figcaption{position:absolute;left:10px;bottom:10px;z-index:1}
-.ph figcaption a{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;font:500 12px var(--body);color:var(--on-dark);background:rgba(var(--ink-rgb),.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);text-decoration:none}
+.ph figcaption>a,.ph figcaption>span{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;font:500 12px var(--body);color:var(--on-dark);background:rgba(var(--ink-rgb),.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);text-decoration:none}
 .ph figcaption a:hover{text-decoration:underline}
 /* Tablet and phone (the default): two columns. The first photo spans both; then pairs. In a stop's strip an odd one
    out at the end spans both too, and the homepage mosaic opens a new full-width photo every fifth, so no cell is left empty. */
@@ -517,6 +518,9 @@ html:has(.filters){scroll-padding-top:184px}
 .stadium{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;scroll-margin-top:calc(var(--nav-h) + 16px)}
 .stadium-art{position:relative;overflow:hidden;aspect-ratio:320/140;background:var(--paper-2)}
 .stadium-art svg{width:100%;height:100%;display:block}
+.stadium-photo{margin:0}   /* a stadium with its own photograph (data/stadiums.json "photo"), credited on the photo */
+.stadium-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 50%)}
+.stadium-photo figcaption{position:absolute;left:10px;bottom:10px;display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;font:500 12px var(--body);color:var(--on-dark);background:rgba(var(--ink-rgb),.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .stadium-body{display:flex;flex-direction:column;gap:8px;padding:clamp(20px,2.4vw,28px);flex:1}
 .stadium-zone{font:600 12px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .stadium h3{font-family:var(--display);font-weight:400;font-size:clamp(28px,2.4vw,34px);line-height:1.02;letter-spacing:-.02em}
@@ -549,7 +553,7 @@ html:has(.filters){scroll-padding-top:184px}
 .credits{list-style:none;padding:0!important;gap:0!important}
 .credits li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
 .credits li span{color:var(--muted);max-width:52ch}
-.credits a{white-space:nowrap}
+.credits a,.credits .credits-own{white-space:nowrap}
 
 /* ---------- Details drawer ---------- */
 .drawer-veil{position:fixed;inset:0;z-index:90;background:rgba(var(--ink-rgb),.55);opacity:0}
